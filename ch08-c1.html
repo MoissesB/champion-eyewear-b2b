@@ -1,0 +1,2714 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Innova Eyewear B2B | CH08 C1</title>
+  <meta name="description" content="CH08 C1 de Champion Eyewear para canal B2B, con productos similares CH09 C1, CH09 C2, CH09 C3 y CH09 C4 para complementar el surtido profesional de óptica." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111111;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+
+      /* Champion-style palette */
+      --champion-red:#d1122b;
+      --champion-blue:#00247C;
+      --accent-grad: linear-gradient(90deg, var(--champion-red), var(--champion-blue));
+
+      /* Footer */
+      --footer-blue:#1f2a60;
+      --footer-blue-2:#1a2454;
+
+      /* Modal */
+      --modal-bg:#ffffff;
+      --modal-overlay: rgba(0,0,0,.55);
+
+      /* MOBILE VH FIX (fallback) */
+      --vh: 1vh;
+    }
+    *{box-sizing:border-box}
+    html,body{width:100%; height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.35;
+      overflow-x:hidden;
+      min-height:100vh;
+    }
+    img{max-width:100%; height:auto}
+    a{color:inherit; text-decoration:none}
+    button{font-family:inherit}
+
+    /* =========================================================
+       TOP STRIP (Champion-like)
+       ========================================================= */
+    .top-strip{
+      width:100%;
+      background:var(--champion-red);
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,.15);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.01em;
+    }
+    .strip-inner{
+      width:100%;
+      padding:10px clamp(12px, 2.6vw, 36px);
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .strip-slides{
+      flex:1 1 auto;
+      min-width:0;
+      overflow:hidden;
+      position:relative;
+    }
+    .strip-slide{
+      display:none;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      opacity:.98;
+    }
+    .strip-slide.is-active{display:block}
+    .strip-dots{
+      display:flex;
+      gap:6px;
+      align-items:center;
+      flex:0 0 auto;
+    }
+    .strip-dot{
+      width:6px;height:6px;
+      border-radius:999px;
+      background:rgba(255,255,255,.45);
+    }
+    .strip-dot.is-active{background:#fff}
+
+    /* =========================================================
+       HEADER NAV (multi opciones) + back
+       ========================================================= */
+    .header{
+      width:100%;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:50;
+    }
+    .header::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:3px;
+      background:var(--accent-grad);
+    }
+    .header-inner{
+      padding:12px clamp(12px, 2.6vw, 36px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .back-btn{
+      width:42px;height:42px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#fff;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      box-shadow: var(--shadow);
+      touch-action:manipulation;
+      flex:0 0 auto;
+    }
+    .back-btn:hover{ box-shadow: 0 16px 40px rgba(0,0,0,.09); }
+    .brand-mark{
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+    }
+    .brand-top{
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:12px;
+      line-height:1.1;
+      color:#111;
+    }
+    .brand-sub{
+      font-size:12px;
+      font-weight:800;
+      color:var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width: 52vw;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a,
+    .nav button {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      height:40px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.01em;
+      cursor:pointer;
+      touch-action:manipulation;
+      white-space:nowrap;
+    }
+    .nav a:hover,
+    .nav button:hover {
+      box-shadow: var(--shadow);
+      border-color: rgba(0,36,124,.25);
+    }
+    .nav .primary{
+      background:var(--champion-blue);
+      color:#fff;
+      border-color: rgba(255,255,255,.15);
+    }
+
+    .header-tools{
+      display:inline-flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:10px;
+      flex:0 0 auto;
+    }
+
+    .lang-toggle{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      height:40px;
+      padding:0 12px;
+      border-radius:999px;
+      background:#fff;
+      color:var(--champion-blue);
+      border:1px solid rgba(0,36,124,.22);
+      font-size:13px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:none;
+      white-space:nowrap;
+      touch-action:manipulation;
+      flex:0 0 auto;
+    }
+
+    .lang-toggle:hover {
+      box-shadow: var(--shadow);
+      border-color: rgba(0,36,124,.35);
+    }
+
+    .lang-toggle .lang-current{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:24px;
+      height:24px;
+      border-radius:999px;
+      background:var(--champion-blue);
+      color:#fff;
+      font-size:11px;
+      line-height:1;
+    }
+
+    /* Mobile menu button + dropdown */
+    .menu-btn{
+      display:none;
+      width:42px;height:42px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#fff;
+      cursor:pointer;
+      place-items:center;
+      box-shadow: var(--shadow);
+      touch-action:manipulation;
+      flex:0 0 auto;
+    }
+    .menu-btn:hover{ box-shadow: 0 16px 40px rgba(0,0,0,.09); }
+    .mobile-menu{
+      display:none;
+      border-top:1px solid var(--line);
+      background:#fff;
+      padding:10px clamp(12px, 2.6vw, 36px) 14px;
+    }
+    .mobile-menu .mm-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .mobile-menu a,
+    .mobile-menu button {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      height:40px;
+      padding:0 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.01em;
+      white-space:nowrap;
+      flex: 1 1 auto;
+      min-width: 140px;
+    }
+    .mobile-menu a.primary{
+      background:var(--champion-blue);
+      color:#fff;
+      border-color: rgba(255,255,255,.15);
+    }
+    .header.menu-open .mobile-menu{ display:block; }
+
+    /* =========================================================
+       FULL-WIDTH LAYOUT (desktop ancho total)
+       ========================================================= */
+    .wrap{
+      width:100%;
+      max-width:none;
+      margin:0;
+      padding:22px clamp(12px, 2.6vw, 36px) 54px;
+    }
+    .pdp{
+      display:grid;
+      grid-template-columns: 1.65fr .95fr;
+      gap:34px;
+      align-items:start;
+    }
+
+    /* =========================================================
+       GALLERY
+       ========================================================= */
+    .gallery{
+      width:100%;
+      border:1px solid var(--line);
+      background:#fff;
+      overflow:hidden;
+      position:relative;
+    }
+    .gallery::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:4px;
+      background:var(--accent-grad);
+      z-index:3;
+    }
+    .gallery-layout{
+      display:grid;
+      grid-template-columns: 100px 1fr;
+      min-height: 560px;
+    }
+    .thumb-rail{
+      border-right:1px solid var(--line);
+      background:#fff;
+      padding:14px 10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .thumb{
+      width:78px;
+      height:78px;
+      border:1px solid var(--line);
+      background:#fff;
+      cursor:pointer;
+      display:block;
+      padding:0;
+      border-radius:2px;
+      overflow:hidden;
+      opacity:.92;
+      touch-action:manipulation;
+    }
+    .thumb[aria-current="true"]{
+      outline:2px solid var(--champion-blue);
+      outline-offset:2px;
+      opacity:1;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      background:#fff;
+    }
+    .stage{
+      position:relative;
+      background:#fff;
+      padding:16px;
+      min-width:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .zoom-viewport{
+      position:relative;
+      width:100%;
+      aspect-ratio: 1 / 1;
+      max-height: 980px;
+      border:1px solid rgba(0,0,0,.06);
+      background:#fff;
+      overflow:hidden;
+      touch-action: pan-y;
+      cursor: default;
+    }
+    .zoom-viewport.is-zoom{
+      touch-action: none;
+      cursor: grab;
+    }
+    .zoom-viewport.is-zoom.dragging{ cursor: grabbing; }
+    .zoom-img{
+      position:absolute;
+      left:0; top:0;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      user-select:none;
+      -webkit-user-drag:none;
+      pointer-events:none;
+      will-change: transform;
+      transform: translate(0px,0px) scale(1);
+      transform-origin:center;
+    }
+    .g-nav{
+      position:absolute;
+      top:14px;
+      left:14px;
+      z-index:4;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .g-panel-toggle{ display:none; }
+    .g-panel-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .g-btn{
+      width:40px;height:40px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.12);
+      background:rgba(255,255,255,.92);
+      backdrop-filter: blur(6px);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      touch-action:manipulation;
+      box-shadow: var(--shadow);
+    }
+    .g-btn:hover{background:#fff}
+    .g-btn.zoom{ border-color: rgba(0,36,124,.20); }
+
+    /* =========================================================
+       RIGHT COLUMN
+       ========================================================= */
+    .meta{ min-width:0; }
+    .breadcrumbs{
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.02em;
+      word-break:break-word;
+      font-weight:800;
+    }
+    .title{
+      margin:10px 0 0;
+      font-size:30px;
+      font-weight:900;
+      letter-spacing:.01em;
+      text-transform:uppercase;
+      line-height:1.08;
+      word-break:break-word;
+    }
+    .subline{
+      margin-top:10px;
+      font-size:13px;
+      color:#374151;
+      font-weight:700;
+    }
+    .price{
+      margin:12px 0 0;
+      font-size:16px;
+      font-weight:900;
+    }
+    .badge-row{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:12px;
+      font-weight:900;
+    }
+    .badge .dot{
+      width:10px;height:10px;border-radius:2px;
+      background:var(--champion-blue);
+    }
+    .badge.red .dot{ background: var(--champion-red); }
+
+    .switch-block{
+      margin-top:14px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+    }
+    .switch-title{
+      margin:0 0 10px;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      position:relative;
+      padding-top:10px;
+    }
+    .switch-title::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;
+      width:220px;height:4px;
+      background:var(--accent-grad);
+      border-radius:999px;
+    }
+    .model-switch{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .mchip{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:13px;
+      font-weight:900;
+      cursor:pointer;
+      touch-action:manipulation;
+    }
+    .mchip[aria-current="true"]{
+      border-color:var(--champion-blue);
+      box-shadow: var(--shadow);
+    }
+
+    .b2b-actions{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 390px), 1fr));
+      gap:12px;
+      align-items:stretch;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .btn-product-contact {
+      display: inline-grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      align-items: center;
+      justify-content: start;
+      gap: 12px;
+      width: 100%;
+      max-width: 100%;
+      min-height: 68px;
+      max-height: 78px;
+      padding: 14px 18px;
+      margin: 0;
+      border-radius: 999px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 14px 34px rgba(0, 36, 124, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-product-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(0, 36, 124, 0.24);
+      filter: brightness(1.03);
+    }
+
+    .btn-product-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      box-shadow: 0 14px 34px rgba(18, 140, 126, 0.24);
+    }
+
+    .btn-product-whatsapp:hover {
+      box-shadow: 0 18px 42px rgba(18, 140, 126, 0.30);
+    }
+
+    .btn-product-call {
+      background: var(--accent-grad);
+    }
+
+    .product-contact-icon {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 36px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .product-contact-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .product-contact-copy {
+      display: grid;
+      gap: 2px;
+      line-height: 1.08;
+      text-align: left;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .product-contact-copy strong {
+      font-size: clamp(0.78rem, 1.05vw, 0.94rem);
+      line-height: 1.08;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .product-contact-copy small {
+      font-size: clamp(0.64rem, 0.85vw, 0.73rem);
+      font-weight: 700;
+      opacity: 0.92;
+      line-height: 1.08;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      .b2b-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-product-contact {
+        min-height: 62px;
+        max-height: 76px;
+        padding: 13px 16px;
+      }
+
+      .product-contact-copy strong {
+        font-size: 0.9rem;
+      }
+
+      .product-contact-copy small {
+        font-size: 0.72rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .btn-product-contact {
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 10px;
+        min-height: 60px;
+        max-height: 74px;
+        padding: 12px 14px;
+      }
+
+      .product-contact-icon {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+      }
+
+      .product-contact-icon svg {
+        width: 19px;
+        height: 19px;
+      }
+
+      .product-contact-copy strong {
+        font-size: 0.82rem;
+      }
+
+      .product-contact-copy small {
+        font-size: 0.66rem;
+      }
+    }
+
+    .b2b-note{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    /* Tabs */
+    .tabs{
+      margin-top:18px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+    }
+    .tabbar{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .tab{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:13px;
+      font-weight:900;
+      cursor:pointer;
+      touch-action:manipulation;
+      position:relative;
+    }
+    .tab[aria-selected="true"]{
+      border-color:var(--champion-blue);
+      box-shadow: var(--shadow);
+    }
+    .tab[aria-selected="true"]::after{
+      content:"";
+      position:absolute;
+      left:12px; right:12px; bottom:-1px;
+      height:3px;
+      background:var(--accent-grad);
+      border-radius:999px;
+    }
+    .tabpanel{ display:none; padding:12px 0 0; }
+    .tabpanel[data-active="true"]{ display:block; }
+    .panel-card{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:14px;
+      position:relative;
+    }
+    .panel-card::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:4px;
+      background:var(--accent-grad);
+    }
+    .panel-card h3{
+      margin:0 0 8px;
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      padding-top:6px;
+    }
+    .panel-card p{
+      margin:0 0 10px;
+      color:#374151;
+      font-size:13px;
+      font-weight:600;
+    }
+    .panel-card ul{
+      margin:0 0 0 18px;
+      padding:0;
+      color:#374151;
+      font-size:13px;
+      font-weight:600;
+    }
+    .panel-card li{ margin:7px 0; }
+    .specs{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .specs th, .specs td{
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+      font-size:13px;
+    }
+    .specs tr:last-child th, .specs tr:last-child td{ border-bottom:0; }
+    .specs th{
+      width:38%;
+      color:#374151;
+      background:#f9fafb;
+      font-weight:900;
+      text-align:left;
+    }
+    .specs td{
+      color:#111;
+      font-weight:800;
+    }
+
+    /* =========================================================
+       PRODUCTOS SIMILARES
+       ========================================================= */
+    .related{
+      margin-top:44px;
+      border-top:1px solid var(--line);
+      padding-top:18px;
+    }
+    .related h2{
+      margin:0 0 14px;
+      font-size:18px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-weight:900;
+      position:relative;
+      padding-top:10px;
+    }
+    .related h2::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;
+      width:260px;height:4px;
+      background:var(--accent-grad);
+      border-radius:999px;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:16px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid var(--line);
+      background:#fff;
+      overflow:hidden;
+      min-width:0;
+      position:relative;
+      cursor:pointer;
+      touch-action:manipulation;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:4px;
+      background:var(--accent-grad);
+      z-index:1;
+    }
+    .card-media{
+      position:relative;
+      background:#fff;
+      aspect-ratio: 1 / 1;
+      padding:10px;
+      z-index:0;
+    }
+    .sim-img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block;
+      background:#fff;
+    }
+    .card-body{
+      padding:12px 12px 14px;
+      position:relative;
+      z-index:2;
+    }
+    .card-title{
+      font-size:13px;
+      font-weight:900;
+      margin:0 0 8px;
+      color:#111;
+      text-transform:uppercase;
+      letter-spacing:.01em;
+    }
+    .card-meta{
+      font-size:12px;
+      color:#374151;
+      font-weight:800;
+      line-height:1.3;
+    }
+    .mini-badges{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .mini{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:7px 9px;
+      font-size:11px;
+      font-weight:900;
+      background:#fff;
+    }
+    .mini i{
+      width:8px;height:8px;
+      border-radius:2px;
+      display:inline-block;
+      background:var(--champion-blue);
+    }
+    .mini.red i{ background:var(--champion-red); }
+
+    @media (max-width: 520px){
+      .cards{
+        display:flex;
+        gap:12px;
+        overflow-x:auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type:x mandatory;
+        padding-bottom:10px;
+        scroll-behavior:smooth;
+      }
+      .card{
+        flex:0 0 auto;
+        width:78%;
+        scroll-snap-align:start;
+      }
+    }
+
+    /* =========================================================
+       FOOTER SIMPLIFICADO
+       ========================================================= */
+    .footer{
+      background:linear-gradient(180deg, var(--footer-blue), var(--footer-blue-2));
+      color:#fff;
+      padding:34px clamp(12px, 2.6vw, 36px);
+      position:relative;
+      overflow:hidden;
+    }
+    .footer::before{
+      content:"";
+      position:absolute;
+      top:0;left:0;right:0;
+      height:4px;
+      background:var(--accent-grad);
+    }
+    .footer-inner{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr 1.2fr;
+      gap:24px;
+      align-items:start;
+    }
+    .f-col h4{
+      margin:0 0 12px;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .f-links{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      font-size:13px;
+      font-weight:700;
+      color:rgba(255,255,255,.92);
+    }
+    .subscribe{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+      border-radius:12px;
+      padding:16px;
+      max-width:100%;
+    }
+    .subscribe h3{
+      margin:0 0 10px;
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      overflow-wrap:anywhere;
+    }
+    .subscribe p{
+      margin:0 0 12px;
+      font-size:13px;
+      font-weight:700;
+      color:rgba(255,255,255,.92);
+      line-height:1.4;
+      overflow-wrap:anywhere;
+    }
+    .sub-legal{
+      margin-top:10px;
+      font-size:11px;
+      color:rgba(255,255,255,.75);
+      font-weight:700;
+      line-height:1.35;
+      overflow-wrap:anywhere;
+    }
+    .footer-bottom{
+      margin-top:24px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.14);
+      color:rgba(255,255,255,.75);
+      font-size:12px;
+      font-weight:700;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      overflow-wrap:anywhere;
+    }
+
+    /* =========================================================
+       CONTACT MODAL (Champion-style) + ICON IMAGES
+       ========================================================= */
+    .contact-modal{
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10050;
+    }
+    .contact-modal[aria-hidden="false"]{ display:flex; }
+
+    .contact-modal-overlay{
+      position:absolute;
+      inset:0;
+      background: var(--modal-overlay);
+    }
+
+    .contact-modal-panel{
+      position: relative;
+      width: min(620px, 92vw);
+      max-height: 86vh;
+      overflow: auto;
+      background: var(--modal-bg);
+      border-radius: 18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.28);
+      border: 1px solid rgba(0,0,0,.10);
+      padding: 18px 18px 16px;
+    }
+    .contact-modal-panel::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height:4px;
+      background: var(--accent-grad);
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+    }
+
+    .contact-modal-close{
+      position:absolute;
+      right: 12px;
+      top: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background:#fff;
+      cursor:pointer;
+      font-size: 22px;
+      line-height: 1;
+      display:grid;
+      place-items:center;
+    }
+    .contact-modal-close:hover{ background:#f7f7f7; }
+
+    .cm-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:11px;
+      color:#374151;
+      padding-top: 6px;
+    }
+    .cm-kicker::before{
+      content:"";
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      background: var(--champion-red);
+      box-shadow: 0 0 0 2px rgba(209,18,43,.12);
+    }
+
+    .contact-modal-head{
+      padding: 14px 2px 12px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 14px;
+    }
+    .contact-modal-head h3{
+      margin: 6px 0 6px;
+      font-size: 20px;
+      font-weight: 900;
+      color: #111;
+      letter-spacing:.01em;
+      text-transform:uppercase;
+    }
+    .contact-modal-head p{
+      margin: 0;
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .contact-options{
+      display: grid;
+      gap: 12px;
+      padding: 10px 0 6px;
+    }
+    .contact-option{
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: #fff;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .contact-option::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:4px;
+      background: var(--accent-grad);
+      opacity:.95;
+    }
+    .contact-option:hover{
+      box-shadow: 0 14px 34px rgba(0,0,0,.14);
+      transform: translateY(-1px);
+      border-color: rgba(0,36,124,.18);
+    }
+    .contact-option .icon{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.08);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      margin-left: 6px;
+    }
+    .contact-option .icon img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+    .contact-option .title{
+      font-size: 14px;
+      color:#111;
+      letter-spacing: .2px;
+      font-weight: 900;
+      margin-bottom: 4px;
+      text-transform:uppercase;
+    }
+    .contact-option .meta{
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+    .contact-modal-foot{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: #6b7280;
+      font-size: 12px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 1100px){
+      .pdp{ grid-template-columns: 1.35fr 1fr; }
+      .footer-inner{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 980px){
+      .pdp{ grid-template-columns:1fr; gap:18px; }
+      .gallery-layout{ grid-template-columns: 1fr; min-height: 0; }
+      .thumb-rail{
+        border-right:0;
+        border-top:0;
+        border-bottom:1px solid var(--line);
+        padding:10px 12px 0;
+        display:grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap:10px;
+      }
+      .thumb{ width:100%; height:78px; }
+      .stage{ padding:10px 0 0; align-items:flex-start; }
+      .g-nav{
+        top:auto;
+        left:10px;
+        bottom:10px;
+        gap:0;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .g-panel-toggle{ display:grid; width:40px;height:40px; }
+      .g-panel-actions{
+        display:none;
+        flex-direction:row;
+        gap:8px;
+        margin-top:8px;
+        padding:8px;
+        border-radius:14px;
+        border:1px solid rgba(0,0,0,.10);
+        background:rgba(255,255,255,.92);
+        backdrop-filter: blur(6px);
+        box-shadow: var(--shadow);
+        flex-wrap:nowrap;
+      }
+      .g-nav.is-open .g-panel-actions{ display:flex; }
+      .g-btn{ width:36px;height:36px; box-shadow: 0 8px 18px rgba(0,0,0,.08); }
+
+      .nav{ display:none; }
+      .menu-btn{ display:grid; }
+      .brand-sub{ max-width: 48vw; }
+      .header-tools .lang-toggle{ display:inline-flex; }
+
+      .zoom-viewport{
+        max-height:none;
+        height: calc(var(--vh, 1vh) * 58);
+        min-height: 320px;
+        aspect-ratio: auto;
+        border-left:0;
+        border-right:0;
+        border-bottom:0;
+      }
+      .zoom-img{ object-position: 50% 0%; }
+
+      .footer-inner{ grid-template-columns: 1fr; }
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+      }
+    }
+    @media (max-width: 520px){
+      .title{ font-size:22px; }
+      .zoom-viewport{
+        height: calc(var(--vh, 1vh) * 54);
+        min-height: 280px;
+      }
+      .subscribe h3{ font-size:18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-strip" aria-label="Avisos">
+    <div class="strip-inner">
+      <div class="strip-slides" aria-live="polite">
+        <div class="strip-slide is-active">INNOVA EYEWEAR (B2B) | Catálogo profesional para ópticas, cadenas y distribuidores</div>
+        <div class="strip-slide">Reposición, surtidos recomendados y atención comercial</div>
+      </div>
+      <div class="strip-dots" aria-hidden="true">
+        <span class="strip-dot is-active"></span>
+        <span class="strip-dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header" aria-label="Cabecera" id="mainHeader">
+    <div class="header-inner">
+      <div class="brand">
+        <button class="back-btn" type="button" id="goBack" aria-label="Volver atrás">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="brand-mark">
+          <div class="brand-top">INNOVA EYEWEAR</div>
+          <div class="brand-sub">Wholesale / B2B · Catálogo · Reposición · Surtidos</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a href="./index.html" target="_blank" rel="noopener">Inicio</a>
+        <a href="./index.html#opciones" target="_blank" rel="noopener">Catálogo</a>
+        <a href="#similares">Similares</a>
+        <a href="#b2b" class="primary" data-open-contact-modal="1">Cotizar</a>
+      </nav>
+
+      <div class="header-tools" aria-label="Herramientas de cabecera">
+        <button class="lang-toggle" type="button" data-language-toggle aria-label="Cambiar idioma a inglés">
+          <span class="lang-current">EN</span>
+          <span class="lang-label">English</span>
+        </button>
+
+        <button class="menu-btn" type="button" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" aria-label="Menú móvil">
+      <div class="mm-row">
+        <a href="./index.html" target="_blank" rel="noopener">Inicio</a>
+        <a href="./index.html#opciones" target="_blank" rel="noopener">Catálogo</a>
+        <a href="#similares">Similares</a>
+        <a href="#b2b" class="primary" data-open-contact-modal="1">Cotizar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="pdp">
+      <div class="gallery" aria-label="Galería del producto">
+        <div class="gallery-layout">
+          <div class="thumb-rail" role="tablist" aria-label="Miniaturas" id="thumbRail">
+            <button class="thumb" type="button" data-idx="0" aria-current="true" aria-label="Ver imagen 1">
+              <img src="" alt="" id="thumb0">
+            </button>
+            <button class="thumb" type="button" data-idx="1" aria-current="false" aria-label="Ver imagen 2">
+              <img src="" alt="" id="thumb1">
+            </button>
+            <button class="thumb" type="button" data-idx="2" aria-current="false" aria-label="Ver imagen 3">
+              <img src="" alt="" id="thumb2">
+            </button>
+            <button class="thumb" type="button" data-idx="3" aria-current="false" aria-label="Ver imagen 4">
+              <img src="" alt="" id="thumb3">
+            </button>
+          </div>
+
+          <div class="stage">
+            <div class="g-nav" id="gPanel">
+              <button class="g-btn g-panel-toggle" type="button" id="gPanelToggle" aria-label="Controles de zoom" aria-expanded="false">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="g-panel-actions" id="gPanelActions">
+                <button class="g-btn zoom" type="button" id="toggleZoom" aria-label="Activar zoom (sobre la imagen)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 21l-5.2-5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10.5 8v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M8 10.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+                <button class="g-btn" type="button" id="zMinus" aria-label="Alejar">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+                <button class="g-btn" type="button" id="zPlus" aria-label="Acercar">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+                <button class="g-btn" type="button" id="zReset" aria-label="Reset zoom (ruedita)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M21 12a9 9 0 1 1-2.64-6.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M21 3v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="zoom-viewport" id="zoomViewport" aria-label="Imagen principal con zoom y desplazamiento">
+              <img id="mainImage" class="zoom-img" src="" alt="Producto - Imagen" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta">
+        <div class="breadcrumbs" id="breadcrumbs">INNOVA / Wholesale (B2B) / Champion Eyewear / CH08 C1</div>
+        <h1 class="title" id="productTitle">CH08 C1</h1>
+        <div class="subline" id="productSubline"></div>
+        <div class="price" id="productPrice"></div>
+        <div class="badge-row" id="badgeRow"></div>
+
+        <div class="switch-block" aria-label="Selector de productos similares">
+          <p class="switch-title">VARIANTES CH08 (C1–C4)</p>
+          <div class="model-switch" id="modelSwitch"></div>
+        </div>
+
+                                <div class="b2b-actions" aria-label="Acciones B2B" id="b2b">
+          <a class="btn-product-contact btn-product-whatsapp"
+             id="productWhatsappBtn"
+             href="#"
+             target="_blank"
+             rel="noopener"
+             data-ghl-track="click_b2b"
+             data-ghl-label="Producto - Contactar por WhatsApp"
+             aria-label="Contactar por WhatsApp sobre este producto">
+            <span class="product-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" focusable="false">
+                <path fill="currentColor" d="M16.04 3.2c-7.05 0-12.79 5.66-12.79 12.62 0 2.25.61 4.44 1.77 6.36L3.2 28.8l6.84-1.77a12.93 12.93 0 0 0 6 1.5c7.05 0 12.79-5.66 12.79-12.62S23.09 3.2 16.04 3.2Zm0 23.19c-1.9 0-3.76-.5-5.39-1.45l-.39-.23-4.06 1.05 1.08-3.89-.26-.4a10.39 10.39 0 0 1-1.62-5.65c0-5.78 4.77-10.48 10.64-10.48s10.64 4.7 10.64 10.48-4.77 10.57-10.64 10.57Zm5.83-7.84c-.32-.16-1.9-.93-2.2-1.04-.29-.11-.51-.16-.73.16-.21.32-.84 1.04-1.03 1.25-.19.21-.38.24-.7.08-.32-.16-1.36-.5-2.59-1.58-.96-.85-1.6-1.9-1.79-2.22-.19-.32-.02-.49.14-.65.15-.14.32-.38.48-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.57-.08-.16-.73-1.73-1-2.37-.26-.62-.53-.54-.73-.55h-.62c-.21 0-.57.08-.87.4-.29.32-1.14 1.1-1.14 2.69s1.17 3.12 1.33 3.34c.16.21 2.3 3.47 5.57 4.86.78.34 1.39.54 1.86.69.78.25 1.49.21 2.06.13.63-.09 1.9-.77 2.17-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.62-.37Z"/>
+              </svg>
+            </span>
+            <span class="product-contact-copy">
+              <strong>Contactar por WhatsApp</strong>
+              <small>Chatea con un asesor Champion</small>
+            </span>
+          </a>
+
+          <a class="btn-product-contact btn-product-call"
+             id="productCallBtn"
+             href="#"
+             target="_blank"
+             rel="noopener"
+             data-ghl-track="click_b2b"
+             data-ghl-label="Producto - Solicitar llamada inicial"
+             aria-label="Agendar llamada telefónica inicial sobre este producto">
+            <span class="product-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" focusable="false">
+                <path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.6.6 4 .6.7 0 1.2.5 1.2 1.2v3.5c0 .7-.5 1.2-1.2 1.2C10.3 22 2 13.7 2 3.4 2 2.7 2.5 2.2 3.2 2.2h3.5c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.7.6 4 .1.4 0 .9-.3 1.2l-1.6 2.2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="product-contact-copy">
+              <strong>Agendar llamada inicial</strong>
+              <small>Solicítala por WhatsApp con Mauricio</small>
+            </span>
+          </a>
+        </div>
+
+        <div class="b2b-note" id="b2bNote"></div>
+
+        <section class="tabs" aria-label="Información del producto">
+          <div class="tabbar" role="tablist" aria-label="Pestañas">
+            <button class="tab" type="button" role="tab" id="tabAbout" aria-controls="panelAbout" aria-selected="true">Descripción B2B</button>
+            <button class="tab" type="button" role="tab" id="tabSpecs" aria-controls="panelSpecs" aria-selected="false">Ficha técnica</button>
+            <button class="tab" type="button" role="tab" id="tabB2b" aria-controls="panelB2b" aria-selected="false">Condiciones B2B</button>
+          </div>
+
+          <div class="tabpanel" id="panelAbout" role="tabpanel" aria-labelledby="tabAbout" data-active="true">
+            <div class="panel-card">
+              <h3 id="aboutTitle">Descripción enfocada en B2B</h3>
+              <p id="aboutP1"></p>
+              <p id="aboutP2"></p>
+              <ul id="aboutBullets"></ul>
+            </div>
+          </div>
+
+          <div class="tabpanel" id="panelSpecs" role="tabpanel" aria-labelledby="tabSpecs" data-active="false">
+            <table class="specs" aria-label="Ficha técnica" id="specTable">
+              <tr><th>Modelo</th><td id="s_model"></td></tr>
+              <tr><th>Segmento</th><td id="s_segment"></td></tr>
+              <tr><th>Uso</th><td id="s_use"></td></tr>
+              <tr><th>Medidas</th><td id="s_size"></td></tr>
+              <tr><th>Material</th><td id="s_material"></td></tr>
+              <tr><th>Color / variante</th><td id="s_color"></td></tr>
+              <tr><th>SKU interno</th><td id="s_sku"></td></tr>
+            </table>
+          </div>
+
+          <div class="tabpanel" id="panelB2b" role="tabpanel" aria-labelledby="tabB2b" data-active="false">
+            <div class="panel-card">
+              <h3>Condiciones comerciales (B2B)</h3>
+              <p>
+                Información orientada a clientes profesionales. Precio, disponibilidad y condiciones se confirman por volumen y tipo de cuenta.
+              </p>
+              <ul>
+                <li>Precios por escalas (volumen).</li>
+                <li>Pedidos por lote y reposición.</li>
+                <li>Soporte comercial y material de catálogo.</li>
+                <li>Coordinación logística según zona.</li>
+              </ul>
+              <p style="margin-top:10px;">
+                Sitio oficial: innova-eyewear.com
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="related" id="similares" aria-label="Productos similares">
+      <h2>PRODUCTOS SIMILARES CH09 (C1-C4)</h2>
+      <div class="cards" id="similarCards"></div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Pie de página">
+    <div class="footer-inner">
+      <div class="f-col">
+        <h4>INNOVA B2B</h4>
+        <div class="f-links">
+          <div>Catálogo y fichas para mayoristas</div>
+          <div>Reposición y surtidos recomendados</div>
+          <div>Atención comercial</div>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>SERVICIO</h4>
+        <div class="f-links">
+          <div>Precio y disponibilidad: a cotizar</div>
+          <div>Mínimos y escalas por volumen</div>
+          <div>Logística según zona</div>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>INFORMACIÓN</h4>
+        <div class="f-links">
+          <div>Soporte comercial</div>
+          <div>Condiciones confirmadas por pedido</div>
+          <div>Uso profesional</div>
+        </div>
+      </div>
+      <div class="f-col">
+        <div class="subscribe">
+          <h3>NOVEDADES B2B</h3>
+          <p>Para lanzamientos, reposición y disponibilidad, utiliza los canales de contacto comerciales.</p>
+          <div class="sub-legal">
+            Contenido informativo para clientes profesionales.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>Innova Eyewear B2B · distribuciones.champion-innova.com</div>
+      <div>© Innova Worldwide Corp. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <div class="contact-modal" id="contactModal" aria-hidden="true">
+    <div class="contact-modal-overlay" id="contactModalOverlay" data-close="1" aria-hidden="true"></div>
+
+    <div class="contact-modal-panel" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" aria-describedby="contactModalDesc">
+      <button class="contact-modal-close" id="contactModalClose" type="button" aria-label="Cerrar">×</button>
+
+      <div class="contact-modal-head">
+        <span class="cm-kicker">Cotización</span>
+        <h3 id="contactModalTitle">Elige una opción</h3>
+        <p id="contactModalDesc">Selecciona el canal de contacto para cotización y atención comercial.</p>
+      </div>
+
+            <div class="contact-options">
+        <a class="contact-option"
+           id="contactOptionWhatsapp"
+           href="#"
+           target="_blank" rel="noopener"
+           data-ghl-track="click_b2b" data-ghl-label="B2B - Contacto Modal - WhatsApp">
+          <div class="icon" aria-hidden="true">
+            <img src="https://storage.googleapis.com/msgsndr/fHXK54ukeNMjxEcZtyDv/media/6972af23c406c748a093da29.jpeg" alt="">
+          </div>
+          <div>
+            <div class="title">WhatsApp</div>
+            <div class="meta">Chat directo con un asesor comercial.</div>
+          </div>
+        </a>
+
+        <a class="contact-option"
+           id="contactOptionCall"
+           href="#"
+           target="_blank" rel="noopener"
+           data-ghl-track="click_b2b" data-ghl-label="B2B - Contacto Modal - Solicitar Llamada Inicial">
+          <div class="icon" aria-hidden="true">
+            <img src="https://storage.googleapis.com/msgsndr/fHXK54ukeNMjxEcZtyDv/media/69753638eb392b0d5b232bb0.jpeg" alt="">
+          </div>
+          <div>
+            <div class="title">Llamada inicial</div>
+            <div class="meta">Solicite por WhatsApp una llamada telefónica inicial con Mauricio para revisar catálogo, precio por pieza, compra mínima, disponibilidad, despacho y condiciones B2B.</div>
+          </div>
+        </a>
+
+        <a class="contact-option"
+           id="contactOptionEmail"
+           href="#">
+          <div class="icon" aria-hidden="true">
+            <img src="https://storage.googleapis.com/msgsndr/fHXK54ukeNMjxEcZtyDv/media/6972af3c2edc00e92216c609.png" alt="">
+          </div>
+          <div>
+            <div class="title">Correo</div>
+            <div class="meta">Enviar un email al equipo comercial.</div>
+          </div>
+        </a>
+      </div>
+      <div class="contact-modal-foot">
+        Correo comercial: sales@innova-eyewear.com
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================
+       MOBILE VH FIX
+       ========================================================= */
+    (function(){
+      function setVH(){
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      setVH();
+      window.addEventListener('resize', setVH, { passive:true });
+      window.addEventListener('orientationchange', setVH, { passive:true });
+    })();
+
+    /* =========================================================
+       PRODUCTOS
+       ========================================================= */
+    const PRODUCT = {
+      CH08C1: {
+        title: "CH08 C1",
+        price: "Precio mayorista: a cotizar (según volumen)",
+        subline: "Marco oftálmico Champion serie CH08. Variante clásica de presencia limpia y comercial.",
+        tags: ["Diseño Premium", "Uso Diario", "Champion", "Clásico"],
+        note: "Para cotización y condiciones, utiliza los canales de contacto.",
+        about: {
+          p1: "El modelo CH08 C1 ofrece una presentación sobria y de alta rotación para ópticas que buscan una referencia comercial fácil de recomendar en mostrador.",
+          p2: "Su estética equilibrada y profesional permite integrarlo con facilidad en surtidos amplios, tanto para reposición como para armado de colecciones base.",
+          bullets: [
+            "Diseño clásico de alta aceptación",
+            "Lectura visual limpia en exhibición",
+            "Perfil versátil para público amplio",
+            "Ideal para reposición continua en óptica"
+          ]
+        },
+        specs: {
+          model: "CH08 C1",
+          segment: "Marcos Ópticos Champion",
+          use: "Uso diario, óptica y mostrador profesional",
+          size: "57-15-145",
+          material: "Material liviano de alta resistencia",
+          color: "Variante C1",
+          sku: "CH-08-C1-5715145"
+        },
+        images: [
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4ba97c270206854506ed.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4ba9ace64751a9f47d66.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4ba97c2702129e4506e5.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4ba98d3eaef5dfba4b79.png"
+        ]
+      },
+      CH08C2: {
+        title: "CH08 C2",
+        price: "Precio mayorista: a cotizar (según volumen)",
+        subline: "Marco oftálmico Champion serie CH08. Variante cálida con enfoque contemporáneo.",
+        tags: ["Diseño Premium", "Uso Diario", "Champion", "Contemporáneo"],
+        note: "Para cotización y condiciones, utiliza los canales de contacto.",
+        about: {
+          p1: "La variante CH08 C2 mantiene la estructura comercial de la serie, añadiendo una presentación visual más cálida que aporta dinamismo a la colección.",
+          p2: "Es una opción atractiva para puntos de venta que desean complementar referencias sobrias con un modelo de look moderno y excelente salida comercial.",
+          bullets: [
+            "Variante visual de mayor contraste",
+            "Excelente complemento para surtidos mixtos",
+            "Estilo actual con lectura profesional",
+            "Aporta variedad sin romper la línea de colección"
+          ]
+        },
+        specs: {
+          model: "CH08 C2",
+          segment: "Marcos Ópticos Champion",
+          use: "Uso diario, óptica y mostrador profesional",
+          size: "57-15-145",
+          material: "Material liviano de alta resistencia",
+          color: "Variante C2",
+          sku: "CH-08-C2-5715145"
+        },
+        images: [
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bb68d3eae722dba4d57.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bb6248bef56730fe93d.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bb6bfc81f82fc29a520.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bb6248bef8b140fe93c.png"
+        ]
+      },
+      CH08C3: {
+        title: "CH08 C3",
+        price: "Precio mayorista: a cotizar (según volumen)",
+        subline: "Marco oftálmico Champion serie CH08. Variante urbana de líneas limpias y perfil actual.",
+        tags: ["Diseño Premium", "Uso Diario", "Champion", "Urbano"],
+        note: "Para cotización y condiciones, utiliza los canales de contacto.",
+        about: {
+          p1: "El CH08 C3 se posiciona como una referencia de perfil moderno, útil para ópticas que priorizan diseños limpios, ligeros y fáciles de vender en entorno urbano.",
+          p2: "Su presencia visual favorece la exhibición profesional y funciona muy bien como alternativa dentro de una colección con foco en rotación y reposición.",
+          bullets: [
+            "Estética limpia y contemporánea",
+            "Buena lectura visual en vitrina",
+            "Enfoque comercial para reposición",
+            "Modelo versátil para surtidos de alta salida"
+          ]
+        },
+        specs: {
+          model: "CH08 C3",
+          segment: "Marcos Ópticos Champion",
+          use: "Uso diario, óptica y mostrador profesional",
+          size: "57-15-145",
+          material: "Material liviano de alta resistencia",
+          color: "Variante C3",
+          sku: "CH-08-C3-5715145"
+        },
+        images: [
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bd47c27022db1450ce3.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bd44a2d8845ebebd97a.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bd47c2702438a450ce2.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69af4bd4b9be70354321cf7e.png"
+        ]
+      },
+      CH08C4: {
+        title: "CH08 C4",
+        price: "Precio mayorista: a cotizar (según volumen)",
+        subline: "Marco oftálmico Champion serie CH08. Variante distintiva para surtidos de mayor impacto visual.",
+        tags: ["Diseño Premium", "Uso Diario", "Champion", "Distintivo"],
+        note: "Para cotización y condiciones, utiliza los canales de contacto.",
+        about: {
+          p1: "La versión CH08 C4 completa la serie con una propuesta más llamativa, diseñada para ópticas que desean elevar la percepción visual del exhibidor sin perder coherencia comercial.",
+          p2: "Funciona especialmente bien como pieza de contraste dentro del surtido, ayudando a enriquecer la colección con una opción de presencia más marcada.",
+          bullets: [
+            "Variante de mayor personalidad visual",
+            "Ideal para enriquecer la exhibición",
+            "Complemento estratégico en colecciones CH08",
+            "Aporta diferenciación dentro del lineal"
+          ]
+        },
+        specs: {
+          model: "CH08 C4",
+          segment: "Marcos Ópticos Champion",
+          use: "Uso diario, óptica y mostrador profesional",
+          size: "57-15-145",
+          material: "Material liviano de alta resistencia",
+          color: "Variante C4",
+          sku: "CH-08-C4-5715145"
+        },
+        images: [
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69c5db51e249813d0620d714.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69c5db5152ad3bc4fee3f378.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69c5db519619acd2a096f930.png",
+          "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69c5db515ebd492f0a746c0f.png"
+        ]
+      }
+    };/* =========================================================
+       SIMILARES CH09
+       ========================================================= */
+    const CONTACT_PHONE = "17542360600";
+    const CONTACT_EMAIL = "sales@innova-eyewear.com";
+    let currentLang = "es";
+
+    function translateText(value){
+      if (value == null) return "";
+      let out = String(value);
+      const exact = {
+        "Precio mayorista: a cotizar (según volumen)": "Wholesale price: quoted by volume",
+        "Para cotización y condiciones, utiliza los canales de contacto.": "For quotes and terms, use the contact channels.",
+        "Marcos Ópticos Champion": "Champion Optical Frames",
+        "Uso diario y profesional": "Daily and professional use",
+        "Uso diario, urbano y profesional": "Daily, urban and professional use",
+        "Uso diario, deportivo y profesional": "Daily, sport-inspired and professional use",
+        "Rectangular estándar (consultar medidas exactas)": "Standard rectangular fit (check exact measurements)",
+        "Metal de alta calidad": "High-quality metal",
+        "Material ligero de alta resistencia": "Lightweight high-resistance material",
+        "Material liviano de alta resistencia": "Lightweight high-resistance material",
+        "SKU interno": "Internal SKU"
+      };
+      if (exact[out]) return exact[out];
+      const replacements = [
+        [/Marco oftálmico/gi, "Ophthalmic frame"],
+        [/Marco óptico/gi, "Optical frame"],
+        [/Marcos Ópticos/gi, "Optical Frames"],
+        [/Champion Eyewear/gi, "Champion Eyewear"],
+        [/Champion/gi, "Champion"],
+        [/Precio mayorista/gi, "Wholesale price"],
+        [/a cotizar/gi, "quoted on request"],
+        [/según volumen/gi, "by volume"],
+        [/acabado/gi, "finish"],
+        [/variante/gi, "variant"],
+        [/diseño/gi, "design"],
+        [/construcción/gi, "construction"],
+        [/liger[ao]/gi, "lightweight"],
+        [/alta resistencia/gi, "high resistance"],
+        [/alta calidad/gi, "high quality"],
+        [/uso diario/gi, "daily use"],
+        [/profesional/gi, "professional"],
+        [/urbano/gi, "urban"],
+        [/deportivo/gi, "sport-inspired"],
+        [/rectangular/gi, "rectangular"],
+        [/envolvente/gi, "wrap-style"],
+        [/metálico/gi, "metallic"],
+        [/metal/gi, "metal"],
+        [/premium/gi, "premium"],
+        [/clásico/gi, "classic"],
+        [/moderno/gi, "modern"],
+        [/minimalista/gi, "minimalist"],
+        [/sofisticado/gi, "sophisticated"],
+        [/transparente/gi, "transparent"],
+        [/negro/gi, "black"],
+        [/azul/gi, "blue"],
+        [/rojo/gi, "red"],
+        [/gris/gi, "gray"],
+        [/verde/gi, "green"],
+        [/dorado/gi, "gold"],
+        [/plateado/gi, "silver"],
+        [/bronce/gi, "bronze"],
+        [/marrón/gi, "brown"],
+        [/habana/gi, "havana"],
+        [/detalle/gi, "detail"],
+        [/interior/gi, "inner"],
+        [/exterior/gi, "outer"],
+        [/frente/gi, "front"],
+        [/perfil/gi, "profile"],
+        [/color/gi, "color"],
+        [/medidas exactas/gi, "exact measurements"],
+        [/consultar/gi, "check"],
+        [/ópticas/gi, "optical shops"],
+        [/catálogo/gi, "catalog"],
+        [/reposición/gi, "replenishment"],
+        [/surtidos/gi, "assortments"],
+        [/cotización/gi, "quote"],
+        [/condiciones/gi, "terms"],
+        [/comerciales/gi, "commercial"],
+        [/por volumen/gi, "by volume"],
+        [/por pieza/gi, "per piece"],
+        [/compra mínima/gi, "minimum order"],
+        [/disponibilidad/gi, "availability"],
+        [/despacho/gi, "dispatch"],
+        [/Producto similar/gi, "Similar product"],
+        [/Serie similar/gi, "Similar series"]
+      ];
+      replacements.forEach(([pattern, replacement])=>{
+        out = out.replace(pattern, replacement);
+      });
+      out = out.replace(/\s+/g, " ").trim();
+      return out;
+    }
+
+    function translateTags(tags){
+      return (tags || []).map(tag => translateText(tag));
+    }
+
+    function buildEnglishProductCopy(data){
+      const title = data.title;
+      const color = translateText(data.specs && data.specs.color ? data.specs.color : "selected variant");
+      const material = translateText(data.specs && data.specs.material ? data.specs.material : "high-quality material");
+      const useText = translateText(data.specs && data.specs.use ? data.specs.use : "professional use");
+      const size = translateText(data.specs && data.specs.size ? data.specs.size : "");
+      const tags = translateTags(data.tags);
+      const featureTags = tags.filter(t => !/champion/i.test(t)).slice(0, 3).join(", ");
+      const featureText = featureTags || "commercial B2B profile";
+      const sizeNote = size ? ` Its sizing reference is ${size}.` : "";
+      return {
+        title: title,
+        price: "Wholesale price: quoted by volume",
+        subline: `${title} Champion optical frame in ${color}. A product-specific option for professional B2B assortments.`,
+        tags: tags,
+        note: "For quotes and terms, use the contact channels.",
+        about: {
+          p1: `The ${title} keeps the Champion Eyewear identity with ${color.toLowerCase()} and a ${featureText.toLowerCase()} profile, making it easy to position in optical shops, chains and distributor catalogs.`,
+          p2: `Recommended for B2B buyers who need reliable rotation, clear product presentation and practical replenishment. It combines ${material.toLowerCase()} with a use case focused on ${useText.toLowerCase()}.${sizeNote}`,
+          bullets: [
+            `${color} finish / variant`,
+            `${material} construction`,
+            `${useText} positioning`,
+            `Commercially strong option for B2B replenishment`
+          ]
+        },
+        specs: {
+          model: data.specs.model,
+          segment: translateText(data.specs.segment),
+          use: useText,
+          size: size,
+          material: material,
+          color: color,
+          sku: data.specs.sku
+        },
+        images: data.images
+      };
+    }
+
+    const PRODUCT_I18N = Object.keys(PRODUCT).reduce((acc, model)=>{
+      acc[model] = buildEnglishProductCopy(PRODUCT[model]);
+      return acc;
+    }, {});
+
+    const UI_COPY = {
+      es: {
+        topSlides: [
+          "INNOVA EYEWEAR (B2B) | Catálogo profesional para ópticas, cadenas y distribuidores",
+          "Reposición, surtidos recomendados y atención comercial"
+        ],
+        brandSub: "Wholesale / B2B · Catálogo · Reposición · Surtidos",
+        nav: { home:"Inicio", catalog:"Catálogo", similar:"Similares", quote:"Cotizar" },
+        switchPrefix: "VARIANTES",
+        relatedPrefix: "PRODUCTOS SIMILARES",
+        tabs: ["Descripción B2B", "Ficha técnica", "Condiciones B2B"],
+        aboutTitle: "Descripción enfocada en B2B",
+        specsLabels: ["Modelo", "Segmento", "Uso", "Medidas", "Material", "Color / variante", "SKU interno"],
+        b2b: {
+          title: "Condiciones comerciales (B2B)",
+          p: "Información orientada a clientes profesionales. Precio, disponibilidad y condiciones se confirman por volumen y tipo de cuenta.",
+          bullets: ["Precios por escalas (volumen).", "Pedidos por lote y reposición.", "Soporte comercial y material de catálogo.", "Coordinación logística según zona."],
+          site: "Sitio oficial: innova-eyewear.com"
+        },
+        buttons: {
+          whatsappTitle: "Contactar por WhatsApp",
+          whatsappSub: "Chatea con un asesor Champion",
+          callTitle: "Agendar llamada inicial",
+          callSub: "Solicítala por WhatsApp con Mauricio"
+        },
+        modal: {
+          kicker: "Cotización",
+          title: "Elige una opción",
+          desc: "Selecciona el canal de contacto para cotización y atención comercial.",
+          whatsappMeta: "Chat directo con un asesor comercial.",
+          callTitle: "Llamada inicial",
+          callMeta: "Solicite por WhatsApp una llamada telefónica inicial con Mauricio para revisar catálogo, precio por pieza, compra mínima, disponibilidad, despacho y condiciones B2B.",
+          emailTitle: "Correo",
+          emailMeta: "Enviar un email al equipo comercial.",
+          foot: "Correo comercial: sales@innova-eyewear.com",
+          close: "Cerrar"
+        },
+        footer: {
+          col1: ["INNOVA B2B", "Catálogo y fichas para mayoristas", "Reposición y surtidos recomendados", "Atención comercial"],
+          col2: ["SERVICIO", "Precio y disponibilidad: a cotizar", "Mínimos y escalas por volumen", "Logística según zona"],
+          col3: ["INFORMACIÓN", "Soporte comercial", "Condiciones confirmadas por pedido", "Uso profesional"],
+          newsTitle: "NOVEDADES B2B",
+          newsText: "Para lanzamientos, reposición y disponibilidad, utiliza los canales de contacto comerciales.",
+          legal: "Contenido informativo para clientes profesionales.",
+          rights: "© Innova Worldwide Corp. Todos los derechos reservados."
+        },
+        langCurrent: "EN",
+        langLabel: "English",
+        langAria: "Cambiar idioma a inglés",
+        menuAria: "Abrir menú",
+        backAria: "Volver atrás"
+      },
+      en: {
+        topSlides: [
+          "INNOVA EYEWEAR (B2B) | Professional catalog for optical shops, chains and distributors",
+          "Replenishment, recommended assortments and commercial support"
+        ],
+        brandSub: "Wholesale / B2B · Catalog · Replenishment · Assortments",
+        nav: { home:"Home", catalog:"Catalog", similar:"Similar", quote:"Quote" },
+        switchPrefix: "VARIANTS",
+        relatedPrefix: "SIMILAR PRODUCTS",
+        tabs: ["B2B Description", "Technical Sheet", "B2B Terms"],
+        aboutTitle: "B2B-focused description",
+        specsLabels: ["Model", "Segment", "Use", "Measurements", "Material", "Color / variant", "Internal SKU"],
+        b2b: {
+          title: "Commercial terms (B2B)",
+          p: "Information for professional clients. Price, availability and terms are confirmed by volume and account type.",
+          bullets: ["Volume-based pricing tiers.", "Batch orders and replenishment.", "Commercial support and catalog material.", "Logistics coordination by area."],
+          site: "Official site: innova-eyewear.com"
+        },
+        buttons: {
+          whatsappTitle: "Contact by WhatsApp",
+          whatsappSub: "Chat with a Champion advisor",
+          callTitle: "Schedule initial call",
+          callSub: "Request it by WhatsApp with Mauricio"
+        },
+        modal: {
+          kicker: "Quote",
+          title: "Choose an option",
+          desc: "Select the contact channel for quotes and commercial support.",
+          whatsappMeta: "Direct chat with a commercial advisor.",
+          callTitle: "Initial call",
+          callMeta: "Request an initial phone call with Mauricio by WhatsApp to review catalog, price per piece, minimum order, availability, dispatch and B2B terms.",
+          emailTitle: "Email",
+          emailMeta: "Send an email to the sales team.",
+          foot: "Sales email: sales@innova-eyewear.com",
+          close: "Close"
+        },
+        footer: {
+          col1: ["INNOVA B2B", "Catalog and product sheets for wholesalers", "Replenishment and recommended assortments", "Commercial support"],
+          col2: ["SERVICE", "Price and availability: quoted on request", "Minimums and volume tiers", "Logistics by area"],
+          col3: ["INFORMATION", "Commercial support", "Terms confirmed per order", "Professional use"],
+          newsTitle: "B2B UPDATES",
+          newsText: "For launches, replenishment and availability, use the commercial contact channels.",
+          legal: "Informational content for professional clients.",
+          rights: "© Innova Worldwide Corp. All rights reserved."
+        },
+        langCurrent: "ES",
+        langLabel: "Español",
+        langAria: "Change language to Spanish",
+        menuAria: "Open menu",
+        backAria: "Go back"
+      }
+    };
+
+    function getProductCopy(model){
+      return currentLang === "en" ? (PRODUCT_I18N[model] || PRODUCT[model]) : PRODUCT[model];
+    }
+
+    function getCurrentProductTitle(){
+      const copy = getProductCopy(currentModel);
+      return (copy && copy.title) || (document.getElementById("productTitle") ? document.getElementById("productTitle").textContent.trim() : "");
+    }
+
+    function getSeriesCodeFromModel(model){
+      const match = String(model || "").match(/^(CH\d{2})/);
+      return match ? match[1] : "";
+    }
+
+    function getCurrentSeriesCode(){
+      const model = (typeof currentModel !== "undefined" && currentModel) ? currentModel : Object.keys(PRODUCT)[0];
+      return getSeriesCodeFromModel(model);
+    }
+
+    function getSimilarSeriesCode(){
+      const first = SIMILARS_FIXED && SIMILARS_FIXED[0] ? SIMILARS_FIXED[0].title : "";
+      return getSeriesCodeFromModel(String(first).replace(/\s+/g, ""));
+    }
+
+    function setText(selector, value){
+      const el = document.querySelector(selector);
+      if (el) el.textContent = value;
+    }
+
+    function applyFooterLanguage(copy){
+      const cols = Array.from(document.querySelectorAll(".footer .f-col"));
+      [copy.footer.col1, copy.footer.col2, copy.footer.col3].forEach((items, idx)=>{
+        const col = cols[idx];
+        if (!col || !items) return;
+        const title = col.querySelector("h4");
+        const links = Array.from(col.querySelectorAll(".f-links div"));
+        if (title) title.textContent = items[0];
+        links.forEach((link, i)=>{ if (items[i + 1]) link.textContent = items[i + 1]; });
+      });
+      setText(".subscribe h3", copy.footer.newsTitle);
+      setText(".subscribe p", copy.footer.newsText);
+      setText(".sub-legal", copy.footer.legal);
+      const bottom = Array.from(document.querySelectorAll(".footer-bottom div"));
+      if (bottom[1]) bottom[1].textContent = copy.footer.rights;
+    }
+
+    function applyLanguage(){
+      const copy = UI_COPY[currentLang] || UI_COPY.es;
+      document.documentElement.lang = currentLang;
+
+      document.querySelectorAll(".strip-slide").forEach((el, idx)=>{
+        if (copy.topSlides[idx]) el.textContent = copy.topSlides[idx];
+      });
+
+      setText(".brand-sub", copy.brandSub);
+      const backBtn = document.getElementById("goBack");
+      if (backBtn) backBtn.setAttribute("aria-label", copy.backAria);
+      const menuBtn = document.getElementById("menuBtn");
+      if (menuBtn) menuBtn.setAttribute("aria-label", copy.menuAria);
+
+      document.querySelectorAll(".nav a, .mobile-menu a").forEach(link=>{
+        const href = link.getAttribute("href") || "";
+        if (link.hasAttribute("data-open-contact-modal")) link.textContent = copy.nav.quote;
+        else if (href.indexOf("#opciones") >= 0) link.textContent = copy.nav.catalog;
+        else if (href === "#similares") link.textContent = copy.nav.similar;
+        else link.textContent = copy.nav.home;
+      });
+
+      const langToggle = document.querySelector("[data-language-toggle]");
+      if (langToggle){
+        langToggle.setAttribute("aria-label", copy.langAria);
+        const current = langToggle.querySelector(".lang-current");
+        const label = langToggle.querySelector(".lang-label");
+        if (current) current.textContent = copy.langCurrent;
+        if (label) label.textContent = copy.langLabel;
+      }
+
+      const currentSeries = getCurrentSeriesCode();
+      const switchTitle = document.querySelector(".switch-title");
+      if (switchTitle && currentSeries) switchTitle.textContent = currentLang === "en" ? `${currentSeries} ${copy.switchPrefix} (C1-C4)` : `${copy.switchPrefix} ${currentSeries} (C1–C4)`;
+
+      const similarSeries = getSimilarSeriesCode();
+      const relatedTitle = document.querySelector(".related h2");
+      if (relatedTitle && similarSeries) relatedTitle.textContent = currentLang === "en" ? `${copy.relatedPrefix} ${similarSeries} (C1-C4)` : `${copy.relatedPrefix} ${similarSeries} (C1–C4)`;
+
+      const tabs = [document.getElementById("tabAbout"), document.getElementById("tabSpecs"), document.getElementById("tabB2b")];
+      tabs.forEach((tab, idx)=>{ if (tab) tab.textContent = copy.tabs[idx]; });
+      const tabsSection = document.querySelector(".tabs");
+      if (tabsSection) tabsSection.setAttribute("aria-label", currentLang === "en" ? "Product information" : "Información del producto");
+      const tabbar = document.querySelector(".tabbar");
+      if (tabbar) tabbar.setAttribute("aria-label", currentLang === "en" ? "Tabs" : "Pestañas");
+      setText("#aboutTitle", copy.aboutTitle);
+
+      const specTable = document.getElementById("specTable");
+      if (specTable){
+        specTable.setAttribute("aria-label", copy.tabs[1]);
+        Array.from(specTable.querySelectorAll("th")).forEach((th, idx)=>{
+          if (copy.specsLabels[idx]) th.textContent = copy.specsLabels[idx];
+        });
+      }
+
+      const b2bPanel = document.querySelector("#panelB2b .panel-card");
+      if (b2bPanel){
+        const h3 = b2bPanel.querySelector("h3");
+        const paragraphs = Array.from(b2bPanel.querySelectorAll("p"));
+        const items = Array.from(b2bPanel.querySelectorAll("li"));
+        if (h3) h3.textContent = copy.b2b.title;
+        if (paragraphs[0]) paragraphs[0].textContent = copy.b2b.p;
+        items.forEach((li, idx)=>{ if (copy.b2b.bullets[idx]) li.textContent = copy.b2b.bullets[idx]; });
+        if (paragraphs[1]) paragraphs[1].textContent = copy.b2b.site;
+      }
+
+      const whatsappBtn = document.getElementById("productWhatsappBtn");
+      if (whatsappBtn){
+        const strong = whatsappBtn.querySelector("strong");
+        const small = whatsappBtn.querySelector("small");
+        if (strong) strong.textContent = copy.buttons.whatsappTitle;
+        if (small) small.textContent = copy.buttons.whatsappSub;
+      }
+      const callBtn = document.getElementById("productCallBtn");
+      if (callBtn){
+        const strong = callBtn.querySelector("strong");
+        const small = callBtn.querySelector("small");
+        if (strong) strong.textContent = copy.buttons.callTitle;
+        if (small) small.textContent = copy.buttons.callSub;
+      }
+
+      const modal = copy.modal;
+      setText(".cm-kicker", modal.kicker);
+      setText("#contactModalTitle", modal.title);
+      setText("#contactModalDesc", modal.desc);
+      const close = document.getElementById("contactModalClose");
+      if (close) close.setAttribute("aria-label", modal.close);
+      const optionWhatsapp = document.getElementById("contactOptionWhatsapp");
+      if (optionWhatsapp){
+        setText("#contactOptionWhatsapp .title", "WhatsApp");
+        setText("#contactOptionWhatsapp .meta", modal.whatsappMeta);
+      }
+      const optionCall = document.getElementById("contactOptionCall");
+      if (optionCall){
+        setText("#contactOptionCall .title", modal.callTitle);
+        setText("#contactOptionCall .meta", modal.callMeta);
+      }
+      const optionEmail = document.getElementById("contactOptionEmail");
+      if (optionEmail){
+        setText("#contactOptionEmail .title", modal.emailTitle);
+        setText("#contactOptionEmail .meta", modal.emailMeta);
+      }
+      setText(".contact-modal-foot", modal.foot);
+
+      applyFooterLanguage(copy);
+      updateContactLinks();
+    }
+
+    function getSimilarMeta(product){
+      if (currentLang !== "en") return product.meta;
+      return translateText(product.meta).replace(/Serie similar/gi, "Similar series");
+    }
+
+    function updateContactLinks(){
+      const modelTitle = getCurrentProductTitle();
+      const isEn = currentLang === "en";
+
+      const whatsappText = isEn
+        ? `Hello, I would like to receive information about the ${modelTitle} model from Champion Eyewear B2B. I would like to check price, minimum order, availability, dispatch and commercial terms.`
+        : `Hola, quiero recibir información sobre el modelo ${modelTitle} de Champion Eyewear B2B. Me interesa consultar precio, compra mínima, disponibilidad, despacho y condiciones comerciales.`;
+
+      const callText = isEn
+        ? `Hello, I would like to request an initial phone call with Mauricio to review information about the ${modelTitle} model from Champion Eyewear B2B. I would like to check catalog, price per piece, minimum order, availability, dispatch and commercial terms.`
+        : `Hola, quiero solicitar una llamada telefónica inicial con Mauricio para revisar información del modelo ${modelTitle} de Champion Eyewear B2B. Me interesa consultar catálogo, precio por pieza, compra mínima, disponibilidad, despacho y condiciones comerciales.`;
+
+      const whatsappHref = `https://wa.me/${CONTACT_PHONE}?text=${encodeURIComponent(whatsappText)}`;
+      const callHref = `https://wa.me/${CONTACT_PHONE}?text=${encodeURIComponent(callText)}`;
+
+      const productWhatsappBtn = document.getElementById("productWhatsappBtn");
+      const productCallBtn = document.getElementById("productCallBtn");
+
+      if(productWhatsappBtn){
+        productWhatsappBtn.href = whatsappHref;
+        productWhatsappBtn.setAttribute("aria-label", isEn ? `Contact by WhatsApp about ${modelTitle}` : `Contactar por WhatsApp sobre ${modelTitle}`);
+      }
+
+      if(productCallBtn){
+        productCallBtn.href = callHref;
+        productCallBtn.setAttribute("aria-label", isEn ? `Schedule initial phone call about ${modelTitle}` : `Agendar llamada telefónica inicial sobre ${modelTitle}`);
+      }
+
+      const contactOptionWhatsapp = document.getElementById("contactOptionWhatsapp");
+      const contactOptionCall = document.getElementById("contactOptionCall");
+      const contactOptionEmail = document.getElementById("contactOptionEmail");
+
+      if(contactOptionWhatsapp){
+        contactOptionWhatsapp.href = whatsappHref;
+      }
+
+      if(contactOptionCall){
+        contactOptionCall.href = callHref;
+      }
+
+      if(contactOptionEmail){
+        const subject = isEn
+          ? `Information request / B2B quote - Champion ${modelTitle}`
+          : `Solicitud de información / Cotización B2B - Champion ${modelTitle}`;
+        const body = isEn
+          ? `Hello,\n\nI am interested in receiving B2B information and a quote for the Champion ${modelTitle} model (catalog, availability, minimum order and commercial terms).\n\nName:\nCompany/Optical shop:\nCity:\nPhone:\n\nThank you.`
+          : `Hola,\n\nMe interesa recibir información y cotización B2B del modelo Champion ${modelTitle} (catálogo, disponibilidad, mínimos de compra y condiciones comerciales).\n\nNombre:\nEmpresa/Óptica:\nCiudad:\nTeléfono:\n\nGracias.`;
+        contactOptionEmail.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }
+    }
+
+    function setLanguage(lang){
+      currentLang = lang === "en" ? "en" : "es";
+      applyLanguage();
+      setModel(currentModel);
+      renderFixedSimilars();
+      updateContactLinks();
+    }
+
+    (function bindLanguageToggle(){
+      const langToggle = document.querySelector("[data-language-toggle]");
+      if (!langToggle) return;
+      langToggle.addEventListener("click", ()=>{
+        setLanguage(currentLang === "es" ? "en" : "es");
+      });
+    })();
+
+    const SIMILARS_FIXED = [
+      { code:"Champion", title:"CH09 C1", meta:"Producto similar", link:"./ch09-c1.html", images: [
+        "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69b3642aef84870a23d8d11e.jpg"
+      ]},
+      { code:"Champion", title:"CH09 C2", meta:"Producto similar", link:"./ch09-c2.html", images: [
+        "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69b3642a222c33370d2b387d.jpg"
+      ]},
+      { code:"Champion", title:"CH09 C3", meta:"Producto similar", link:"./ch09-c3.html", images: [
+        "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69b3642ab4eb4d5c2a75797a.jpg"
+      ]},
+      { code:"Champion", title:"CH09 C4", meta:"Producto similar", link:"./ch09-c4.html", images: [
+        "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69b3642aeba487500e091f18.jpg"
+      ]}
+    ];
+
+    /* =========================================================
+       BACK
+       ========================================================= */
+    (function(){
+      const b = document.getElementById('goBack');
+      if (!b) return;
+      b.addEventListener('click', ()=>{
+        if (window.history.length > 1) window.history.back();
+        else window.location.href = "./index.html";
+      });
+    })();
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+    (function(){
+      const header = document.getElementById('mainHeader');
+      const btn = document.getElementById('menuBtn');
+      if (!header || !btn) return;
+      btn.addEventListener('click', ()=>{
+        const open = header.classList.toggle('menu-open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+      header.querySelectorAll('.mobile-menu a').forEach(a=>{
+        a.addEventListener('click', ()=>{
+          header.classList.remove('menu-open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+
+    /* =========================================================
+       TOP STRIP SLIDER
+       ========================================================= */
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.strip-slide'));
+      const dots = Array.from(document.querySelectorAll('.strip-dot'));
+      if (!slides.length) return;
+      let i = 0;
+      function setSlide(n){
+        i = (n + slides.length) % slides.length;
+        slides.forEach((s,idx)=> s.classList.toggle('is-active', idx === i));
+        dots.forEach((d,idx)=> d.classList.toggle('is-active', idx === i));
+      }
+      setInterval(()=> setSlide(i + 1), 3200);
+    })();
+
+    /* =========================================================
+       TABS
+       ========================================================= */
+    (function(){
+      const tabAbout = document.getElementById('tabAbout');
+      const tabSpecs = document.getElementById('tabSpecs');
+      const tabB2b = document.getElementById('tabB2b');
+      const panelAbout = document.getElementById('panelAbout');
+      const panelSpecs = document.getElementById('panelSpecs');
+      const panelB2b = document.getElementById('panelB2b');
+      function activate(which){
+        const isAbout = which === 'about';
+        const isSpecs = which === 'specs';
+        const isB2b = which === 'b2b';
+        tabAbout.setAttribute('aria-selected', String(isAbout));
+        tabSpecs.setAttribute('aria-selected', String(isSpecs));
+        tabB2b.setAttribute('aria-selected', String(isB2b));
+        panelAbout.setAttribute('data-active', String(isAbout));
+        panelSpecs.setAttribute('data-active', String(isSpecs));
+        panelB2b.setAttribute('data-active', String(isB2b));
+      }
+      tabAbout.addEventListener('click', ()=> activate('about'));
+      tabSpecs.addEventListener('click', ()=> activate('specs'));
+      tabB2b.addEventListener('click', ()=> activate('b2b'));
+    })();
+
+    /* =========================================================
+       GALLERY (thumbs + imagen)
+       ========================================================= */
+    let currentModel = "CH08C1";
+    let galleryIndex = 0;
+
+    function softResetDragState(){
+      movedEnough = false;
+      suppressClickUntil = Date.now() + 220;
+      viewport.classList.remove('dragging');
+      startDrag = null;
+      pointers.clear();
+      pinchStartDist = 0;
+    }
+
+    function setGalleryIndex(nextIdx){
+      const data = PRODUCT[currentModel];
+      if (!data) return;
+      const images = data.images || [];
+      if (!images.length) return;
+      galleryIndex = (nextIdx + images.length) % images.length;
+
+      const mainImage = document.getElementById('mainImage');
+      if (mainImage){
+        mainImage.src = images[galleryIndex];
+        mainImage.alt = currentLang === "en" ? `${data.title} - Image ${galleryIndex + 1}` : `${data.title} - Imagen ${galleryIndex + 1}`;
+      }
+
+      const thumbs = Array.from(document.querySelectorAll('.thumb'));
+      thumbs.forEach((t,i)=> {
+        t.setAttribute('aria-current', i === galleryIndex ? 'true' : 'false');
+        const img = document.getElementById('thumb' + i);
+        if (img) img.src = images[i] || images[0];
+      });
+
+      softResetDragState();
+    }
+
+    (function bindThumbs(){
+      const thumbs = Array.from(document.querySelectorAll('.thumb'));
+      thumbs.forEach(t=>{
+        t.addEventListener('click', ()=>{
+          const idx = parseInt(t.getAttribute('data-idx') || "0", 10);
+          setGalleryIndex(idx);
+        });
+      });
+    })();
+
+    /* =========================================================
+       MODEL SWITCH
+       ========================================================= */
+    function buildModelSwitch(){
+      const wrap = document.getElementById('modelSwitch');
+      if (!wrap) return;
+      const models = ["CH08C1","CH08C2","CH08C3","CH08C4"];
+      const displayNames = {CH08C1:"CH08 C1", CH08C2:"CH08 C2", CH08C3:"CH08 C3", CH08C4:"CH08 C4"};
+      wrap.innerHTML = models.map(m=>{
+        const active = (m === currentModel);
+        return `<button class="mchip" type="button" data-model="${m}" aria-current="${active ? 'true':'false'}">${displayNames[m]}</button>`;
+      }).join("");
+      wrap.querySelectorAll('.mchip').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const m = btn.getAttribute('data-model');
+          setModel(m);
+          window.scrollTo({ top: 0, behavior:'smooth' });
+        });
+      });
+    }
+
+    /* =========================================================
+       UPDATE CONTENT
+       ========================================================= */
+    function setModel(m){
+      if (!PRODUCT[m]) return;
+      currentModel = m;
+      const d = getProductCopy(m);
+
+      document.getElementById('breadcrumbs').textContent = currentLang === "en" ? `INNOVA / Wholesale (B2B) / Champion Eyewear / ${d.title}` : `INNOVA / Mayorista (B2B) / Champion Eyewear / ${d.title}`;
+      document.getElementById('productTitle').textContent = d.title;
+      document.getElementById('productSubline').textContent = d.subline;
+      document.getElementById('productPrice').textContent = d.price;
+      document.getElementById('b2bNote').textContent = d.note;
+
+      const badgeRow = document.getElementById('badgeRow');
+      badgeRow.innerHTML = (d.tags || []).map(t=>{
+        const isRed = t.toLowerCase().includes("premium");
+        return `<span class="badge ${isRed ? 'red' : ''}"><span class="dot"></span>${t}</span>`;
+      }).join("");
+
+      document.getElementById('aboutP1').textContent = d.about.p1;
+      document.getElementById('aboutP2').textContent = d.about.p2;
+      document.getElementById('aboutBullets').innerHTML = (d.about.bullets || []).map(x=>`<li>${x}</li>`).join("");
+
+      document.getElementById('s_model').textContent = d.specs.model;
+      document.getElementById('s_segment').textContent = d.specs.segment;
+      document.getElementById('s_use').textContent = d.specs.use;
+      document.getElementById('s_size').textContent = d.specs.size;
+      document.getElementById('s_material').textContent = d.specs.material;
+      document.getElementById('s_color').textContent = d.specs.color;
+      document.getElementById('s_sku').textContent = d.specs.sku;
+
+      buildModelSwitch();
+
+      galleryIndex = 0;
+      const imgs = d.images || [];
+      for (let i=0;i<4;i++){
+        const ti = document.getElementById('thumb' + i);
+        if (ti) ti.src = imgs[i] || imgs[0] || '';
+      }
+      setGalleryIndex(0);
+
+      updateContactLinks();
+      applyLanguage();
+    }
+    
+    /* =========================================================
+       SIMILARES + mini carrusel
+       ========================================================= */
+    function renderFixedSimilars(){
+      const wrap = document.getElementById('similarCards');
+      if (!wrap) return;
+
+      wrap.innerHTML = SIMILARS_FIXED.map((p, idx)=>{
+        const img0 = (p.images && p.images[0]) ? p.images[0] : "";
+        return `
+          <article class="card" data-link="${p.link}" data-card="${idx}" aria-label="${p.title}">
+            <div class="card-media">
+              <img class="sim-img" src="${img0}" alt="${p.title}">
+            </div>
+            <div class="card-body">
+              <p class="card-title">${p.code} · ${p.title}</p>
+              <div class="card-meta">${getSimilarMeta(p)}</div>
+              <div class="mini-badges">
+                <span class="mini"><i></i>Premium</span>
+                <span class="mini red"><i></i>Champion</span>
+                <span class="mini"><i></i>${currentLang === "en" ? "Standard" : "Estándar"}</span>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      wrap.querySelectorAll('.card').forEach(card=>{
+        card.addEventListener('click', ()=>{
+          const link = card.getAttribute('data-link') || '';
+          if (!link || link.includes('#')) return;
+          window.open(link, '_blank', 'noopener');
+        });
+      });
+
+    }
+
+    /* =========================================================
+       CONTACT MODAL (función exacta de apertura/cierre)
+       ========================================================= */
+    const contactModal = document.getElementById("contactModal");
+    const contactModalOverlay = document.getElementById("contactModalOverlay");
+    const contactModalClose = document.getElementById("contactModalClose");
+
+    function openContactModal(){
+      updateContactLinks();
+      applyLanguage();
+      if(!contactModal) return;
+      contactModal.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+      if(contactModalClose) contactModalClose.focus();
+    }
+
+    function closeContactModal(){
+      if(!contactModal) return;
+      contactModal.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    }
+
+    if(contactModalOverlay) contactModalOverlay.addEventListener("click", closeContactModal);
+    if(contactModalClose) contactModalClose.addEventListener("click", closeContactModal);
+
+    document.addEventListener("keydown", (e)=>{
+      if(e.key !== "Escape") return;
+      if(contactModal && contactModal.getAttribute("aria-hidden") === "false"){
+        closeContactModal();
+      }
+    });
+
+    (function bindContactModalTriggers(){
+      const triggers = Array.from(document.querySelectorAll('[data-open-contact-modal="1"]'));
+      triggers.forEach(el=>{
+        el.addEventListener('click', (e)=>{
+          e.preventDefault();
+          openContactModal();
+        });
+      });
+    })();
+
+    /* =========================================================
+       PANEL CONTROL (mobile dropdown)
+       ========================================================= */
+    (function(){
+      const panel = document.getElementById('gPanel');
+      const toggle = document.getElementById('gPanelToggle');
+      if (!panel || !toggle) return;
+      toggle.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const open = panel.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', ()=>{
+        if (panel.classList.contains('is-open')){
+          panel.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded','false');
+        }
+      }, { passive:true });
+      panel.addEventListener('click', (e)=> e.stopPropagation());
+    })();
+
+    /* =========================================================
+       ZOOM INLINE (sin popup)
+       ========================================================= */
+    const viewport = document.getElementById('zoomViewport');
+    const imgEl = document.getElementById('mainImage');
+    const btnToggle = document.getElementById('toggleZoom');
+    const btnPlus = document.getElementById('zPlus');
+    const btnMinus = document.getElementById('zMinus');
+    const btnReset = document.getElementById('zReset');
+
+    let zActive = false;
+    let zScale = 1;
+    let zX = 0;
+    let zY = 0;
+
+    const pointers = new Map();
+    let startDrag = null;
+    let pinchStartDist = 0;
+    let pinchStartScale = 1;
+    let suppressClickUntil = 0;
+    let movedEnough = false;
+
+    function clamp(n,a,b){ return Math.max(a, Math.min(b,n)); }
+    function applyZoom(){
+      if (!imgEl) return;
+      imgEl.style.transform = `translate(${zX}px, ${zY}px) scale(${zScale})`;
+    }
+    function resetZoom(){
+      zScale = 1;
+      zX = 0;
+      zY = 0;
+      zActive = false;
+      viewport.classList.remove('is-zoom','dragging');
+      applyZoom();
+    }
+    function setZoomActive(on){
+      zActive = !!on;
+      if (zActive){
+        viewport.classList.add('is-zoom');
+        if (zScale < 1.35){
+          zScale = 2;
+          zX = 0; zY = 0;
+        }
+      } else {
+        resetZoom();
+        return;
+      }
+      applyZoom();
+    }
+
+    if (btnToggle){
+      btnToggle.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        setZoomActive(!zActive);
+      });
+    }
+    if (viewport){
+      viewport.addEventListener('click', ()=>{
+        if (Date.now() < suppressClickUntil) return;
+        if (!zActive) setZoomActive(true);
+      });
+    }
+    if (btnPlus){
+      btnPlus.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        setZoomActive(true);
+        zScale = clamp(zScale * 1.18, 1, 7);
+        applyZoom();
+      });
+    }
+    if (btnMinus){
+      btnMinus.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        if (!zActive) return;
+        zScale = clamp(zScale / 1.18, 1, 7);
+        if (zScale === 1){ resetZoom(); return; }
+        applyZoom();
+      });
+    }
+    if (btnReset){
+      btnReset.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        resetZoom();
+      });
+    }
+    if (viewport){
+      viewport.addEventListener('wheel', (e)=>{
+        if (!zActive) return;
+        e.preventDefault();
+        const rect = viewport.getBoundingClientRect();
+        const cx = e.clientX - rect.left - rect.width/2;
+        const cy = e.clientY - rect.top - rect.height/2;
+        const prev = zScale;
+        const zoomIn = e.deltaY < 0;
+        zScale = clamp(zScale * (zoomIn ? 1.12 : 1/1.12), 1, 7);
+        const ratio = (zScale / prev);
+        zX = zX + cx * (1 - ratio);
+        zY = zY + cy * (1 - ratio);
+        if (zScale === 1){ resetZoom(); return; }
+        applyZoom();
+      }, { passive:false });
+    }
+
+    if (viewport){
+      viewport.addEventListener('pointerdown', (e)=>{
+        if (!zActive) return;
+        e.preventDefault();
+        viewport.setPointerCapture(e.pointerId);
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        movedEnough = false;
+
+        if (pointers.size === 1){
+          startDrag = { x: e.clientX, y: e.clientY, baseX: zX, baseY: zY };
+          viewport.classList.add('dragging');
+        }
+        if (pointers.size === 2){
+          const pts = Array.from(pointers.values());
+          const dx = pts[0].x - pts[1].x;
+          const dy = pts[0].y - pts[1].y;
+          pinchStartDist = Math.hypot(dx, dy);
+          pinchStartScale = zScale;
+          startDrag = null;
+          viewport.classList.remove('dragging');
+          suppressClickUntil = Date.now() + 260;
+        }
+      }, { passive:false });
+
+      viewport.addEventListener('pointermove', (e)=>{
+        if (!zActive) return;
+        if (!pointers.has(e.pointerId)) return;
+        e.preventDefault();
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+        if (pointers.size === 2){
+          const pts = Array.from(pointers.values());
+          const dx = pts[0].x - pts[1].x;
+          const dy = pts[0].y - pts[1].y;
+          const dist = Math.hypot(dx, dy);
+          if (pinchStartDist > 0){
+            const nextScale = clamp(pinchStartScale * (dist / pinchStartDist), 1, 7);
+            const prev = zScale;
+            zScale = nextScale;
+            const ratio = (zScale / prev);
+            zX *= ratio;
+            zY *= ratio;
+            movedEnough = true;
+            suppressClickUntil = Date.now() + 260;
+            if (zScale === 1){ resetZoom(); return; }
+            applyZoom();
+          }
+          return;
+        }
+
+        if (pointers.size === 1 && startDrag){
+          if (zScale <= 1.01){
+            resetZoom();
+            return;
+          }
+          const dx = e.clientX - startDrag.x;
+          const dy = e.clientY - startDrag.y;
+          if (!movedEnough && (Math.abs(dx) > 4 || Math.abs(dy) > 4)){
+            movedEnough = true;
+            suppressClickUntil = Date.now() + 260;
+          }
+          zX = startDrag.baseX + dx;
+          zY = startDrag.baseY + dy;
+          applyZoom();
+        }
+      }, { passive:false });
+
+      function endPointer(e){
+        if (pointers.has(e.pointerId)) pointers.delete(e.pointerId);
+        if (movedEnough) suppressClickUntil = Date.now() + 260;
+
+        if (pointers.size === 0){
+          startDrag = null;
+          pinchStartDist = 0;
+          viewport.classList.remove('dragging');
+        }
+        if (pointers.size === 1){
+          const p = Array.from(pointers.values())[0];
+          startDrag = { x: p.x, y: p.y, baseX: zX, baseY: zY };
+          pinchStartDist = 0;
+          viewport.classList.add('dragging');
+        }
+      }
+      viewport.addEventListener('pointerup', endPointer, { passive:false });
+      viewport.addEventListener('pointercancel', endPointer, { passive:false });
+      viewport.addEventListener('pointerleave', endPointer, { passive:false });
+    }
+
+    /* =========================================================
+       INIT
+       ========================================================= */
+    function init(){
+      renderFixedSimilars();
+      buildModelSwitch();
+      setModel("CH08C1");
+      resetZoom();
+
+      const d = PRODUCT[currentModel];
+      const imgs = d.images || [];
+      for (let i=0;i<4;i++){
+        const ti = document.getElementById('thumb' + i);
+        if (ti) ti.src = imgs[i] || imgs[0] || '';
+      }
+      setGalleryIndex(0);
+    }
+    init();
+  </script>
+</body>
+</html>
