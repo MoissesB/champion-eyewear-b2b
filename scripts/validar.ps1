@@ -127,6 +127,13 @@ if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
   if ($productScript -notmatch 'pointermove' -or $productScript -notmatch '--zoom-x' -or $productScript -notmatch '--zoom-y') { $failures.Add("assets/product.js: falta el seguimiento panorámico del cursor") | Out-Null }
   if ($productScript -match 'trade-price') { $failures.Add("assets/product.js: todavía muestra el bloque de precio mayorista") | Out-Null }
   if ($productScript -notmatch 'orderWhatsapp' -or $productScript -notmatch 'orderEmail') { $failures.Add("assets/product.js: faltan botones de pedido por WhatsApp y correo") | Out-Null }
+  if (($productScript | Select-String -Pattern 'order-action-icon' -AllMatches).Matches.Count -lt 2) { $failures.Add("assets/product.js: faltan los iconos en las acciones de pedido") | Out-Null }
+}
+
+$stylesPath = Join-Path $repoRoot "assets/styles.css"
+if (Test-Path -LiteralPath $stylesPath -PathType Leaf) {
+  $stylesText = [System.IO.File]::ReadAllText($stylesPath, $utf8)
+  if ($stylesText -notmatch '(?s)\.product-order-actions\s*\{.*?grid-template-columns:\s*1fr\s*;') { $failures.Add("assets/styles.css: las acciones de pedido no están apiladas") | Out-Null }
 }
 
 if ($failures.Count -gt 0) {
