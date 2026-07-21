@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ficha profesional de producto Champion Eyewear B2B distribuido por Innova Eyewear.">
+  <title>Producto Champion Eyewear B2B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script defer src="./data/products.js"></script>
+  <script defer src="./assets/request.js"></script>
+  <script defer src="./assets/product.js"></script>
+</head>
+<body data-page="product">
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+
+  <div class="product-announcement">INNOVA EYEWEAR B2B · Catálogo profesional para ópticas, cadenas y distribuidores</div>
+  <header class="product-header">
+    <a class="back-control" href="./index.html#monturas" aria-label="Volver al catálogo">←</a>
+    <a class="product-brand" href="./index.html">
+      <img src="./assets/images/brand/champion-logo.webp" alt="Champion Eyewear">
+      <span>Wholesale / B2B · Catálogo · Reposición · Surtidos</span>
+    </a>
+    <nav aria-label="Navegación de producto">
+      <a href="./index.html">Inicio</a>
+      <a href="./index.html#monturas">Catálogo</a>
+      <a href="#similares">Similares</a>
+      <button type="button" data-request-open>Solicitud <span data-request-count>0</span></button>
+    </nav>
+  </header>
+
+  <main id="contenido" class="product-main">
+    <section class="product-layout" id="productRoot" aria-live="polite">
+      <div class="product-loading">Preparando ficha de producto…</div>
+    </section>
+    <section class="related-section" id="similares">
+      <div class="container">
+        <div class="section-heading compact">
+          <div><span class="eyebrow">Referencias relacionadas</span><h2 id="relatedTitle">Productos similares</h2></div>
+        </div>
+        <div class="product-grid related-grid" id="relatedGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer product-footer">
+    <div class="container footer-grid">
+      <div><img src="./assets/images/brand/champion-logo.webp" alt="Champion Eyewear"><p>Catálogo profesional distribuido por Innova Eyewear.</p></div>
+      <div><strong>Condiciones</strong><span>Precio y disponibilidad: a cotizar</span><span>Mínimos y escalas por volumen</span></div>
+      <div><strong>Contacto</strong><a href="https://wa.me/17542360600" target="_blank" rel="noopener">WhatsApp Innova</a><a href="mailto:sales@innova-eyewear.com">sales@innova-eyewear.com</a></div>
+    </div>
+  </footer>
+
+  <div id="requestPortal"></div>
+  <div class="toast" id="siteToast" role="status" aria-live="polite"></div>
+</body>
+</html>

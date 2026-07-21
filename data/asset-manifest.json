@@ -1,0 +1,4268 @@
+[
+  {
+    "family": "optical",
+    "code": "CH01 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\PORTADA\\CH01 C1.jpg",
+    "target": "assets/images/optical/ch01-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C1\\final\\listo\\CH01 C1 - 1.png",
+    "target": "assets/images/optical/ch01-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C1\\final\\listo\\CH01 C1 - 2.png",
+    "target": "assets/images/optical/ch01-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C1\\final\\listo\\CH01 C1 - 3.png",
+    "target": "assets/images/optical/ch01-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C1\\final\\listo\\CH01 C1 - 4.png",
+    "target": "assets/images/optical/ch01-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\PORTADA\\CH01 C2.jpg",
+    "target": "assets/images/optical/ch01-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C2\\listo\\CH01 C2 - 1.png",
+    "target": "assets/images/optical/ch01-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C2\\listo\\CH01 C2 - 2.png",
+    "target": "assets/images/optical/ch01-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C2\\listo\\CH01 C2 - 3.png",
+    "target": "assets/images/optical/ch01-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C2\\listo\\CH01 C2 - 4.png",
+    "target": "assets/images/optical/ch01-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\PORTADA\\CH01 C3.jpg",
+    "target": "assets/images/optical/ch01-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C3\\LISTO\\CH01 C3 - 1.png",
+    "target": "assets/images/optical/ch01-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C3\\LISTO\\CH01 C3 - 2.png",
+    "target": "assets/images/optical/ch01-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C3\\LISTO\\CH01 C3 - 3.png",
+    "target": "assets/images/optical/ch01-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C3\\LISTO\\CH01 C3 - 4.png",
+    "target": "assets/images/optical/ch01-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\PORTADA\\CH01 C4.jpg",
+    "target": "assets/images/optical/ch01-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C4\\listo\\CH01 C4 - 1.png",
+    "target": "assets/images/optical/ch01-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C4\\listo\\CH01 C4 - 2.png",
+    "target": "assets/images/optical/ch01-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C4\\listo\\CH01 C4 - 3.png",
+    "target": "assets/images/optical/ch01-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH01 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH01\\CH01 C4\\listo\\CH01 C4 - 4.png",
+    "target": "assets/images/optical/ch01-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\PORTADA\\CH02 C1.jpg",
+    "target": "assets/images/optical/ch02-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C1\\LISTO\\CH02 C1 - 1.png",
+    "target": "assets/images/optical/ch02-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C1\\LISTO\\CH02 C1 - 2.png",
+    "target": "assets/images/optical/ch02-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C1\\LISTO\\CH02 C1 - 3.png",
+    "target": "assets/images/optical/ch02-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C1\\LISTO\\CH02 C1 - 4.png",
+    "target": "assets/images/optical/ch02-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\PORTADA\\CH02 C2.jpg",
+    "target": "assets/images/optical/ch02-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C2\\LISTO\\CH02 C2 - 1.png",
+    "target": "assets/images/optical/ch02-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C2\\LISTO\\CH02 C2 - 2.png",
+    "target": "assets/images/optical/ch02-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C2\\LISTO\\CH02 C2 - 3.png",
+    "target": "assets/images/optical/ch02-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C2\\LISTO\\CH02 C2 - 4.png",
+    "target": "assets/images/optical/ch02-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\PORTADA\\CH02 C3.jpg",
+    "target": "assets/images/optical/ch02-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C3\\LISTO\\CH02 C3 - 1.png",
+    "target": "assets/images/optical/ch02-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C3\\LISTO\\CH02 C3 - 2.png",
+    "target": "assets/images/optical/ch02-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C3\\LISTO\\CH02 C3 - 3.png",
+    "target": "assets/images/optical/ch02-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C3\\LISTO\\CH02 C3 - 4.png",
+    "target": "assets/images/optical/ch02-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\PORTADA\\CH02 C4.jpg",
+    "target": "assets/images/optical/ch02-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C4\\listo\\CH02 C4 - 1.png",
+    "target": "assets/images/optical/ch02-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C4\\listo\\CH02 C4 - 2.png",
+    "target": "assets/images/optical/ch02-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C4\\listo\\CH02 C4 - 3.png",
+    "target": "assets/images/optical/ch02-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH02\\CH02 C4\\listo\\CH02 C4 - 4.png",
+    "target": "assets/images/optical/ch02-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\PORTADA\\CH03 C1.jpg",
+    "target": "assets/images/optical/ch03-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C1\\listo\\CH03 C1 - 1.png",
+    "target": "assets/images/optical/ch03-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C1\\listo\\CH03 C1 - 2.png",
+    "target": "assets/images/optical/ch03-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C1\\listo\\CH03 C1 - 3.png",
+    "target": "assets/images/optical/ch03-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C1\\listo\\CH03 C1 - 4.png",
+    "target": "assets/images/optical/ch03-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\PORTADA\\CH03 C2.jpg",
+    "target": "assets/images/optical/ch03-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C2\\listo\\CH03 C2 - 1.png",
+    "target": "assets/images/optical/ch03-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C2\\listo\\CH03 C2 - 2.png",
+    "target": "assets/images/optical/ch03-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C2\\listo\\CH03 C2 - 3.jfif",
+    "target": "assets/images/optical/ch03-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C2\\listo\\CH03 C2 - 4.png",
+    "target": "assets/images/optical/ch03-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\PORTADA\\CH03 C3.jpg",
+    "target": "assets/images/optical/ch03-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C3\\listo\\CH03 C3 - 1.png",
+    "target": "assets/images/optical/ch03-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C3\\listo\\CH03 C3 - 2.png",
+    "target": "assets/images/optical/ch03-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C3\\listo\\CH03 C3 - 3.png",
+    "target": "assets/images/optical/ch03-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C3\\listo\\CH03 C3 - 4.png",
+    "target": "assets/images/optical/ch03-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\PORTADA\\CH03 C4.jpg",
+    "target": "assets/images/optical/ch03-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C4\\listo\\CH03 C4 - 1.png",
+    "target": "assets/images/optical/ch03-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C4\\listo\\CH03 C4 - 2.png",
+    "target": "assets/images/optical/ch03-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C4\\listo\\CH03 C4 - 3.png",
+    "target": "assets/images/optical/ch03-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH03 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH03\\CH03 C4\\listo\\CH03 C4 - 4.png",
+    "target": "assets/images/optical/ch03-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\PORTADA\\CH04 C1.jpg",
+    "target": "assets/images/optical/ch04-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C1\\listo\\CH04 C1 - 1.png",
+    "target": "assets/images/optical/ch04-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C1\\listo\\CH04 C1 - 2.png",
+    "target": "assets/images/optical/ch04-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C1\\listo\\CH04 C1 - 3.png",
+    "target": "assets/images/optical/ch04-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C1\\listo\\CH04 C1 - 4.jpg",
+    "target": "assets/images/optical/ch04-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\PORTADA\\CH04 C2.jpg",
+    "target": "assets/images/optical/ch04-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C2\\listo\\CH04 C2 - 1.png",
+    "target": "assets/images/optical/ch04-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C2\\listo\\CH04 C2 - 2.jpg",
+    "target": "assets/images/optical/ch04-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C2\\listo\\CH04 C2 - 3.png",
+    "target": "assets/images/optical/ch04-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C2\\listo\\CH04 C2 - 4.png",
+    "target": "assets/images/optical/ch04-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\PORTADA\\CH04 C3.png",
+    "target": "assets/images/optical/ch04-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C3\\listo\\CH04 C3 - 1.png",
+    "target": "assets/images/optical/ch04-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C3\\listo\\CH04 C3 - 2.png",
+    "target": "assets/images/optical/ch04-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C3\\listo\\CH04 C3 - 3.jpg",
+    "target": "assets/images/optical/ch04-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C3\\listo\\CH04 C3 - 4.png",
+    "target": "assets/images/optical/ch04-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\PORTADA\\CH04 C4.png",
+    "target": "assets/images/optical/ch04-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C4\\listo\\CH04 C4 - 1.png",
+    "target": "assets/images/optical/ch04-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C4\\listo\\CH04 C4 - 2.png",
+    "target": "assets/images/optical/ch04-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C4\\listo\\CH04 C4 - 3.png",
+    "target": "assets/images/optical/ch04-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH04 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH04\\CH04 C4\\listo\\CH04 C4 - 4.jpg",
+    "target": "assets/images/optical/ch04-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\PORTADA\\CH05 C1.jpg",
+    "target": "assets/images/optical/ch05-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C1\\listo\\CH05 C1 - 1.png",
+    "target": "assets/images/optical/ch05-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C1\\listo\\CH05 C1 - 2.png",
+    "target": "assets/images/optical/ch05-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C1\\listo\\CH05 C1 - 3.png",
+    "target": "assets/images/optical/ch05-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C1\\listo\\CH05 C1 - 4.png",
+    "target": "assets/images/optical/ch05-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\PORTADA\\CH05 C2.jpg",
+    "target": "assets/images/optical/ch05-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C2\\listo\\CH05 C2 - 1.png",
+    "target": "assets/images/optical/ch05-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C2\\listo\\CH05 C2 - 2.png",
+    "target": "assets/images/optical/ch05-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C2\\listo\\CH05 C2 - 3.png",
+    "target": "assets/images/optical/ch05-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C2\\listo\\CH05 C2 - 4.png",
+    "target": "assets/images/optical/ch05-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\PORTADA\\CH05 C3.jpg",
+    "target": "assets/images/optical/ch05-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C3\\listo\\CH05 C3 - 1.png",
+    "target": "assets/images/optical/ch05-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C3\\listo\\CH05 C3 - 2.png",
+    "target": "assets/images/optical/ch05-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C3\\listo\\CH05 C3 - 3.png",
+    "target": "assets/images/optical/ch05-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C3\\listo\\CH05 C3 - 4.png",
+    "target": "assets/images/optical/ch05-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\PORTADA\\CH05 C4.jpg",
+    "target": "assets/images/optical/ch05-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C4\\listo\\CH05 C4 - 1.png",
+    "target": "assets/images/optical/ch05-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C4\\listo\\CH05 C4 - 2.png",
+    "target": "assets/images/optical/ch05-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C4\\listo\\CH05 C4 - 3.png",
+    "target": "assets/images/optical/ch05-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH05\\CH05 C4\\listo\\CH05 C4 - 4.png",
+    "target": "assets/images/optical/ch05-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\PORTADA\\CH06 C1.jpg",
+    "target": "assets/images/optical/ch06-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C1\\listo\\CH06 C1 - 1.jpg",
+    "target": "assets/images/optical/ch06-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C1\\listo\\CH06 C1 - 2.jpg",
+    "target": "assets/images/optical/ch06-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C1\\listo\\CH06 C1 - 3.jpg",
+    "target": "assets/images/optical/ch06-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C1\\listo\\CH06 C1 - 4.png",
+    "target": "assets/images/optical/ch06-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\PORTADA\\CH06 C2.jpg",
+    "target": "assets/images/optical/ch06-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C2\\listo\\CH06 C2 - 1.png",
+    "target": "assets/images/optical/ch06-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C2\\listo\\CH06 C2 - 2.png",
+    "target": "assets/images/optical/ch06-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C2\\listo\\CH06 C2 - 3.jpg",
+    "target": "assets/images/optical/ch06-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C2\\listo\\CH06 C2 - 4.png",
+    "target": "assets/images/optical/ch06-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\PORTADA\\CH06 C3.jpg",
+    "target": "assets/images/optical/ch06-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C3\\listo\\CH06 C3 - 1.png",
+    "target": "assets/images/optical/ch06-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C3\\listo\\CH06 C3 - 2.png",
+    "target": "assets/images/optical/ch06-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C3\\listo\\CH06 C3 - 3.png",
+    "target": "assets/images/optical/ch06-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C3\\listo\\CH06 C3 - 4.png",
+    "target": "assets/images/optical/ch06-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\PORTADA\\CH06 C4.jpg",
+    "target": "assets/images/optical/ch06-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C4\\listo\\CH06 C4 - 1.png",
+    "target": "assets/images/optical/ch06-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C4\\listo\\CH06 C4 - 2.png",
+    "target": "assets/images/optical/ch06-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C4\\listo\\CH06 C4 - 3.jpg",
+    "target": "assets/images/optical/ch06-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH06\\CH06 C4\\listo\\CH06 C4 - 4.jpg",
+    "target": "assets/images/optical/ch06-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\PORTADA\\CH07 C1.jpg",
+    "target": "assets/images/optical/ch07-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C1\\listo\\CH07 C1 - 1.png",
+    "target": "assets/images/optical/ch07-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C1\\listo\\CH07 C1 - 2.png",
+    "target": "assets/images/optical/ch07-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C1\\listo\\CH07 C1 - 3.png",
+    "target": "assets/images/optical/ch07-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C1\\listo\\CH07 C1 - 4.png",
+    "target": "assets/images/optical/ch07-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\PORTADA\\CH07 C2.jpg",
+    "target": "assets/images/optical/ch07-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C2\\listo\\CH07 C2 - 1.png",
+    "target": "assets/images/optical/ch07-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C2\\listo\\CH07 C2 - 2.png",
+    "target": "assets/images/optical/ch07-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C2\\listo\\CH07 C2 - 3.png",
+    "target": "assets/images/optical/ch07-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C2\\listo\\CH07 C2 - 4.png",
+    "target": "assets/images/optical/ch07-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\PORTADA\\CH07 C3.jpg",
+    "target": "assets/images/optical/ch07-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C3\\listo\\CH07 C3 - 1.png",
+    "target": "assets/images/optical/ch07-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C3\\listo\\CH07 C3 - 2.png",
+    "target": "assets/images/optical/ch07-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C3\\listo\\CH07 C3 - 3.png",
+    "target": "assets/images/optical/ch07-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C3\\listo\\CH07 C3 - 4.png",
+    "target": "assets/images/optical/ch07-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\PORTADA\\CH07 C4.jpg",
+    "target": "assets/images/optical/ch07-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C4\\listo\\CH07 C4 -1.png",
+    "target": "assets/images/optical/ch07-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C4\\listo\\CH07 C4 -2.png",
+    "target": "assets/images/optical/ch07-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C4\\listo\\CH07 C4 -3.png",
+    "target": "assets/images/optical/ch07-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH07 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH07\\CH07 C4\\listo\\CH07 C4 -4.png",
+    "target": "assets/images/optical/ch07-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\PORTADA\\CH08 C1.jpg",
+    "target": "assets/images/optical/ch08-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C1\\listo\\CH08 C1 - 1.png",
+    "target": "assets/images/optical/ch08-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C1\\listo\\CH08 C1 - 2.png",
+    "target": "assets/images/optical/ch08-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C1\\listo\\CH08 C1 - 3.png",
+    "target": "assets/images/optical/ch08-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C1\\listo\\CH08 C1 - 4.png",
+    "target": "assets/images/optical/ch08-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\PORTADA\\CH08 C2.jpg",
+    "target": "assets/images/optical/ch08-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C2\\listo\\CH08 C2 - 1.png",
+    "target": "assets/images/optical/ch08-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C2\\listo\\CH08 C2 - 2.png",
+    "target": "assets/images/optical/ch08-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C2\\listo\\CH08 C2 - 3.png",
+    "target": "assets/images/optical/ch08-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C2\\listo\\CH08 C2 - 4.png",
+    "target": "assets/images/optical/ch08-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\PORTADA\\CH08 C3.jpg",
+    "target": "assets/images/optical/ch08-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C3\\listo\\CH08 C3 - 1.png",
+    "target": "assets/images/optical/ch08-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C3\\listo\\CH08 C3 - 2.png",
+    "target": "assets/images/optical/ch08-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C3\\listo\\CH08 C3 - 3.png",
+    "target": "assets/images/optical/ch08-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C3\\listo\\CH08 C3 - 4.png",
+    "target": "assets/images/optical/ch08-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\PORTADA\\CH08 C4.png",
+    "target": "assets/images/optical/ch08-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C4\\listo\\CH08 C4 - 1.png",
+    "target": "assets/images/optical/ch08-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C4\\listo\\CH08 C4 - 2.png",
+    "target": "assets/images/optical/ch08-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C4\\listo\\CH08 C4 - 3.png",
+    "target": "assets/images/optical/ch08-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH08 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH08\\CH08 C4\\listo\\CH08 C4 - 4.png",
+    "target": "assets/images/optical/ch08-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\PORTADA\\CH09 C1.jpg",
+    "target": "assets/images/optical/ch09-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C1\\listo\\CH09 C1 - 1.png",
+    "target": "assets/images/optical/ch09-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C1\\listo\\CH09 C1 - 2.png",
+    "target": "assets/images/optical/ch09-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C1\\listo\\CH09 C1 - 3.png",
+    "target": "assets/images/optical/ch09-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C1\\listo\\CH09 C1 - 4.png",
+    "target": "assets/images/optical/ch09-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\PORTADA\\CH09 C2.jpg",
+    "target": "assets/images/optical/ch09-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C2\\listo\\CH09 C2 - 1.png",
+    "target": "assets/images/optical/ch09-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C2\\listo\\CH09 C2 - 2.png",
+    "target": "assets/images/optical/ch09-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C2\\listo\\CH09 C2 - 3.png",
+    "target": "assets/images/optical/ch09-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C2\\listo\\CH09 C2 - 4.png",
+    "target": "assets/images/optical/ch09-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\PORTADA\\CH09 C3.jpg",
+    "target": "assets/images/optical/ch09-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C3\\listo\\CH09 C3 - 1.png",
+    "target": "assets/images/optical/ch09-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C3\\listo\\CH09 C3 - 2.png",
+    "target": "assets/images/optical/ch09-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C3\\listo\\CH09 C3 - 3.png",
+    "target": "assets/images/optical/ch09-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C3\\listo\\CH09 C3 - 4.jpg",
+    "target": "assets/images/optical/ch09-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\PORTADA\\CH09 C4.jpg",
+    "target": "assets/images/optical/ch09-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C4\\Final\\CH09 C4 - 1.png",
+    "target": "assets/images/optical/ch09-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C4\\Final\\CH09 C4 - 2.png",
+    "target": "assets/images/optical/ch09-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C4\\Final\\CH09 C4 - 3.png",
+    "target": "assets/images/optical/ch09-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH09 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH09\\CH09 C4\\Final\\CH09 C4 - 4.png",
+    "target": "assets/images/optical/ch09-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\PORTADA\\CH10 C1.jpg",
+    "target": "assets/images/optical/ch10-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C1\\Final\\CH10 C1 - 1.png",
+    "target": "assets/images/optical/ch10-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C1\\Final\\CH10 C1 - 2.png",
+    "target": "assets/images/optical/ch10-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C1\\Final\\CH10 C1 - 3.png",
+    "target": "assets/images/optical/ch10-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C1\\Final\\CH10 C1 - 4.jpg",
+    "target": "assets/images/optical/ch10-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\PORTADA\\CH10 C2.jpg",
+    "target": "assets/images/optical/ch10-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C2\\Final\\CH10 C2 - 1.png",
+    "target": "assets/images/optical/ch10-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C2\\Final\\CH10 C2 - 2.png",
+    "target": "assets/images/optical/ch10-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C2\\Final\\CH10 C2 - 3.png",
+    "target": "assets/images/optical/ch10-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C2\\Final\\CH10 C2 - 4.jpg",
+    "target": "assets/images/optical/ch10-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\PORTADA\\CH10 C3.jpg",
+    "target": "assets/images/optical/ch10-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C3\\FINAL\\CH10 C3 - 1.png",
+    "target": "assets/images/optical/ch10-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C3\\FINAL\\CH10 C3 - 2.png",
+    "target": "assets/images/optical/ch10-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C3\\FINAL\\CH10 C3 - 3.png",
+    "target": "assets/images/optical/ch10-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH010 C3\\FINAL\\CH10 C3 - 4.jpg",
+    "target": "assets/images/optical/ch10-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\PORTADA\\CH10 C4.jpg",
+    "target": "assets/images/optical/ch10-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH10 C4\\final\\CH10 C4 - 1.jpg",
+    "target": "assets/images/optical/ch10-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH10 C4\\final\\CH10 C4 - 2.png",
+    "target": "assets/images/optical/ch10-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH10 C4\\final\\CH10 C4 - 3.png",
+    "target": "assets/images/optical/ch10-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH10 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH010\\CH10 C4\\final\\CH10 C4 - 4.jpg",
+    "target": "assets/images/optical/ch10-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\PORTADA\\CH11 C1.jpg",
+    "target": "assets/images/optical/ch11-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C1\\Final\\CH11 C1 - 01.jpg",
+    "target": "assets/images/optical/ch11-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C1\\Final\\CH11 C1 - 02.jpg",
+    "target": "assets/images/optical/ch11-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C1\\Final\\CH11 C1 - 03.jpg",
+    "target": "assets/images/optical/ch11-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C1\\Final\\CH11 C1 - 04.png",
+    "target": "assets/images/optical/ch11-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\PORTADA\\CH11 C2.jpg",
+    "target": "assets/images/optical/ch11-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C2\\Final\\CH11 C2 - 1.png",
+    "target": "assets/images/optical/ch11-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C2\\Final\\CH11 C2 - 2.png",
+    "target": "assets/images/optical/ch11-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C2\\Final\\CH11 C2 - 3.png",
+    "target": "assets/images/optical/ch11-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C2\\Final\\CH11 C2 - 4.jpg",
+    "target": "assets/images/optical/ch11-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\PORTADA\\CH11 C3.jpg",
+    "target": "assets/images/optical/ch11-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C3\\FINAL\\CH11 C3 - 1.png",
+    "target": "assets/images/optical/ch11-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C3\\FINAL\\CH11 C3 - 2.png",
+    "target": "assets/images/optical/ch11-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C3\\FINAL\\CH11 C3 - 3.png",
+    "target": "assets/images/optical/ch11-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C3\\FINAL\\CH11 C3 - 4.png",
+    "target": "assets/images/optical/ch11-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\PORTADA\\CH11 C4.jpg",
+    "target": "assets/images/optical/ch11-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C4\\final\\CH11 01 -1.png",
+    "target": "assets/images/optical/ch11-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C4\\final\\CH11 01 - 2.png",
+    "target": "assets/images/optical/ch11-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C4\\final\\CH11 01 - 3.jpg",
+    "target": "assets/images/optical/ch11-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH11 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH11\\CH11 C4\\final\\CH11 01 - 4.png",
+    "target": "assets/images/optical/ch11-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\PORTADA\\CH12 C1.png",
+    "target": "assets/images/optical/ch12-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C1\\FINAL\\CH12 C1 - 1.png",
+    "target": "assets/images/optical/ch12-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C1\\FINAL\\CH12 C1 - 2.png",
+    "target": "assets/images/optical/ch12-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C1\\FINAL\\CH12 C1 - 3.png",
+    "target": "assets/images/optical/ch12-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C1\\FINAL\\CH12 C1 - 4.png",
+    "target": "assets/images/optical/ch12-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\PORTADA\\CH12 C2.png",
+    "target": "assets/images/optical/ch12-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C2\\FINAL\\CH12 C2 -1.png",
+    "target": "assets/images/optical/ch12-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C2\\FINAL\\CH12 C2- 2.png",
+    "target": "assets/images/optical/ch12-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C2\\FINAL\\CH12 C2 - 3.png",
+    "target": "assets/images/optical/ch12-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C2\\FINAL\\CH12 C2 - 4.jpg",
+    "target": "assets/images/optical/ch12-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\PORTADA\\CH12 C3.jpg",
+    "target": "assets/images/optical/ch12-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C3\\final\\CH12 C3 - 1.jpg",
+    "target": "assets/images/optical/ch12-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C3\\final\\CH12 C3 - 2.png",
+    "target": "assets/images/optical/ch12-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C3\\final\\CH12 C3 - 3.png",
+    "target": "assets/images/optical/ch12-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C3\\final\\CH12 C3 - 4 Mejorada.jpg",
+    "target": "assets/images/optical/ch12-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\PORTADA\\CH12 C4.jpg",
+    "target": "assets/images/optical/ch12-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C4\\final\\CH12 C4 - 1.png",
+    "target": "assets/images/optical/ch12-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C4\\final\\CH12 C4 - 2.png",
+    "target": "assets/images/optical/ch12-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C4\\final\\CH12 C4 - 3.png",
+    "target": "assets/images/optical/ch12-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH12 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH12\\CH12 C4\\final\\CH12 C4 - 4.png",
+    "target": "assets/images/optical/ch12-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\PORTADA\\CH13 C1.jpg",
+    "target": "assets/images/optical/ch13-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C1\\final\\CH13 C1 -1.png",
+    "target": "assets/images/optical/ch13-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C1\\final\\CH13 C1 - 2.png",
+    "target": "assets/images/optical/ch13-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C1\\final\\CH13 C1 - 3.png",
+    "target": "assets/images/optical/ch13-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C1\\final\\CH13 C1 - 4.png",
+    "target": "assets/images/optical/ch13-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\PORTADA\\CH13 C2.jpg",
+    "target": "assets/images/optical/ch13-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C2\\final\\CH13 C2 - 1.jpg",
+    "target": "assets/images/optical/ch13-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C2\\final\\CH13 C2 - 2.png",
+    "target": "assets/images/optical/ch13-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C2\\final\\CH13 C2 - 3.jpg",
+    "target": "assets/images/optical/ch13-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C2\\final\\CH13 C2 - 4.jpg",
+    "target": "assets/images/optical/ch13-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\PORTADA\\CH13 C3.jpg",
+    "target": "assets/images/optical/ch13-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C3\\CH13 C3 - 1.jpg",
+    "target": "assets/images/optical/ch13-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C3\\CH13 C3 - 2.jpg",
+    "target": "assets/images/optical/ch13-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C3\\CH13 C3 - 3.png",
+    "target": "assets/images/optical/ch13-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C3\\CH13 C3 - 4.png",
+    "target": "assets/images/optical/ch13-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\PORTADA\\CH13 C4.jpg",
+    "target": "assets/images/optical/ch13-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C4\\listo\\CH13 C4 - 1.png",
+    "target": "assets/images/optical/ch13-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C4\\listo\\CH13 C4 - 2.png",
+    "target": "assets/images/optical/ch13-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C4\\listo\\CH13 C4 - 3.png",
+    "target": "assets/images/optical/ch13-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH13 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH13\\CH13 C4\\listo\\CH13 C4 - 4.png",
+    "target": "assets/images/optical/ch13-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\PORTADA\\CH14 C1.jpg",
+    "target": "assets/images/optical/ch14-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C1\\CH14 C1 - 1.png",
+    "target": "assets/images/optical/ch14-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C1\\CH14 C1 - 2.png",
+    "target": "assets/images/optical/ch14-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C1\\CH14 C1 - 3.png",
+    "target": "assets/images/optical/ch14-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C1\\CH14 C1 - 4.png",
+    "target": "assets/images/optical/ch14-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\PORTADA\\CH14 C2.jpg",
+    "target": "assets/images/optical/ch14-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C2\\listo\\CH14 C2 - 1.png",
+    "target": "assets/images/optical/ch14-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C2\\listo\\CH14 C2 - 2.png",
+    "target": "assets/images/optical/ch14-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C2\\listo\\CH14 C2 - 3.png",
+    "target": "assets/images/optical/ch14-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C2\\listo\\CH14 C2 - 4.png",
+    "target": "assets/images/optical/ch14-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\PORTADA\\CH14 C3.jpg",
+    "target": "assets/images/optical/ch14-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C3\\LISTO\\CH14 C3 - 1.png",
+    "target": "assets/images/optical/ch14-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C3\\LISTO\\CH14 C3 - 2.png",
+    "target": "assets/images/optical/ch14-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C3\\LISTO\\CH14 C3 - 3.png",
+    "target": "assets/images/optical/ch14-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C3\\LISTO\\CH14 C3 - 4.png",
+    "target": "assets/images/optical/ch14-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\PORTADA\\CH14 C4.jpg",
+    "target": "assets/images/optical/ch14-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C4\\listo\\CH14 C4 - 1.png",
+    "target": "assets/images/optical/ch14-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C4\\listo\\CH14 C4 - 2.png",
+    "target": "assets/images/optical/ch14-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C4\\listo\\CH14 C4 - 3.png",
+    "target": "assets/images/optical/ch14-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH14 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH14\\CH14 C4\\listo\\CH14 C4 - 4.png",
+    "target": "assets/images/optical/ch14-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\PORTADA\\CH15 C1.jpg",
+    "target": "assets/images/optical/ch15-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C1\\Listo\\CH15 C1 - 1.png",
+    "target": "assets/images/optical/ch15-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C1\\Listo\\CH15 C1 - 2.png",
+    "target": "assets/images/optical/ch15-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C1\\Listo\\CH15 C1 - 3.png",
+    "target": "assets/images/optical/ch15-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C1\\Listo\\CH15 C1 - 4.png",
+    "target": "assets/images/optical/ch15-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\PORTADA\\CH15 C2.png",
+    "target": "assets/images/optical/ch15-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C2\\Listo\\CH15 C2 - 1.png",
+    "target": "assets/images/optical/ch15-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C2\\Listo\\CH15 C2 - 2.png",
+    "target": "assets/images/optical/ch15-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C2\\Listo\\CH15 C2 - 3.png",
+    "target": "assets/images/optical/ch15-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C2\\Listo\\CH15 C2 - 4.png",
+    "target": "assets/images/optical/ch15-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\PORTADA\\CH15 C3.jpg",
+    "target": "assets/images/optical/ch15-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C3\\Listo\\CH15 C3 - 1.png",
+    "target": "assets/images/optical/ch15-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C3\\Listo\\CH15 C3 - 2.jpg",
+    "target": "assets/images/optical/ch15-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C3\\Listo\\CH15 C3 - 3 V.jpg",
+    "target": "assets/images/optical/ch15-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C3\\Listo\\CH15 C3 - 4.jpg",
+    "target": "assets/images/optical/ch15-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\PORTADA\\CH15 C4.png",
+    "target": "assets/images/optical/ch15-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C4\\Listo\\CH15 C4 -1.png",
+    "target": "assets/images/optical/ch15-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C4\\Listo\\CH15 C4 - 2.png",
+    "target": "assets/images/optical/ch15-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C4\\Listo\\CH15 C4 - 3.png",
+    "target": "assets/images/optical/ch15-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH15 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH15\\CH15 C4\\Listo\\CH15 C4 -4.png",
+    "target": "assets/images/optical/ch15-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\PORTADA\\CH16 C1.png",
+    "target": "assets/images/optical/ch16-c1/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C1\\Listo\\CH16 C1 - 1.png",
+    "target": "assets/images/optical/ch16-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C1\\Listo\\CH16 C1 - 2.png",
+    "target": "assets/images/optical/ch16-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C1\\Listo\\CH16 C1 - 3.png",
+    "target": "assets/images/optical/ch16-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C1\\Listo\\CH16 C1 - 4.png",
+    "target": "assets/images/optical/ch16-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\PORTADA\\CH16 C2.jpg",
+    "target": "assets/images/optical/ch16-c2/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C2\\Listo\\CH16 C2 - 1.png",
+    "target": "assets/images/optical/ch16-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C2\\Listo\\CH16 C2 - 2.png",
+    "target": "assets/images/optical/ch16-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C2\\Listo\\CH16 C2 - 3.png",
+    "target": "assets/images/optical/ch16-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C2\\Listo\\CH16 C2 - 4.png",
+    "target": "assets/images/optical/ch16-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\PORTADA\\CH16 C3.png",
+    "target": "assets/images/optical/ch16-c3/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C3\\Listo\\CH16 C3 - 1.jpg",
+    "target": "assets/images/optical/ch16-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C3\\Listo\\CH16 C3 - 2.jpg",
+    "target": "assets/images/optical/ch16-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C3\\Listo\\CH16 C3 - 3.jpg",
+    "target": "assets/images/optical/ch16-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C3\\Listo\\CH16 C3 - 4.jpg",
+    "target": "assets/images/optical/ch16-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\PORTADA\\CH16 C4.jpg",
+    "target": "assets/images/optical/ch16-c4/cover.webp",
+    "maxWidth": 1000,
+    "maxHeight": 760
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C4\\Listo\\CH16 C4 - 1.png",
+    "target": "assets/images/optical/ch16-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C4\\Listo\\CH16 C4 - 2.png",
+    "target": "assets/images/optical/ch16-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C4\\Listo\\CH16 C4 - 3.png",
+    "target": "assets/images/optical/ch16-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "optical",
+    "code": "CH16 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\CH16\\CH16 C4\\Listo\\CH16 C4 - 4.png",
+    "target": "assets/images/optical/ch16-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1150
+  },
+  {
+    "family": "sun",
+    "code": "CHS-01 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-01 C1.png",
+    "target": "assets/images/sun/chs-01-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-01 C1.png",
+    "target": "assets/images/sun/chs-01-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-01 C1 2.png",
+    "target": "assets/images/sun/chs-01-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-01 C1 3.png",
+    "target": "assets/images/sun/chs-01-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-01 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-01 C1 4.png",
+    "target": "assets/images/sun/chs-01-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C1.png",
+    "target": "assets/images/sun/chs-02-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C1.png",
+    "target": "assets/images/sun/chs-02-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C1 2.png",
+    "target": "assets/images/sun/chs-02-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C1 3.png",
+    "target": "assets/images/sun/chs-02-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C1 4.png",
+    "target": "assets/images/sun/chs-02-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C2 2.png",
+    "target": "assets/images/sun/chs-02-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C2 2.png",
+    "target": "assets/images/sun/chs-02-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C2 3.png",
+    "target": "assets/images/sun/chs-02-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C2 4.png",
+    "target": "assets/images/sun/chs-02-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C3 .png",
+    "target": "assets/images/sun/chs-02-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C3 .png",
+    "target": "assets/images/sun/chs-02-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C3 2.png",
+    "target": "assets/images/sun/chs-02-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C3 3.png",
+    "target": "assets/images/sun/chs-02-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C3 4.png",
+    "target": "assets/images/sun/chs-02-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C4.png",
+    "target": "assets/images/sun/chs-02-c4/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C4.png",
+    "target": "assets/images/sun/chs-02-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C4 2.png",
+    "target": "assets/images/sun/chs-02-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C4 3.png",
+    "target": "assets/images/sun/chs-02-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-02 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-02 C4 4.png",
+    "target": "assets/images/sun/chs-02-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-03 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-03 C1.png",
+    "target": "assets/images/sun/chs-03-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-03 C1.png",
+    "target": "assets/images/sun/chs-03-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-03 C1 2.png",
+    "target": "assets/images/sun/chs-03-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-03 C1 3.png",
+    "target": "assets/images/sun/chs-03-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-03 C1 4.png",
+    "target": "assets/images/sun/chs-03-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS03 C1 (2).png",
+    "target": "assets/images/sun/chs-03-c1/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-03 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS03 C1 (3).png",
+    "target": "assets/images/sun/chs-03-c1/06.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C1.png",
+    "target": "assets/images/sun/chs-04-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C1.png",
+    "target": "assets/images/sun/chs-04-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C1 2.png",
+    "target": "assets/images/sun/chs-04-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C1 3.png",
+    "target": "assets/images/sun/chs-04-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C2.png",
+    "target": "assets/images/sun/chs-04-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C2.png",
+    "target": "assets/images/sun/chs-04-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C2 2.png",
+    "target": "assets/images/sun/chs-04-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C2 3.png",
+    "target": "assets/images/sun/chs-04-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C2 4.png",
+    "target": "assets/images/sun/chs-04-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C3.png",
+    "target": "assets/images/sun/chs-04-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C3.png",
+    "target": "assets/images/sun/chs-04-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C3 2.png",
+    "target": "assets/images/sun/chs-04-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C3 3.png",
+    "target": "assets/images/sun/chs-04-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C3 4.png",
+    "target": "assets/images/sun/chs-04-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C3 5.png",
+    "target": "assets/images/sun/chs-04-c3/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C4.png",
+    "target": "assets/images/sun/chs-04-c4/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C4.png",
+    "target": "assets/images/sun/chs-04-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C4 2.png",
+    "target": "assets/images/sun/chs-04-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-04 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-04 C4 3.png",
+    "target": "assets/images/sun/chs-04-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C1.png",
+    "target": "assets/images/sun/chs-05-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C1.png",
+    "target": "assets/images/sun/chs-05-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C1 2.png",
+    "target": "assets/images/sun/chs-05-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C1 3.png",
+    "target": "assets/images/sun/chs-05-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C1 4.png",
+    "target": "assets/images/sun/chs-05-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C1 5.png",
+    "target": "assets/images/sun/chs-05-c1/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C2.png",
+    "target": "assets/images/sun/chs-05-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C2.png",
+    "target": "assets/images/sun/chs-05-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C2  3.png",
+    "target": "assets/images/sun/chs-05-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C2  4.png",
+    "target": "assets/images/sun/chs-05-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C2 2.png",
+    "target": "assets/images/sun/chs-05-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C3.png",
+    "target": "assets/images/sun/chs-05-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C3.png",
+    "target": "assets/images/sun/chs-05-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C3 2.png",
+    "target": "assets/images/sun/chs-05-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C3 3.png",
+    "target": "assets/images/sun/chs-05-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C3 4.png",
+    "target": "assets/images/sun/chs-05-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C4.png",
+    "target": "assets/images/sun/chs-05-c4/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C4.png",
+    "target": "assets/images/sun/chs-05-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C4 2.png",
+    "target": "assets/images/sun/chs-05-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C4 3.png",
+    "target": "assets/images/sun/chs-05-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-05 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-05 C4 4.png",
+    "target": "assets/images/sun/chs-05-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C1.png",
+    "target": "assets/images/sun/chs-06-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C1.png",
+    "target": "assets/images/sun/chs-06-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C1 2.png",
+    "target": "assets/images/sun/chs-06-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C1 3.png",
+    "target": "assets/images/sun/chs-06-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C1 4.png",
+    "target": "assets/images/sun/chs-06-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C1 5.png",
+    "target": "assets/images/sun/chs-06-c1/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C2 2.png",
+    "target": "assets/images/sun/chs-06-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C2 2.png",
+    "target": "assets/images/sun/chs-06-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C2 3.png",
+    "target": "assets/images/sun/chs-06-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C3.png",
+    "target": "assets/images/sun/chs-06-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C3.png",
+    "target": "assets/images/sun/chs-06-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C3 2.png",
+    "target": "assets/images/sun/chs-06-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C3 3.png",
+    "target": "assets/images/sun/chs-06-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C3 4.png",
+    "target": "assets/images/sun/chs-06-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C4",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C4 .png",
+    "target": "assets/images/sun/chs-06-c4/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C4 .png",
+    "target": "assets/images/sun/chs-06-c4/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C4  3.png",
+    "target": "assets/images/sun/chs-06-c4/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C4  4.png",
+    "target": "assets/images/sun/chs-06-c4/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-06 C4",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-06 C4 2.png",
+    "target": "assets/images/sun/chs-06-c4/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C1 (2).png",
+    "target": "assets/images/sun/chs-07-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C1 (2).png",
+    "target": "assets/images/sun/chs-07-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C1 (3).png",
+    "target": "assets/images/sun/chs-07-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C1 (4).png",
+    "target": "assets/images/sun/chs-07-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C1 (5).png",
+    "target": "assets/images/sun/chs-07-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C2.png",
+    "target": "assets/images/sun/chs-07-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C2.png",
+    "target": "assets/images/sun/chs-07-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C2 (2).png",
+    "target": "assets/images/sun/chs-07-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C2 (3).png",
+    "target": "assets/images/sun/chs-07-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C2 (5).png",
+    "target": "assets/images/sun/chs-07-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C3.png",
+    "target": "assets/images/sun/chs-07-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C3.png",
+    "target": "assets/images/sun/chs-07-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C3 (2).png",
+    "target": "assets/images/sun/chs-07-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C3 (3).png",
+    "target": "assets/images/sun/chs-07-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C3 (4).png",
+    "target": "assets/images/sun/chs-07-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C3 (5).png",
+    "target": "assets/images/sun/chs-07-c3/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-07 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-07 C3 (6).png",
+    "target": "assets/images/sun/chs-07-c3/06.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C2.png",
+    "target": "assets/images/sun/chs-08-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C2.png",
+    "target": "assets/images/sun/chs-08-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C2 (2).png",
+    "target": "assets/images/sun/chs-08-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C2 (3).png",
+    "target": "assets/images/sun/chs-08-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C2 (4).png",
+    "target": "assets/images/sun/chs-08-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C2 (5).png",
+    "target": "assets/images/sun/chs-08-c2/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C2 (6).png",
+    "target": "assets/images/sun/chs-08-c2/06.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C3.png",
+    "target": "assets/images/sun/chs-08-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C3.png",
+    "target": "assets/images/sun/chs-08-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C3 (2).png",
+    "target": "assets/images/sun/chs-08-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C3 (3).png",
+    "target": "assets/images/sun/chs-08-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C3 (4).png",
+    "target": "assets/images/sun/chs-08-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C3 2.png",
+    "target": "assets/images/sun/chs-08-c3/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-08 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-08 C3 3.png",
+    "target": "assets/images/sun/chs-08-c3/06.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C1 (2).png",
+    "target": "assets/images/sun/chs-09-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C1 (2).png",
+    "target": "assets/images/sun/chs-09-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C1 (3).png",
+    "target": "assets/images/sun/chs-09-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C1 (5).png",
+    "target": "assets/images/sun/chs-09-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C1 2.png",
+    "target": "assets/images/sun/chs-09-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C2.png",
+    "target": "assets/images/sun/chs-09-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C2.png",
+    "target": "assets/images/sun/chs-09-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C2 2.png",
+    "target": "assets/images/sun/chs-09-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C2 3.png",
+    "target": "assets/images/sun/chs-09-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C2 4.png",
+    "target": "assets/images/sun/chs-09-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C3.png",
+    "target": "assets/images/sun/chs-09-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C3.png",
+    "target": "assets/images/sun/chs-09-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C3 (2).png",
+    "target": "assets/images/sun/chs-09-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C3 3.png",
+    "target": "assets/images/sun/chs-09-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C3 4.png",
+    "target": "assets/images/sun/chs-09-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C3 5.png",
+    "target": "assets/images/sun/chs-09-c3/05.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-09 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-09 C3 6.png",
+    "target": "assets/images/sun/chs-09-c3/06.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C1",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C1.png",
+    "target": "assets/images/sun/chs-10-c1/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C1.png",
+    "target": "assets/images/sun/chs-10-c1/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C1 2.png",
+    "target": "assets/images/sun/chs-10-c1/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C1 3.png",
+    "target": "assets/images/sun/chs-10-c1/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C1",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C1 4.png",
+    "target": "assets/images/sun/chs-10-c1/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C2",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C2.png",
+    "target": "assets/images/sun/chs-10-c2/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C2.png",
+    "target": "assets/images/sun/chs-10-c2/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C2 2.png",
+    "target": "assets/images/sun/chs-10-c2/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C2 3.png",
+    "target": "assets/images/sun/chs-10-c2/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C2",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C2 4.png",
+    "target": "assets/images/sun/chs-10-c2/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C3",
+    "role": "cover",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C3.png",
+    "target": "assets/images/sun/chs-10-c3/cover.webp",
+    "maxWidth": 1100,
+    "maxHeight": 800
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C3.png",
+    "target": "assets/images/sun/chs-10-c3/01.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C3 2.png",
+    "target": "assets/images/sun/chs-10-c3/02.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C3 3.png",
+    "target": "assets/images/sun/chs-10-c3/03.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "sun",
+    "code": "CHS-10 C3",
+    "role": "gallery",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Catalogo Champion\\Lentes de sol\\SKU\\CHS-10 C3 4.png",
+    "target": "assets/images/sun/chs-10-c3/04.webp",
+    "maxWidth": 1500,
+    "maxHeight": 1100
+  },
+  {
+    "family": "brand",
+    "code": "Champion",
+    "role": "logo",
+    "source": "C:\\Users\\moiss\\OneDrive\\Trabajo\\Champion\\Logo\\logo champion.png",
+    "target": "assets/images/brand/champion-logo.webp",
+    "maxWidth": 700,
+    "maxHeight": 260
+  }
+]

@@ -1,43 +1,58 @@
-# Sitio web Champion
+# Champion Eyewear — catálogo B2B
 
-Reconstrucción estática del catálogo publicado en `distribuciones.champion-innova.com`.
+Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sitio es estático, funciona en cualquier hosting web y evita mantener un HTML completo por producto.
 
-## Contenido
+## Arquitectura
 
-- `index.html`: página principal y catálogo completo.
-- `ch01-c1.html` … `ch16-c4.html`: 64 fichas independientes.
-- `scripts/importar-catalogo.ps1`: vuelve a importar las fuentes originales desde `Codigos Champion/Catalogo` y normaliza la navegación local.
-- `scripts/validar.ps1`: comprueba páginas, modelos, enlaces internos y vídeos.
+- `index.html`: portada, buscadores y catálogos de monturas y lentes de sol.
+- `product.html?id=…`: única plantilla para las 93 fichas de producto.
+- `data/products.json`: fuente de datos editable (64 monturas + 29 lentes de sol).
+- `data/products.js`: versión del catálogo que consume el navegador sin backend.
+- `assets/images/`: 474 imágenes WebP optimizadas desde los originales locales.
+- `assets/images/brand/champion-social.png`: imagen social de presentación del catálogo.
+- `assets/home.js`: filtros, buscadores y tarjetas del catálogo.
+- `assets/product.js`: carga la ficha solicitada dentro de la plantilla única.
+- `assets/request.js`: selección profesional, cantidades, CSV, WhatsApp, correo y compartir.
+- `scripts/generar-catalogo.cjs`: reconstruye los datos y el manifiesto desde las carpetas fuente.
+- `scripts/preparar-imagenes.py`: exporta los originales a formatos web optimizados.
+- `scripts/validar.ps1`: verifica arquitectura, datos y recursos locales.
 
 ## Vista local
 
-Abra esta carpeta con Live Server o ejecute un servidor HTTP desde la raíz del repositorio. Por ejemplo:
+Desde esta carpeta:
 
 ```powershell
 python -m http.server 8080
 ```
 
-Después visite `http://localhost:8080/`.
+Después visite `http://localhost:8080/`. Para abrir una referencia directamente, use por ejemplo:
 
-No abra las fichas únicamente con doble clic: un servidor local reproduce mejor el comportamiento que tendrá el sitio publicado.
+```text
+http://localhost:8080/product.html?id=chs-07-c2
+```
 
-## Actualizar una ficha
+## Actualizar un producto
 
-1. Abra el HTML del producto, por ejemplo `ch08-c3.html`.
-2. Modifique el bloque `PRODUCT` correspondiente. Ahí están título, descripción B2B, etiquetas, ficha técnica, SKU e imágenes.
-3. Compruebe que `currentModel` y la llamada inicial a `setModel(...)` coinciden con el nombre del archivo.
-4. Ejecute `powershell -ExecutionPolicy Bypass -File .\scripts\validar.ps1`.
-5. Revise visualmente la portada y la ficha modificada antes de publicar.
+Edite el objeto correspondiente en `data/products.json` y mantenga sincronizado `data/products.js`. Los datos incluyen modelo, SKU, colección, color, material, medidas, descripción, imágenes y carpeta fuente.
 
-## Añadir productos
+Cuando los cambios procedan de las carpetas maestras, es preferible ejecutar el generador y el optimizador incluidos. Estos scripts no modifican los originales de `Catalogo Champion`.
 
-Las fichas comparten la misma estructura visual. Para una nueva colección, duplique la ficha más cercana, sustituya los datos e imágenes del bloque `PRODUCT`, ajuste los productos similares y añada la tarjeta correspondiente a `index.html`.
+## Solicitud profesional B2B
 
-La futura colección de lentes de sol está fuera de esta primera reconstrucción. Sus originales permanecen en `Catalogo Champion/Lentes de sol` para incorporarlos en una actualización separada.
+La selección se guarda en el navegador del usuario. Puede:
 
-## Medios
+- definir cantidades por referencia;
+- completar los datos profesionales del cliente;
+- descargar un CSV compatible con Excel;
+- compartir el CSV como archivo cuando el dispositivo lo permite;
+- preparar un mensaje profesional para WhatsApp o correo a Innova.
 
-Esta versión conserva las URLs de imágenes y vídeos que usa el sitio publicado. Es la forma más fiel de reproducirlo y evita añadir al repositorio los originales de `Catalogo Champion`, que ocupan aproximadamente 1,86 GB e incluyen un ZIP de 139 MB que supera el límite normal por archivo de GitHub.
+WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un navegador por motivos de seguridad. Por eso el sitio descarga el CSV y abre el mensaje preparado para que el usuario lo adjunte. En móviles compatibles, **Compartir archivo** sí entrega el CSV directamente al selector del sistema.
 
-Los originales maestros no se modifican. Si más adelante se desea alojar los medios dentro del repositorio, deben exportarse en formatos web optimizados y guardarse en una carpeta `assets/`.
+## Validación
 
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\validar.ps1
+```
+
+El validador comprueba que solo haya una plantilla de producto, que estén los 93 productos esperados y que todas las imágenes referenciadas existan dentro del repositorio.
