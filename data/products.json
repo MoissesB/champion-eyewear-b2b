@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T13:52:43.835Z",
+  "generatedAt": "2026-07-21T18:42:20.638Z",
   "contact": {
     "company": "Innova Eyewear",
     "whatsapp": "17542360600",
@@ -44,12 +44,11 @@
           "Compatible con lentes graduadas"
         ]
       },
-      "cover": "assets/images/optical/ch01-c1/cover.webp",
+      "cover": "assets/images/optical/ch01-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch01-c1/01.webp",
-        "assets/images/optical/ch01-c1/02.webp",
-        "assets/images/optical/ch01-c1/03.webp",
-        "assets/images/optical/ch01-c1/04.webp"
+        "assets/images/optical/ch01-c1/01-v2.webp",
+        "assets/images/optical/ch01-c1/02-v2.webp",
+        "assets/images/optical/ch01-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH01/CH01 C1/final/listo"
     },
@@ -86,12 +85,11 @@
           "Calidad Champion"
         ]
       },
-      "cover": "assets/images/optical/ch01-c2/cover.webp",
+      "cover": "assets/images/optical/ch01-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch01-c2/01.webp",
-        "assets/images/optical/ch01-c2/02.webp",
-        "assets/images/optical/ch01-c2/03.webp",
-        "assets/images/optical/ch01-c2/04.webp"
+        "assets/images/optical/ch01-c2/01-v2.webp",
+        "assets/images/optical/ch01-c2/02-v2.webp",
+        "assets/images/optical/ch01-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH01/CH01 C2/listo"
     },
@@ -128,12 +126,11 @@
           "Versátil para múltiples perfiles"
         ]
       },
-      "cover": "assets/images/optical/ch01-c3/cover.webp",
+      "cover": "assets/images/optical/ch01-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch01-c3/01.webp",
-        "assets/images/optical/ch01-c3/02.webp",
-        "assets/images/optical/ch01-c3/03.webp",
-        "assets/images/optical/ch01-c3/04.webp"
+        "assets/images/optical/ch01-c3/01-v2.webp",
+        "assets/images/optical/ch01-c3/02-v2.webp",
+        "assets/images/optical/ch01-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH01/CH01 C3/LISTO"
     },
@@ -170,12 +167,11 @@
           "Excelente para reposición"
         ]
       },
-      "cover": "assets/images/optical/ch01-c4/cover.webp",
+      "cover": "assets/images/optical/ch01-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch01-c4/01.webp",
-        "assets/images/optical/ch01-c4/02.webp",
-        "assets/images/optical/ch01-c4/03.webp",
-        "assets/images/optical/ch01-c4/04.webp"
+        "assets/images/optical/ch01-c4/01-v2.webp",
+        "assets/images/optical/ch01-c4/02-v2.webp",
+        "assets/images/optical/ch01-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH01/CH01 C4/listo"
     },
@@ -212,12 +208,11 @@
           "Compatible con todo tipo de lentes graduadas"
         ]
       },
-      "cover": "assets/images/optical/ch02-c1/cover.webp",
+      "cover": "assets/images/optical/ch02-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch02-c1/01.webp",
-        "assets/images/optical/ch02-c1/02.webp",
-        "assets/images/optical/ch02-c1/03.webp",
-        "assets/images/optical/ch02-c1/04.webp"
+        "assets/images/optical/ch02-c1/01-v2.webp",
+        "assets/images/optical/ch02-c1/02-v2.webp",
+        "assets/images/optical/ch02-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH02/CH02 C1/LISTO"
     },
@@ -254,12 +249,11 @@
           "Calidad y garantía Champion"
         ]
       },
-      "cover": "assets/images/optical/ch02-c2/cover.webp",
+      "cover": "assets/images/optical/ch02-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch02-c2/01.webp",
-        "assets/images/optical/ch02-c2/02.webp",
-        "assets/images/optical/ch02-c2/03.webp",
-        "assets/images/optical/ch02-c2/04.webp"
+        "assets/images/optical/ch02-c2/01-v2.webp",
+        "assets/images/optical/ch02-c2/02-v2.webp",
+        "assets/images/optical/ch02-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH02/CH02 C2/LISTO"
     },
@@ -296,12 +290,11 @@
           "Ideal para amplios rangos demográficos"
         ]
       },
-      "cover": "assets/images/optical/ch02-c3/cover.webp",
+      "cover": "assets/images/optical/ch02-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch02-c3/01.webp",
-        "assets/images/optical/ch02-c3/02.webp",
-        "assets/images/optical/ch02-c3/03.webp",
-        "assets/images/optical/ch02-c3/04.webp"
+        "assets/images/optical/ch02-c3/01-v2.webp",
+        "assets/images/optical/ch02-c3/02-v2.webp",
+        "assets/images/optical/ch02-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH02/CH02 C3/LISTO"
     },
@@ -338,12 +331,11 @@
           "Pieza clave para reposición prioritaria"
         ]
       },
-      "cover": "assets/images/optical/ch02-c4/cover.webp",
+      "cover": "assets/images/optical/ch02-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch02-c4/01.webp",
-        "assets/images/optical/ch02-c4/02.webp",
-        "assets/images/optical/ch02-c4/03.webp",
-        "assets/images/optical/ch02-c4/04.webp"
+        "assets/images/optical/ch02-c4/01-v2.webp",
+        "assets/images/optical/ch02-c4/02-v2.webp",
+        "assets/images/optical/ch02-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH02/CH02 C4/listo"
     },
@@ -380,12 +372,11 @@
           "Compatible con tratamientos y lentes especiales"
         ]
       },
-      "cover": "assets/images/optical/ch03-c1/cover.webp",
+      "cover": "assets/images/optical/ch03-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch03-c1/01.webp",
-        "assets/images/optical/ch03-c1/02.webp",
-        "assets/images/optical/ch03-c1/03.webp",
-        "assets/images/optical/ch03-c1/04.webp"
+        "assets/images/optical/ch03-c1/01-v2.webp",
+        "assets/images/optical/ch03-c1/02-v2.webp",
+        "assets/images/optical/ch03-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH03/CH03 C1/listo"
     },
@@ -422,12 +413,11 @@
           "Garantía de calidad de Champion Eyewear"
         ]
       },
-      "cover": "assets/images/optical/ch03-c2/cover.webp",
+      "cover": "assets/images/optical/ch03-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch03-c2/01.webp",
-        "assets/images/optical/ch03-c2/02.webp",
-        "assets/images/optical/ch03-c2/03.webp",
-        "assets/images/optical/ch03-c2/04.webp"
+        "assets/images/optical/ch03-c2/01-v2.webp",
+        "assets/images/optical/ch03-c2/02-v2.webp",
+        "assets/images/optical/ch03-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH03/CH03 C2/listo"
     },
@@ -464,12 +454,11 @@
           "Versatilidad visual comprobada"
         ]
       },
-      "cover": "assets/images/optical/ch03-c3/cover.webp",
+      "cover": "assets/images/optical/ch03-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch03-c3/01.webp",
-        "assets/images/optical/ch03-c3/02.webp",
-        "assets/images/optical/ch03-c3/03.webp",
-        "assets/images/optical/ch03-c3/04.webp"
+        "assets/images/optical/ch03-c3/01-v2.webp",
+        "assets/images/optical/ch03-c3/02-v2.webp",
+        "assets/images/optical/ch03-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH03/CH03 C3/listo"
     },
@@ -506,12 +495,11 @@
           "Pieza clave para reposición prioritaria"
         ]
       },
-      "cover": "assets/images/optical/ch03-c4/cover.webp",
+      "cover": "assets/images/optical/ch03-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch03-c4/01.webp",
-        "assets/images/optical/ch03-c4/02.webp",
-        "assets/images/optical/ch03-c4/03.webp",
-        "assets/images/optical/ch03-c4/04.webp"
+        "assets/images/optical/ch03-c4/01-v2.webp",
+        "assets/images/optical/ch03-c4/02-v2.webp",
+        "assets/images/optical/ch03-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH03/CH03 C4/listo"
     },
@@ -548,12 +536,11 @@
           "Compatible con lentes graduadas de uso diario"
         ]
       },
-      "cover": "assets/images/optical/ch04-c1/cover.webp",
+      "cover": "assets/images/optical/ch04-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch04-c1/01.webp",
-        "assets/images/optical/ch04-c1/02.webp",
-        "assets/images/optical/ch04-c1/03.webp",
-        "assets/images/optical/ch04-c1/04.webp"
+        "assets/images/optical/ch04-c1/01-v2.webp",
+        "assets/images/optical/ch04-c1/02-v2.webp",
+        "assets/images/optical/ch04-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH04/CH04 C1/listo"
     },
@@ -590,12 +577,11 @@
           "Pensado para rotación continua en óptica"
         ]
       },
-      "cover": "assets/images/optical/ch04-c2/cover.webp",
+      "cover": "assets/images/optical/ch04-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch04-c2/01.webp",
-        "assets/images/optical/ch04-c2/02.webp",
-        "assets/images/optical/ch04-c2/03.webp",
-        "assets/images/optical/ch04-c2/04.webp"
+        "assets/images/optical/ch04-c2/01-v2.webp",
+        "assets/images/optical/ch04-c2/02-v2.webp",
+        "assets/images/optical/ch04-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH04/CH04 C2/listo"
     },
@@ -632,12 +618,11 @@
           "Opción estratégica para reposición constante"
         ]
       },
-      "cover": "assets/images/optical/ch04-c3/cover.webp",
+      "cover": "assets/images/optical/ch04-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch04-c3/01.webp",
-        "assets/images/optical/ch04-c3/02.webp",
-        "assets/images/optical/ch04-c3/03.webp",
-        "assets/images/optical/ch04-c3/04.webp"
+        "assets/images/optical/ch04-c3/01-v2.webp",
+        "assets/images/optical/ch04-c3/02-v2.webp",
+        "assets/images/optical/ch04-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH04/CH04 C3/listo"
     },
@@ -674,12 +659,11 @@
           "Diseñada para uso diario con enfoque comercial"
         ]
       },
-      "cover": "assets/images/optical/ch04-c4/cover.webp",
+      "cover": "assets/images/optical/ch04-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch04-c4/01.webp",
-        "assets/images/optical/ch04-c4/02.webp",
-        "assets/images/optical/ch04-c4/03.webp",
-        "assets/images/optical/ch04-c4/04.webp"
+        "assets/images/optical/ch04-c4/01-v2.webp",
+        "assets/images/optical/ch04-c4/02-v2.webp",
+        "assets/images/optical/ch04-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH04/CH04 C4/listo"
     },
@@ -716,12 +700,11 @@
           "Compatible con todo tipo de lentes graduadas"
         ]
       },
-      "cover": "assets/images/optical/ch05-c1/cover.webp",
+      "cover": "assets/images/optical/ch05-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch05-c1/01.webp",
-        "assets/images/optical/ch05-c1/02.webp",
-        "assets/images/optical/ch05-c1/03.webp",
-        "assets/images/optical/ch05-c1/04.webp"
+        "assets/images/optical/ch05-c1/01-v2.webp",
+        "assets/images/optical/ch05-c1/02-v2.webp",
+        "assets/images/optical/ch05-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH05/CH05 C1/listo"
     },
@@ -758,12 +741,11 @@
           "Construcción cómoda para el día a día"
         ]
       },
-      "cover": "assets/images/optical/ch05-c2/cover.webp",
+      "cover": "assets/images/optical/ch05-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch05-c2/01.webp",
-        "assets/images/optical/ch05-c2/02.webp",
-        "assets/images/optical/ch05-c2/03.webp",
-        "assets/images/optical/ch05-c2/04.webp"
+        "assets/images/optical/ch05-c2/01-v2.webp",
+        "assets/images/optical/ch05-c2/02-v2.webp",
+        "assets/images/optical/ch05-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH05/CH05 C2/listo"
     },
@@ -800,12 +782,11 @@
           "Alta compatibilidad con lentes graduadas y tratamientos"
         ]
       },
-      "cover": "assets/images/optical/ch05-c3/cover.webp",
+      "cover": "assets/images/optical/ch05-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch05-c3/01.webp",
-        "assets/images/optical/ch05-c3/02.webp",
-        "assets/images/optical/ch05-c3/03.webp",
-        "assets/images/optical/ch05-c3/04.webp"
+        "assets/images/optical/ch05-c3/01-v2.webp",
+        "assets/images/optical/ch05-c3/02-v2.webp",
+        "assets/images/optical/ch05-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH05/CH05 C3/listo"
     },
@@ -842,12 +823,11 @@
           "Construcción robusta y cómoda para uso continuo"
         ]
       },
-      "cover": "assets/images/optical/ch05-c4/cover.webp",
+      "cover": "assets/images/optical/ch05-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch05-c4/01.webp",
-        "assets/images/optical/ch05-c4/02.webp",
-        "assets/images/optical/ch05-c4/03.webp",
-        "assets/images/optical/ch05-c4/04.webp"
+        "assets/images/optical/ch05-c4/01-v2.webp",
+        "assets/images/optical/ch05-c4/02-v2.webp",
+        "assets/images/optical/ch05-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH05/CH05 C4/listo"
     },
@@ -884,12 +864,11 @@
           "Compatible con un amplio rango de lentes graduadas"
         ]
       },
-      "cover": "assets/images/optical/ch06-c1/cover.webp",
+      "cover": "assets/images/optical/ch06-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch06-c1/01.webp",
-        "assets/images/optical/ch06-c1/02.webp",
-        "assets/images/optical/ch06-c1/03.webp",
-        "assets/images/optical/ch06-c1/04.webp"
+        "assets/images/optical/ch06-c1/01-v2.webp",
+        "assets/images/optical/ch06-c1/02-v2.webp",
+        "assets/images/optical/ch06-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH06/CH06 C1/listo"
     },
@@ -926,12 +905,11 @@
           "Calidad estructural y garantía Champion"
         ]
       },
-      "cover": "assets/images/optical/ch06-c2/cover.webp",
+      "cover": "assets/images/optical/ch06-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch06-c2/01.webp",
-        "assets/images/optical/ch06-c2/02.webp",
-        "assets/images/optical/ch06-c2/03.webp",
-        "assets/images/optical/ch06-c2/04.webp"
+        "assets/images/optical/ch06-c2/01-v2.webp",
+        "assets/images/optical/ch06-c2/02-v2.webp",
+        "assets/images/optical/ch06-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH06/CH06 C2/listo"
     },
@@ -968,12 +946,11 @@
           "Ideal para amplios rangos demográficos"
         ]
       },
-      "cover": "assets/images/optical/ch06-c3/cover.webp",
+      "cover": "assets/images/optical/ch06-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch06-c3/01.webp",
-        "assets/images/optical/ch06-c3/02.webp",
-        "assets/images/optical/ch06-c3/03.webp",
-        "assets/images/optical/ch06-c3/04.webp"
+        "assets/images/optical/ch06-c3/01-v2.webp",
+        "assets/images/optical/ch06-c3/02-v2.webp",
+        "assets/images/optical/ch06-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH06/CH06 C3/listo"
     },
@@ -1010,12 +987,11 @@
           "Pieza clave para reposición prioritaria en inventarios"
         ]
       },
-      "cover": "assets/images/optical/ch06-c4/cover.webp",
+      "cover": "assets/images/optical/ch06-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch06-c4/01.webp",
-        "assets/images/optical/ch06-c4/02.webp",
-        "assets/images/optical/ch06-c4/03.webp",
-        "assets/images/optical/ch06-c4/04.webp"
+        "assets/images/optical/ch06-c4/01-v2.webp",
+        "assets/images/optical/ch06-c4/02-v2.webp",
+        "assets/images/optical/ch06-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH06/CH06 C4/listo"
     },
@@ -1052,12 +1028,11 @@
           "Excelente opción para reposición constante y venta recurrente"
         ]
       },
-      "cover": "assets/images/optical/ch07-c1/cover.webp",
+      "cover": "assets/images/optical/ch07-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch07-c1/01.webp",
-        "assets/images/optical/ch07-c1/02.webp",
-        "assets/images/optical/ch07-c1/03.webp",
-        "assets/images/optical/ch07-c1/04.webp"
+        "assets/images/optical/ch07-c1/01-v2.webp",
+        "assets/images/optical/ch07-c1/02-v2.webp",
+        "assets/images/optical/ch07-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH07/CH07 C1/listo"
     },
@@ -1094,12 +1069,11 @@
           "Aporta valor visual sin alejarse del segmento de uso diario"
         ]
       },
-      "cover": "assets/images/optical/ch07-c2/cover.webp",
+      "cover": "assets/images/optical/ch07-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch07-c2/01.webp",
-        "assets/images/optical/ch07-c2/02.webp",
-        "assets/images/optical/ch07-c2/03.webp",
-        "assets/images/optical/ch07-c2/04.webp"
+        "assets/images/optical/ch07-c2/01-v2.webp",
+        "assets/images/optical/ch07-c2/02-v2.webp",
+        "assets/images/optical/ch07-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH07/CH07 C2/listo"
     },
@@ -1136,12 +1110,11 @@
           "Buena referencia para escaparates y surtidos de tendencia"
         ]
       },
-      "cover": "assets/images/optical/ch07-c3/cover.webp",
+      "cover": "assets/images/optical/ch07-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch07-c3/01.webp",
-        "assets/images/optical/ch07-c3/02.webp",
-        "assets/images/optical/ch07-c3/03.webp",
-        "assets/images/optical/ch07-c3/04.webp"
+        "assets/images/optical/ch07-c3/01-v2.webp",
+        "assets/images/optical/ch07-c3/02-v2.webp",
+        "assets/images/optical/ch07-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH07/CH07 C3/listo"
     },
@@ -1178,12 +1151,11 @@
           "Recomendado para surtidos de imagen sobria y diferenciada"
         ]
       },
-      "cover": "assets/images/optical/ch07-c4/cover.webp",
+      "cover": "assets/images/optical/ch07-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch07-c4/01.webp",
-        "assets/images/optical/ch07-c4/02.webp",
-        "assets/images/optical/ch07-c4/03.webp",
-        "assets/images/optical/ch07-c4/04.webp"
+        "assets/images/optical/ch07-c4/01-v2.webp",
+        "assets/images/optical/ch07-c4/02-v2.webp",
+        "assets/images/optical/ch07-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH07/CH07 C4/listo"
     },
@@ -1220,12 +1192,11 @@
           "Ideal para reposición continua en óptica"
         ]
       },
-      "cover": "assets/images/optical/ch08-c1/cover.webp",
+      "cover": "assets/images/optical/ch08-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch08-c1/01.webp",
-        "assets/images/optical/ch08-c1/02.webp",
-        "assets/images/optical/ch08-c1/03.webp",
-        "assets/images/optical/ch08-c1/04.webp"
+        "assets/images/optical/ch08-c1/01-v2.webp",
+        "assets/images/optical/ch08-c1/02-v2.webp",
+        "assets/images/optical/ch08-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH08/CH08 C1/listo"
     },
@@ -1262,12 +1233,11 @@
           "Aporta variedad sin romper la línea de colección"
         ]
       },
-      "cover": "assets/images/optical/ch08-c2/cover.webp",
+      "cover": "assets/images/optical/ch08-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch08-c2/01.webp",
-        "assets/images/optical/ch08-c2/02.webp",
-        "assets/images/optical/ch08-c2/03.webp",
-        "assets/images/optical/ch08-c2/04.webp"
+        "assets/images/optical/ch08-c2/01-v2.webp",
+        "assets/images/optical/ch08-c2/02-v2.webp",
+        "assets/images/optical/ch08-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH08/CH08 C2/listo"
     },
@@ -1304,12 +1274,11 @@
           "Modelo versátil para surtidos de alta salida"
         ]
       },
-      "cover": "assets/images/optical/ch08-c3/cover.webp",
+      "cover": "assets/images/optical/ch08-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch08-c3/01.webp",
-        "assets/images/optical/ch08-c3/02.webp",
-        "assets/images/optical/ch08-c3/03.webp",
-        "assets/images/optical/ch08-c3/04.webp"
+        "assets/images/optical/ch08-c3/01-v2.webp",
+        "assets/images/optical/ch08-c3/02-v2.webp",
+        "assets/images/optical/ch08-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH08/CH08 C3/listo"
     },
@@ -1346,12 +1315,11 @@
           "Aporta diferenciación dentro del lineal"
         ]
       },
-      "cover": "assets/images/optical/ch08-c4/cover.webp",
+      "cover": "assets/images/optical/ch08-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch08-c4/01.webp",
-        "assets/images/optical/ch08-c4/02.webp",
-        "assets/images/optical/ch08-c4/03.webp",
-        "assets/images/optical/ch08-c4/04.webp"
+        "assets/images/optical/ch08-c4/01-v2.webp",
+        "assets/images/optical/ch08-c4/02-v2.webp",
+        "assets/images/optical/ch08-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH08/CH08 C4/listo"
     },
@@ -1388,12 +1356,11 @@
           "Ideal para vitrinas de rotación rápida y reposición continua"
         ]
       },
-      "cover": "assets/images/optical/ch09-c1/cover.webp",
+      "cover": "assets/images/optical/ch09-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch09-c1/01.webp",
-        "assets/images/optical/ch09-c1/02.webp",
-        "assets/images/optical/ch09-c1/03.webp",
-        "assets/images/optical/ch09-c1/04.webp"
+        "assets/images/optical/ch09-c1/01-v2.webp",
+        "assets/images/optical/ch09-c1/02-v2.webp",
+        "assets/images/optical/ch09-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH09/CH09 C1/listo"
     },
@@ -1430,12 +1397,11 @@
           "Aporta variedad visual al exhibidor sin romper coherencia de línea"
         ]
       },
-      "cover": "assets/images/optical/ch09-c2/cover.webp",
+      "cover": "assets/images/optical/ch09-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch09-c2/01.webp",
-        "assets/images/optical/ch09-c2/02.webp",
-        "assets/images/optical/ch09-c2/03.webp",
-        "assets/images/optical/ch09-c2/04.webp"
+        "assets/images/optical/ch09-c2/01-v2.webp",
+        "assets/images/optical/ch09-c2/02-v2.webp",
+        "assets/images/optical/ch09-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH09/CH09 C2/listo"
     },
@@ -1472,12 +1438,11 @@
           "Muy útil para exhibiciones con mezcla de clásicos y nuevos tonos"
         ]
       },
-      "cover": "assets/images/optical/ch09-c3/cover.webp",
+      "cover": "assets/images/optical/ch09-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch09-c3/01.webp",
-        "assets/images/optical/ch09-c3/02.webp",
-        "assets/images/optical/ch09-c3/03.webp",
-        "assets/images/optical/ch09-c3/04.webp"
+        "assets/images/optical/ch09-c3/01-v2.webp",
+        "assets/images/optical/ch09-c3/02-v2.webp",
+        "assets/images/optical/ch09-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH09/CH09 C3/listo"
     },
@@ -1514,12 +1479,11 @@
           "Excelente apoyo para surtidos sport-casual de aspecto premium"
         ]
       },
-      "cover": "assets/images/optical/ch09-c4/cover.webp",
+      "cover": "assets/images/optical/ch09-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch09-c4/01.webp",
-        "assets/images/optical/ch09-c4/02.webp",
-        "assets/images/optical/ch09-c4/03.webp",
-        "assets/images/optical/ch09-c4/04.webp"
+        "assets/images/optical/ch09-c4/01-v2.webp",
+        "assets/images/optical/ch09-c4/02-v2.webp",
+        "assets/images/optical/ch09-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH09/CH09 C4/Final"
     },
@@ -1556,12 +1520,11 @@
           "Adecuado para lentes graduadas de uso diario"
         ]
       },
-      "cover": "assets/images/optical/ch10-c1/cover.webp",
+      "cover": "assets/images/optical/ch10-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch10-c1/01.webp",
-        "assets/images/optical/ch10-c1/02.webp",
-        "assets/images/optical/ch10-c1/03.webp",
-        "assets/images/optical/ch10-c1/04.webp"
+        "assets/images/optical/ch10-c1/01-v2.webp",
+        "assets/images/optical/ch10-c1/02-v2.webp",
+        "assets/images/optical/ch10-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH010/CH010 C1/Final"
     },
@@ -1598,12 +1561,11 @@
           "Formato versátil para ópticas y distribuidores"
         ]
       },
-      "cover": "assets/images/optical/ch10-c2/cover.webp",
+      "cover": "assets/images/optical/ch10-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch10-c2/01.webp",
-        "assets/images/optical/ch10-c2/02.webp",
-        "assets/images/optical/ch10-c2/03.webp",
-        "assets/images/optical/ch10-c2/04.webp"
+        "assets/images/optical/ch10-c2/01-v2.webp",
+        "assets/images/optical/ch10-c2/02-v2.webp",
+        "assets/images/optical/ch10-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH010/CH010 C2/Final"
     },
@@ -1640,12 +1602,11 @@
           "Opción recomendada para ampliar surtidos por color"
         ]
       },
-      "cover": "assets/images/optical/ch10-c3/cover.webp",
+      "cover": "assets/images/optical/ch10-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch10-c3/01.webp",
-        "assets/images/optical/ch10-c3/02.webp",
-        "assets/images/optical/ch10-c3/03.webp",
-        "assets/images/optical/ch10-c3/04.webp"
+        "assets/images/optical/ch10-c3/01-v2.webp",
+        "assets/images/optical/ch10-c3/02-v2.webp",
+        "assets/images/optical/ch10-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH010/CH010 C3/FINAL"
     },
@@ -1682,12 +1643,11 @@
           "Perfil rectangular suave adaptable a venta diaria"
         ]
       },
-      "cover": "assets/images/optical/ch10-c4/cover.webp",
+      "cover": "assets/images/optical/ch10-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch10-c4/01.webp",
-        "assets/images/optical/ch10-c4/02.webp",
-        "assets/images/optical/ch10-c4/03.webp",
-        "assets/images/optical/ch10-c4/04.webp"
+        "assets/images/optical/ch10-c4/01-v2.webp",
+        "assets/images/optical/ch10-c4/02-v2.webp",
+        "assets/images/optical/ch10-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH010/CH10 C4/final"
     },
@@ -1724,12 +1684,11 @@
           "Compatible con diversos tipos de graduación"
         ]
       },
-      "cover": "assets/images/optical/ch11-c1/cover.webp",
+      "cover": "assets/images/optical/ch11-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch11-c1/01.webp",
-        "assets/images/optical/ch11-c1/02.webp",
-        "assets/images/optical/ch11-c1/03.webp",
-        "assets/images/optical/ch11-c1/04.webp"
+        "assets/images/optical/ch11-c1/01-v2.webp",
+        "assets/images/optical/ch11-c1/02-v2.webp",
+        "assets/images/optical/ch11-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH11/CH11 C1/Final"
     },
@@ -1766,12 +1725,11 @@
           "Bisagras y apoyos optimizados"
         ]
       },
-      "cover": "assets/images/optical/ch11-c2/cover.webp",
+      "cover": "assets/images/optical/ch11-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch11-c2/01.webp",
-        "assets/images/optical/ch11-c2/02.webp",
-        "assets/images/optical/ch11-c2/03.webp",
-        "assets/images/optical/ch11-c2/04.webp"
+        "assets/images/optical/ch11-c2/01-v2.webp",
+        "assets/images/optical/ch11-c2/02-v2.webp",
+        "assets/images/optical/ch11-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH11/CH11 C2/Final"
     },
@@ -1808,12 +1766,11 @@
           "Pieza clave de alta rotación"
         ]
       },
-      "cover": "assets/images/optical/ch11-c3/cover.webp",
+      "cover": "assets/images/optical/ch11-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch11-c3/01.webp",
-        "assets/images/optical/ch11-c3/02.webp",
-        "assets/images/optical/ch11-c3/03.webp",
-        "assets/images/optical/ch11-c3/04.webp"
+        "assets/images/optical/ch11-c3/01-v2.webp",
+        "assets/images/optical/ch11-c3/02-v2.webp",
+        "assets/images/optical/ch11-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH11/CH11 C3/FINAL"
     },
@@ -1850,12 +1807,11 @@
           "Mantenimiento sencillo y fácil adaptación"
         ]
       },
-      "cover": "assets/images/optical/ch11-c4/cover.webp",
+      "cover": "assets/images/optical/ch11-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch11-c4/01.webp",
-        "assets/images/optical/ch11-c4/02.webp",
-        "assets/images/optical/ch11-c4/03.webp",
-        "assets/images/optical/ch11-c4/04.webp"
+        "assets/images/optical/ch11-c4/01-v2.webp",
+        "assets/images/optical/ch11-c4/02-v2.webp",
+        "assets/images/optical/ch11-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH11/CH11 C4/final"
     },
@@ -1892,12 +1848,11 @@
           "Soporte ideal para lentes progresivas"
         ]
       },
-      "cover": "assets/images/optical/ch12-c1/cover.webp",
+      "cover": "assets/images/optical/ch12-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch12-c1/01.webp",
-        "assets/images/optical/ch12-c1/02.webp",
-        "assets/images/optical/ch12-c1/03.webp",
-        "assets/images/optical/ch12-c1/04.webp"
+        "assets/images/optical/ch12-c1/01-v2.webp",
+        "assets/images/optical/ch12-c1/02-v2.webp",
+        "assets/images/optical/ch12-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH12/CH12 C1/FINAL"
     },
@@ -1934,12 +1889,11 @@
           "Apto para graduaciones altas"
         ]
       },
-      "cover": "assets/images/optical/ch12-c2/cover.webp",
+      "cover": "assets/images/optical/ch12-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch12-c2/01.webp",
-        "assets/images/optical/ch12-c2/02.webp",
-        "assets/images/optical/ch12-c2/03.webp",
-        "assets/images/optical/ch12-c2/04.webp"
+        "assets/images/optical/ch12-c2/01-v2.webp",
+        "assets/images/optical/ch12-c2/02-v2.webp",
+        "assets/images/optical/ch12-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH12/CH12 C2/FINAL"
     },
@@ -1976,12 +1930,11 @@
           "Estética limpia y minimalista"
         ]
       },
-      "cover": "assets/images/optical/ch12-c3/cover.webp",
+      "cover": "assets/images/optical/ch12-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch12-c3/01.webp",
-        "assets/images/optical/ch12-c3/02.webp",
-        "assets/images/optical/ch12-c3/03.webp",
-        "assets/images/optical/ch12-c3/04.webp"
+        "assets/images/optical/ch12-c3/01-v2.webp",
+        "assets/images/optical/ch12-c3/02-v2.webp",
+        "assets/images/optical/ch12-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH12/CH12 C3/final"
     },
@@ -2018,12 +1971,11 @@
           "Excelente margen de rentabilidad en reposición"
         ]
       },
-      "cover": "assets/images/optical/ch12-c4/cover.webp",
+      "cover": "assets/images/optical/ch12-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch12-c4/01.webp",
-        "assets/images/optical/ch12-c4/02.webp",
-        "assets/images/optical/ch12-c4/03.webp",
-        "assets/images/optical/ch12-c4/04.webp"
+        "assets/images/optical/ch12-c4/01-v2.webp",
+        "assets/images/optical/ch12-c4/02-v2.webp",
+        "assets/images/optical/ch12-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH12/CH12 C4/final"
     },
@@ -2060,12 +2012,11 @@
           "Compatible con todo tipo de micas graduadas"
         ]
       },
-      "cover": "assets/images/optical/ch13-c1/cover.webp",
+      "cover": "assets/images/optical/ch13-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch13-c1/01.webp",
-        "assets/images/optical/ch13-c1/02.webp",
-        "assets/images/optical/ch13-c1/03.webp",
-        "assets/images/optical/ch13-c1/04.webp"
+        "assets/images/optical/ch13-c1/01-v2.webp",
+        "assets/images/optical/ch13-c1/02-v2.webp",
+        "assets/images/optical/ch13-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH13/CH13 C1/final"
     },
@@ -2102,12 +2053,11 @@
           "Calidad garantizada por Champion"
         ]
       },
-      "cover": "assets/images/optical/ch13-c2/cover.webp",
+      "cover": "assets/images/optical/ch13-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch13-c2/01.webp",
-        "assets/images/optical/ch13-c2/02.webp",
-        "assets/images/optical/ch13-c2/03.webp",
-        "assets/images/optical/ch13-c2/04.webp"
+        "assets/images/optical/ch13-c2/01-v2.webp",
+        "assets/images/optical/ch13-c2/02-v2.webp",
+        "assets/images/optical/ch13-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH13/CH13 C2/final"
     },
@@ -2144,12 +2094,11 @@
           "Ideal para un público amplio y exigente"
         ]
       },
-      "cover": "assets/images/optical/ch13-c3/cover.webp",
+      "cover": "assets/images/optical/ch13-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch13-c3/01.webp",
-        "assets/images/optical/ch13-c3/02.webp",
-        "assets/images/optical/ch13-c3/03.webp",
-        "assets/images/optical/ch13-c3/04.webp"
+        "assets/images/optical/ch13-c3/01-v2.webp",
+        "assets/images/optical/ch13-c3/02-v2.webp",
+        "assets/images/optical/ch13-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH13/CH13 C3"
     },
@@ -2186,12 +2135,11 @@
           "Pieza clave para reposición de inventario prioritaria"
         ]
       },
-      "cover": "assets/images/optical/ch13-c4/cover.webp",
+      "cover": "assets/images/optical/ch13-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch13-c4/01.webp",
-        "assets/images/optical/ch13-c4/02.webp",
-        "assets/images/optical/ch13-c4/03.webp",
-        "assets/images/optical/ch13-c4/04.webp"
+        "assets/images/optical/ch13-c4/01-v2.webp",
+        "assets/images/optical/ch13-c4/02-v2.webp",
+        "assets/images/optical/ch13-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH13/CH13 C4/listo"
     },
@@ -2228,12 +2176,11 @@
           "Compatible con lentes graduadas de uso diario"
         ]
       },
-      "cover": "assets/images/optical/ch14-c1/cover.webp",
+      "cover": "assets/images/optical/ch14-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch14-c1/01.webp",
-        "assets/images/optical/ch14-c1/02.webp",
-        "assets/images/optical/ch14-c1/03.webp",
-        "assets/images/optical/ch14-c1/04.webp"
+        "assets/images/optical/ch14-c1/01-v2.webp",
+        "assets/images/optical/ch14-c1/02-v2.webp",
+        "assets/images/optical/ch14-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH14/CH14 C1"
     },
@@ -2270,12 +2217,11 @@
           "Rotación recomendada en colecciones masculinas y unisex"
         ]
       },
-      "cover": "assets/images/optical/ch14-c2/cover.webp",
+      "cover": "assets/images/optical/ch14-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch14-c2/01.webp",
-        "assets/images/optical/ch14-c2/02.webp",
-        "assets/images/optical/ch14-c2/03.webp",
-        "assets/images/optical/ch14-c2/04.webp"
+        "assets/images/optical/ch14-c2/01-v2.webp",
+        "assets/images/optical/ch14-c2/02-v2.webp",
+        "assets/images/optical/ch14-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH14/CH14 C2/listo"
     },
@@ -2312,12 +2258,11 @@
           "Excelente alternativa para surtidos con enfoque juvenil-adulto"
         ]
       },
-      "cover": "assets/images/optical/ch14-c3/cover.webp",
+      "cover": "assets/images/optical/ch14-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch14-c3/01.webp",
-        "assets/images/optical/ch14-c3/02.webp",
-        "assets/images/optical/ch14-c3/03.webp",
-        "assets/images/optical/ch14-c3/04.webp"
+        "assets/images/optical/ch14-c3/01-v2.webp",
+        "assets/images/optical/ch14-c3/02-v2.webp",
+        "assets/images/optical/ch14-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH14/CH14 C3/LISTO"
     },
@@ -2354,12 +2299,11 @@
           "Recomendada para surtidos con foco en novedad y reposición"
         ]
       },
-      "cover": "assets/images/optical/ch14-c4/cover.webp",
+      "cover": "assets/images/optical/ch14-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch14-c4/01.webp",
-        "assets/images/optical/ch14-c4/02.webp",
-        "assets/images/optical/ch14-c4/03.webp",
-        "assets/images/optical/ch14-c4/04.webp"
+        "assets/images/optical/ch14-c4/01-v2.webp",
+        "assets/images/optical/ch14-c4/02-v2.webp",
+        "assets/images/optical/ch14-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH14/CH14 C4/listo"
     },
@@ -2396,12 +2340,11 @@
           "Modelo comercialmente sólido para reposición"
         ]
       },
-      "cover": "assets/images/optical/ch15-c1/cover.webp",
+      "cover": "assets/images/optical/ch15-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch15-c1/01.webp",
-        "assets/images/optical/ch15-c1/02.webp",
-        "assets/images/optical/ch15-c1/03.webp",
-        "assets/images/optical/ch15-c1/04.webp"
+        "assets/images/optical/ch15-c1/01-v2.webp",
+        "assets/images/optical/ch15-c1/02-v2.webp",
+        "assets/images/optical/ch15-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH15/CH15 C1/Listo"
     },
@@ -2438,12 +2381,11 @@
           "Ideal para ampliar surtido con una opción visualmente ligera"
         ]
       },
-      "cover": "assets/images/optical/ch15-c2/cover.webp",
+      "cover": "assets/images/optical/ch15-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch15-c2/01.webp",
-        "assets/images/optical/ch15-c2/02.webp",
-        "assets/images/optical/ch15-c2/03.webp",
-        "assets/images/optical/ch15-c2/04.webp"
+        "assets/images/optical/ch15-c2/01-v2.webp",
+        "assets/images/optical/ch15-c2/02-v2.webp",
+        "assets/images/optical/ch15-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH15/CH15 C2/Listo"
     },
@@ -2480,12 +2422,11 @@
           "Adecuado para surtidos modernos y exhibiciones destacadas"
         ]
       },
-      "cover": "assets/images/optical/ch15-c3/cover.webp",
+      "cover": "assets/images/optical/ch15-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch15-c3/01.webp",
-        "assets/images/optical/ch15-c3/02.webp",
-        "assets/images/optical/ch15-c3/03.webp",
-        "assets/images/optical/ch15-c3/04.webp"
+        "assets/images/optical/ch15-c3/01-v2.webp",
+        "assets/images/optical/ch15-c3/02-v2.webp",
+        "assets/images/optical/ch15-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH15/CH15 C3/Listo"
     },
@@ -2522,12 +2463,11 @@
           "Muy útil como variante diferenciadora dentro del surtido"
         ]
       },
-      "cover": "assets/images/optical/ch15-c4/cover.webp",
+      "cover": "assets/images/optical/ch15-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch15-c4/01.webp",
-        "assets/images/optical/ch15-c4/02.webp",
-        "assets/images/optical/ch15-c4/03.webp",
-        "assets/images/optical/ch15-c4/04.webp"
+        "assets/images/optical/ch15-c4/01-v2.webp",
+        "assets/images/optical/ch15-c4/02-v2.webp",
+        "assets/images/optical/ch15-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH15/CH15 C4/Listo"
     },
@@ -2564,12 +2504,11 @@
           "Compatible con lentes graduadas de uso diario"
         ]
       },
-      "cover": "assets/images/optical/ch16-c1/cover.webp",
+      "cover": "assets/images/optical/ch16-c1/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch16-c1/01.webp",
-        "assets/images/optical/ch16-c1/02.webp",
-        "assets/images/optical/ch16-c1/03.webp",
-        "assets/images/optical/ch16-c1/04.webp"
+        "assets/images/optical/ch16-c1/01-v2.webp",
+        "assets/images/optical/ch16-c1/02-v2.webp",
+        "assets/images/optical/ch16-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH16/CH16 C1/Listo"
     },
@@ -2606,12 +2545,11 @@
           "Pensado para rotación continua en óptica comercial"
         ]
       },
-      "cover": "assets/images/optical/ch16-c2/cover.webp",
+      "cover": "assets/images/optical/ch16-c2/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch16-c2/01.webp",
-        "assets/images/optical/ch16-c2/02.webp",
-        "assets/images/optical/ch16-c2/03.webp",
-        "assets/images/optical/ch16-c2/04.webp"
+        "assets/images/optical/ch16-c2/01-v2.webp",
+        "assets/images/optical/ch16-c2/02-v2.webp",
+        "assets/images/optical/ch16-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH16/CH16 C2/Listo"
     },
@@ -2648,12 +2586,11 @@
           "Funciona como referencia segura dentro de la serie CH16"
         ]
       },
-      "cover": "assets/images/optical/ch16-c3/cover.webp",
+      "cover": "assets/images/optical/ch16-c3/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch16-c3/01.webp",
-        "assets/images/optical/ch16-c3/02.webp",
-        "assets/images/optical/ch16-c3/03.webp",
-        "assets/images/optical/ch16-c3/04.webp"
+        "assets/images/optical/ch16-c3/01-v2.webp",
+        "assets/images/optical/ch16-c3/02-v2.webp",
+        "assets/images/optical/ch16-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH16/CH16 C3/Listo"
     },
@@ -2690,12 +2627,11 @@
           "Recomendado para clientes que buscan contraste en vitrina"
         ]
       },
-      "cover": "assets/images/optical/ch16-c4/cover.webp",
+      "cover": "assets/images/optical/ch16-c4/cover-v2.webp",
       "images": [
-        "assets/images/optical/ch16-c4/01.webp",
-        "assets/images/optical/ch16-c4/02.webp",
-        "assets/images/optical/ch16-c4/03.webp",
-        "assets/images/optical/ch16-c4/04.webp"
+        "assets/images/optical/ch16-c4/01-v2.webp",
+        "assets/images/optical/ch16-c4/02-v2.webp",
+        "assets/images/optical/ch16-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH16/CH16 C4/Listo"
     },
@@ -2732,12 +2668,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-01-c1/cover.webp",
+      "cover": "assets/images/sun/chs-01-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-01-c1/01.webp",
-        "assets/images/sun/chs-01-c1/02.webp",
-        "assets/images/sun/chs-01-c1/03.webp",
-        "assets/images/sun/chs-01-c1/04.webp"
+        "assets/images/sun/chs-01-c1/01-v2.webp",
+        "assets/images/sun/chs-01-c1/02-v2.webp",
+        "assets/images/sun/chs-01-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -2774,12 +2709,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c1/cover.webp",
+      "cover": "assets/images/sun/chs-02-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-02-c1/01.webp",
-        "assets/images/sun/chs-02-c1/02.webp",
-        "assets/images/sun/chs-02-c1/03.webp",
-        "assets/images/sun/chs-02-c1/04.webp"
+        "assets/images/sun/chs-02-c1/01-v2.webp",
+        "assets/images/sun/chs-02-c1/02-v2.webp",
+        "assets/images/sun/chs-02-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -2816,11 +2750,10 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c2/cover.webp",
+      "cover": "assets/images/sun/chs-02-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-02-c2/01.webp",
-        "assets/images/sun/chs-02-c2/02.webp",
-        "assets/images/sun/chs-02-c2/03.webp"
+        "assets/images/sun/chs-02-c2/01-v2.webp",
+        "assets/images/sun/chs-02-c2/02-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -2832,14 +2765,14 @@
       "variant": "C3",
       "model": "CHS-02 C3",
       "displayModel": "CHS-02 C3",
-      "color": "Negro / lente dorado espejado",
+      "color": "Azul oscuro / lente azul espejado",
       "measurements": "Por confirmar con Innova",
       "material": "Material técnico de alta resistencia",
       "shape": "Rectangular deportiva",
       "lens": "Lente solar espejado",
       "protection": "Categoría UV por confirmar con Innova",
       "sku": "CHS-02-C3",
-      "shortDescription": "Rectangular deportiva con identidad Champion y acabado negro / lente dorado espejado.",
+      "shortDescription": "Rectangular deportiva con identidad Champion y acabado azul oscuro / lente azul espejado.",
       "subline": "CHS-02 C3 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
       "tags": [
         "Champion Sun",
@@ -2848,21 +2781,19 @@
         "C3"
       ],
       "about": {
-        "p1": "El CHS-02 C3 combina una silueta rectangular deportiva con negro / lente dorado espejado, aportando presencia inmediata en exhibición.",
+        "p1": "El CHS-02 C3 combina una silueta rectangular deportiva con azul oscuro / lente azul espejado, aportando presencia inmediata en exhibición.",
         "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
         "bullets": [
-          "Negro / lente dorado espejado",
+          "Azul oscuro / lente azul espejado",
           "Rectangular deportiva",
           "Presentación B2B para ópticas",
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c3/cover.webp",
+      "cover": "assets/images/sun/chs-02-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-02-c3/01.webp",
-        "assets/images/sun/chs-02-c3/02.webp",
-        "assets/images/sun/chs-02-c3/03.webp",
-        "assets/images/sun/chs-02-c3/04.webp"
+        "assets/images/sun/chs-02-c3/01-v2.webp",
+        "assets/images/sun/chs-02-c3/02-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -2899,12 +2830,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c4/cover.webp",
+      "cover": "assets/images/sun/chs-02-c4/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-02-c4/01.webp",
-        "assets/images/sun/chs-02-c4/02.webp",
-        "assets/images/sun/chs-02-c4/03.webp",
-        "assets/images/sun/chs-02-c4/04.webp"
+        "assets/images/sun/chs-02-c4/01-v2.webp",
+        "assets/images/sun/chs-02-c4/02-v2.webp",
+        "assets/images/sun/chs-02-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -2941,14 +2871,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-03-c1/cover.webp",
+      "cover": "assets/images/sun/chs-03-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-03-c1/01.webp",
-        "assets/images/sun/chs-03-c1/02.webp",
-        "assets/images/sun/chs-03-c1/03.webp",
-        "assets/images/sun/chs-03-c1/04.webp",
-        "assets/images/sun/chs-03-c1/05.webp",
-        "assets/images/sun/chs-03-c1/06.webp"
+        "assets/images/sun/chs-03-c1/01-v2.webp",
+        "assets/images/sun/chs-03-c1/02-v2.webp",
+        "assets/images/sun/chs-03-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -2985,11 +2912,10 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c1/cover.webp",
+      "cover": "assets/images/sun/chs-04-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-04-c1/01.webp",
-        "assets/images/sun/chs-04-c1/02.webp",
-        "assets/images/sun/chs-04-c1/03.webp"
+        "assets/images/sun/chs-04-c1/01-v2.webp",
+        "assets/images/sun/chs-04-c1/02-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3026,12 +2952,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c2/cover.webp",
+      "cover": "assets/images/sun/chs-04-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-04-c2/01.webp",
-        "assets/images/sun/chs-04-c2/02.webp",
-        "assets/images/sun/chs-04-c2/03.webp",
-        "assets/images/sun/chs-04-c2/04.webp"
+        "assets/images/sun/chs-04-c2/01-v2.webp",
+        "assets/images/sun/chs-04-c2/02-v2.webp",
+        "assets/images/sun/chs-04-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3068,13 +2993,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c3/cover.webp",
+      "cover": "assets/images/sun/chs-04-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-04-c3/01.webp",
-        "assets/images/sun/chs-04-c3/02.webp",
-        "assets/images/sun/chs-04-c3/03.webp",
-        "assets/images/sun/chs-04-c3/04.webp",
-        "assets/images/sun/chs-04-c3/05.webp"
+        "assets/images/sun/chs-04-c3/01-v2.webp",
+        "assets/images/sun/chs-04-c3/02-v2.webp",
+        "assets/images/sun/chs-04-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3111,11 +3034,10 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c4/cover.webp",
+      "cover": "assets/images/sun/chs-04-c4/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-04-c4/01.webp",
-        "assets/images/sun/chs-04-c4/02.webp",
-        "assets/images/sun/chs-04-c4/03.webp"
+        "assets/images/sun/chs-04-c4/01-v2.webp",
+        "assets/images/sun/chs-04-c4/02-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3152,13 +3074,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c1/cover.webp",
+      "cover": "assets/images/sun/chs-05-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-05-c1/01.webp",
-        "assets/images/sun/chs-05-c1/02.webp",
-        "assets/images/sun/chs-05-c1/03.webp",
-        "assets/images/sun/chs-05-c1/04.webp",
-        "assets/images/sun/chs-05-c1/05.webp"
+        "assets/images/sun/chs-05-c1/01-v2.webp",
+        "assets/images/sun/chs-05-c1/02-v2.webp",
+        "assets/images/sun/chs-05-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3195,12 +3115,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c2/cover.webp",
+      "cover": "assets/images/sun/chs-05-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-05-c2/01.webp",
-        "assets/images/sun/chs-05-c2/02.webp",
-        "assets/images/sun/chs-05-c2/03.webp",
-        "assets/images/sun/chs-05-c2/04.webp"
+        "assets/images/sun/chs-05-c2/01-v2.webp",
+        "assets/images/sun/chs-05-c2/02-v2.webp",
+        "assets/images/sun/chs-05-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3237,12 +3156,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c3/cover.webp",
+      "cover": "assets/images/sun/chs-05-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-05-c3/01.webp",
-        "assets/images/sun/chs-05-c3/02.webp",
-        "assets/images/sun/chs-05-c3/03.webp",
-        "assets/images/sun/chs-05-c3/04.webp"
+        "assets/images/sun/chs-05-c3/01-v2.webp",
+        "assets/images/sun/chs-05-c3/02-v2.webp",
+        "assets/images/sun/chs-05-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3279,12 +3197,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c4/cover.webp",
+      "cover": "assets/images/sun/chs-05-c4/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-05-c4/01.webp",
-        "assets/images/sun/chs-05-c4/02.webp",
-        "assets/images/sun/chs-05-c4/03.webp",
-        "assets/images/sun/chs-05-c4/04.webp"
+        "assets/images/sun/chs-05-c4/01-v2.webp",
+        "assets/images/sun/chs-05-c4/02-v2.webp",
+        "assets/images/sun/chs-05-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3321,13 +3238,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c1/cover.webp",
+      "cover": "assets/images/sun/chs-06-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-06-c1/01.webp",
-        "assets/images/sun/chs-06-c1/02.webp",
-        "assets/images/sun/chs-06-c1/03.webp",
-        "assets/images/sun/chs-06-c1/04.webp",
-        "assets/images/sun/chs-06-c1/05.webp"
+        "assets/images/sun/chs-06-c1/01-v2.webp",
+        "assets/images/sun/chs-06-c1/02-v2.webp",
+        "assets/images/sun/chs-06-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3364,10 +3279,9 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c2/cover.webp",
+      "cover": "assets/images/sun/chs-06-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-06-c2/01.webp",
-        "assets/images/sun/chs-06-c2/02.webp"
+        "assets/images/sun/chs-06-c2/01-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3404,12 +3318,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c3/cover.webp",
+      "cover": "assets/images/sun/chs-06-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-06-c3/01.webp",
-        "assets/images/sun/chs-06-c3/02.webp",
-        "assets/images/sun/chs-06-c3/03.webp",
-        "assets/images/sun/chs-06-c3/04.webp"
+        "assets/images/sun/chs-06-c3/01-v2.webp",
+        "assets/images/sun/chs-06-c3/02-v2.webp",
+        "assets/images/sun/chs-06-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3446,12 +3359,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c4/cover.webp",
+      "cover": "assets/images/sun/chs-06-c4/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-06-c4/01.webp",
-        "assets/images/sun/chs-06-c4/02.webp",
-        "assets/images/sun/chs-06-c4/03.webp",
-        "assets/images/sun/chs-06-c4/04.webp"
+        "assets/images/sun/chs-06-c4/01-v2.webp",
+        "assets/images/sun/chs-06-c4/02-v2.webp",
+        "assets/images/sun/chs-06-c4/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3488,12 +3400,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-07-c1/cover.webp",
+      "cover": "assets/images/sun/chs-07-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-07-c1/01.webp",
-        "assets/images/sun/chs-07-c1/02.webp",
-        "assets/images/sun/chs-07-c1/03.webp",
-        "assets/images/sun/chs-07-c1/04.webp"
+        "assets/images/sun/chs-07-c1/01-v2.webp",
+        "assets/images/sun/chs-07-c1/02-v2.webp",
+        "assets/images/sun/chs-07-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3530,12 +3441,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-07-c2/cover.webp",
+      "cover": "assets/images/sun/chs-07-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-07-c2/01.webp",
-        "assets/images/sun/chs-07-c2/02.webp",
-        "assets/images/sun/chs-07-c2/03.webp",
-        "assets/images/sun/chs-07-c2/04.webp"
+        "assets/images/sun/chs-07-c2/01-v2.webp",
+        "assets/images/sun/chs-07-c2/02-v2.webp",
+        "assets/images/sun/chs-07-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3572,14 +3482,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-07-c3/cover.webp",
+      "cover": "assets/images/sun/chs-07-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-07-c3/01.webp",
-        "assets/images/sun/chs-07-c3/02.webp",
-        "assets/images/sun/chs-07-c3/03.webp",
-        "assets/images/sun/chs-07-c3/04.webp",
-        "assets/images/sun/chs-07-c3/05.webp",
-        "assets/images/sun/chs-07-c3/06.webp"
+        "assets/images/sun/chs-07-c3/01-v2.webp",
+        "assets/images/sun/chs-07-c3/02-v2.webp",
+        "assets/images/sun/chs-07-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3616,14 +3523,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-08-c2/cover.webp",
+      "cover": "assets/images/sun/chs-08-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-08-c2/01.webp",
-        "assets/images/sun/chs-08-c2/02.webp",
-        "assets/images/sun/chs-08-c2/03.webp",
-        "assets/images/sun/chs-08-c2/04.webp",
-        "assets/images/sun/chs-08-c2/05.webp",
-        "assets/images/sun/chs-08-c2/06.webp"
+        "assets/images/sun/chs-08-c2/01-v2.webp",
+        "assets/images/sun/chs-08-c2/02-v2.webp",
+        "assets/images/sun/chs-08-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3660,14 +3564,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-08-c3/cover.webp",
+      "cover": "assets/images/sun/chs-08-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-08-c3/01.webp",
-        "assets/images/sun/chs-08-c3/02.webp",
-        "assets/images/sun/chs-08-c3/03.webp",
-        "assets/images/sun/chs-08-c3/04.webp",
-        "assets/images/sun/chs-08-c3/05.webp",
-        "assets/images/sun/chs-08-c3/06.webp"
+        "assets/images/sun/chs-08-c3/01-v2.webp",
+        "assets/images/sun/chs-08-c3/02-v2.webp",
+        "assets/images/sun/chs-08-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3704,12 +3605,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-09-c1/cover.webp",
+      "cover": "assets/images/sun/chs-09-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-09-c1/01.webp",
-        "assets/images/sun/chs-09-c1/02.webp",
-        "assets/images/sun/chs-09-c1/03.webp",
-        "assets/images/sun/chs-09-c1/04.webp"
+        "assets/images/sun/chs-09-c1/01-v2.webp",
+        "assets/images/sun/chs-09-c1/02-v2.webp",
+        "assets/images/sun/chs-09-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3746,12 +3646,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-09-c2/cover.webp",
+      "cover": "assets/images/sun/chs-09-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-09-c2/01.webp",
-        "assets/images/sun/chs-09-c2/02.webp",
-        "assets/images/sun/chs-09-c2/03.webp",
-        "assets/images/sun/chs-09-c2/04.webp"
+        "assets/images/sun/chs-09-c2/01-v2.webp",
+        "assets/images/sun/chs-09-c2/02-v2.webp",
+        "assets/images/sun/chs-09-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3788,14 +3687,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-09-c3/cover.webp",
+      "cover": "assets/images/sun/chs-09-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-09-c3/01.webp",
-        "assets/images/sun/chs-09-c3/02.webp",
-        "assets/images/sun/chs-09-c3/03.webp",
-        "assets/images/sun/chs-09-c3/04.webp",
-        "assets/images/sun/chs-09-c3/05.webp",
-        "assets/images/sun/chs-09-c3/06.webp"
+        "assets/images/sun/chs-09-c3/01-v2.webp",
+        "assets/images/sun/chs-09-c3/02-v2.webp",
+        "assets/images/sun/chs-09-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3832,12 +3728,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-10-c1/cover.webp",
+      "cover": "assets/images/sun/chs-10-c1/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-10-c1/01.webp",
-        "assets/images/sun/chs-10-c1/02.webp",
-        "assets/images/sun/chs-10-c1/03.webp",
-        "assets/images/sun/chs-10-c1/04.webp"
+        "assets/images/sun/chs-10-c1/01-v2.webp",
+        "assets/images/sun/chs-10-c1/02-v2.webp",
+        "assets/images/sun/chs-10-c1/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3874,12 +3769,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-10-c2/cover.webp",
+      "cover": "assets/images/sun/chs-10-c2/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-10-c2/01.webp",
-        "assets/images/sun/chs-10-c2/02.webp",
-        "assets/images/sun/chs-10-c2/03.webp",
-        "assets/images/sun/chs-10-c2/04.webp"
+        "assets/images/sun/chs-10-c2/01-v2.webp",
+        "assets/images/sun/chs-10-c2/02-v2.webp",
+        "assets/images/sun/chs-10-c2/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     },
@@ -3916,12 +3810,11 @@
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-10-c3/cover.webp",
+      "cover": "assets/images/sun/chs-10-c3/cover-v2.webp",
       "images": [
-        "assets/images/sun/chs-10-c3/01.webp",
-        "assets/images/sun/chs-10-c3/02.webp",
-        "assets/images/sun/chs-10-c3/03.webp",
-        "assets/images/sun/chs-10-c3/04.webp"
+        "assets/images/sun/chs-10-c3/01-v2.webp",
+        "assets/images/sun/chs-10-c3/02-v2.webp",
+        "assets/images/sun/chs-10-c3/03-v2.webp"
       ],
       "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
     }

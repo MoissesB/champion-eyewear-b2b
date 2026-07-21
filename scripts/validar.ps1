@@ -58,6 +58,9 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
 
       $media = @($product.cover) + @($product.images)
       if ($media.Count -lt 2) { $failures.Add("Producto $($product.id): faltan vistas") | Out-Null }
+      if ($media.Count -gt 4) { $failures.Add("Producto $($product.id): tiene más de cuatro vistas") | Out-Null }
+      if (($media | Sort-Object -Unique).Count -ne $media.Count) { $failures.Add("Producto $($product.id): tiene vistas duplicadas") | Out-Null }
+      if ($product.family -eq "optical" -and $media.Count -ne 4) { $failures.Add("Producto $($product.id): la montura no tiene exactamente cuatro vistas") | Out-Null }
       foreach ($relativeAsset in ($media | Sort-Object -Unique)) {
         $normalizedAsset = [string]$relativeAsset -replace '/', [IO.Path]::DirectorySeparatorChar
         $assetPath = Join-Path $repoRoot $normalizedAsset

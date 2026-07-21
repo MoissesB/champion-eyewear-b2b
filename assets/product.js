@@ -36,6 +36,7 @@
     'Azul marino / lente multicolor espejado': 'conic-gradient(#132b4d, #2b8ee8, #7b4acb, #e08b35, #2f9d78, #132b4d)',
     'Blanco / lente azul espejado': 'linear-gradient(135deg, #f7f7f3 0 45%, #328cdf 52% 100%)',
     'Cristal / lente azul espejado': 'linear-gradient(135deg, #eef8fb 0 45%, #2786dc 52% 100%)',
+    'Azul oscuro / lente azul espejado': 'linear-gradient(135deg, #172b52 0 45%, #2b8ee8 52% 100%)',
     'Gunmetal / lente azul espejado': 'linear-gradient(135deg, #59616b 0 45%, #2b8ee8 52% 100%)',
     'Gunmetal / lente dorado espejado': 'linear-gradient(135deg, #59616b 0 45%, #d7aa35 52% 100%)',
     'Gunmetal / lente verde espejado': 'linear-gradient(135deg, #59616b 0 45%, #3d9b6f 52% 100%)',

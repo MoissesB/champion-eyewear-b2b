@@ -141,8 +141,11 @@ function selectNumberedViews(files) {
     if (last && last <= 6 && !byView.has(last)) byView.set(last, file);
   }
   const numbered = [...byView.entries()].sort((a, b) => a[0] - b[0]).map((entry) => entry[1]);
-  if (numbered.length >= 3) return numbered.slice(0, 4);
-  return candidates.slice(0, 4);
+  // La portada ya es la vista frontal en tres cuartos. La vista 1 repite el
+  // frente; las vistas 2, 3 y 4 son los tres ángulos complementarios.
+  if (numbered.length >= 4) return numbered.slice(1, 4);
+  if (candidates.length >= 4) return candidates.slice(1, 4);
+  return [];
 }
 
 function localOpticalImages(seriesNumber, code, slug, manifest) {
@@ -153,7 +156,7 @@ function localOpticalImages(seriesNumber, code, slug, manifest) {
   const finalDir = descendants.find((directory) => path.basename(directory).toLowerCase() === 'final');
   const detailSource = ready || finalDir || productDir;
   const views = selectNumberedViews(listFiles(detailSource, false));
-  if (views.length < 2) throw new Error(`${code} no tiene suficientes vistas locales en ${detailSource}.`);
+  if (views.length !== 3) throw new Error(`${code} necesita tres ángulos distintos además de la portada en ${detailSource}.`);
 
   const coverDir = fs.readdirSync(seriesDir, { withFileTypes: true })
     .find((entry) => entry.isDirectory() && entry.name.toLowerCase() === 'portada');
@@ -162,10 +165,10 @@ function localOpticalImages(seriesNumber, code, slug, manifest) {
   const cover = coverFiles.find((file) => normalizeCode(path.basename(file, path.extname(file))) === normalizeCode(code));
   if (!cover) throw new Error(`No se encontró la portada local de ${code}.`);
 
-  const coverTarget = `assets/images/optical/${slug}/cover.webp`;
+  const coverTarget = `assets/images/optical/${slug}/cover-v2.webp`;
   manifest.push({ family: 'optical', code, role: 'cover', source: cover, target: coverTarget, maxWidth: 1000, maxHeight: 760 });
   const targets = views.map((source, index) => {
-    const target = `assets/images/optical/${slug}/${String(index + 1).padStart(2, '0')}.webp`;
+    const target = `assets/images/optical/${slug}/${String(index + 1).padStart(2, '0')}-v2.webp`;
     manifest.push({ family: 'optical', code, role: 'gallery', source, target, maxWidth: 1500, maxHeight: 1150 });
     return target;
   });
@@ -176,7 +179,7 @@ const sunColors = {
   'CHS-01 C1': 'Negro / lente azul espejado',
   'CHS-02 C1': 'Negro / lente humo',
   'CHS-02 C2': 'Negro / lente dorado espejado',
-  'CHS-02 C3': 'Negro / lente dorado espejado',
+  'CHS-02 C3': 'Azul oscuro / lente azul espejado',
   'CHS-02 C4': 'Negro / lente verde espejado',
   'CHS-03 C1': 'Negro / lente dorado espejado',
   'CHS-04 C1': 'Negro / lente humo',
@@ -236,6 +239,35 @@ function coverRank(file, code) {
   return 3;
 }
 
+const sunCoverOverrides = {
+  'CHS-01 C1': 'CHS-01 C1 3.png',
+  'CHS-02 C3': 'CHS-02 C3 4.png',
+  'CHS-03 C1': 'CHS03 C1 (3).png',
+  'CHS-05 C1': 'CHS-05 C1 3.png',
+  'CHS-06 C2': 'CHS-06 C2 2.png',
+};
+
+function selectSunProductFiles(files, code) {
+  if (code === 'CHS-03 C1') {
+    return files.filter((file) => path.basename(file).toUpperCase().startsWith('CHS03 C1'));
+  }
+  if (code === 'CHS-02 C3') {
+    return files.filter((file) => path.basename(file).toUpperCase() !== 'CHS-02 C3 .PNG');
+  }
+  const strictPrefix = code.toUpperCase();
+  const strictFiles = files.filter((file) => path.basename(file).toUpperCase().startsWith(strictPrefix));
+  return strictFiles.length >= 4 ? strictFiles : files;
+}
+
+function selectSunCover(files, code) {
+  const override = sunCoverOverrides[code];
+  if (override) {
+    const selected = files.find((file) => path.basename(file).toLowerCase() === override.toLowerCase());
+    if (selected) return selected;
+  }
+  return [...files].sort((a, b) => coverRank(a, code) - coverRank(b, code) || naturalCompare(a, b))[0];
+}
+
 function buildSunProducts(manifest) {
   const skuDir = path.join(sourceImages, 'Lentes de sol', 'SKU');
   const groups = new Map();
@@ -249,20 +281,21 @@ function buildSunProducts(manifest) {
 
   return [...groups.entries()].sort((a, b) => naturalCompare(a[0], b[0])).map(([code, files]) => {
     const slug = sunSlug(code);
+    const productFiles = selectSunProductFiles(files, code);
     const unique = [];
     const seen = new Set();
-    for (const file of files.sort(naturalCompare)) {
+    for (const file of productFiles.sort(naturalCompare)) {
       const hash = hashFile(file);
       if (seen.has(hash)) continue;
       seen.add(hash);
       unique.push(file);
     }
-    const cover = [...unique].sort((a, b) => coverRank(a, code) - coverRank(b, code))[0];
-    const ordered = [cover, ...unique.filter((file) => file !== cover)].slice(0, 6);
-    const coverTarget = `assets/images/sun/${slug}/cover.webp`;
+    const cover = selectSunCover(unique, code);
+    const detailViews = unique.filter((file) => file !== cover).slice(0, 3);
+    const coverTarget = `assets/images/sun/${slug}/cover-v2.webp`;
     manifest.push({ family: 'sun', code, role: 'cover', source: cover, target: coverTarget, maxWidth: 1100, maxHeight: 800 });
-    const imageTargets = ordered.map((source, index) => {
-      const target = `assets/images/sun/${slug}/${String(index + 1).padStart(2, '0')}.webp`;
+    const imageTargets = detailViews.map((source, index) => {
+      const target = `assets/images/sun/${slug}/${String(index + 1).padStart(2, '0')}-v2.webp`;
       manifest.push({ family: 'sun', code, role: 'gallery', source, target, maxWidth: 1500, maxHeight: 1100 });
       return target;
     });
