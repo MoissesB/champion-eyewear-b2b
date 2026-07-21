@@ -80,7 +80,7 @@
 
   function gallery(product) {
     const images = Array.from(new Set([product.cover, ...(product.images || [])]));
-    return `<div class="product-gallery" data-gallery><div class="product-gallery-stage"><span class="gallery-collection">${escapeHtml(product.collection)}</span><img id="productMainImage" src="./${escapeHtml(images[0])}" alt="${escapeHtml(i18n.t('viewNumber', { number: 1 }))}: ${escapeHtml(product.displayModel)}"><span class="gallery-counter"><strong id="galleryIndex">01</strong> / ${String(images.length).padStart(2, '0')}</span><div class="gallery-zoom-controls" aria-label="Zoom"><button class="gallery-zoom-menu" type="button" data-gallery-zoom-menu aria-label="Zoom" aria-expanded="false">+</button><div class="gallery-zoom-actions"><button type="button" data-gallery-zoom="toggle" aria-label="${escapeHtml(i18n.t('zoomIn'))}">⌕</button><button type="button" data-gallery-zoom="out" aria-label="${escapeHtml(i18n.t('zoomOut'))}">−</button><button type="button" data-gallery-zoom="in" aria-label="${escapeHtml(i18n.t('zoomIn'))}">+</button><button type="button" data-gallery-zoom="reset" aria-label="${escapeHtml(i18n.t('zoomReset'))}">↻</button><span class="sr-only" data-gallery-zoom-level>100%</span></div></div></div><div class="product-thumbnails" aria-label="${escapeHtml(i18n.t('productViews'))}">${images.map((image, index) => `<button class="${index === 0 ? 'is-active' : ''}" type="button" data-gallery-index="${index}" data-image="./${escapeHtml(image)}" aria-label="${escapeHtml(i18n.t('viewNumber', { number: index + 1 }))}" aria-pressed="${index === 0}"><img src="./${escapeHtml(image)}" alt="" loading="lazy"></button>`).join('')}</div></div>`;
+    return `<div class="product-gallery" data-gallery><div class="product-gallery-stage"><span class="gallery-collection">${escapeHtml(product.collection)}</span><img id="productMainImage" src="./${escapeHtml(images[0])}" alt="${escapeHtml(i18n.t('viewNumber', { number: 1 }))}: ${escapeHtml(product.displayModel)}" draggable="false"><span class="gallery-counter"><strong id="galleryIndex">01</strong> / ${String(images.length).padStart(2, '0')}</span><div class="gallery-zoom-controls" aria-label="Zoom"><button class="gallery-zoom-menu" type="button" data-gallery-zoom-menu aria-label="Zoom" aria-expanded="false">+</button><div class="gallery-zoom-actions"><button type="button" data-gallery-zoom="toggle" aria-label="${escapeHtml(i18n.t('zoomIn'))}"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/><path d="M21 21l-5.2-5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10.5 8v5M8 10.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button type="button" data-gallery-zoom="out" aria-label="${escapeHtml(i18n.t('zoomOut'))}">−</button><button type="button" data-gallery-zoom="in" aria-label="${escapeHtml(i18n.t('zoomIn'))}">+</button><button type="button" data-gallery-zoom="reset" aria-label="${escapeHtml(i18n.t('zoomReset'))}">↻</button><span class="sr-only" data-gallery-zoom-level>100%</span></div></div></div><div class="product-thumbnails" aria-label="${escapeHtml(i18n.t('productViews'))}">${images.map((image, index) => `<button class="${index === 0 ? 'is-active' : ''}" type="button" data-gallery-index="${index}" data-image="./${escapeHtml(image)}" aria-label="${escapeHtml(i18n.t('viewNumber', { number: index + 1 }))}" aria-pressed="${index === 0}"><img src="./${escapeHtml(image)}" alt="" loading="lazy"></button>`).join('')}</div></div>`;
   }
 
   function specs(product) {
@@ -120,8 +120,16 @@
     const stage = document.querySelector('.product-gallery-stage');
     const galleryRoot = document.querySelector('[data-gallery]');
     let zoom = 1;
-    let touchTracking = false;
+    let panX = 0;
+    let panY = 0;
+    const pointers = new Map();
+    let startDrag = null;
+    let pinchStartDist = 0;
+    let pinchStartScale = 1;
+    let movedEnough = false;
+    let suppressClickUntil = 0;
     const mobileZoom = () => window.matchMedia('(max-width: 680px)').matches;
+    const clamp = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, value));
     const resetOrigin = () => { stage?.style.setProperty('--zoom-x', '50%'); stage?.style.setProperty('--zoom-y', '50%'); };
     const updateOrigin = (event) => {
       if (!stage) return;
@@ -131,22 +139,120 @@
       stage.style.setProperty('--zoom-x', `${Math.max(0, Math.min(100, x))}%`);
       stage.style.setProperty('--zoom-y', `${Math.max(0, Math.min(100, y))}%`);
     };
-    const applyZoom = () => { if (mainImage) mainImage.style.setProperty('--gallery-zoom', String(zoom)); if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`; stage?.classList.toggle('is-manual-zoom', zoom > 1); if (zoom === 1) resetOrigin(); };
+    const applyZoom = () => {
+      if (mainImage) {
+        mainImage.style.setProperty('--gallery-zoom', String(zoom));
+        mainImage.style.setProperty('--gallery-pan-x', `${panX}px`);
+        mainImage.style.setProperty('--gallery-pan-y', `${panY}px`);
+      }
+      if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`;
+      stage?.classList.toggle('is-manual-zoom', mobileZoom() && zoom > 1);
+      if (zoom === 1) resetOrigin();
+    };
+    const resetZoom = () => {
+      zoom = 1;
+      panX = 0;
+      panY = 0;
+      pointers.clear();
+      startDrag = null;
+      pinchStartDist = 0;
+      stage?.classList.remove('is-manual-zoom', 'is-dragging', 'is-zooming');
+      applyZoom();
+    };
+    const activateMobileZoom = () => {
+      if (!mobileZoom()) return;
+      if (zoom < 1.35) {
+        zoom = 2;
+        panX = 0;
+        panY = 0;
+      }
+      applyZoom();
+    };
 
     stage?.addEventListener('pointerenter', (event) => {
-      if (event.pointerType !== 'touch') stage.classList.add('is-zooming');
+      if (!mobileZoom() && event.pointerType !== 'touch') stage.classList.add('is-zooming');
     });
     stage?.addEventListener('pointermove', (event) => {
-      if (event.pointerType === 'touch' && (!touchTracking || zoom <= 1)) return;
+      if (mobileZoom()) {
+        if (!pointers.has(event.pointerId) || zoom <= 1) return;
+        event.preventDefault();
+        pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        if (pointers.size === 2) {
+          const points = Array.from(pointers.values());
+          const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+          if (pinchStartDist > 0) {
+            const previous = zoom;
+            zoom = clamp(pinchStartScale * (distance / pinchStartDist), 1, 7);
+            const ratio = zoom / previous;
+            panX *= ratio;
+            panY *= ratio;
+            movedEnough = true;
+            suppressClickUntil = Date.now() + 260;
+            if (zoom <= 1.01) resetZoom(); else applyZoom();
+          }
+          return;
+        }
+        if (pointers.size === 1 && startDrag) {
+          const deltaX = event.clientX - startDrag.x;
+          const deltaY = event.clientY - startDrag.y;
+          if (!movedEnough && (Math.abs(deltaX) > 4 || Math.abs(deltaY) > 4)) {
+            movedEnough = true;
+            suppressClickUntil = Date.now() + 260;
+          }
+          panX = startDrag.baseX + deltaX;
+          panY = startDrag.baseY + deltaY;
+          applyZoom();
+        }
+        return;
+      }
       updateOrigin(event);
-      if (event.pointerType !== 'touch') stage.classList.add('is-zooming');
+      if (event.pointerType !== 'touch') stage?.classList.add('is-zooming');
     });
     stage?.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'touch' && zoom > 1) { touchTracking = true; updateOrigin(event); }
+      if (!mobileZoom() || zoom <= 1) return;
+      event.preventDefault();
+      stage.setPointerCapture?.(event.pointerId);
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      movedEnough = false;
+      if (pointers.size === 1) {
+        startDrag = { x: event.clientX, y: event.clientY, baseX: panX, baseY: panY };
+        stage.classList.add('is-dragging');
+      } else if (pointers.size === 2) {
+        const points = Array.from(pointers.values());
+        pinchStartDist = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+        pinchStartScale = zoom;
+        startDrag = null;
+        stage.classList.remove('is-dragging');
+        suppressClickUntil = Date.now() + 260;
+      }
     });
-    stage?.addEventListener('pointerup', () => { touchTracking = false; });
-    stage?.addEventListener('pointercancel', () => { touchTracking = false; });
-    stage?.addEventListener('pointerleave', () => { touchTracking = false; stage.classList.remove('is-zooming'); resetOrigin(); });
+    const endPointer = (event) => {
+      if (!mobileZoom()) return;
+      pointers.delete(event.pointerId);
+      if (movedEnough) suppressClickUntil = Date.now() + 260;
+      if (pointers.size === 0) {
+        startDrag = null;
+        pinchStartDist = 0;
+        stage?.classList.remove('is-dragging');
+      } else if (pointers.size === 1) {
+        const point = Array.from(pointers.values())[0];
+        startDrag = { x: point.x, y: point.y, baseX: panX, baseY: panY };
+        pinchStartDist = 0;
+        stage?.classList.add('is-dragging');
+      }
+    };
+    stage?.addEventListener('pointerup', endPointer);
+    stage?.addEventListener('pointercancel', endPointer);
+    stage?.addEventListener('lostpointercapture', endPointer);
+    stage?.addEventListener('pointerleave', (event) => {
+      if (mobileZoom()) { if (pointers.has(event.pointerId)) endPointer(event); return; }
+      stage.classList.remove('is-zooming');
+      resetOrigin();
+    });
+    stage?.addEventListener('click', (event) => {
+      if (!mobileZoom() || event.target.closest('.gallery-zoom-controls') || Date.now() < suppressClickUntil) return;
+      if (zoom === 1) activateMobileZoom();
+    });
 
     galleryRoot?.addEventListener('click', (event) => {
       const menuButton = event.target.closest('[data-gallery-zoom-menu]');
@@ -160,16 +266,17 @@
       const zoomButton = event.target.closest('[data-gallery-zoom]');
       if (zoomButton) {
         const action = zoomButton.dataset.galleryZoom;
-        const step = mobileZoom() ? 0.5 : 0.35;
         const maximum = mobileZoom() ? 7 : 3;
-        if (action === 'reset') zoom = 1;
-        else if (action === 'toggle') zoom = zoom > 1 ? 1 : 2;
-        else zoom = Math.max(1, Math.min(maximum, zoom + (action === 'in' ? step : -step)));
+        if (action === 'reset' || (action === 'toggle' && zoom > 1)) { resetZoom(); return; }
+        if (action === 'toggle') zoom = 2;
+        else if (mobileZoom()) zoom = clamp(zoom * (action === 'in' ? 1.18 : 1 / 1.18), 1, maximum);
+        else zoom = clamp(zoom + (action === 'in' ? 0.35 : -0.35), 1, maximum);
+        if (zoom <= 1.01) { resetZoom(); return; }
         stage?.classList.remove('is-zooming'); applyZoom(); return;
       }
       const button = event.target.closest('[data-gallery-index]'); if (!button || !mainImage) return;
       const index = Number(button.dataset.galleryIndex); mainImage.src = button.dataset.image; mainImage.alt = `${i18n.t('viewNumber', { number: index + 1 })}: ${product.displayModel}`; if (counter) counter.textContent = String(index + 1).padStart(2, '0');
-      zoom = 1; stage?.classList.remove('is-zooming'); resetOrigin(); applyZoom();
+      resetZoom();
       button.parentElement.querySelectorAll('[data-gallery-index]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
     });
   }

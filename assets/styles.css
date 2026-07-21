@@ -2624,6 +2624,11 @@ h3 {
   gap: 5px;
 }
 
+.gallery-zoom-actions svg {
+  width: 18px;
+  height: 18px;
+}
+
 .gallery-zoom-controls button {
   min-width: 38px;
   height: 34px;
@@ -3138,6 +3143,11 @@ h3 {
     display: none;
   }
 
+  .mobile-nav [data-request-open],
+  .product-header nav [data-request-open] {
+    display: none;
+  }
+
   .header-tools {
     gap: 6px;
   }
@@ -3473,6 +3483,21 @@ h3 {
   .product-gallery-stage.is-manual-zoom {
     touch-action: none;
     cursor: grab;
+  }
+
+  .product-gallery-stage > img {
+    pointer-events: none;
+    user-select: none;
+    transform: translate(var(--gallery-pan-x, 0), var(--gallery-pan-y, 0)) scale(var(--gallery-zoom, 1));
+    transform-origin: center;
+  }
+
+  .product-gallery-stage.is-dragging {
+    cursor: grabbing;
+  }
+
+  .product-gallery-stage.is-dragging > img {
+    transition: none;
   }
 
   .desktop-product-variants {
