@@ -103,9 +103,10 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
 $homeScriptPath = Join-Path $repoRoot "assets/home.js"
 if (Test-Path -LiteralPath $homeScriptPath -PathType Leaf) {
   $homeScript = [System.IO.File]::ReadAllText($homeScriptPath, $utf8)
-  foreach ($requiredPattern in @('facetConfig', 'matchesFacets', 'data-facet-key', 'data-filter-clear', 'filterColor', 'filterMaterial', 'filterMeasurements')) {
+  foreach ($requiredPattern in @('facetConfig', 'matchesFacets', 'data-facet-key', 'data-filter-clear', 'filterCollection', 'filterModel', 'filterColor', 'filterMaterial', 'facet-choice-color')) {
     if ($homeScript -notmatch $requiredPattern) { $failures.Add("assets/home.js: falta requisito de filtros $requiredPattern") | Out-Null }
   }
+  if ($homeScript -match "key:\s*'(measurements|shape|lens)'") { $failures.Add("assets/home.js: los filtros deben limitarse a coleccion, modelo, material y color") | Out-Null }
 }
 
 $requestPath = Join-Path $repoRoot "assets/request.js"
@@ -155,7 +156,7 @@ if (Test-Path -LiteralPath $stylesPath -PathType Leaf) {
   $stylesText = [System.IO.File]::ReadAllText($stylesPath, $utf8)
   if ($stylesText -notmatch '(?s)\.product-request-box\s*>\s*\.product-order-actions\s*\{.*?grid-template-columns:\s*1fr\s*;') { $failures.Add("assets/styles.css: las acciones de pedido no están apiladas") | Out-Null }
   if ($stylesText -notmatch '(?s)\.variant-picker\s+a\s*\{.*?border-radius:\s*50%\s*;') { $failures.Add("assets/styles.css: las variantes no se muestran como burbujas de color") | Out-Null }
-  if ($stylesText -notmatch 'aspect-ratio:\s*16\s*/\s*9' -or $stylesText -notmatch '\.filter-panel' -or $stylesText -notmatch '\.facet-grid') { $failures.Add("assets/styles.css: faltan el video panorámico o el panel de filtros") | Out-Null }
+  if ($stylesText -notmatch 'aspect-ratio:\s*16\s*/\s*9' -or $stylesText -notmatch '\.filter-panel' -or $stylesText -notmatch '\.facet-grid' -or $stylesText -notmatch '\.facet-choice-color') { $failures.Add("assets/styles.css: faltan el video panorámico o el panel compacto de filtros") | Out-Null }
   if ($stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.mobile-product-order-bar\s*\{.*?position:\s*fixed') { $failures.Add("assets/styles.css: falta la barra móvil fija de producto") | Out-Null }
 }
 

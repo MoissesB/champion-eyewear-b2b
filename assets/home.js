@@ -12,16 +12,12 @@
       { key: 'series', label: 'filterModel' },
       { key: 'material', label: 'filterMaterial' },
       { key: 'color', label: 'filterColor', color: true },
-      { key: 'measurements', label: 'filterMeasurements' },
-      { key: 'shape', label: 'filterShape' },
     ],
     sun: [
       { key: 'collection', label: 'filterCollection' },
       { key: 'series', label: 'filterModel' },
       { key: 'material', label: 'filterMaterial' },
       { key: 'color', label: 'filterColor', color: true },
-      { key: 'shape', label: 'filterShape' },
-      { key: 'lens', label: 'filterLens' },
     ],
   };
 
@@ -91,7 +87,10 @@
         const label = facetValueLabel(family, facet.key, value);
         const active = state[family].facets[facet.key].has(value);
         const swatch = facet.color ? `<span class="facet-color" style="--facet-color:${escapeHtml(colorSwatch(value))}" aria-hidden="true"></span>` : '';
-        return `<button class="facet-choice${active ? ' is-active' : ''}" type="button" data-facet-key="${escapeHtml(facet.key)}" data-facet-value="${escapeHtml(value)}" aria-pressed="${active}">${swatch}<span>${escapeHtml(label)}</span><span class="facet-check" aria-hidden="true">✓</span></button>`;
+        const content = facet.color
+          ? `${swatch}<span class="sr-only">${escapeHtml(label)}</span>`
+          : `<span>${escapeHtml(label)}</span><span class="facet-check" aria-hidden="true">✓</span>`;
+        return `<button class="facet-choice${facet.color ? ' facet-choice-color' : ''}${active ? ' is-active' : ''}" type="button" data-facet-key="${escapeHtml(facet.key)}" data-facet-value="${escapeHtml(value)}" aria-label="${escapeHtml(label)}" aria-pressed="${active}">${content}</button>`;
       }).join('');
       return `<section class="facet-group" aria-labelledby="${family}-${facet.key}-label"><h3 id="${family}-${facet.key}-label">${escapeHtml(i18n.t(facet.label))}</h3><div class="facet-options">${choices}</div></section>`;
     }).join('');
