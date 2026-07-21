@@ -1,0 +1,10 @@
+{
+  "name": "champion-eyewear-b2b",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Catálogo estático B2B de Champion Eyewear para Innova Eyewear.",
+  "scripts": {
+    "build": "node scripts/build-sites.cjs",
+    "validate": "powershell -ExecutionPolicy Bypass -File ./scripts/validar.ps1"
+  }
+}

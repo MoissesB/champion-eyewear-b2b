@@ -16,6 +16,7 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 - `scripts/generar-catalogo.cjs`: reconstruye los datos y el manifiesto desde las carpetas fuente.
 - `scripts/preparar-imagenes.py`: exporta los originales a formatos web optimizados.
 - `scripts/validar.ps1`: verifica arquitectura, datos y recursos locales.
+- `scripts/build-sites.cjs`: prepara la distribución estática y el adaptador de hosting.
 
 ## Vista local
 
@@ -56,3 +57,9 @@ powershell -ExecutionPolicy Bypass -File .\scripts\validar.ps1
 ```
 
 El validador comprueba que solo haya una plantilla de producto, que estén los 93 productos esperados y que todas las imágenes referenciadas existan dentro del repositorio.
+
+Para preparar una versión publicable:
+
+```powershell
+npm run build
+```
