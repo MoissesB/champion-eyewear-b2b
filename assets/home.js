@@ -6,7 +6,33 @@
   if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
 
   const products = catalog.products;
-  const state = { optical: { query: '', collection: 'all' }, sun: { query: '', collection: 'all' } };
+  const facetConfig = {
+    optical: [
+      { key: 'collection', label: 'filterCollection' },
+      { key: 'series', label: 'filterModel' },
+      { key: 'material', label: 'filterMaterial' },
+      { key: 'color', label: 'filterColor', color: true },
+      { key: 'measurements', label: 'filterMeasurements' },
+      { key: 'shape', label: 'filterShape' },
+    ],
+    sun: [
+      { key: 'collection', label: 'filterCollection' },
+      { key: 'series', label: 'filterModel' },
+      { key: 'material', label: 'filterMaterial' },
+      { key: 'color', label: 'filterColor', color: true },
+      { key: 'shape', label: 'filterShape' },
+      { key: 'lens', label: 'filterLens' },
+    ],
+  };
+
+  function emptyFacets(family) {
+    return Object.fromEntries(facetConfig[family].map(({ key }) => [key, new Set()]));
+  }
+
+  const state = {
+    optical: { query: '', facets: emptyFacets('optical') },
+    sun: { query: '', facets: emptyFacets('sun') },
+  };
 
   function escapeHtml(value) {
     return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -19,6 +45,72 @@
   function searchable(product) {
     const localized = i18n.localizeProduct(product);
     return normalize([product.model, product.displayModel, product.series, product.variant, product.color, localized.color, product.measurements, product.material, localized.material, product.shape, localized.shape, product.lens, localized.lens, product.sku, product.collection, ...(product.tags || []), ...(localized.tags || [])].join(' '));
+  }
+
+  function facetValues(family, key) {
+    return [...new Set(products.filter((product) => product.family === family).map((product) => String(product[key] ?? '').trim()).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, i18n.language === 'es' ? 'es' : 'en', { numeric: true, sensitivity: 'base' }));
+  }
+
+  function facetValueLabel(family, key, value) {
+    if (key === 'collection' || key === 'series' || key === 'measurements') return value;
+    const product = products.find((item) => item.family === family && String(item[key]) === value);
+    return product ? (i18n.localizeProduct(product)[key] || value) : value;
+  }
+
+  function colorSwatch(value) {
+    const source = normalize(value);
+    const colors = [];
+    const add = (pattern, color) => { if (pattern.test(source) && !colors.includes(color)) colors.push(color); };
+    add(/black|negro/, '#15171c'); add(/navy|marino|dark blue|azul oscuro/, '#172b52'); add(/blue|azul/, '#2b82d9');
+    add(/brown|marron|habana/, '#79513c'); add(/gunmetal|plomizo/, '#5f6670'); add(/grey|gris|humo/, '#8b9098');
+    add(/green|verde/, '#319467'); add(/wine|vino|red|rojo/, '#a92d4f'); add(/gold|dorado/, '#d5a83c');
+    add(/silver|plateado/, '#c8cdd3'); add(/white|blanco|clear|crystal|cristal|transparente/, '#f4f5f6');
+    if (!colors.length) colors.push('#d7dbe4');
+    return colors.length === 1 ? colors[0] : `linear-gradient(135deg, ${colors.slice(0, 3).map((color, index, list) => `${color} ${Math.round(index * 100 / list.length)}% ${Math.round((index + 1) * 100 / list.length)}%`).join(', ')})`;
+  }
+
+  function selectedCollection(family) {
+    const selected = [...state[family].facets.collection];
+    return selected.length === 1 ? selected[0] : 'all';
+  }
+
+  function activeFilterCount(family) {
+    return Object.values(state[family].facets).reduce((total, values) => total + values.size, 0);
+  }
+
+  function matchesFacets(product, facets) {
+    return Object.entries(facets).every(([key, selected]) => !selected.size || selected.has(String(product[key] ?? '')));
+  }
+
+  function renderFacets(family) {
+    const grid = document.getElementById(family === 'sun' ? 'sunFacetGrid' : 'opticalFacetGrid');
+    if (!grid) return;
+    grid.innerHTML = facetConfig[family].map((facet) => {
+      const choices = facetValues(family, facet.key).map((value) => {
+        const label = facetValueLabel(family, facet.key, value);
+        const active = state[family].facets[facet.key].has(value);
+        const swatch = facet.color ? `<span class="facet-color" style="--facet-color:${escapeHtml(colorSwatch(value))}" aria-hidden="true"></span>` : '';
+        return `<button class="facet-choice${active ? ' is-active' : ''}" type="button" data-facet-key="${escapeHtml(facet.key)}" data-facet-value="${escapeHtml(value)}" aria-pressed="${active}">${swatch}<span>${escapeHtml(label)}</span><span class="facet-check" aria-hidden="true">✓</span></button>`;
+      }).join('');
+      return `<section class="facet-group" aria-labelledby="${family}-${facet.key}-label"><h3 id="${family}-${facet.key}-label">${escapeHtml(i18n.t(facet.label))}</h3><div class="facet-options">${choices}</div></section>`;
+    }).join('');
+    renderActiveFilters(family);
+  }
+
+  function renderActiveFilters(family) {
+    const root = document.getElementById(family === 'sun' ? 'sunActiveFilters' : 'opticalActiveFilters');
+    const countNode = document.querySelector(`[data-filter-count="${family}"]`);
+    const count = activeFilterCount(family);
+    if (countNode) { countNode.textContent = String(count); countNode.hidden = count === 0; }
+    if (!root) return;
+    const chips = [];
+    Object.entries(state[family].facets).forEach(([key, selected]) => selected.forEach((value) => {
+      const label = facetValueLabel(family, key, value);
+      chips.push(`<button type="button" data-filter-remove-key="${escapeHtml(key)}" data-filter-remove-value="${escapeHtml(value)}" aria-label="${escapeHtml(i18n.t('removeFilter', { value: label }))}"><span>${escapeHtml(label)}</span><b aria-hidden="true">×</b></button>`);
+    }));
+    root.innerHTML = chips.length ? `<span>${escapeHtml(i18n.t('filtersActive'))}</span>${chips.join('')}` : '';
+    root.hidden = chips.length === 0;
   }
 
   function card(source) {
@@ -46,19 +138,21 @@
       : { grid: 'opticalGrid', status: 'opticalStatus', singular: 'opticalOne', plural: 'opticalMany' };
     const familyState = state[family];
     const query = normalize(familyState.query);
-    const matches = products.filter((product) => product.family === family && (familyState.collection === 'all' || product.collection === familyState.collection) && (!query || searchable(product).includes(query)));
+    const matches = products.filter((product) => product.family === family && matchesFacets(product, familyState.facets) && (!query || searchable(product).includes(query)));
     const grid = document.getElementById(config.grid);
     const status = document.getElementById(config.status);
     if (grid) grid.innerHTML = matches.length ? matches.map(card).join('') : `<div class="catalog-empty"><strong>${escapeHtml(i18n.t('noMatchesTitle'))}</strong><span>${escapeHtml(i18n.t('noMatchesText'))}</span></div>`;
-    if (status) status.textContent = `${matches.length} ${i18n.t(matches.length === 1 ? config.singular : config.plural)}${familyState.collection === 'all' ? '' : ` ${i18n.t('inCollection')} ${familyState.collection}`}`;
+    const collection = selectedCollection(family);
+    if (status) status.textContent = `${matches.length} ${i18n.t(matches.length === 1 ? config.singular : config.plural)}${collection === 'all' ? '' : ` ${i18n.t('inCollection')} ${collection}`}`;
     renderCollectionInfo(family);
   }
 
   function renderCollectionInfo(family) {
     const root = document.getElementById(family === 'sun' ? 'sunCollectionInfo' : 'opticalCollectionInfo');
-    const info = i18n.collectionInfo(family, state[family].collection);
+    const collection = selectedCollection(family);
+    const info = i18n.collectionInfo(family, collection);
     if (!root || !info) return;
-    root.innerHTML = `<div><span class="collection-explainer-label">${escapeHtml(state[family].collection === 'all' ? i18n.t('allMasculine') : state[family].collection)}</span><h3>${escapeHtml(info.title)}</h3><p>${escapeHtml(info.description)}</p></div><div class="collection-explainer-details"><p><strong>${i18n.language === 'es' ? 'Diferencia:' : 'Difference:'}</strong> ${escapeHtml(info.difference)}</p><p><strong>${i18n.language === 'es' ? 'Ejemplo:' : 'Example:'}</strong> ${escapeHtml(info.example.replace(/^(Ejemplo:|Example:)\s*/i, ''))}</p></div>`;
+    root.innerHTML = `<div><span class="collection-explainer-label">${escapeHtml(collection === 'all' ? i18n.t('allMasculine') : collection)}</span><h3>${escapeHtml(info.title)}</h3><p>${escapeHtml(info.description)}</p></div><div class="collection-explainer-details"><p><strong>${i18n.language === 'es' ? 'Diferencia:' : 'Difference:'}</strong> ${escapeHtml(info.difference)}</p><p><strong>${i18n.language === 'es' ? 'Ejemplo:' : 'Example:'}</strong> ${escapeHtml(info.example.replace(/^(Ejemplo:|Example:)\s*/i, ''))}</p></div>`;
   }
 
   function renderFaq() {
@@ -89,16 +183,50 @@
 
   function bindCatalog(family) {
     const search = document.getElementById(family === 'sun' ? 'sunSearch' : 'opticalSearch');
-    const filters = document.getElementById(family === 'sun' ? 'sunFilters' : 'opticalFilters');
+    const wrapper = document.querySelector(`[data-filter-family="${family}"]`);
+    const panel = document.querySelector(`[data-filter-panel="${family}"]`);
+    const toggle = document.querySelector(`[data-filter-toggle="${family}"]`);
     search?.addEventListener('input', (event) => { state[family].query = event.target.value; renderFamily(family); });
-    filters?.addEventListener('click', (event) => {
-      const button = event.target.closest('[data-filter]');
-      if (!button) return;
-      state[family].collection = button.dataset.filter;
-      filters.querySelectorAll('[data-filter]').forEach((filter) => { const active = filter === button; filter.classList.toggle('is-active', active); filter.setAttribute('aria-pressed', String(active)); });
-      renderFamily(family);
+    wrapper?.addEventListener('click', (event) => {
+      const toggleButton = event.target.closest(`[data-filter-toggle="${family}"]`);
+      if (toggleButton && panel) {
+        const open = panel.hidden;
+        panel.hidden = !open;
+        toggleButton.setAttribute('aria-expanded', String(open));
+        wrapper.classList.toggle('is-open', open);
+        return;
+      }
+      const choice = event.target.closest('[data-facet-key][data-facet-value]');
+      if (choice) {
+        const selected = state[family].facets[choice.dataset.facetKey];
+        if (!selected) return;
+        if (selected.has(choice.dataset.facetValue)) selected.delete(choice.dataset.facetValue);
+        else selected.add(choice.dataset.facetValue);
+        renderFacets(family);
+        renderFamily(family);
+        return;
+      }
+      const remove = event.target.closest('[data-filter-remove-key][data-filter-remove-value]');
+      if (remove) {
+        state[family].facets[remove.dataset.filterRemoveKey]?.delete(remove.dataset.filterRemoveValue);
+        renderFacets(family);
+        renderFamily(family);
+        return;
+      }
+      if (event.target.closest(`[data-filter-clear="${family}"]`)) {
+        Object.values(state[family].facets).forEach((values) => values.clear());
+        renderFacets(family);
+        renderFamily(family);
+      }
     });
-    filters?.querySelectorAll('[data-filter]').forEach((button) => button.setAttribute('aria-pressed', String(button.classList.contains('is-active'))));
+    wrapper?.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || !panel || panel.hidden) return;
+      panel.hidden = true;
+      toggle?.setAttribute('aria-expanded', 'false');
+      wrapper.classList.remove('is-open');
+      toggle?.focus();
+    });
+    renderFacets(family);
   }
 
   function bindHeader() {
@@ -124,7 +252,7 @@
     nodes.forEach((node) => observer.observe(node));
   }
 
-  function rerenderLocalized() { renderFamily('optical'); renderFamily('sun'); renderFaq(); }
+  function rerenderLocalized() { renderFacets('optical'); renderFacets('sun'); renderFamily('optical'); renderFamily('sun'); renderFaq(); }
 
   function init() {
     const opticalCount = products.filter((product) => product.family === 'optical').length;

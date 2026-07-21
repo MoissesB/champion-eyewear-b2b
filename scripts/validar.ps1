@@ -97,6 +97,15 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
   }
   if ($homeText -notmatch 'id="faqRoot"') { $failures.Add("index.html: falta la sección de preguntas frecuentes") | Out-Null }
   if ($homeText -notmatch 'id="opticalCollectionInfo"' -or $homeText -notmatch 'id="sunCollectionInfo"') { $failures.Add("index.html: faltan las explicaciones de colecciones") | Out-Null }
+  if ($homeText -notmatch 'data-filter-toggle="optical"' -or $homeText -notmatch 'data-filter-toggle="sun"' -or $homeText -notmatch 'id="opticalFacetGrid"' -or $homeText -notmatch 'id="sunFacetGrid"') { $failures.Add("index.html: faltan los filtros desplegables completos") | Out-Null }
+}
+
+$homeScriptPath = Join-Path $repoRoot "assets/home.js"
+if (Test-Path -LiteralPath $homeScriptPath -PathType Leaf) {
+  $homeScript = [System.IO.File]::ReadAllText($homeScriptPath, $utf8)
+  foreach ($requiredPattern in @('facetConfig', 'matchesFacets', 'data-facet-key', 'data-filter-clear', 'filterColor', 'filterMaterial', 'filterMeasurements')) {
+    if ($homeScript -notmatch $requiredPattern) { $failures.Add("assets/home.js: falta requisito de filtros $requiredPattern") | Out-Null }
+  }
 }
 
 $requestPath = Join-Path $repoRoot "assets/request.js"
@@ -132,6 +141,8 @@ if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
   if ($productScript -notmatch 'orderWhatsapp' -or $productScript -notmatch 'orderEmail') { $failures.Add("assets/product.js: faltan botones de pedido por WhatsApp y correo") | Out-Null }
   if (($productScript | Select-String -Pattern 'order-action-icon' -AllMatches).Matches.Count -lt 2) { $failures.Add("assets/product.js: faltan los iconos en las acciones de pedido") | Out-Null }
   if ($productScript -notmatch '--variant-swatch' -or $productScript -notmatch 'currentColorVariant') { $failures.Add("assets/product.js: faltan las muestras de color para las variantes") | Out-Null }
+  if ($productScript -notmatch 'mobile-product-order-bar' -or $productScript -notmatch 'mobileProductQuantity') { $failures.Add("assets/product.js: falta la barra móvil anclada para añadir productos") | Out-Null }
+  if ($productScript -notmatch 'data-gallery-zoom-menu' -or $productScript -notmatch 'maximum = mobileZoom\(\) \? 7 : 3') { $failures.Add("assets/product.js: falta el zoom móvil basado en la ficha original") | Out-Null }
   if ($null -ne $products) {
     foreach ($color in @($products.color | Sort-Object -Unique)) {
       if ($productScript -notmatch [regex]::Escape("'$color':")) { $failures.Add("assets/product.js: falta la muestra para el color $color") | Out-Null }
@@ -144,6 +155,8 @@ if (Test-Path -LiteralPath $stylesPath -PathType Leaf) {
   $stylesText = [System.IO.File]::ReadAllText($stylesPath, $utf8)
   if ($stylesText -notmatch '(?s)\.product-request-box\s*>\s*\.product-order-actions\s*\{.*?grid-template-columns:\s*1fr\s*;') { $failures.Add("assets/styles.css: las acciones de pedido no están apiladas") | Out-Null }
   if ($stylesText -notmatch '(?s)\.variant-picker\s+a\s*\{.*?border-radius:\s*50%\s*;') { $failures.Add("assets/styles.css: las variantes no se muestran como burbujas de color") | Out-Null }
+  if ($stylesText -notmatch 'aspect-ratio:\s*16\s*/\s*9' -or $stylesText -notmatch '\.filter-panel' -or $stylesText -notmatch '\.facet-grid') { $failures.Add("assets/styles.css: faltan el video panorámico o el panel de filtros") | Out-Null }
+  if ($stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.mobile-product-order-bar\s*\{.*?position:\s*fixed') { $failures.Add("assets/styles.css: falta la barra móvil fija de producto") | Out-Null }
 }
 
 if ($failures.Count -gt 0) {

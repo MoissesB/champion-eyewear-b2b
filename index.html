@@ -101,14 +101,18 @@
           <div><span class="eyebrow" data-i18n="opticalKicker">Colección óptica 2026</span><h2 data-i18n="opticalTitle">Monturas Champion</h2></div>
           <p data-i18n="opticalIntro">Busque por modelo, color, material o medida. Cada ficha usa una sola plantilla y carga únicamente los datos del producto elegido.</p>
         </div>
-        <div class="catalog-toolbar reveal" data-i18n-aria="opticalFiltersAria" aria-label="Filtros de monturas">
-          <label class="search-control">
-            <span class="sr-only" data-i18n="opticalSearch">Buscar monturas</span><span aria-hidden="true">⌕</span>
-            <input id="opticalSearch" type="search" data-i18n-placeholder="opticalPlaceholder" placeholder="Buscar CH01, azul, TR90, 57-17-145…" autocomplete="off">
-          </label>
-          <div class="filter-chips" id="opticalFilters">
-            <button class="is-active" type="button" data-filter="all" data-i18n="allFeminine">Todas</button>
-            <button type="button" data-filter="Steel">Steel</button><button type="button" data-filter="Bold">Bold</button><button type="button" data-filter="Flex">Flex</button>
+        <div class="catalog-filter reveal" data-filter-family="optical">
+          <div class="catalog-toolbar" data-i18n-aria="opticalFiltersAria" aria-label="Filtros de monturas">
+            <label class="search-control">
+              <span class="sr-only" data-i18n="opticalSearch">Buscar monturas</span><span aria-hidden="true">⌕</span>
+              <input id="opticalSearch" type="search" data-i18n-placeholder="opticalPlaceholder" placeholder="Buscar CH01, azul, TR90, 57-17-145…" autocomplete="off">
+            </label>
+            <button class="filter-toggle" type="button" data-filter-toggle="optical" aria-expanded="false" aria-controls="opticalFilterPanel"><span data-i18n="filtersToggle">Filtros</span><span class="filter-count" data-filter-count="optical" hidden>0</span><span class="filter-chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <div class="filter-panel" id="opticalFilterPanel" data-filter-panel="optical" hidden>
+            <div class="filter-panel-heading"><strong data-i18n="filtersAvailable">Categorías disponibles</strong><button type="button" data-filter-clear="optical" data-i18n="filtersClear">Limpiar filtros</button></div>
+            <div class="facet-grid" id="opticalFacetGrid"></div>
+            <div class="active-filters" id="opticalActiveFilters" aria-live="polite"></div>
           </div>
         </div>
         <div class="collection-explainer reveal" id="opticalCollectionInfo" aria-live="polite"></div>
@@ -124,10 +128,15 @@
           <div><span class="eyebrow eyebrow-light" data-i18n="sunKicker">Champion Sun · Nueva categoría</span><h2 data-i18n="sunTitle">Lentes de sol para una vitrina más deportiva</h2></div>
           <div><p data-i18n="sunIntro">Una sección completa con 29 referencias solares, desde siluetas urbanas hasta pantallas envolventes de alto impacto.</p><div class="sun-stat"><strong data-sun-count>29</strong><span data-i18n="sunAvailable">referencias disponibles para solicitar</span></div></div>
         </div>
-        <div class="catalog-toolbar catalog-toolbar-dark reveal" data-i18n-aria="sunFiltersAria" aria-label="Filtros de lentes de sol">
-          <label class="search-control search-control-dark"><span class="sr-only" data-i18n="sunSearch">Buscar lentes de sol</span><span aria-hidden="true">⌕</span><input id="sunSearch" type="search" data-i18n-placeholder="sunPlaceholder" placeholder="Buscar CHS-07, azul, espejado…" autocomplete="off"></label>
-          <div class="filter-chips filter-chips-dark" id="sunFilters">
-            <button class="is-active" type="button" data-filter="all" data-i18n="allMasculine">Todos</button><button type="button" data-filter="Sport Urban">Sport Urban</button><button type="button" data-filter="Sport Metal">Sport Metal</button><button type="button" data-filter="Performance Shield">Performance</button>
+        <div class="catalog-filter catalog-filter-dark reveal" data-filter-family="sun">
+          <div class="catalog-toolbar catalog-toolbar-dark" data-i18n-aria="sunFiltersAria" aria-label="Filtros de lentes de sol">
+            <label class="search-control search-control-dark"><span class="sr-only" data-i18n="sunSearch">Buscar lentes de sol</span><span aria-hidden="true">⌕</span><input id="sunSearch" type="search" data-i18n-placeholder="sunPlaceholder" placeholder="Buscar CHS-07, azul, espejado…" autocomplete="off"></label>
+            <button class="filter-toggle filter-toggle-dark" type="button" data-filter-toggle="sun" aria-expanded="false" aria-controls="sunFilterPanel"><span data-i18n="filtersToggle">Filtros</span><span class="filter-count" data-filter-count="sun" hidden>0</span><span class="filter-chevron" aria-hidden="true">⌄</span></button>
+          </div>
+          <div class="filter-panel filter-panel-dark" id="sunFilterPanel" data-filter-panel="sun" hidden>
+            <div class="filter-panel-heading"><strong data-i18n="filtersAvailable">Categorías disponibles</strong><button type="button" data-filter-clear="sun" data-i18n="filtersClear">Limpiar filtros</button></div>
+            <div class="facet-grid" id="sunFacetGrid"></div>
+            <div class="active-filters" id="sunActiveFilters" aria-live="polite"></div>
           </div>
         </div>
         <div class="collection-explainer collection-explainer-dark reveal" id="sunCollectionInfo" aria-live="polite"></div>

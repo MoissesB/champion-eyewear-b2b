@@ -63,9 +63,24 @@
     return `<article class="product-card related-card"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span></a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a><button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button></div></div></article>`;
   }
 
+  function variantPickerMarkup(variants, product, extraClass = '') {
+    if (variants.length < 2) return '';
+    const links = variants.map((variant) => {
+      const localizedVariant = i18n.localizeProduct(variant);
+      const active = variant.id === product.id;
+      const label = i18n.t(active ? 'currentColorVariant' : 'viewColorVariant', { color: localizedVariant.color });
+      return `<a class="${active ? 'is-active' : ''}" href="${detailUrl(variant)}" style="--variant-swatch: ${escapeHtml(variantSwatch(variant.color))}" aria-label="${escapeHtml(label)}" title="${escapeHtml(localizedVariant.color)}" aria-current="${active ? 'page' : 'false'}"><span class="sr-only">${escapeHtml(label)}</span></a>`;
+    }).join('');
+    return `<div class="variant-picker ${extraClass}"><span>${escapeHtml(i18n.t('variants', { series: product.series }))}</span><div>${links}</div></div>`;
+  }
+
+  function mobileOrderBar(product) {
+    return `<div class="mobile-product-order-bar"><div class="mobile-order-product"><strong>${escapeHtml(product.displayModel)}</strong><span>${escapeHtml(product.color)}</span></div><label><span class="sr-only">${escapeHtml(i18n.t('requestedQuantity'))}</span><input id="mobileProductQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric" aria-label="${escapeHtml(i18n.t('requestedQuantity'))}"></label><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="mobileProductQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div>`;
+  }
+
   function gallery(product) {
     const images = Array.from(new Set([product.cover, ...(product.images || [])]));
-    return `<div class="product-gallery" data-gallery><div class="product-gallery-stage"><span class="gallery-collection">${escapeHtml(product.collection)}</span><img id="productMainImage" src="./${escapeHtml(images[0])}" alt="${escapeHtml(i18n.t('viewNumber', { number: 1 }))}: ${escapeHtml(product.displayModel)}"><span class="gallery-counter"><strong id="galleryIndex">01</strong> / ${String(images.length).padStart(2, '0')}</span><div class="gallery-zoom-controls" aria-label="Zoom"><button type="button" data-gallery-zoom="out" aria-label="${escapeHtml(i18n.t('zoomOut'))}">−</button><button type="button" data-gallery-zoom="reset" aria-label="${escapeHtml(i18n.t('zoomReset'))}"><span data-gallery-zoom-level>100%</span></button><button type="button" data-gallery-zoom="in" aria-label="${escapeHtml(i18n.t('zoomIn'))}">+</button></div></div><div class="product-thumbnails" aria-label="${escapeHtml(i18n.t('productViews'))}">${images.map((image, index) => `<button class="${index === 0 ? 'is-active' : ''}" type="button" data-gallery-index="${index}" data-image="./${escapeHtml(image)}" aria-label="${escapeHtml(i18n.t('viewNumber', { number: index + 1 }))}" aria-pressed="${index === 0}"><img src="./${escapeHtml(image)}" alt="" loading="lazy"></button>`).join('')}</div></div>`;
+    return `<div class="product-gallery" data-gallery><div class="product-gallery-stage"><span class="gallery-collection">${escapeHtml(product.collection)}</span><img id="productMainImage" src="./${escapeHtml(images[0])}" alt="${escapeHtml(i18n.t('viewNumber', { number: 1 }))}: ${escapeHtml(product.displayModel)}"><span class="gallery-counter"><strong id="galleryIndex">01</strong> / ${String(images.length).padStart(2, '0')}</span><div class="gallery-zoom-controls" aria-label="Zoom"><button class="gallery-zoom-menu" type="button" data-gallery-zoom-menu aria-label="Zoom" aria-expanded="false">+</button><div class="gallery-zoom-actions"><button type="button" data-gallery-zoom="toggle" aria-label="${escapeHtml(i18n.t('zoomIn'))}">⌕</button><button type="button" data-gallery-zoom="out" aria-label="${escapeHtml(i18n.t('zoomOut'))}">−</button><button type="button" data-gallery-zoom="in" aria-label="${escapeHtml(i18n.t('zoomIn'))}">+</button><button type="button" data-gallery-zoom="reset" aria-label="${escapeHtml(i18n.t('zoomReset'))}">↻</button><span class="sr-only" data-gallery-zoom-level>100%</span></div></div></div><div class="product-thumbnails" aria-label="${escapeHtml(i18n.t('productViews'))}">${images.map((image, index) => `<button class="${index === 0 ? 'is-active' : ''}" type="button" data-gallery-index="${index}" data-image="./${escapeHtml(image)}" aria-label="${escapeHtml(i18n.t('viewNumber', { number: index + 1 }))}" aria-pressed="${index === 0}"><img src="./${escapeHtml(image)}" alt="" loading="lazy"></button>`).join('')}</div></div>`;
   }
 
   function specs(product) {
@@ -86,15 +101,15 @@
     if (!root) return;
     root.innerHTML = `${gallery(product)}<div class="product-details">
       <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="./index.html">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="./index.html#${backAnchor}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
-      <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span><h1>${escapeHtml(product.displayModel)}</h1><p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
-      ${variants.length > 1 ? `<div class="variant-picker"><span>${escapeHtml(i18n.t('variants', { series: product.series }))}</span><div>${variants.map((variant) => { const localizedVariant = i18n.localizeProduct(variant); const active = variant.id === product.id; const label = i18n.t(active ? 'currentColorVariant' : 'viewColorVariant', { color: localizedVariant.color }); return `<a class="${active ? 'is-active' : ''}" href="${detailUrl(variant)}" style="--variant-swatch: ${escapeHtml(variantSwatch(variant.color))}" aria-label="${escapeHtml(label)}" title="${escapeHtml(localizedVariant.color)}" aria-current="${active ? 'page' : 'false'}"><span class="sr-only">${escapeHtml(label)}</span></a>`; }).join('')}</div></div>` : ''}
-      <div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>
+      <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span><h1>${escapeHtml(product.displayModel)}</h1>${variantPickerMarkup(variants, product, 'mobile-product-variants')}<p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
+      ${variantPickerMarkup(variants, product, 'desktop-product-variants')}
+      <div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div class="product-order-entry"><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>
       <div class="product-tabs"><div class="tab-list" role="tablist" aria-label="${escapeHtml(i18n.t('tabsAria'))}"><button class="is-active" type="button" role="tab" aria-selected="true" data-tab="description">${escapeHtml(i18n.t('tabDescription'))}</button><button type="button" role="tab" aria-selected="false" data-tab="specs">${escapeHtml(i18n.t('tabSpecs'))}</button><button type="button" role="tab" aria-selected="false" data-tab="terms">${escapeHtml(i18n.t('tabTerms'))}</button></div>
         <section class="tab-panel is-active" data-panel="description"><p>${escapeHtml(product.about?.p1 || product.shortDescription)}</p><p>${escapeHtml(product.about?.p2 || '')}</p><ul>${(product.about?.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul></section>
         <section class="tab-panel" data-panel="specs" hidden><dl class="spec-list">${specs(product)}</dl></section>
         <section class="tab-panel" data-panel="terms" hidden><p>${escapeHtml(i18n.t('termIntro'))}</p><ul><li>${escapeHtml(i18n.t('term1'))}</li><li>${escapeHtml(i18n.t('term2'))}</li><li>${escapeHtml(i18n.t('term3'))}</li></ul></section>
       </div>
-    </div>`;
+    </div>${mobileOrderBar(product)}`;
     bindGallery(product); bindTabs();
   }
 
@@ -103,8 +118,10 @@
     const counter = document.getElementById('galleryIndex');
     const zoomLevel = document.querySelector('[data-gallery-zoom-level]');
     const stage = document.querySelector('.product-gallery-stage');
+    const galleryRoot = document.querySelector('[data-gallery]');
     let zoom = 1;
     let touchTracking = false;
+    const mobileZoom = () => window.matchMedia('(max-width: 680px)').matches;
     const resetOrigin = () => { stage?.style.setProperty('--zoom-x', '50%'); stage?.style.setProperty('--zoom-y', '50%'); };
     const updateOrigin = (event) => {
       if (!stage) return;
@@ -114,7 +131,7 @@
       stage.style.setProperty('--zoom-x', `${Math.max(0, Math.min(100, x))}%`);
       stage.style.setProperty('--zoom-y', `${Math.max(0, Math.min(100, y))}%`);
     };
-    const applyZoom = () => { if (mainImage) mainImage.style.setProperty('--gallery-zoom', String(zoom)); if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`; if (zoom === 1) resetOrigin(); };
+    const applyZoom = () => { if (mainImage) mainImage.style.setProperty('--gallery-zoom', String(zoom)); if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`; stage?.classList.toggle('is-manual-zoom', zoom > 1); if (zoom === 1) resetOrigin(); };
 
     stage?.addEventListener('pointerenter', (event) => {
       if (event.pointerType !== 'touch') stage.classList.add('is-zooming');
@@ -131,9 +148,25 @@
     stage?.addEventListener('pointercancel', () => { touchTracking = false; });
     stage?.addEventListener('pointerleave', () => { touchTracking = false; stage.classList.remove('is-zooming'); resetOrigin(); });
 
-    document.querySelector('[data-gallery]')?.addEventListener('click', (event) => {
+    galleryRoot?.addEventListener('click', (event) => {
+      const menuButton = event.target.closest('[data-gallery-zoom-menu]');
+      if (menuButton) {
+        const controls = menuButton.closest('.gallery-zoom-controls');
+        const open = !controls?.classList.contains('is-open');
+        controls?.classList.toggle('is-open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        return;
+      }
       const zoomButton = event.target.closest('[data-gallery-zoom]');
-      if (zoomButton) { const action = zoomButton.dataset.galleryZoom; zoom = action === 'reset' ? 1 : Math.max(1, Math.min(3, zoom + (action === 'in' ? 0.35 : -0.35))); stage?.classList.remove('is-zooming'); applyZoom(); return; }
+      if (zoomButton) {
+        const action = zoomButton.dataset.galleryZoom;
+        const step = mobileZoom() ? 0.5 : 0.35;
+        const maximum = mobileZoom() ? 7 : 3;
+        if (action === 'reset') zoom = 1;
+        else if (action === 'toggle') zoom = zoom > 1 ? 1 : 2;
+        else zoom = Math.max(1, Math.min(maximum, zoom + (action === 'in' ? step : -step)));
+        stage?.classList.remove('is-zooming'); applyZoom(); return;
+      }
       const button = event.target.closest('[data-gallery-index]'); if (!button || !mainImage) return;
       const index = Number(button.dataset.galleryIndex); mainImage.src = button.dataset.image; mainImage.alt = `${i18n.t('viewNumber', { number: index + 1 })}: ${product.displayModel}`; if (counter) counter.textContent = String(index + 1).padStart(2, '0');
       zoom = 1; stage?.classList.remove('is-zooming'); resetOrigin(); applyZoom();
