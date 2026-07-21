@@ -41,14 +41,14 @@ Edite el objeto correspondiente en `data/products.json` y mantenga sincronizado 
 
 Cuando los cambios procedan de las carpetas maestras, es preferible ejecutar el generador y el optimizador incluidos. Estos scripts no modifican los originales de `Catalogo Champion`.
 
-## Solicitud profesional para ópticas
+## Pedido profesional para ópticas
 
 La selección se guarda en el navegador del usuario. Puede:
 
 - definir cantidades por referencia;
 - comprobar el mínimo inicial de 18 piezas;
 - completar nombre, empresa, óptica, correo, teléfono, ciudad y país;
-- generar un PDF con número de solicitud, logotipos, imágenes y detalles de productos;
+- generar un PDF con número de pedido, logotipos, imágenes y detalles de productos;
 - preparar un CSV operativo y un correo profesional para Innova;
 - abrir un mensaje de WhatsApp con todos los datos y la selección en texto.
 

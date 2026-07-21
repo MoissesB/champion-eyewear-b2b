@@ -22,14 +22,20 @@
     <a class="back-control" href="./index.html#monturas" data-i18n-aria="backCatalog" aria-label="Volver al catálogo">←</a>
     <a class="product-brand" href="./index.html"><img src="./assets/images/brand/champion-header.png" alt="Champion Eyewear"><span data-i18n="footerText">Catálogo profesional distribuido por Innova Eyewear.</span></a>
     <nav aria-label="Navegación de producto">
-      <a href="./index.html" data-i18n="navHome">Inicio</a><a href="./index.html#monturas" data-i18n="navCatalog">Catálogo</a><a href="#similares" data-i18n="navSimilar">Similares</a>
+      <a href="./index.html" data-i18n="navHome">Inicio</a><a href="./index.html#monturas" data-i18n="navCatalog">Catálogo</a><a href="#preguntas" data-i18n="navFaq">Preguntas</a><a href="#similares" data-i18n="navSimilar">Similares</a>
       <button class="language-toggle language-toggle-product" type="button" data-language-toggle aria-label="Cambiar el sitio a inglés">EN · English</button>
-      <button type="button" data-request-open><span data-i18n="requestShort">Mi solicitud</span> <span data-request-count>0</span></button>
+      <button type="button" data-request-open><span data-i18n="requestShort">Mi pedido</span> <span data-request-count>0</span></button>
     </nav>
   </header>
 
   <main id="contenido" class="product-main">
     <section class="product-layout" id="productRoot" aria-live="polite"><div class="product-loading" data-i18n="loading">Preparando ficha de producto…</div></section>
+    <section class="product-faq-section" id="preguntas">
+      <div class="container">
+        <div class="section-heading centered"><span class="eyebrow" data-i18n="productFaqKicker">Antes de enviar el pedido</span><h2 data-i18n="productFaqTitle">Resuelva aquí sus preguntas</h2><p data-i18n="productFaqIntro">Compra mínima, proceso de revisión, garantía, cobertura, despacho y condiciones comerciales en un solo lugar.</p></div>
+        <div class="product-faq-list" id="productFaqRoot"></div>
+      </div>
+    </section>
     <section class="related-section" id="similares">
       <div class="container"><div class="section-heading compact"><div><span class="eyebrow" data-i18n="relatedKicker">Referencias relacionadas</span><h2 id="relatedTitle" data-i18n="relatedTitle">Productos similares</h2></div></div><div class="product-grid related-grid" id="relatedGrid"></div></div>
     </section>
@@ -38,7 +44,7 @@
   <footer class="site-footer product-footer">
     <div class="container footer-grid">
       <div><img src="./assets/images/brand/champion-header.png" alt="Champion Eyewear"><p data-i18n="footerText">Catálogo profesional distribuido por Innova Eyewear.</p></div>
-      <div><strong data-i18n="footerConditions">Condiciones</strong><span data-i18n="footerPrice">Precio final y disponibilidad: a cotizar</span><span data-i18n="footerMinimum">Pedido inicial mínimo: 18 piezas</span></div>
+      <div><strong data-i18n="footerConditions">Condiciones</strong><span data-i18n="footerOrderReview">Innova revisa y confirma el pedido</span><span data-i18n="footerShipping">El envío se coordina con el cliente y no es gratuito</span></div>
       <div><strong data-i18n="footerContact">Contacto</strong><a href="https://wa.me/17542360600" target="_blank" rel="noopener">WhatsApp Innova</a><a href="mailto:sales@innova-eyewear.com">sales@innova-eyewear.com</a></div>
     </div>
   </footer>

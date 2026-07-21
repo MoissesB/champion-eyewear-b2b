@@ -117,6 +117,15 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot "product.html")) {
   if ($template -notmatch 'id="productRoot"' -or $template -notmatch 'assets/product\.js') {
     $failures.Add("product.html: la plantilla dinámica está incompleta") | Out-Null
   }
+  if ($template -notmatch 'id="productFaqRoot"') { $failures.Add("product.html: falta la sección visible de preguntas") | Out-Null }
+}
+
+$productScriptPath = Join-Path $repoRoot "assets/product.js"
+if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
+  $productScript = [System.IO.File]::ReadAllText($productScriptPath, $utf8)
+  if ($productScript -notmatch 'data-gallery-zoom') { $failures.Add("assets/product.js: faltan controles de zoom") | Out-Null }
+  if ($productScript -match 'trade-price') { $failures.Add("assets/product.js: todavía muestra el bloque de precio mayorista") | Out-Null }
+  if ($productScript -notmatch 'orderWhatsapp' -or $productScript -notmatch 'orderEmail') { $failures.Add("assets/product.js: faltan botones de pedido por WhatsApp y correo") | Out-Null }
 }
 
 if ($failures.Count -gt 0) {

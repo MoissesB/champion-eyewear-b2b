@@ -19,7 +19,7 @@
 
   function gallery(product) {
     const images = Array.from(new Set([product.cover, ...(product.images || [])]));
-    return `<div class="product-gallery" data-gallery><div class="product-gallery-stage"><span class="gallery-collection">${escapeHtml(product.collection)}</span><img id="productMainImage" src="./${escapeHtml(images[0])}" alt="${escapeHtml(i18n.t('viewNumber', { number: 1 }))}: ${escapeHtml(product.displayModel)}"><span class="gallery-counter"><strong id="galleryIndex">01</strong> / ${String(images.length).padStart(2, '0')}</span></div><div class="product-thumbnails" aria-label="${escapeHtml(i18n.t('productViews'))}">${images.map((image, index) => `<button class="${index === 0 ? 'is-active' : ''}" type="button" data-gallery-index="${index}" data-image="./${escapeHtml(image)}" aria-label="${escapeHtml(i18n.t('viewNumber', { number: index + 1 }))}" aria-pressed="${index === 0}"><img src="./${escapeHtml(image)}" alt="" loading="lazy"></button>`).join('')}</div></div>`;
+    return `<div class="product-gallery" data-gallery><div class="product-gallery-stage"><span class="gallery-collection">${escapeHtml(product.collection)}</span><img id="productMainImage" src="./${escapeHtml(images[0])}" alt="${escapeHtml(i18n.t('viewNumber', { number: 1 }))}: ${escapeHtml(product.displayModel)}"><span class="gallery-counter"><strong id="galleryIndex">01</strong> / ${String(images.length).padStart(2, '0')}</span><div class="gallery-zoom-controls" aria-label="Zoom"><button type="button" data-gallery-zoom="out" aria-label="${escapeHtml(i18n.t('zoomOut'))}">−</button><button type="button" data-gallery-zoom="reset" aria-label="${escapeHtml(i18n.t('zoomReset'))}"><span data-gallery-zoom-level>100%</span></button><button type="button" data-gallery-zoom="in" aria-label="${escapeHtml(i18n.t('zoomIn'))}">+</button></div></div><div class="product-thumbnails" aria-label="${escapeHtml(i18n.t('productViews'))}">${images.map((image, index) => `<button class="${index === 0 ? 'is-active' : ''}" type="button" data-gallery-index="${index}" data-image="./${escapeHtml(image)}" aria-label="${escapeHtml(i18n.t('viewNumber', { number: index + 1 }))}" aria-pressed="${index === 0}"><img src="./${escapeHtml(image)}" alt="" loading="lazy"></button>`).join('')}</div></div>`;
   }
 
   function specs(product) {
@@ -41,9 +41,8 @@
     root.innerHTML = `${gallery(product)}<div class="product-details">
       <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="./index.html">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="./index.html#${backAnchor}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
       <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span><h1>${escapeHtml(product.displayModel)}</h1><p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
-      <div class="trade-price"><span>${escapeHtml(i18n.t('wholesaleCondition'))}</span><strong>${escapeHtml(i18n.t('quotePrice'))}</strong><p>${escapeHtml(i18n.t('quoteNote'))}</p></div>
       ${variants.length > 1 ? `<div class="variant-picker"><span>${escapeHtml(i18n.t('variants', { series: product.series }))}</span><div>${variants.map((variant) => `<a class="${variant.id === product.id ? 'is-active' : ''}" href="${detailUrl(variant)}" aria-current="${variant.id === product.id ? 'page' : 'false'}">${escapeHtml(variant.variant)}</a>`).join('')}</div></div>` : ''}
-      <div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p></div>
+      <div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp">${escapeHtml(i18n.t('orderWhatsapp'))}</button><button class="order-email" type="button" data-request-open data-order-channel="email">${escapeHtml(i18n.t('orderEmail'))}</button></div></div>
       <div class="product-tabs"><div class="tab-list" role="tablist" aria-label="${escapeHtml(i18n.t('tabsAria'))}"><button class="is-active" type="button" role="tab" aria-selected="true" data-tab="description">${escapeHtml(i18n.t('tabDescription'))}</button><button type="button" role="tab" aria-selected="false" data-tab="specs">${escapeHtml(i18n.t('tabSpecs'))}</button><button type="button" role="tab" aria-selected="false" data-tab="terms">${escapeHtml(i18n.t('tabTerms'))}</button></div>
         <section class="tab-panel is-active" data-panel="description"><p>${escapeHtml(product.about?.p1 || product.shortDescription)}</p><p>${escapeHtml(product.about?.p2 || '')}</p><ul>${(product.about?.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul></section>
         <section class="tab-panel" data-panel="specs" hidden><dl class="spec-list">${specs(product)}</dl></section>
@@ -56,11 +55,22 @@
   function bindGallery(product) {
     const mainImage = document.getElementById('productMainImage');
     const counter = document.getElementById('galleryIndex');
+    const zoomLevel = document.querySelector('[data-gallery-zoom-level]');
+    let zoom = 1;
+    const applyZoom = () => { if (mainImage) mainImage.style.setProperty('--gallery-zoom', String(zoom)); if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`; };
     document.querySelector('[data-gallery]')?.addEventListener('click', (event) => {
+      const zoomButton = event.target.closest('[data-gallery-zoom]');
+      if (zoomButton) { const action = zoomButton.dataset.galleryZoom; zoom = action === 'reset' ? 1 : Math.max(1, Math.min(2.5, zoom + (action === 'in' ? 0.25 : -0.25))); applyZoom(); return; }
       const button = event.target.closest('[data-gallery-index]'); if (!button || !mainImage) return;
       const index = Number(button.dataset.galleryIndex); mainImage.src = button.dataset.image; mainImage.alt = `${i18n.t('viewNumber', { number: index + 1 })}: ${product.displayModel}`; if (counter) counter.textContent = String(index + 1).padStart(2, '0');
+      zoom = 1; applyZoom();
       button.parentElement.querySelectorAll('[data-gallery-index]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
     });
+  }
+
+  function renderProductFaq() {
+    const root = document.getElementById('productFaqRoot'); if (!root) return;
+    root.innerHTML = i18n.faq().map((group, groupIndex) => `<section class="product-faq-group"><h3>${escapeHtml(group.title)}</h3>${group.items.map(([question, answer], itemIndex) => `<details ${groupIndex === 0 && itemIndex === 0 ? 'open' : ''}><summary><span>${escapeHtml(question)}</span><span aria-hidden="true">⌄</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</section>`).join('');
   }
 
   function bindTabs() {
@@ -82,11 +92,11 @@
     root.innerHTML = `<div class="product-not-found"><span class="eyebrow">${escapeHtml(i18n.t('productNotFoundKicker'))}</span><h1>${escapeHtml(i18n.t('productNotFoundTitle'))}</h1><p>${escapeHtml(i18n.t('productNotFoundText'))}</p><a class="button button-primary" href="./index.html#monturas">${escapeHtml(i18n.t('productNotFoundCta'))}</a></div>`;
   }
 
-  function rerender() { if (currentProduct) { renderProduct(currentProduct); renderRelated(currentProduct); } else renderNotFound(); }
+  function rerender() { if (currentProduct) { renderProduct(currentProduct); renderRelated(currentProduct); renderProductFaq(); } else renderNotFound(); }
   function init() {
     const id = new URLSearchParams(window.location.search).get('id'); currentProduct = products.find((candidate) => candidate.id === id);
     if (!currentProduct) { renderNotFound(); document.getElementById('similares')?.remove(); i18n.onChange(renderNotFound); return; }
-    renderProduct(currentProduct); renderRelated(currentProduct); i18n.onChange(rerender);
+    renderProduct(currentProduct); renderRelated(currentProduct); renderProductFaq(); i18n.onChange(rerender);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
