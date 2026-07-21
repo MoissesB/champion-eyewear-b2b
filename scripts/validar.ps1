@@ -133,7 +133,7 @@ if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
 $stylesPath = Join-Path $repoRoot "assets/styles.css"
 if (Test-Path -LiteralPath $stylesPath -PathType Leaf) {
   $stylesText = [System.IO.File]::ReadAllText($stylesPath, $utf8)
-  if ($stylesText -notmatch '(?s)\.product-order-actions\s*\{.*?grid-template-columns:\s*1fr\s*;') { $failures.Add("assets/styles.css: las acciones de pedido no están apiladas") | Out-Null }
+  if ($stylesText -notmatch '(?s)\.product-request-box\s*>\s*\.product-order-actions\s*\{.*?grid-template-columns:\s*1fr\s*;') { $failures.Add("assets/styles.css: las acciones de pedido no están apiladas") | Out-Null }
 }
 
 if ($failures.Count -gt 0) {

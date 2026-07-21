@@ -2539,7 +2539,7 @@ h3 {
   text-decoration: underline;
 }
 
-.product-order-actions {
+.product-request-box > .product-order-actions {
   display: grid;
   grid-template-columns: 1fr;
   gap: 9px;
@@ -2548,7 +2548,7 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.product-order-actions button {
+.product-request-box > .product-order-actions button {
   min-height: 48px;
   display: grid;
   grid-template-columns: 34px minmax(0, 1fr);
