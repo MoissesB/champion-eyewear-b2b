@@ -56,11 +56,13 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
         }
       }
 
-      $media = @($product.cover) + @($product.images)
-      if ($media.Count -lt 2) { $failures.Add("Producto $($product.id): faltan vistas") | Out-Null }
-      if ($media.Count -gt 4) { $failures.Add("Producto $($product.id): tiene más de cuatro vistas") | Out-Null }
+      $gallery = @($product.images)
+      $media = @($product.cover) + $gallery
+      if ($gallery.Count -lt 1) { $failures.Add("Producto $($product.id): faltan vistas internas") | Out-Null }
       if (($media | Sort-Object -Unique).Count -ne $media.Count) { $failures.Add("Producto $($product.id): tiene vistas duplicadas") | Out-Null }
-      if ($product.family -eq "optical" -and $media.Count -ne 4) { $failures.Add("Producto $($product.id): la montura no tiene exactamente cuatro vistas") | Out-Null }
+      if ($product.family -eq "optical" -and $gallery.Count -ne 4) { $failures.Add("Producto $($product.id): la carpeta Listo no aporta exactamente cuatro vistas internas") | Out-Null }
+      if ($product.family -eq "optical" -and $product.cover -in $gallery) { $failures.Add("Producto $($product.id): la portada no puede formar parte de la galería interna") | Out-Null }
+      if ($product.family -eq "sun" -and $media.Count -gt 4) { $failures.Add("Producto $($product.id): el solar tiene más de cuatro vistas") | Out-Null }
       foreach ($relativeAsset in ($media | Sort-Object -Unique)) {
         $normalizedAsset = [string]$relativeAsset -replace '/', [IO.Path]::DirectorySeparatorChar
         $assetPath = Join-Path $repoRoot $normalizedAsset
@@ -144,6 +146,7 @@ if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
   if ($productScript -notmatch '--variant-swatch' -or $productScript -notmatch 'currentColorVariant') { $failures.Add("assets/product.js: faltan las muestras de color para las variantes") | Out-Null }
   if ($productScript -notmatch 'mobile-product-order-bar' -or $productScript -notmatch 'mobileProductQuantity') { $failures.Add("assets/product.js: falta la barra móvil anclada para añadir productos") | Out-Null }
   if ($productScript -notmatch 'data-gallery-zoom-menu' -or $productScript -notmatch 'maximum = mobileZoom\(\) \? 7 : 3' -or $productScript -notmatch 'pinchStartDist' -or $productScript -notmatch 'panX' -or $productScript -notmatch 'setPointerCapture') { $failures.Add("assets/product.js: falta el zoom móvil basado en la ficha original") | Out-Null }
+  if ($productScript -notmatch "product\.family === 'optical'" -or $productScript -notmatch 'Set\(product\.images') { $failures.Add("assets/product.js: la ficha óptica no separa la portada de las cuatro imágenes internas") | Out-Null }
   if ($null -ne $products) {
     foreach ($color in @($products.color | Sort-Object -Unique)) {
       if ($productScript -notmatch [regex]::Escape("'$color':")) { $failures.Add("assets/product.js: falta la muestra para el color $color") | Out-Null }

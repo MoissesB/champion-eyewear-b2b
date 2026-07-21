@@ -141,10 +141,10 @@ function selectNumberedViews(files) {
     if (last && last <= 6 && !byView.has(last)) byView.set(last, file);
   }
   const numbered = [...byView.entries()].sort((a, b) => a[0] - b[0]).map((entry) => entry[1]);
-  // La portada ya es la vista frontal en tres cuartos. La vista 1 repite el
-  // frente; las vistas 2, 3 y 4 son los tres ángulos complementarios.
-  if (numbered.length >= 4) return numbered.slice(1, 4);
-  if (candidates.length >= 4) return candidates.slice(1, 4);
+  // La portada pertenece exclusivamente a la tarjeta del catálogo. La ficha
+  // utiliza las cuatro imágenes numeradas de la carpeta Listo/Final.
+  if (numbered.length >= 4) return numbered.slice(0, 4);
+  if (candidates.length >= 4) return candidates.slice(0, 4);
   return [];
 }
 
@@ -156,7 +156,7 @@ function localOpticalImages(seriesNumber, code, slug, manifest) {
   const finalDir = descendants.find((directory) => path.basename(directory).toLowerCase() === 'final');
   const detailSource = ready || finalDir || productDir;
   const views = selectNumberedViews(listFiles(detailSource, false));
-  if (views.length !== 3) throw new Error(`${code} necesita tres ángulos distintos además de la portada en ${detailSource}.`);
+  if (views.length !== 4) throw new Error(`${code} necesita exactamente cuatro imágenes en ${detailSource}.`);
 
   const coverDir = fs.readdirSync(seriesDir, { withFileTypes: true })
     .find((entry) => entry.isDirectory() && entry.name.toLowerCase() === 'portada');
@@ -165,10 +165,10 @@ function localOpticalImages(seriesNumber, code, slug, manifest) {
   const cover = coverFiles.find((file) => normalizeCode(path.basename(file, path.extname(file))) === normalizeCode(code));
   if (!cover) throw new Error(`No se encontró la portada local de ${code}.`);
 
-  const coverTarget = `assets/images/optical/${slug}/cover-v2.webp`;
+  const coverTarget = `assets/images/optical/${slug}/cover-v3.webp`;
   manifest.push({ family: 'optical', code, role: 'cover', source: cover, target: coverTarget, maxWidth: 1000, maxHeight: 760 });
   const targets = views.map((source, index) => {
-    const target = `assets/images/optical/${slug}/${String(index + 1).padStart(2, '0')}-v2.webp`;
+    const target = `assets/images/optical/${slug}/${String(index + 1).padStart(2, '0')}.webp`;
     manifest.push({ family: 'optical', code, role: 'gallery', source, target, maxWidth: 1500, maxHeight: 1150 });
     return target;
   });
