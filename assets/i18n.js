@@ -1,0 +1,247 @@
+(function () {
+  'use strict';
+
+  const STORAGE_KEY = 'champion-language-v1';
+  const listeners = new Set();
+
+  const translations = {
+    es: {
+      skip: 'Ir al contenido', language: 'EN · English', languageAria: 'Cambiar el sitio a inglés',
+      navBenefits: 'Beneficios', navOptical: 'Monturas', navSun: 'Lentes de sol', navProfessional: 'Zona profesional', navFaq: 'Preguntas', navHome: 'Inicio', navSimilar: 'Similares', navCatalog: 'Catálogo',
+      requestShort: 'Mi solicitud', requestOpen: 'Preparar solicitud', requestMobile: 'Ver mi solicitud', menuOpen: 'Abrir menú',
+      announcement: 'INNOVA EYEWEAR · Catálogo profesional para ópticas, cadenas y distribuidores',
+      heroKicker: 'Innova Eyewear · Distribución profesional', heroTitle: 'Champion Eyewear:<br>rotación con estilo deportivo', heroText: 'Monturas ópticas y lentes de sol para vitrinas comerciales. Seleccione referencias, defina cantidades y solicite una cotización profesional a Innova.', heroOptical: 'Ver monturas', heroSun: 'Ver lentes de sol', heroRequest: 'Preparar mi solicitud', heroOpticalFact: 'monturas', heroSunFact: 'solares', heroPdfFact: 'PDF profesional', heroSummaryAria: 'Resumen del catálogo',
+      benefitsKicker: 'Rentabilidad y demanda', benefitsTitle: 'Por qué las ópticas eligen Champion', benefitsText: 'Una propuesta deportiva y urbana con reconocimiento de marca, lectura visual inmediata y referencias pensadas para una rotación comercial clara.', benefit1Title: '93 referencias listas.', benefit1Text: 'Monturas y solares en un único catálogo.', benefit2Title: 'Selección profesional.', benefit2Text: 'Cantidades y datos de la óptica sin un carrito minorista.', benefit3Title: 'Documentos claros.', benefit3Text: 'PDF para el cliente y CSV operativo para Innova.', benefitsCta: 'Explorar colección solar', soundOn: 'Activar sonido', soundOff: 'Silenciar',
+      opticalKicker: 'Colección óptica 2026', opticalTitle: 'Monturas Champion', opticalIntro: 'Busque por modelo, color, material o medida. Cada ficha usa una sola plantilla y carga únicamente los datos del producto elegido.', opticalFiltersAria: 'Filtros de monturas', opticalSearch: 'Buscar monturas', opticalPlaceholder: 'Buscar CH01, azul, TR90, 57-17-145…', allFeminine: 'Todas',
+      sunKicker: 'Champion Sun · Nueva categoría', sunTitle: 'Lentes de sol para una vitrina más deportiva', sunIntro: 'Una sección completa con 29 referencias solares, desde siluetas urbanas hasta pantallas envolventes de alto impacto.', sunAvailable: 'referencias disponibles para solicitar', sunFiltersAria: 'Filtros de lentes de sol', sunSearch: 'Buscar lentes de sol', sunPlaceholder: 'Buscar CHS-07, azul, espejado…', allMasculine: 'Todos',
+      processKicker: 'Solicitud para ópticas', processTitle: 'De la selección a la cotización', processIntro: 'Un proceso claro para ópticas, cadenas y distribuidores; no es una compra en línea ni muestra precios por producto.', step1Title: 'Seleccione', step1Text: 'Añada monturas o solares y ajuste la cantidad de cada referencia.', step2Title: 'Complete', step2Text: 'Indique nombre, óptica, correo, teléfono, ciudad y país.', step3Title: 'Revise', step3Text: 'Cumpla el mínimo de 18 piezas. La referencia general para 18 piezas es US$1,080.', step4Title: 'Envíe', step4Text: 'Descargue el PDF o prepare el correo con CSV y el WhatsApp con texto organizado.',
+      referenceKicker: 'Referencia comercial', referenceTitle: 'Pedido inicial mínimo: 18 piezas', referenceText: 'El valor de referencia aprobado es US$60 por pieza, por lo que 18 piezas equivalen a una referencia general de US$1,080. No mostramos precios por producto: el valor final depende del país, disponibilidad, volumen y validación de Innova.', referenceDisclaimer: 'Esta cifra es informativa y no constituye una cotización ni confirma inventario.',
+      faqKicker: 'Información comercial', faqTitle: 'Preguntas frecuentes para ópticas', faqIntro: 'Toda la información de la página original, ahora integrada en el catálogo y disponible en español e inglés.', faqTopics: 'Temas',
+      ctaKicker: 'Atención de Innova Eyewear', ctaTitle: 'Prepare su próxima selección Champion', ctaText: 'Seleccione al menos 18 piezas y envíe una solicitud ordenada para revisar disponibilidad, precio final, condiciones y despacho.', ctaOpen: 'Abrir mi solicitud', ctaAdvisor: 'Contactar a un asesor',
+      footerText: 'Catálogo profesional distribuido por Innova Eyewear.', footerCatalog: 'Catálogo', footerService: 'Servicio para ópticas', footerRequest: 'Preparar solicitud', footerConditions: 'Condiciones', footerPrice: 'Precio final y disponibilidad: a cotizar', footerMinimum: 'Pedido inicial mínimo: 18 piezas', footerContact: 'Contacto',
+      loading: 'Preparando ficha de producto…', relatedKicker: 'Referencias relacionadas', relatedTitle: 'Productos similares', backCatalog: 'Volver al catálogo',
+      viewDetails: 'Ver ficha', addRequest: 'Añadir a mi solicitud', added: '{model} añadido a su solicitud', noMatchesTitle: 'No encontramos coincidencias.', noMatchesText: 'Pruebe otro modelo, color o material.', opticalOne: 'montura', opticalMany: 'monturas', sunOne: 'lente de sol', sunMany: 'lentes de sol', inCollection: 'en',
+      breadcrumbs: 'Migas de pan', productViews: 'Vistas del producto', viewNumber: 'Vista {number}', wholesaleCondition: 'Condición profesional', quotePrice: 'Precio final a cotizar', quoteNote: 'No se muestra un precio por producto. Innova confirma el valor final según país, volumen y disponibilidad.', variants: 'Variantes de {series}', requestedQuantity: 'Cantidad solicitada', reviewSelection: 'Revisar mi solicitud', directConsultation: 'Consulta individual', directConsultationNote: 'Para enviar una solicitud completa, añada productos y cumpla el mínimo de 18 piezas.', emailInnova: 'Correo a Innova', tabsAria: 'Información de producto', tabDescription: 'Descripción', tabSpecs: 'Ficha técnica', tabTerms: 'Condiciones comerciales', termIntro: 'Esta ficha pertenece a un catálogo profesional. La selección genera una solicitud de cotización; no constituye una compra ni confirma inventario.', term1: 'Precio final y disponibilidad sujetos a confirmación.', term2: 'Pedido inicial mínimo de 18 piezas y condiciones según volumen.', term3: 'Despacho y forma de pago acordados con Innova Eyewear.', specModel: 'Modelo', specSku: 'SKU', specCollection: 'Colección', specColor: 'Color', specMaterial: 'Material', specShape: 'Forma', specType: 'Tipo', specProtection: 'Protección', specCompatibility: 'Compatibilidad', specMeasurements: 'Medidas', productNotFoundKicker: 'Referencia no encontrada', productNotFoundTitle: 'Este producto no existe en el catálogo', productNotFoundText: 'Regrese al catálogo para seleccionar una referencia disponible.', productNotFoundCta: 'Volver al catálogo', moreSun: 'Más referencias solares', moreOptical: 'Más referencias ópticas'
+    },
+    en: {
+      skip: 'Skip to content', language: 'ES · Español', languageAria: 'Switch the website to Spanish',
+      navBenefits: 'Benefits', navOptical: 'Optical frames', navSun: 'Sunglasses', navProfessional: 'Professional area', navFaq: 'Questions', navHome: 'Home', navSimilar: 'Similar', navCatalog: 'Catalog',
+      requestShort: 'My request', requestOpen: 'Prepare request', requestMobile: 'View my request', menuOpen: 'Open menu',
+      announcement: 'INNOVA EYEWEAR · Professional catalog for optical stores, chains and distributors',
+      heroKicker: 'Innova Eyewear · Professional distribution', heroTitle: 'Champion Eyewear:<br>sports style that drives rotation', heroText: 'Optical frames and sunglasses for commercial displays. Select references, set quantities and request a professional quote from Innova.', heroOptical: 'View optical frames', heroSun: 'View sunglasses', heroRequest: 'Prepare my request', heroOpticalFact: 'optical frames', heroSunFact: 'sunglasses', heroPdfFact: 'Professional PDF', heroSummaryAria: 'Catalog summary',
+      benefitsKicker: 'Profitability and demand', benefitsTitle: 'Why optical stores choose Champion', benefitsText: 'A recognized sports and urban brand with immediate visual appeal and references designed for clear commercial rotation.', benefit1Title: '93 references ready.', benefit1Text: 'Optical frames and sunglasses in one catalog.', benefit2Title: 'Professional selection.', benefit2Text: 'Quantities and optical-store details without a retail cart.', benefit3Title: 'Clear documents.', benefit3Text: 'A client PDF and an operating CSV for Innova.', benefitsCta: 'Explore the sunglasses collection', soundOn: 'Turn sound on', soundOff: 'Mute',
+      opticalKicker: '2026 optical collection', opticalTitle: 'Champion optical frames', opticalIntro: 'Search by model, color, material or size. Every product page uses one template and loads only the selected product data.', opticalFiltersAria: 'Optical frame filters', opticalSearch: 'Search optical frames', opticalPlaceholder: 'Search CH01, blue, TR90, 57-17-145…', allFeminine: 'All',
+      sunKicker: 'Champion Sun · New category', sunTitle: 'Sunglasses for a more athletic display', sunIntro: 'A complete section with 29 sunglasses references, from urban silhouettes to high-impact wraparound shields.', sunAvailable: 'references available to request', sunFiltersAria: 'Sunglasses filters', sunSearch: 'Search sunglasses', sunPlaceholder: 'Search CHS-07, blue, mirrored…', allMasculine: 'All',
+      processKicker: 'Optical-store request', processTitle: 'From selection to quotation', processIntro: 'A clear process for optical stores, chains and distributors; it is not an online purchase and does not show product prices.', step1Title: 'Select', step1Text: 'Add optical frames or sunglasses and set the quantity for each reference.', step2Title: 'Complete', step2Text: 'Enter your name, optical store, email, phone, city and country.', step3Title: 'Review', step3Text: 'Meet the 18-piece minimum. The general reference for 18 pieces is US$1,080.', step4Title: 'Send', step4Text: 'Download the PDF or prepare an email with CSV and a WhatsApp message with organized text.',
+      referenceKicker: 'Commercial reference', referenceTitle: 'Initial minimum order: 18 pieces', referenceText: 'The approved reference value is US$60 per piece, so 18 pieces equal a general reference of US$1,080. Product prices are not displayed: the final amount depends on country, availability, volume and Innova validation.', referenceDisclaimer: 'This figure is informative and is not a quotation or inventory confirmation.',
+      faqKicker: 'Commercial information', faqTitle: 'Frequently asked questions for optical stores', faqIntro: 'All information from the original page, now integrated into the catalog and available in Spanish and English.', faqTopics: 'Topics',
+      ctaKicker: 'Innova Eyewear support', ctaTitle: 'Prepare your next Champion selection', ctaText: 'Select at least 18 pieces and send an organized request to review availability, final price, terms and dispatch.', ctaOpen: 'Open my request', ctaAdvisor: 'Contact an advisor',
+      footerText: 'Professional catalog distributed by Innova Eyewear.', footerCatalog: 'Catalog', footerService: 'Optical-store service', footerRequest: 'Prepare request', footerConditions: 'Terms', footerPrice: 'Final price and availability: by quotation', footerMinimum: 'Initial minimum order: 18 pieces', footerContact: 'Contact',
+      loading: 'Preparing product page…', relatedKicker: 'Related references', relatedTitle: 'Similar products', backCatalog: 'Back to catalog',
+      viewDetails: 'View details', addRequest: 'Add to my request', added: '{model} added to your request', noMatchesTitle: 'No matches found.', noMatchesText: 'Try another model, color or material.', opticalOne: 'optical frame', opticalMany: 'optical frames', sunOne: 'sunglass', sunMany: 'sunglasses', inCollection: 'in',
+      breadcrumbs: 'Breadcrumbs', productViews: 'Product views', viewNumber: 'View {number}', wholesaleCondition: 'Professional terms', quotePrice: 'Final price by quotation', quoteNote: 'No per-product price is displayed. Innova confirms the final value based on country, volume and availability.', variants: '{series} variants', requestedQuantity: 'Requested quantity', reviewSelection: 'Review my request', directConsultation: 'Individual inquiry', directConsultationNote: 'To send a complete request, add products and meet the 18-piece minimum.', emailInnova: 'Email Innova', tabsAria: 'Product information', tabDescription: 'Description', tabSpecs: 'Technical details', tabTerms: 'Commercial terms', termIntro: 'This page belongs to a professional catalog. Your selection creates a quotation request; it is not a purchase and does not confirm inventory.', term1: 'Final price and availability are subject to confirmation.', term2: 'Initial minimum order of 18 pieces and volume-based terms.', term3: 'Dispatch and payment terms are agreed with Innova Eyewear.', specModel: 'Model', specSku: 'SKU', specCollection: 'Collection', specColor: 'Color', specMaterial: 'Material', specShape: 'Shape', specType: 'Type', specProtection: 'Protection', specCompatibility: 'Compatibility', specMeasurements: 'Measurements', productNotFoundKicker: 'Reference not found', productNotFoundTitle: 'This product is not in the catalog', productNotFoundText: 'Return to the catalog to select an available reference.', productNotFoundCta: 'Back to catalog', moreSun: 'More sunglasses references', moreOptical: 'More optical references'
+    }
+  };
+
+  const faq = {
+    es: [
+      { id: 'profit', title: 'Rentabilidad y pedidos', intro: 'Precio de referencia, mínimo inicial y estructura del catálogo para iniciar una solicitud profesional.', items: [
+        ['¿Cuál es el precio de referencia por pieza?', 'El precio de referencia aprobado para Champion Eyewear es de US$60 por pieza. Las condiciones finales pueden variar según país, disponibilidad, volumen y validación comercial con Innova Eyewear.'],
+        ['¿Cuál es la compra mínima inicial?', 'La compra mínima inicial aprobada es de 18 piezas. Este mínimo permite armar una selección equilibrada para exhibición, rotación y prueba comercial en la óptica.'],
+        ['¿Cuántos productos incluye el catálogo Champion?', 'El catálogo reúne 93 referencias: 64 monturas ópticas y 29 lentes de sol, todas disponibles para consulta comercial desde una plantilla única de producto.'],
+        ['¿Puedo elegir los modelos de la solicitud inicial?', 'Sí. Puede combinar referencias y cantidades. El equipo comercial también puede orientar una selección según el perfil de la óptica, el cliente y el país; la selección final se confirma según disponibilidad.'],
+        ['¿Champion es una marca adecuada para ópticas?', 'Sí. Champion tiene reconocimiento deportivo y urbano y funciona para vitrinas que buscan una propuesta reconocible, moderna y de rotación.']
+      ]},
+      { id: 'warranty', title: 'Garantías y soporte', intro: '', items: [
+        ['¿Cómo funciona la garantía?', 'La garantía aprobada cubre reemplazo de una pieza por defecto de fabricación. Cada caso debe reportarse al equipo comercial para su validación y gestión.'],
+        ['¿La garantía cubre daños por uso?', 'No se promete cobertura por daños de uso, accidentes, mala manipulación o desgaste natural. Estos casos deben revisarse individualmente con el asesor comercial.'],
+        ['¿Recibo soporte después de comprar?', 'Sí. El equipo comercial puede apoyar con información del catálogo, selección de modelos, reposición, orientación del pedido y seguimiento profesional.'],
+        ['¿Puedo solicitar reposición de modelos?', 'Sí. Las reposiciones pueden solicitarse según disponibilidad de inventario y condiciones comerciales vigentes. El asesor confirma disponibilidad antes de generar el pedido.']
+      ]},
+      { id: 'marketing', title: 'Marketing y exhibición', intro: '', items: [
+        ['¿Cómo puedo exhibir Champion en mi óptica?', 'Se recomienda ubicar Champion en una zona visible de la vitrina o mostrador y destacar su estilo deportivo, urbano y moderno. También puede organizarse por líneas, materiales o perfiles de cliente.'],
+        ['¿Champion ayuda a atraer clientes más jóvenes o deportivos?', 'Sí. Por su posicionamiento deportivo y estilo urbano, Champion puede atraer a clientes que buscan monturas modernas, funcionales y de una marca reconocida.'],
+        ['¿Entregan material visual o apoyo para venta?', 'El apoyo comercial y visual puede variar según país, disponibilidad y condiciones del pedido. El asesor confirmará qué recursos están disponibles para cada óptica.']
+      ]},
+      { id: 'logistics', title: 'Logística y entregas', intro: '', items: [
+        ['¿Cuál es el tiempo de despacho?', 'El tiempo de despacho aprobado es de 2 días, sujeto a disponibilidad, confirmación del pedido y coordinación logística según el país o destino.'],
+        ['¿Hacen envíos a toda Latinoamérica?', 'Champion está disponible para zonas autorizadas de Latinoamérica y el Caribe. La cobertura comercial excluye Brasil, México y Puerto Rico. El asesor confirma la viabilidad según el país.'],
+        ['¿Cuál es el costo de envío?', 'El costo depende del país, ciudad, volumen y condiciones logísticas vigentes. No se promete envío gratuito salvo confirmación expresa del equipo comercial.'],
+        ['¿Puedo consultar disponibilidad antes de comprar?', 'Sí. Antes de generar el pedido, el equipo comercial puede validar disponibilidad, referencias activas y condiciones de despacho.']
+      ]},
+      { id: 'coverage', title: 'Cobertura y proceso comercial', intro: 'Zonas autorizadas, perfil de comprador y pasos para recibir atención comercial.', items: [
+        ['¿Quién puede comprar Champion?', 'El catálogo está dirigido a ópticas, distribuidores autorizados y clientes comerciales del sector óptico que deseen incorporar la marca a su portafolio.'],
+        ['¿Qué países atienden?', 'La cobertura incluye el Caribe excepto Puerto Rico, Centroamérica y Sudamérica excepto Brasil. México, Brasil y Puerto Rico no forman parte de esta cobertura comercial.'],
+        ['¿Qué pasa después de enviar mi solicitud?', 'Un asesor comercial contactará a la óptica para validar país, interés, disponibilidad y condiciones comerciales. Después recibirá orientación sobre el catálogo, el pedido inicial y los próximos pasos.'],
+        ['¿Puedo hablar con un asesor antes de comprar?', 'Sí. Puede contactar por WhatsApp, correo o solicitar una llamada para revisar catálogo, compra mínima, disponibilidad, despacho y condiciones comerciales.'],
+        ['¿La información de precios es pública?', 'El precio de referencia aprobado es de US$60 por pieza, pero las condiciones finales deben validarse con el equipo comercial según país, disponibilidad y pedido. No se muestran precios individuales por producto.']
+      ]}
+    ],
+    en: [
+      { id: 'profit', title: 'Profitability and orders', intro: 'Reference value, initial minimum and catalog structure for a professional request.', items: [
+        ['What is the reference value per piece?', 'The approved Champion Eyewear reference value is US$60 per piece. Final terms may vary by country, availability, volume and commercial validation with Innova Eyewear.'],
+        ['What is the initial minimum order?', 'The approved initial minimum is 18 pieces. This minimum helps build a balanced starting selection for display, rotation and commercial testing in the optical store.'],
+        ['How many products does the Champion catalog include?', 'The catalog brings together 93 references: 64 optical frames and 29 sunglasses, all available for commercial inquiry through one product template.'],
+        ['Can I choose the models in my initial request?', 'Yes. You may combine references and quantities. The commercial team can also recommend a selection based on the optical-store profile, customer and country; final selection is confirmed according to availability.'],
+        ['Is Champion a good brand for optical stores?', 'Yes. Champion has strong sports and urban recognition and suits displays looking for a recognizable, modern brand with commercial rotation.']
+      ]},
+      { id: 'warranty', title: 'Warranty and support', intro: '', items: [
+        ['How does the warranty work?', 'The approved warranty covers replacement of a piece due to a manufacturing defect. Each case must be reported to the commercial team for validation and processing.'],
+        ['Does the warranty cover damage from use?', 'Coverage for use damage, accidents, mishandling or natural wear is not promised. These cases must be reviewed individually with the commercial advisor.'],
+        ['Do I receive support after purchasing?', 'Yes. The commercial team can assist with catalog information, model selection, restocking, order guidance and professional follow-up.'],
+        ['Can I request model restocking?', 'Yes. Restocking may be requested according to inventory availability and current commercial terms. The advisor confirms availability before generating the order.']
+      ]},
+      { id: 'marketing', title: 'Marketing and display', intro: '', items: [
+        ['How can I display Champion in my optical store?', 'We recommend placing Champion in a visible display or counter area and highlighting its sports, urban and modern style. It can also be organized by line, material or customer profile.'],
+        ['Does Champion help attract younger or sports-oriented customers?', 'Yes. Its sports positioning and urban style can attract customers looking for modern, functional frames from a recognized brand.'],
+        ['Do you provide visual material or sales support?', 'Commercial and visual support may vary by country, availability and order terms. The advisor will confirm which resources are available for each optical store.']
+      ]},
+      { id: 'logistics', title: 'Logistics and deliveries', intro: '', items: [
+        ['What is the dispatch time?', 'The approved dispatch time is 2 days, subject to availability, order confirmation and logistics coordination according to the country or destination.'],
+        ['Do you ship throughout Latin America?', 'Champion is available in authorized areas of Latin America and the Caribbean. Commercial coverage excludes Brazil, Mexico and Puerto Rico. The advisor confirms feasibility by country.'],
+        ['What is the shipping cost?', 'The cost depends on the country, city, volume and current logistics terms. Free shipping is not promised unless expressly confirmed by the commercial team.'],
+        ['Can I check availability before buying?', 'Yes. Before generating the order, the commercial team can validate availability, active references and dispatch terms.']
+      ]},
+      { id: 'coverage', title: 'Coverage and sales process', intro: 'Authorized zones, buyer profile and steps to receive commercial support.', items: [
+        ['Who can buy Champion?', 'The catalog is intended for optical stores, authorized distributors and commercial clients in the optical sector that want to add the brand to their portfolio.'],
+        ['Which countries do you serve?', 'Coverage includes the Caribbean except Puerto Rico, Central America and South America except Brazil. Mexico, Brazil and Puerto Rico are not part of this commercial coverage.'],
+        ['What happens after I send my request?', 'A commercial advisor will contact the optical store to validate the country, interest, availability and commercial terms. You will then receive guidance on the catalog, initial order and next steps.'],
+        ['Can I speak with an advisor before buying?', 'Yes. You can contact us by WhatsApp, email or request a call to review the catalog, minimum order, availability, dispatch and commercial terms.'],
+        ['Is pricing information public?', 'The approved reference value is US$60 per piece, but final terms must be validated with the commercial team according to country, availability and order. Individual product prices are not displayed.']
+      ]}
+    ]
+  };
+
+  const collectionInfo = {
+    es: {
+      optical: {
+        all: { title: 'Todas las monturas ópticas', description: 'Compare las tres líneas de monturas Champion en una sola vista.', difference: 'Steel prioriza el metal y la elegancia; Bold aporta mayor presencia visual; Flex se enfoca en ligereza, resistencia y comodidad.', example: 'Ejemplo: combine una Steel para perfil ejecutivo, una Bold para una vitrina expresiva y una Flex para uso diario.' },
+        Steel: { title: 'Steel · Precisión metálica', description: 'Monturas de acero inoxidable con perfiles más finos, resistentes y de apariencia limpia.', difference: 'Se diferencia de Bold por ser más discreta y metálica, y de Flex por ofrecer una estética más ejecutiva y estructurada.', example: 'Ejemplo: CH-01 C2, montura rectangular metálica azul para un surtido clásico y moderno.' },
+        Bold: { title: 'Bold · Presencia visual', description: 'Monturas con frentes más marcados, mayor volumen visual y colores que resaltan en exhibición.', difference: 'Se diferencia de Steel por su apariencia más contundente y de Flex por priorizar impacto estético sobre flexibilidad.', example: 'Ejemplo: una referencia Bold en acetato o acabado translúcido para clientes que buscan una montura protagonista.' },
+        Flex: { title: 'Flex · Ligereza y comodidad', description: 'Monturas pensadas para uso diario, con materiales ligeros y resistentes como TR90.', difference: 'Se diferencia de Steel y Bold por enfocarse en comodidad, tolerancia al movimiento y una sensación más liviana.', example: 'Ejemplo: una Flex rectangular en TR90 para clientes activos que priorizan confort y durabilidad.' }
+      },
+      sun: {
+        all: { title: 'Todas las líneas solares', description: 'Compare las tres propuestas de lentes de sol Champion.', difference: 'Sport Urban es versátil y cotidiana; Sport Metal combina detalle metálico y estilo deportivo; Performance ofrece pantallas envolventes de alto impacto.', example: 'Ejemplo: seleccione una silueta urbana, una metálica y una pantalla Performance para construir una vitrina variada.' },
+        'Sport Urban': { title: 'Sport Urban · Deportivo cotidiano', description: 'Siluetas fáciles de usar que combinan identidad deportiva con un estilo urbano para todos los días.', difference: 'Es la línea más versátil y comercial; tiene una presencia menos técnica que Performance y menos metálica que Sport Metal.', example: 'Ejemplo: CHS con frente rectangular y lente espejado para un look casual de alta rotación.' },
+        'Sport Metal': { title: 'Sport Metal · Detalle técnico refinado', description: 'Lentes solares que incorporan construcción o acentos metálicos para una imagen deportiva más precisa y sofisticada.', difference: 'Se distingue de Sport Urban por su acabado metálico y de Performance por conservar una silueta más convencional.', example: 'Ejemplo: un CHS Sport Metal con lente espejado para clientes que buscan ligereza y un acabado prémium.' },
+        'Performance Shield': { title: 'Performance · Cobertura envolvente', description: 'Pantallas deportivas amplias y envolventes, diseñadas para una imagen dinámica y de máximo impacto visual.', difference: 'Es la línea más técnica y llamativa: ofrece mayor cobertura frontal que Sport Urban y Sport Metal.', example: 'Ejemplo: una pantalla CHS Performance con lente multicolor espejado para una exhibición deportiva protagonista.' }
+      }
+    },
+    en: {
+      optical: {
+        all: { title: 'All optical frames', description: 'Compare all three Champion optical-frame lines in one view.', difference: 'Steel prioritizes metal and elegance; Bold delivers stronger visual presence; Flex focuses on lightness, durability and comfort.', example: 'Example: combine a Steel frame for an executive profile, a Bold frame for an expressive display and a Flex frame for everyday use.' },
+        Steel: { title: 'Steel · Metal precision', description: 'Stainless-steel frames with slimmer, durable profiles and a clean appearance.', difference: 'It differs from Bold by being more understated and metal-focused, and from Flex through a more structured executive aesthetic.', example: 'Example: CH-01 C2, a blue rectangular metal frame for a classic yet modern assortment.' },
+        Bold: { title: 'Bold · Visual presence', description: 'Frames with stronger fronts, more visual volume and colors that stand out on display.', difference: 'It differs from Steel through a bolder appearance and from Flex by prioritizing visual impact over flexibility.', example: 'Example: a Bold reference in acetate or a translucent finish for customers looking for a statement frame.' },
+        Flex: { title: 'Flex · Lightness and comfort', description: 'Frames designed for everyday use with light, durable materials such as TR90.', difference: 'It differs from Steel and Bold by focusing on comfort, movement tolerance and a lighter feel.', example: 'Example: a rectangular TR90 Flex frame for active customers who prioritize comfort and durability.' }
+      },
+      sun: {
+        all: { title: 'All sunglasses lines', description: 'Compare Champion’s three sunglasses proposals.', difference: 'Sport Urban is versatile and easy to wear; Sport Metal combines metal detail with sports styling; Performance delivers high-impact wraparound shields.', example: 'Example: select an urban silhouette, a metal style and a Performance shield to build a varied display.' },
+        'Sport Urban': { title: 'Sport Urban · Everyday sports style', description: 'Easy-to-wear silhouettes that combine sports identity with an urban everyday look.', difference: 'It is the most versatile commercial line, with a less technical profile than Performance and less metal than Sport Metal.', example: 'Example: a rectangular CHS style with a mirrored lens for a high-rotation casual look.' },
+        'Sport Metal': { title: 'Sport Metal · Refined technical detail', description: 'Sunglasses with metal construction or accents for a more precise and sophisticated sports image.', difference: 'It differs from Sport Urban through its metal finish and from Performance by retaining a more conventional silhouette.', example: 'Example: a CHS Sport Metal style with a mirrored lens for customers seeking lightness and a premium finish.' },
+        'Performance Shield': { title: 'Performance · Wraparound coverage', description: 'Wide wraparound sports shields designed for a dynamic image and maximum visual impact.', difference: 'This is the most technical, eye-catching line, with more frontal coverage than Sport Urban and Sport Metal.', example: 'Example: a CHS Performance shield with a multicolor mirrored lens for a standout sports display.' }
+      }
+    }
+  };
+
+  const esValueMap = {
+    Brown: 'Marrón', Blue: 'Azul', Black: 'Negro', Grey: 'Gris', Green: 'Verde', Clear: 'Transparente', Crystal: 'Cristal', Gunmetal: 'Metal plomizo', 'Dark Blue': 'Azul oscuro', 'Dark Green': 'Verde oscuro', 'Dark Gunmetal': 'Metal plomizo oscuro', 'Matt blue': 'Azul mate', 'Transl. Brown': 'Marrón translúcido',
+    'Black & Gold': 'Negro y dorado', 'Black & Gunmetal': 'Negro y metal plomizo', 'Black & Wine': 'Negro y vino', 'Brown & Green': 'Marrón y verde', 'Gunmetal & Red': 'Metal plomizo y rojo', 'Silver & Blue': 'Plateado y azul',
+    'Stainless Steel': 'Acero inoxidable', Acetate: 'Acetato', Rectangular: 'Rectangular', Crystal: 'Cristal',
+    'Metal Premium': 'Metal prémium', Classic: 'Clásico', Modern: 'Moderno', Premium: 'Prémium', Minimal: 'Minimalista', 'Use Daily': 'Uso diario', 'Premium Design': 'Diseño prémium', Elegant: 'Elegante', Contemporary: 'Contemporáneo', Versatile: 'Versátil', 'High Rotation': 'Alta rotación', 'Professional Use': 'Uso profesional'
+  };
+
+  const enValueMap = {
+    'Acetato': 'Acetate', 'Acero inoxidable': 'Stainless steel', 'Material técnico de alta resistencia': 'High-resistance technical material', 'Oftálmica': 'Optical', 'Montura óptica': 'Optical frame', 'Compatible con lentes graduadas': 'Compatible with prescription lenses',
+    'Lente solar espejado': 'Mirrored sun lens', 'Lente solar humo': 'Smoke sun lens', 'Categoría UV por confirmar con Innova': 'UV category to be confirmed by Innova', 'Pantalla deportiva envolvente': 'Wraparound sports shield', 'Rectangular deportiva': 'Sport rectangular', 'Rectangular metálica': 'Metal rectangular', 'Frente amplio': 'Wide front', 'Sport Casual': 'Sport Casual',
+    'Azul marino / lente azul espejado': 'Navy / blue mirrored lens', 'Azul marino / lente multicolor espejado': 'Navy / multicolor mirrored lens', 'Blanco / lente azul espejado': 'White / blue mirrored lens', 'Cristal / lente azul espejado': 'Crystal / blue mirrored lens', 'Gunmetal / lente azul espejado': 'Gunmetal / blue mirrored lens', 'Gunmetal / lente dorado espejado': 'Gunmetal / gold mirrored lens', 'Gunmetal / lente verde espejado': 'Gunmetal / green mirrored lens', 'Habana / lente dorado espejado': 'Havana / gold mirrored lens', 'Negro / lente azul espejado': 'Black / blue mirrored lens', 'Negro / lente azul-violeta espejado': 'Black / blue-violet mirrored lens', 'Negro / lente dorado espejado': 'Black / gold mirrored lens', 'Negro / lente dorado-verde espejado': 'Black / gold-green mirrored lens', 'Negro / lente humo': 'Black / smoke lens', 'Negro / lente multicolor espejado': 'Black / multicolor mirrored lens', 'Negro / lente naranja-dorado espejado': 'Black / orange-gold mirrored lens', 'Negro / lente rojo-violeta espejado': 'Black / red-violet mirrored lens', 'Negro / lente verde espejado': 'Black / green mirrored lens', 'Negro / lente verde-azul espejado': 'Black / green-blue mirrored lens', 'Negro / lente verde-violeta espejado': 'Black / green-violet mirrored lens',
+    'Acento Azul': 'Blue accent', 'Acento Rojo': 'Red accent', 'Alta Gama': 'High-end', 'Azul Oscuro': 'Dark blue', 'Azul Profundo': 'Deep blue', 'Azul Translúcido': 'Translucent blue', 'Colección': 'Collection', 'Contemporáneo': 'Contemporary', 'Cristal': 'Crystal', 'Distintivo': 'Distinctive', 'Estilo Ejecutivo': 'Executive style', 'Gris Humo': 'Smoke grey', 'Ligero': 'Lightweight', 'Resistente': 'Durable', 'Rotación Alta': 'High rotation', 'Sobrio': 'Understated', 'Translúcido': 'Translucent', 'Transparente': 'Transparent', 'Turquesa': 'Turquoise', 'Urbano': 'Urban', 'Venta rápida': 'Fast seller', 'Verde Profundo': 'Deep green',
+    'Actual': 'Current', 'Alta Rotación': 'High rotation', 'Azul': 'Blue', 'Casual': 'Casual', 'Clásico': 'Classic', 'Colección solar': 'Sun collection', 'Contraste Rojo': 'Red contrast', 'Diferencial': 'Distinctive', 'Dinámico': 'Dynamic', 'Diseño Clásico': 'Classic design', 'Diseño Moderno': 'Modern design', 'Diseño Premium': 'Premium design', 'Ejecutivo': 'Executive', 'Elegante': 'Elegant', 'Exclusivo': 'Exclusive', 'Look Técnico': 'Technical look', 'Metal-Acetato': 'Metal-acetate', 'Minimalista': 'Minimalist', 'Moderno': 'Modern', 'Negro Clásico': 'Classic black', 'Premium Visual': 'Premium visual', 'Tono Cálido': 'Warm tone', 'Uso Diario': 'Everyday use', 'Uso Profesional': 'Professional use', 'Versátil': 'Versatile'
+  };
+
+  function interpolate(value, vars) {
+    return String(value ?? '').replace(/\{(\w+)\}/g, (_match, key) => vars && key in vars ? vars[key] : '');
+  }
+
+  function currentLanguage() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored === 'en' ? 'en' : 'es';
+  }
+
+  let language = currentLanguage();
+
+  function t(key, vars) {
+    return interpolate(translations[language][key] ?? translations.es[key] ?? key, vars);
+  }
+
+  function translateStatic(root = document) {
+    root.querySelectorAll('[data-i18n]').forEach((node) => {
+      const value = t(node.dataset.i18n);
+      if (node.dataset.i18nHtml === 'true') node.innerHTML = value;
+      else node.textContent = value;
+    });
+    root.querySelectorAll('[data-i18n-placeholder]').forEach((node) => { node.placeholder = t(node.dataset.i18nPlaceholder); });
+    root.querySelectorAll('[data-i18n-aria]').forEach((node) => { node.setAttribute('aria-label', t(node.dataset.i18nAria)); });
+    document.documentElement.lang = language === 'es' ? 'es-419' : 'en';
+    document.querySelectorAll('[data-language-toggle]').forEach((button) => {
+      button.textContent = t('language');
+      button.setAttribute('aria-label', t('languageAria'));
+    });
+  }
+
+  function setLanguage(next) {
+    language = next === 'en' ? 'en' : 'es';
+    localStorage.setItem(STORAGE_KEY, language);
+    translateStatic();
+    listeners.forEach((listener) => listener(language));
+    document.dispatchEvent(new CustomEvent('champion:languagechange', { detail: { language } }));
+  }
+
+  function bind() {
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-language-toggle]');
+      if (!button) return;
+      setLanguage(language === 'es' ? 'en' : 'es');
+    });
+    translateStatic();
+  }
+
+  function localizeValue(value) {
+    if (!value) return '';
+    return language === 'es' ? (esValueMap[value] || value) : (enValueMap[value] || value);
+  }
+
+  function localizeProduct(product) {
+    const localized = { ...product };
+    localized.color = localizeValue(product.color);
+    localized.material = localizeValue(product.material);
+    localized.shape = localizeValue(product.shape);
+    localized.lens = localizeValue(product.lens);
+    localized.protection = localizeValue(product.protection);
+    localized.tags = (product.tags || []).map(localizeValue);
+    if (language === 'en') {
+      localized.shortDescription = `${product.displayModel} from Champion's ${product.collection} collection, selected for professional optical-store displays.`;
+      localized.subline = `${product.displayModel} in ${localized.color}, designed for a modern Champion assortment with strong commercial presentation.`;
+      localized.about = {
+        p1: `${product.displayModel} combines Champion's sports identity with a versatile profile for professional optical-store assortments.`,
+        p2: `Its ${localized.color.toLowerCase()} finish and ${localized.material.toLowerCase()} construction support a clear, contemporary display.`,
+        bullets: [`${localized.color} finish`, localized.material, localized.shape, localized.protection]
+      };
+    }
+    return localized;
+  }
+
+  window.ChampionI18n = {
+    t,
+    get language() { return language; },
+    setLanguage,
+    translateStatic,
+    onChange(listener) { listeners.add(listener); return () => listeners.delete(listener); },
+    faq: () => faq[language],
+    collectionInfo: (family, collection) => collectionInfo[language]?.[family]?.[collection] || collectionInfo[language]?.[family]?.all,
+    localizeValue,
+    localizeProduct
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, { once: true });
+  else bind();
+})();

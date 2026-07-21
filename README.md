@@ -1,4 +1,4 @@
-# Champion Eyewear — catálogo B2B
+# Champion Eyewear — catálogo profesional
 
 Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sitio es estático, funciona en cualquier hosting web y evita mantener un HTML completo por producto.
 
@@ -10,9 +10,12 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 - `data/products.js`: versión del catálogo que consume el navegador sin backend.
 - `assets/images/`: 474 imágenes WebP optimizadas desde los originales locales.
 - `assets/images/brand/champion-social.png`: imagen social de presentación del catálogo.
-- `assets/home.js`: filtros, buscadores y tarjetas del catálogo.
-- `assets/product.js`: carga la ficha solicitada dentro de la plantilla única.
-- `assets/request.js`: selección profesional, cantidades, CSV, WhatsApp, correo y compartir.
+- `assets/i18n.js`: traducción ES/EN, preguntas frecuentes y explicación de cada colección.
+- `assets/home.js`: filtros, buscadores, explicaciones contextuales y tarjetas del catálogo.
+- `assets/product.js`: carga y traduce la ficha solicitada dentro de la plantilla única.
+- `assets/request.js`: selección profesional, mínimo de 18 piezas, PDF, CSV, WhatsApp y correo.
+- `assets/images/brand/champion-header.png`: logotipo oficial de cabecera.
+- `assets/images/brand/innova-logo.png`: logotipo de Innova incluido en los PDF.
 - `scripts/generar-catalogo.cjs`: reconstruye los datos y el manifiesto desde las carpetas fuente.
 - `scripts/preparar-imagenes.py`: exporta los originales a formatos web optimizados.
 - `scripts/validar.ps1`: verifica arquitectura, datos y recursos locales.
@@ -38,17 +41,20 @@ Edite el objeto correspondiente en `data/products.json` y mantenga sincronizado 
 
 Cuando los cambios procedan de las carpetas maestras, es preferible ejecutar el generador y el optimizador incluidos. Estos scripts no modifican los originales de `Catalogo Champion`.
 
-## Solicitud profesional B2B
+## Solicitud profesional para ópticas
 
 La selección se guarda en el navegador del usuario. Puede:
 
 - definir cantidades por referencia;
-- completar los datos profesionales del cliente;
-- descargar un CSV compatible con Excel;
-- compartir el CSV como archivo cuando el dispositivo lo permite;
-- preparar un mensaje profesional para WhatsApp o correo a Innova.
+- comprobar el mínimo inicial de 18 piezas;
+- completar nombre, empresa, óptica, correo, teléfono, ciudad y país;
+- generar un PDF con número de solicitud, logotipos, imágenes y detalles de productos;
+- preparar un CSV operativo y un correo profesional para Innova;
+- abrir un mensaje de WhatsApp con todos los datos y la selección en texto.
 
-WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un navegador por motivos de seguridad. Por eso el sitio descarga el CSV y abre el mensaje preparado para que el usuario lo adjunte. En móviles compatibles, **Compartir archivo** sí entrega el CSV directamente al selector del sistema.
+No se muestran precios individuales. El sitio informa únicamente la referencia general aprobada de US$60 por pieza y US$1,080 para el mínimo de 18 piezas; el valor final depende de la validación comercial de Innova.
+
+WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un navegador por motivos de seguridad. Por eso WhatsApp descarga el PDF y abre el texto preparado; correo descarga el PDF y el CSV y abre el mensaje para que el usuario adjunte ambos archivos.
 
 ## Validación
 

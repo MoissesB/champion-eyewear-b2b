@@ -17,9 +17,13 @@ $requiredFiles = @(
   "data/products.json",
   "data/products.js",
   "assets/styles.css",
+  "assets/i18n.js",
   "assets/home.js",
   "assets/product.js",
-  "assets/request.js"
+  "assets/request.js",
+  "assets/vendor/jspdf.umd.min.js",
+  "assets/images/brand/champion-header.png",
+  "assets/images/brand/innova-logo.png"
 )
 $requiredFiles | ForEach-Object { Require-File $_ }
 
@@ -75,6 +79,9 @@ foreach ($htmlName in @("index.html", "product.html")) {
   if ($html -notmatch '(?i)<!doctype html>') { $failures.Add("${htmlName}: falta <!doctype html>") | Out-Null }
   if ($html -notmatch 'data/products\.js') { $failures.Add("${htmlName}: no carga el catálogo estructurado") | Out-Null }
   if ($html -notmatch 'assets/request\.js') { $failures.Add("${htmlName}: no carga la solicitud B2B") | Out-Null }
+  if ($html -notmatch 'assets/i18n\.js' -or $html -notmatch 'data-language-toggle') { $failures.Add("${htmlName}: falta la traducción ES/EN") | Out-Null }
+  if ($html -notmatch 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: falta el generador PDF") | Out-Null }
+  if ($html -notmatch 'champion-header\.png') { $failures.Add("${htmlName}: no usa el logotipo de cabecera solicitado") | Out-Null }
 }
 
 if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
@@ -84,6 +91,24 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
   }
   if ($homeText -notmatch '<video\s+class="hero-video"' -or $homeText -notmatch '<video\s+id="explainVideo"') {
     $failures.Add("index.html: faltan uno o ambos vídeos") | Out-Null
+  }
+  if ($homeText -notmatch 'id="faqRoot"') { $failures.Add("index.html: falta la sección de preguntas frecuentes") | Out-Null }
+  if ($homeText -notmatch 'id="opticalCollectionInfo"' -or $homeText -notmatch 'id="sunCollectionInfo"') { $failures.Add("index.html: faltan las explicaciones de colecciones") | Out-Null }
+}
+
+$requestPath = Join-Path $repoRoot "assets/request.js"
+if (Test-Path -LiteralPath $requestPath -PathType Leaf) {
+  $requestText = [System.IO.File]::ReadAllText($requestPath, $utf8)
+  foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*18', 'REFERENCE_UNIT_USD\s*=\s*60', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png')) {
+    if ($requestText -notmatch $requiredPattern) { $failures.Add("assets/request.js: falta requisito $requiredPattern") | Out-Null }
+  }
+}
+
+$i18nPath = Join-Path $repoRoot "assets/i18n.js"
+if (Test-Path -LiteralPath $i18nPath -PathType Leaf) {
+  $i18nText = [System.IO.File]::ReadAllText($i18nPath, $utf8)
+  foreach ($collection in @('Steel', 'Bold', 'Flex', 'Sport Urban', 'Sport Metal', 'Performance Shield')) {
+    if ($i18nText -notmatch [regex]::Escape($collection)) { $failures.Add("assets/i18n.js: falta explicación para $collection") | Out-Null }
   }
 }
 

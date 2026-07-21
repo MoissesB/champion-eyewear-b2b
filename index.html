@@ -1,50 +1,52 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-419">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Catálogo mayorista Champion Eyewear para ópticas: monturas y lentes de sol, fichas técnicas y solicitud B2B exportable en CSV.">
+  <meta name="description" content="Catálogo profesional Champion Eyewear para ópticas: 93 referencias, pedido mínimo de 18 piezas y solicitud de cotización con PDF, CSV, WhatsApp y correo.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Champion Eyewear B2B | Catálogo profesional">
-  <meta property="og:description" content="93 referencias Champion para ópticas, con selección profesional y solicitud exportable en CSV.">
+  <meta property="og:title" content="Champion Eyewear | Catálogo profesional para ópticas">
+  <meta property="og:description" content="64 monturas y 29 lentes de sol Champion para preparar una solicitud profesional a Innova Eyewear.">
   <meta property="og:image" content="./assets/images/brand/champion-social.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="./assets/images/brand/champion-social.png">
-  <title>Champion Eyewear B2B | Catálogo profesional Innova Eyewear</title>
+  <title>Champion Eyewear | Catálogo profesional Innova Eyewear</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css">
   <script defer src="./data/products.js"></script>
+  <script defer src="./assets/i18n.js"></script>
+  <script defer src="./assets/vendor/jspdf.umd.min.js"></script>
   <script defer src="./assets/request.js"></script>
   <script defer src="./assets/home.js"></script>
 </head>
 <body data-page="home">
-  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <a class="skip-link" href="#contenido" data-i18n="skip">Ir al contenido</a>
 
   <header class="site-header" id="siteHeader">
     <a class="site-brand" href="#inicio" aria-label="Champion Eyewear, inicio">
-      <img src="./assets/images/brand/champion-logo.webp" alt="Champion Eyewear">
+      <img src="./assets/images/brand/champion-header.png" alt="Champion Eyewear">
     </a>
     <nav class="desktop-nav" aria-label="Navegación principal">
-      <a href="#beneficios">Beneficios</a>
-      <a href="#monturas">Monturas</a>
-      <a href="#lentes-sol">Lentes de sol</a>
-      <a href="#contacto-comercial">Zona profesional</a>
+      <a href="#beneficios" data-i18n="navBenefits">Beneficios</a>
+      <a href="#monturas" data-i18n="navOptical">Monturas</a>
+      <a href="#lentes-sol" data-i18n="navSun">Lentes de sol</a>
+      <a href="#faq" data-i18n="navFaq">Preguntas</a>
     </nav>
-    <button class="header-request" type="button" data-request-open>
-      Solicitud B2B <span data-request-count>0</span>
-    </button>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" data-menu-toggle>
-      <span></span><span></span><span></span>
-      <span class="sr-only">Abrir menú</span>
-    </button>
+    <div class="header-tools">
+      <button class="language-toggle" type="button" data-language-toggle aria-label="Cambiar el sitio a inglés">EN · English</button>
+      <button class="header-request" type="button" data-request-open><span class="header-request-label" data-i18n="requestOpen">Preparar solicitud</span> <span data-request-count>0</span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobileNav" data-menu-toggle>
+        <span></span><span></span><span></span><span class="sr-only" data-i18n="menuOpen">Abrir menú</span>
+      </button>
+    </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Navegación móvil" hidden>
-      <a href="#beneficios">Beneficios</a>
-      <a href="#monturas">Monturas</a>
-      <a href="#lentes-sol">Lentes de sol</a>
-      <a href="#contacto-comercial">Zona profesional</a>
-      <button type="button" data-request-open>Ver solicitud B2B</button>
+      <a href="#beneficios" data-i18n="navBenefits">Beneficios</a>
+      <a href="#monturas" data-i18n="navOptical">Monturas</a>
+      <a href="#lentes-sol" data-i18n="navSun">Lentes de sol</a>
+      <a href="#faq" data-i18n="navFaq">Preguntas</a>
+      <button type="button" data-request-open data-i18n="requestMobile">Ver mi solicitud</button>
     </nav>
   </header>
 
@@ -55,18 +57,18 @@
       </video>
       <div class="hero-shade"></div>
       <div class="hero-content">
-        <span class="eyebrow eyebrow-light">Innova Eyewear · Distribución B2B</span>
-        <h1 id="heroTitle">Champion Eyewear:<br>rotación con estilo deportivo</h1>
-        <p>Monturas ópticas y lentes de sol para vitrinas comerciales. Seleccione referencias, prepare cantidades y envíe una solicitud profesional a Innova.</p>
+        <span class="eyebrow eyebrow-light" data-i18n="heroKicker">Innova Eyewear · Distribución profesional</span>
+        <h1 id="heroTitle" data-i18n="heroTitle" data-i18n-html="true">Champion Eyewear:<br>rotación con estilo deportivo</h1>
+        <p data-i18n="heroText">Monturas ópticas y lentes de sol para vitrinas comerciales. Seleccione referencias, defina cantidades y solicite una cotización profesional a Innova.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#monturas">Ver monturas</a>
-          <a class="button button-outline-light" href="#lentes-sol">Ver lentes de sol</a>
-          <button class="button button-outline-light" type="button" data-request-open>Crear solicitud B2B</button>
+          <a class="button button-primary" href="#monturas" data-i18n="heroOptical">Ver monturas</a>
+          <a class="button button-outline-light" href="#lentes-sol" data-i18n="heroSun">Ver lentes de sol</a>
+          <button class="button button-outline-light" type="button" data-request-open data-i18n="heroRequest">Preparar mi solicitud</button>
         </div>
-        <div class="hero-facts" aria-label="Resumen del catálogo">
-          <span><strong data-optical-count>64</strong> monturas</span>
-          <span><strong data-sun-count>29</strong> solares</span>
-          <span><strong>CSV</strong> listo para enviar</span>
+        <div class="hero-facts" data-i18n-aria="heroSummaryAria" aria-label="Resumen del catálogo">
+          <span><strong data-optical-count>64</strong> <span data-i18n="heroOpticalFact">monturas</span></span>
+          <span><strong data-sun-count>29</strong> <span data-i18n="heroSunFact">solares</span></span>
+          <span><strong>PDF</strong> <span data-i18n="heroPdfFact">profesional</span></span>
         </div>
       </div>
     </section>
@@ -77,18 +79,18 @@
           <video id="explainVideo" autoplay muted loop playsinline preload="metadata" poster="https://storage.googleapis.com/msgsndr/fHXK54ukeNMjxEcZtyDv/media/6945b7dbaad36032ab810c68.png" aria-label="Presentación comercial Champion Eyewear">
             <source src="https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69e45ad38696a78b8d076627.mp4" type="video/mp4">
           </video>
-          <button class="sound-toggle" type="button" data-sound-toggle>Activar sonido</button>
+          <button class="sound-toggle" type="button" data-sound-toggle data-i18n="soundOn">Activar sonido</button>
         </div>
         <div class="section-copy reveal">
-          <span class="eyebrow">Rentabilidad y demanda</span>
-          <h2>Por qué las ópticas eligen Champion</h2>
-          <p>Una propuesta deportiva y urbana con reconocimiento de marca, lectura visual inmediata y referencias pensadas para una rotación comercial clara.</p>
+          <span class="eyebrow" data-i18n="benefitsKicker">Rentabilidad y demanda</span>
+          <h2 data-i18n="benefitsTitle">Por qué las ópticas eligen Champion</h2>
+          <p data-i18n="benefitsText">Una propuesta deportiva y urbana con reconocimiento de marca, lectura visual inmediata y referencias pensadas para una rotación comercial clara.</p>
           <ul class="feature-list">
-            <li><strong>93 referencias listas.</strong> Monturas y solares en un único catálogo.</li>
-            <li><strong>Selección profesional.</strong> Cantidades y datos del cliente sin proceso de compra minorista.</li>
-            <li><strong>Entrega ordenada.</strong> CSV detallado para cotización, disponibilidad y reposición.</li>
+            <li><strong data-i18n="benefit1Title">93 referencias listas.</strong> <span data-i18n="benefit1Text">Monturas y solares en un único catálogo.</span></li>
+            <li><strong data-i18n="benefit2Title">Selección profesional.</strong> <span data-i18n="benefit2Text">Cantidades y datos de la óptica sin un carrito minorista.</span></li>
+            <li><strong data-i18n="benefit3Title">Documentos claros.</strong> <span data-i18n="benefit3Text">PDF para el cliente y CSV operativo para Innova.</span></li>
           </ul>
-          <a class="button button-dark" href="#lentes-sol">Explorar nueva colección solar</a>
+          <a class="button button-dark" href="#lentes-sol" data-i18n="benefitsCta">Explorar colección solar</a>
         </div>
       </div>
     </section>
@@ -96,102 +98,83 @@
     <section class="section catalog-section" id="monturas">
       <div class="container">
         <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">Colección óptica 2026</span>
-            <h2>Monturas Champion</h2>
-          </div>
-          <p>Busque por modelo, color, material o medida. Cada ficha usa una sola plantilla y carga únicamente los datos del producto elegido.</p>
+          <div><span class="eyebrow" data-i18n="opticalKicker">Colección óptica 2026</span><h2 data-i18n="opticalTitle">Monturas Champion</h2></div>
+          <p data-i18n="opticalIntro">Busque por modelo, color, material o medida. Cada ficha usa una sola plantilla y carga únicamente los datos del producto elegido.</p>
         </div>
-
-        <div class="catalog-toolbar reveal" aria-label="Filtros de monturas">
+        <div class="catalog-toolbar reveal" data-i18n-aria="opticalFiltersAria" aria-label="Filtros de monturas">
           <label class="search-control">
-            <span class="sr-only">Buscar monturas</span>
-            <span aria-hidden="true">⌕</span>
-            <input id="opticalSearch" type="search" placeholder="Buscar CH01, azul, TR90, 57-17-145…" autocomplete="off">
+            <span class="sr-only" data-i18n="opticalSearch">Buscar monturas</span><span aria-hidden="true">⌕</span>
+            <input id="opticalSearch" type="search" data-i18n-placeholder="opticalPlaceholder" placeholder="Buscar CH01, azul, TR90, 57-17-145…" autocomplete="off">
           </label>
           <div class="filter-chips" id="opticalFilters">
-            <button class="is-active" type="button" data-filter="all">Todas</button>
-            <button type="button" data-filter="Steel">Steel</button>
-            <button type="button" data-filter="Bold">Bold</button>
-            <button type="button" data-filter="Flex">Flex</button>
+            <button class="is-active" type="button" data-filter="all" data-i18n="allFeminine">Todas</button>
+            <button type="button" data-filter="Steel">Steel</button><button type="button" data-filter="Bold">Bold</button><button type="button" data-filter="Flex">Flex</button>
           </div>
         </div>
-
+        <div class="collection-explainer reveal" id="opticalCollectionInfo" aria-live="polite"></div>
         <p class="result-status" id="opticalStatus" aria-live="polite"></p>
         <div class="product-grid" id="opticalGrid" aria-live="polite"></div>
       </div>
     </section>
 
     <section class="section sun-section" id="lentes-sol">
-      <div class="sun-orbit sun-orbit-one"></div>
-      <div class="sun-orbit sun-orbit-two"></div>
+      <div class="sun-orbit sun-orbit-one"></div><div class="sun-orbit sun-orbit-two"></div>
       <div class="container sun-content">
         <div class="sun-intro reveal">
-          <div>
-            <span class="eyebrow eyebrow-light">Champion Sun · Nueva categoría</span>
-            <h2>Lentes de sol para una vitrina más deportiva</h2>
-          </div>
-          <div>
-            <p>Una sección completa con 29 referencias solares, desde siluetas urbanas hasta pantallas envolventes de alto impacto.</p>
-            <div class="sun-stat"><strong data-sun-count>29</strong><span>referencias disponibles para solicitud comercial</span></div>
-          </div>
+          <div><span class="eyebrow eyebrow-light" data-i18n="sunKicker">Champion Sun · Nueva categoría</span><h2 data-i18n="sunTitle">Lentes de sol para una vitrina más deportiva</h2></div>
+          <div><p data-i18n="sunIntro">Una sección completa con 29 referencias solares, desde siluetas urbanas hasta pantallas envolventes de alto impacto.</p><div class="sun-stat"><strong data-sun-count>29</strong><span data-i18n="sunAvailable">referencias disponibles para solicitar</span></div></div>
         </div>
-
-        <div class="catalog-toolbar catalog-toolbar-dark reveal" aria-label="Filtros de lentes de sol">
-          <label class="search-control search-control-dark">
-            <span class="sr-only">Buscar lentes de sol</span>
-            <span aria-hidden="true">⌕</span>
-            <input id="sunSearch" type="search" placeholder="Buscar CHS-07, azul, espejado…" autocomplete="off">
-          </label>
+        <div class="catalog-toolbar catalog-toolbar-dark reveal" data-i18n-aria="sunFiltersAria" aria-label="Filtros de lentes de sol">
+          <label class="search-control search-control-dark"><span class="sr-only" data-i18n="sunSearch">Buscar lentes de sol</span><span aria-hidden="true">⌕</span><input id="sunSearch" type="search" data-i18n-placeholder="sunPlaceholder" placeholder="Buscar CHS-07, azul, espejado…" autocomplete="off"></label>
           <div class="filter-chips filter-chips-dark" id="sunFilters">
-            <button class="is-active" type="button" data-filter="all">Todos</button>
-            <button type="button" data-filter="Sport Urban">Sport Urban</button>
-            <button type="button" data-filter="Sport Metal">Sport Metal</button>
-            <button type="button" data-filter="Performance Shield">Performance</button>
+            <button class="is-active" type="button" data-filter="all" data-i18n="allMasculine">Todos</button><button type="button" data-filter="Sport Urban">Sport Urban</button><button type="button" data-filter="Sport Metal">Sport Metal</button><button type="button" data-filter="Performance Shield">Performance</button>
           </div>
         </div>
-
+        <div class="collection-explainer collection-explainer-dark reveal" id="sunCollectionInfo" aria-live="polite"></div>
         <p class="result-status result-status-light" id="sunStatus" aria-live="polite"></p>
         <div class="product-grid sun-grid" id="sunGrid" aria-live="polite"></div>
       </div>
     </section>
 
+    <section class="section reference-section" id="condiciones">
+      <div class="container reference-card reveal">
+        <div><span class="eyebrow" data-i18n="referenceKicker">Referencia comercial</span><h2 data-i18n="referenceTitle">Pedido inicial mínimo: 18 piezas</h2></div>
+        <div><p data-i18n="referenceText">El valor de referencia aprobado es US$60 por pieza, por lo que 18 piezas equivalen a una referencia general de US$1,080. No mostramos precios por producto: el valor final depende del país, disponibilidad, volumen y validación de Innova.</p><small data-i18n="referenceDisclaimer">Esta cifra es informativa y no constituye una cotización ni confirma inventario.</small></div>
+      </div>
+    </section>
+
     <section class="section process-section" id="solicitud">
       <div class="container">
-        <div class="section-heading centered reveal">
-          <span class="eyebrow">Flujo profesional</span>
-          <h2>De la selección a la cotización</h2>
-          <p>Un proceso pensado para ópticas, cadenas y distribuidores; no es un carrito minorista.</p>
-        </div>
+        <div class="section-heading centered reveal"><span class="eyebrow" data-i18n="processKicker">Solicitud para ópticas</span><h2 data-i18n="processTitle">De la selección a la cotización</h2><p data-i18n="processIntro">Un proceso claro para ópticas, cadenas y distribuidores; no es una compra en línea ni muestra precios por producto.</p></div>
         <div class="process-grid">
-          <article class="process-card reveal"><span>01</span><h3>Seleccione</h3><p>Añada monturas o solares a su solicitud B2B y defina cantidades.</p></article>
-          <article class="process-card reveal"><span>02</span><h3>Complete</h3><p>Incluya empresa, ciudad, contacto y cualquier observación comercial.</p></article>
-          <article class="process-card reveal"><span>03</span><h3>Exporte</h3><p>Descargue un CSV detallado compatible con Excel y sistemas de inventario.</p></article>
-          <article class="process-card reveal"><span>04</span><h3>Envíe</h3><p>Comparta el archivo o abra un mensaje profesional por WhatsApp o correo.</p></article>
+          <article class="process-card reveal"><span>01</span><h3 data-i18n="step1Title">Seleccione</h3><p data-i18n="step1Text">Añada monturas o solares y ajuste la cantidad de cada referencia.</p></article>
+          <article class="process-card reveal"><span>02</span><h3 data-i18n="step2Title">Complete</h3><p data-i18n="step2Text">Indique nombre, óptica, correo, teléfono, ciudad y país.</p></article>
+          <article class="process-card reveal"><span>03</span><h3 data-i18n="step3Title">Revise</h3><p data-i18n="step3Text">Cumpla el mínimo de 18 piezas. La referencia general para 18 piezas es US$1,080.</p></article>
+          <article class="process-card reveal"><span>04</span><h3 data-i18n="step4Title">Envíe</h3><p data-i18n="step4Text">Descargue el PDF o prepare el correo con CSV y el WhatsApp con texto organizado.</p></article>
         </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-heading centered reveal"><span class="eyebrow" data-i18n="faqKicker">Información comercial</span><h2 data-i18n="faqTitle">Preguntas frecuentes para ópticas</h2><p data-i18n="faqIntro">Toda la información de la página original, ahora integrada en el catálogo y disponible en español e inglés.</p></div>
+        <div class="faq-layout reveal" id="faqRoot"></div>
       </div>
     </section>
 
     <section class="commercial-cta" id="contacto-comercial">
       <div class="container commercial-inner">
-        <div>
-          <span class="eyebrow eyebrow-light">Innova Eyewear B2B</span>
-          <h2>Prepare su próxima reposición Champion</h2>
-          <p>Seleccione referencias y envíe una solicitud ordenada para revisar precios, mínimos, disponibilidad y despacho.</p>
-        </div>
-        <div class="commercial-actions">
-          <button class="button button-white" type="button" data-request-open>Abrir solicitud B2B</button>
-          <a class="button button-outline-light" href="https://wa.me/17542360600?text=Hola%2C%20quiero%20recibir%20informaci%C3%B3n%20sobre%20el%20cat%C3%A1logo%20Champion%20Eyewear%20B2B." target="_blank" rel="noopener">Contactar asesor</a>
-        </div>
+        <div><span class="eyebrow eyebrow-light" data-i18n="ctaKicker">Atención de Innova Eyewear</span><h2 data-i18n="ctaTitle">Prepare su próxima selección Champion</h2><p data-i18n="ctaText">Seleccione al menos 18 piezas y envíe una solicitud ordenada para revisar disponibilidad, precio final, condiciones y despacho.</p></div>
+        <div class="commercial-actions"><button class="button button-white" type="button" data-request-open data-i18n="ctaOpen">Abrir mi solicitud</button><a class="button button-outline-light" href="https://wa.me/17542360600?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Champion%20Eyewear%20para%20mi%20%C3%B3ptica." target="_blank" rel="noopener" data-i18n="ctaAdvisor">Contactar a un asesor</a></div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div><img src="./assets/images/brand/champion-logo.webp" alt="Champion Eyewear"><p>Catálogo profesional distribuido por Innova Eyewear.</p></div>
-      <div><strong>Catálogo</strong><a href="#monturas">Monturas</a><a href="#lentes-sol">Lentes de sol</a></div>
-      <div><strong>Servicio B2B</strong><button type="button" data-request-open>Solicitud profesional</button><a href="mailto:sales@innova-eyewear.com">sales@innova-eyewear.com</a></div>
+      <div><img src="./assets/images/brand/champion-header.png" alt="Champion Eyewear"><p data-i18n="footerText">Catálogo profesional distribuido por Innova Eyewear.</p></div>
+      <div><strong data-i18n="footerCatalog">Catálogo</strong><a href="#monturas" data-i18n="navOptical">Monturas</a><a href="#lentes-sol" data-i18n="navSun">Lentes de sol</a><a href="#faq" data-i18n="navFaq">Preguntas</a></div>
+      <div><strong data-i18n="footerService">Servicio para ópticas</strong><button type="button" data-request-open data-i18n="footerRequest">Preparar solicitud</button><a href="mailto:sales@innova-eyewear.com">sales@innova-eyewear.com</a></div>
     </div>
   </footer>
 

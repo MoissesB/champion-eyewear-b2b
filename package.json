@@ -6,5 +6,8 @@
   "scripts": {
     "build": "node scripts/build-sites.cjs",
     "validate": "powershell -ExecutionPolicy Bypass -File ./scripts/validar.ps1"
+  },
+  "dependencies": {
+    "jspdf": "4.2.1"
   }
 }

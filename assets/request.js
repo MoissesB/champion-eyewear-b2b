@@ -2,351 +2,228 @@
   'use strict';
 
   const catalog = window.CHAMPION_CATALOG;
-  if (!catalog || !Array.isArray(catalog.products)) return;
+  const i18n = window.ChampionI18n;
+  if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
 
-  const STORAGE_KEY = 'champion-b2b-request-v2';
+  const STORAGE_KEY = 'champion-professional-request-v3';
+  const LEGACY_KEY = 'champion-b2b-request-v2';
+  const MINIMUM_UNITS = 18;
+  const REFERENCE_UNIT_USD = 60;
   const productMap = new Map(catalog.products.map((product) => [product.id, product]));
-  const defaultClient = { name: '', company: '', email: '', phone: '', city: '', notes: '' };
+  const defaultClient = { name: '', company: '', optical: '', email: '', phone: '', city: '', country: '', notes: '' };
+  const requiredFields = ['name', 'company', 'optical', 'email', 'phone', 'city', 'country'];
   let toastTimer;
   let lastFocused;
 
+  const copy = {
+    es: {
+      fab: 'Mi solicitud', fabAria: 'Abrir mi solicitud de productos', kicker: 'Selección profesional', title: 'Solicitud de productos', intro: 'Seleccione referencias para que Innova confirme disponibilidad, precio final y condiciones comerciales.', close: 'Cerrar solicitud', requestNumber: 'Solicitud', references: 'referencias', reference: 'referencia', units: 'piezas', unit: 'pieza', minimum: 'Mínimo 18 piezas', ready: 'La selección ya cumple el mínimo.', remaining: 'Faltan {count} piezas para cumplir el mínimo.', estimate: 'Referencia general: US${amount}', estimateNote: 'Calculada a US$60 por pieza; no es una cotización ni un precio individual.', quantity: 'Cantidad', remove: 'Quitar', emptyTitle: 'Todavía no ha seleccionado productos.', emptyText: 'Vaya al catálogo, abra una montura o lente de sol y pulse “Añadir a mi solicitud”. Puede combinar modelos hasta llegar a 18 piezas.', goCatalog: 'Ir a seleccionar productos', clientTitle: 'Datos de la óptica', clientIntro: 'Complete todos los campos obligatorios. Se incluirán en el PDF, CSV, correo y mensaje para Innova.', name: 'Nombre y apellido', company: 'Empresa / razón social', optical: 'Nombre de la óptica', email: 'Correo profesional', phone: 'Teléfono', city: 'Ciudad', country: 'País', notes: 'Observaciones', namePh: 'Nombre del contacto', companyPh: 'Razón social', opticalPh: 'Nombre comercial', emailPh: 'nombre@empresa.com', phonePh: '+1…', cityPh: 'Ciudad', countryPh: 'País', notesPh: 'Surtido, fecha requerida o comentarios…', requiredHelp: 'Para habilitar el envío faltan: {fields}.', invalidEmail: 'Escriba un correo profesional válido.', readyHelp: 'Solicitud lista para descargar y enviar.', pdf: 'Descargar PDF para mi óptica', whatsapp: 'Enviar por WhatsApp', emailAction: 'Enviar por correo', copyText: 'Copiar solicitud en texto', actionNote: 'Por seguridad del navegador, el PDF y el CSV se descargan para que usted los adjunte. WhatsApp abre el texto organizado; correo abre el mensaje y descarga ambos archivos.', noItems: 'Seleccione productos antes de continuar.', incomplete: 'Complete los datos obligatorios y llegue a 18 piezas.', pdfDownloaded: 'PDF profesional descargado', filesPreparedWhatsapp: 'PDF descargado y mensaje de WhatsApp preparado', filesPreparedEmail: 'PDF y CSV descargados; correo preparado para adjuntarlos', copied: 'Solicitud copiada', copyFailed: 'No se pudo copiar automáticamente.', pdfUnavailable: 'No se pudo generar el PDF. Inténtelo de nuevo.',
+      missingNames: { name: 'nombre', company: 'empresa', optical: 'óptica', email: 'correo', phone: 'teléfono', city: 'ciudad', country: 'país' },
+      pdfTitle: 'SOLICITUD DE PRODUCTOS', pdfFor: 'Documento para la óptica', clientData: 'DATOS DEL CLIENTE', selection: 'SELECCIÓN CHAMPION', summary: 'RESUMEN COMERCIAL', referenceTitle: 'CONDICIONES IMPORTANTES', totalReferences: 'Referencias', totalUnits: 'Piezas', minimumLabel: 'Mínimo inicial', generalReference: 'Referencia general', finalNote: 'El valor final, disponibilidad, despacho y condiciones deben ser confirmados por Innova Eyewear. Este documento no constituye una factura, orden confirmada ni cotización definitiva.', model: 'Modelo', color: 'Color', sku: 'SKU', collection: 'Colección', material: 'Material', measurements: 'Medidas', page: 'Página', attachmentPdf: 'Adjunte el PDF descargado a esta conversación.', attachmentEmail: 'Adjunte el PDF y el CSV descargados a este correo.'
+    },
+    en: {
+      fab: 'My request', fabAria: 'Open my product request', kicker: 'Professional selection', title: 'Product request', intro: 'Select references so Innova can confirm availability, final price and commercial terms.', close: 'Close request', requestNumber: 'Request', references: 'references', reference: 'reference', units: 'pieces', unit: 'piece', minimum: '18-piece minimum', ready: 'The selection meets the minimum.', remaining: '{count} more pieces are needed to meet the minimum.', estimate: 'General reference: US${amount}', estimateNote: 'Calculated at US$60 per piece; it is not a quotation or an individual product price.', quantity: 'Quantity', remove: 'Remove', emptyTitle: 'You have not selected any products yet.', emptyText: 'Go to the catalog, open an optical frame or sunglass and click “Add to my request”. You may combine models until you reach 18 pieces.', goCatalog: 'Select products', clientTitle: 'Optical-store details', clientIntro: 'Complete every required field. These details will be included in the PDF, CSV, email and Innova message.', name: 'Full name', company: 'Company / legal name', optical: 'Optical-store name', email: 'Professional email', phone: 'Phone', city: 'City', country: 'Country', notes: 'Notes', namePh: 'Contact name', companyPh: 'Legal company name', opticalPh: 'Trading name', emailPh: 'name@company.com', phonePh: '+1…', cityPh: 'City', countryPh: 'Country', notesPh: 'Assortment, required date or comments…', requiredHelp: 'To enable sending, complete: {fields}.', invalidEmail: 'Enter a valid professional email.', readyHelp: 'The request is ready to download and send.', pdf: 'Download PDF for my store', whatsapp: 'Send by WhatsApp', emailAction: 'Send by email', copyText: 'Copy request as text', actionNote: 'For browser security, the PDF and CSV are downloaded for you to attach. WhatsApp opens organized text; email opens the message and downloads both files.', noItems: 'Select products before continuing.', incomplete: 'Complete all required details and reach 18 pieces.', pdfDownloaded: 'Professional PDF downloaded', filesPreparedWhatsapp: 'PDF downloaded and WhatsApp message prepared', filesPreparedEmail: 'PDF and CSV downloaded; email prepared for attachments', copied: 'Request copied', copyFailed: 'The request could not be copied automatically.', pdfUnavailable: 'The PDF could not be generated. Please try again.',
+      missingNames: { name: 'name', company: 'company', optical: 'optical store', email: 'email', phone: 'phone', city: 'city', country: 'country' },
+      pdfTitle: 'PRODUCT REQUEST', pdfFor: 'Document for the optical store', clientData: 'CLIENT DETAILS', selection: 'CHAMPION SELECTION', summary: 'COMMERCIAL SUMMARY', referenceTitle: 'IMPORTANT TERMS', totalReferences: 'References', totalUnits: 'Pieces', minimumLabel: 'Initial minimum', generalReference: 'General reference', finalNote: 'Final value, availability, dispatch and terms must be confirmed by Innova Eyewear. This document is not an invoice, confirmed order or final quotation.', model: 'Model', color: 'Color', sku: 'SKU', collection: 'Collection', material: 'Material', measurements: 'Measurements', page: 'Page', attachmentPdf: 'Attach the downloaded PDF to this conversation.', attachmentEmail: 'Attach the downloaded PDF and CSV to this email.'
+    }
+  };
+
+  function lang() { return i18n.language === 'en' ? 'en' : 'es'; }
+  function tr(key, vars) {
+    const value = copy[lang()][key] ?? key;
+    return String(value).replace(/\{(\w+)\}/g, (_match, name) => vars && name in vars ? vars[name] : '');
+  }
+  function escapeHtml(value) { return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;'); }
+  function orderNumber() {
+    const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const bytes = new Uint8Array(3);
+    if (window.crypto?.getRandomValues) window.crypto.getRandomValues(bytes); else bytes.forEach((_value, index) => { bytes[index] = Math.floor(Math.random() * 256); });
+    return `CH-${date}-${Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('').toUpperCase()}`;
+  }
+
   function loadState() {
     try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      return {
-        items: parsed.items && typeof parsed.items === 'object' ? parsed.items : {},
-        client: { ...defaultClient, ...(parsed.client || {}) },
-      };
-    } catch (_error) {
-      return { items: {}, client: { ...defaultClient } };
-    }
+      const stored = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_KEY) || '{}';
+      const parsed = JSON.parse(stored);
+      return { items: parsed.items && typeof parsed.items === 'object' ? parsed.items : {}, client: { ...defaultClient, ...(parsed.client || {}) }, orderNumber: parsed.orderNumber || orderNumber() };
+    } catch (_error) { return { items: {}, client: { ...defaultClient }, orderNumber: orderNumber() }; }
   }
-
   let state = loadState();
-
-  function saveState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }
-
-  function escapeHtml(value) {
-    return String(value ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
+  function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
   function selectedEntries() {
-    return Object.entries(state.items)
-      .map(([id, quantity]) => ({ product: productMap.get(id), quantity: Math.max(1, Number(quantity) || 1) }))
-      .filter((entry) => entry.product);
+    return Object.entries(state.items).map(([id, quantity]) => ({ product: productMap.get(id), quantity: Math.max(1, Number(quantity) || 1) })).filter((entry) => entry.product);
+  }
+  function totalUnits(entries = selectedEntries()) { return entries.reduce((sum, entry) => sum + entry.quantity, 0); }
+  function validEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || '').trim()); }
+  function readiness() {
+    const entries = selectedEntries(); const units = totalUnits(entries);
+    const missing = requiredFields.filter((field) => !String(state.client[field] || '').trim());
+    const emailInvalid = !missing.includes('email') && !validEmail(state.client.email);
+    return { entries, units, missing, emailInvalid, ready: entries.length > 0 && units >= MINIMUM_UNITS && missing.length === 0 && !emailInvalid };
   }
 
   function showToast(message) {
-    const toast = document.getElementById('siteToast');
-    if (!toast) return;
-    toast.textContent = message;
-    toast.classList.add('is-visible');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
+    const toast = document.getElementById('siteToast'); if (!toast) return;
+    toast.textContent = message; toast.classList.add('is-visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 3000);
   }
 
-  function mount() {
-    const portal = document.getElementById('requestPortal');
-    if (!portal) return;
-    portal.innerHTML = `
-      <button class="request-fab" type="button" data-request-open aria-label="Abrir solicitud profesional B2B">
-        Solicitud B2B <span data-request-count>0</span>
-      </button>
+  function shellMarkup() {
+    return `<button class="request-fab" type="button" data-request-open aria-label="${escapeHtml(tr('fabAria'))}">${escapeHtml(tr('fab'))} <span data-request-count>0</span></button>
       <div class="request-overlay" data-request-close></div>
       <aside class="request-drawer" id="requestDrawer" role="dialog" aria-modal="true" aria-labelledby="requestTitle" aria-hidden="true">
-        <header class="request-drawer-header">
-          <div>
-            <span class="eyebrow">Selección profesional</span>
-            <h2 id="requestTitle">Solicitud B2B</h2>
-            <p>Referencias para cotización, disponibilidad y condiciones comerciales.</p>
-          </div>
-          <button class="drawer-close" type="button" data-request-close aria-label="Cerrar solicitud">×</button>
-        </header>
-        <div class="request-drawer-body">
-          <div class="request-summary" id="requestSummary"></div>
-          <div class="request-items" id="requestItems"></div>
-
-          <form class="client-form" id="clientForm" novalidate>
-            <h3>Datos del cliente profesional</h3>
-            <p>Se incluirán automáticamente en el CSV y en el mensaje para Innova.</p>
-            <div class="client-form-grid">
-              <label class="field"><span>Nombre</span><input name="name" autocomplete="name" value="${escapeHtml(state.client.name)}" placeholder="Nombre y apellido"></label>
-              <label class="field"><span>Empresa / Óptica</span><input name="company" autocomplete="organization" value="${escapeHtml(state.client.company)}" placeholder="Razón social"></label>
-              <label class="field"><span>Correo profesional</span><input name="email" type="email" autocomplete="email" value="${escapeHtml(state.client.email)}" placeholder="nombre@empresa.com"></label>
-              <label class="field"><span>Teléfono</span><input name="phone" autocomplete="tel" value="${escapeHtml(state.client.phone)}" placeholder="+1…"></label>
-              <label class="field field-wide"><span>Ciudad / País</span><input name="city" autocomplete="address-level2" value="${escapeHtml(state.client.city)}" placeholder="Ciudad, país"></label>
-              <label class="field field-wide"><span>Observaciones</span><textarea name="notes" placeholder="Disponibilidad requerida, surtido, fecha estimada…">${escapeHtml(state.client.notes)}</textarea></label>
-            </div>
-          </form>
-
-          <div class="request-actions">
-            <button class="action-primary" type="button" data-request-download>Descargar CSV</button>
-            <button type="button" data-request-share>Compartir archivo</button>
-            <button class="action-whatsapp" type="button" data-request-whatsapp>WhatsApp a Innova</button>
-            <button type="button" data-request-email>Correo a Innova</button>
-            <p class="request-note">“Compartir archivo” permite enviar el CSV como adjunto cuando el dispositivo lo admite. WhatsApp y correo preparan el mensaje y descargan el CSV para adjuntarlo.</p>
-          </div>
+        <header class="request-drawer-header"><div><span class="eyebrow">${escapeHtml(tr('kicker'))}</span><h2 id="requestTitle">${escapeHtml(tr('title'))}</h2><p>${escapeHtml(tr('intro'))}</p><span class="request-number">${escapeHtml(tr('requestNumber'))} ${escapeHtml(state.orderNumber)}</span></div><button class="drawer-close" type="button" data-request-close aria-label="${escapeHtml(tr('close'))}">×</button></header>
+        <div class="request-drawer-body"><div class="request-summary" id="requestSummary"></div><div class="request-progress" id="requestProgress"></div><div class="request-items" id="requestItems"></div>
+          <form class="client-form" id="clientForm" novalidate><h3>${escapeHtml(tr('clientTitle'))}</h3><p>${escapeHtml(tr('clientIntro'))}</p><div class="client-form-grid">
+            ${fieldMarkup('name', 'name', 'namePh', 'name')}${fieldMarkup('company', 'company', 'companyPh', 'organization')}${fieldMarkup('optical', 'optical', 'opticalPh', 'organization-title')}${fieldMarkup('email', 'email', 'emailPh', 'email', 'email')}${fieldMarkup('phone', 'phone', 'phonePh', 'tel')}${fieldMarkup('city', 'city', 'cityPh', 'address-level2')}${fieldMarkup('country', 'country', 'countryPh', 'country-name')}
+            <label class="field field-wide"><span>${escapeHtml(tr('notes'))}</span><textarea name="notes" placeholder="${escapeHtml(tr('notesPh'))}">${escapeHtml(state.client.notes)}</textarea></label>
+          </div><p class="request-requirements" id="requestRequirements" aria-live="polite"></p></form>
+          <div class="request-actions"><button class="action-primary" type="button" data-request-pdf>${escapeHtml(tr('pdf'))}</button><button class="action-whatsapp" type="button" data-request-whatsapp>${escapeHtml(tr('whatsapp'))}</button><button type="button" data-request-email>${escapeHtml(tr('emailAction'))}</button><button type="button" data-request-copy>${escapeHtml(tr('copyText'))}</button><p class="request-note">${escapeHtml(tr('actionNote'))}</p></div>
         </div>
       </aside>`;
+  }
+  function fieldMarkup(name, labelKey, placeholderKey, autocomplete, type = 'text') {
+    return `<label class="field"><span>${escapeHtml(tr(labelKey))} *</span><input name="${name}" type="${type}" autocomplete="${autocomplete}" value="${escapeHtml(state.client[name])}" placeholder="${escapeHtml(tr(placeholderKey))}" required></label>`;
+  }
 
-    bindEvents();
-    render();
+  function renderShell() {
+    const portal = document.getElementById('requestPortal'); if (!portal) return;
+    const wasOpen = document.body.classList.contains('drawer-open'); portal.innerHTML = shellMarkup(); render();
+    if (wasOpen) { document.querySelector('.request-overlay')?.classList.add('is-open'); document.getElementById('requestDrawer')?.classList.add('is-open'); document.getElementById('requestDrawer')?.setAttribute('aria-hidden', 'false'); }
+  }
+
+  function render() {
+    const status = readiness();
+    document.querySelectorAll('[data-request-count]').forEach((node) => { node.textContent = String(status.entries.length); });
+    const summary = document.getElementById('requestSummary');
+    if (summary) summary.innerHTML = `<span><strong>${status.entries.length}</strong> ${escapeHtml(status.entries.length === 1 ? tr('reference') : tr('references'))}</span><span><strong>${status.units}</strong> ${escapeHtml(status.units === 1 ? tr('unit') : tr('units'))}</span>`;
+    const progress = document.getElementById('requestProgress');
+    if (progress) {
+      const remaining = Math.max(0, MINIMUM_UNITS - status.units); const percent = Math.min(100, (status.units / MINIMUM_UNITS) * 100); const estimate = status.units * REFERENCE_UNIT_USD;
+      progress.innerHTML = `<div class="request-progress-top"><strong>${escapeHtml(remaining ? tr('remaining', { count: remaining }) : tr('ready'))}</strong><span>${status.units}/${MINIMUM_UNITS}</span></div><div class="request-progress-track"><span style="width:${percent}%"></span></div>${status.units ? `<p>${escapeHtml(tr('estimate', { amount: estimate.toLocaleString(lang() === 'es' ? 'en-US' : 'en-US') }))}<small>${escapeHtml(tr('estimateNote'))}</small></p>` : ''}`;
+    }
+    const items = document.getElementById('requestItems');
+    if (items) items.innerHTML = status.entries.length ? status.entries.map(({ product: source, quantity }) => {
+      const product = i18n.localizeProduct(source);
+      return `<article class="request-item"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}"><div><h3>${escapeHtml(product.displayModel)}</h3><p>${escapeHtml(product.color)}</p><p>${escapeHtml(product.sku)}</p></div><div class="request-item-controls"><label>${escapeHtml(tr('quantity'))} <input type="number" min="1" max="9999" value="${quantity}" data-request-quantity="${escapeHtml(product.id)}" aria-label="${escapeHtml(tr('quantity'))}: ${escapeHtml(product.displayModel)}"></label><button class="request-remove" type="button" data-request-remove="${escapeHtml(product.id)}">${escapeHtml(tr('remove'))}</button></div></article>`;
+    }).join('') : `<div class="request-empty"><strong>${escapeHtml(tr('emptyTitle'))}</strong><p>${escapeHtml(tr('emptyText'))}</p><a class="button button-dark" href="./index.html#monturas" data-request-go-catalog>${escapeHtml(tr('goCatalog'))}</a></div>`;
+    updateReadiness(status);
+  }
+
+  function updateReadiness(status = readiness()) {
+    const requirements = document.getElementById('requestRequirements');
+    if (requirements) {
+      if (status.emailInvalid) requirements.textContent = tr('invalidEmail');
+      else if (status.missing.length) requirements.textContent = tr('requiredHelp', { fields: status.missing.map((field) => copy[lang()].missingNames[field]).join(', ') });
+      else if (status.units < MINIMUM_UNITS) requirements.textContent = tr('remaining', { count: MINIMUM_UNITS - status.units });
+      else requirements.textContent = tr('readyHelp');
+      requirements.classList.toggle('is-ready', status.ready);
+    }
+    requiredFields.forEach((field) => { const input = document.querySelector(`#clientForm [name="${field}"]`); if (input) input.setAttribute('aria-invalid', String((!state.client[field] || (field === 'email' && status.emailInvalid)) && input === document.activeElement ? true : false)); });
+    document.querySelectorAll('[data-request-pdf], [data-request-whatsapp], [data-request-email], [data-request-copy]').forEach((button) => { button.disabled = !status.ready; });
   }
 
   function bindEvents() {
     document.addEventListener('click', (event) => {
-      const openButton = event.target.closest('[data-request-open]');
-      if (openButton) {
-        event.preventDefault();
-        openDrawer(openButton);
-        return;
-      }
-
-      const closeButton = event.target.closest('[data-request-close]');
-      if (closeButton) {
-        event.preventDefault();
-        closeDrawer();
-        return;
-      }
-
-      const addButton = event.target.closest('[data-request-add]');
-      if (addButton) {
-        event.preventDefault();
-        const quantityTarget = addButton.dataset.quantityTarget;
-        const quantityInput = quantityTarget ? document.getElementById(quantityTarget) : null;
-        add(addButton.dataset.productId, quantityInput ? quantityInput.value : 1);
-        return;
-      }
-
-      const removeButton = event.target.closest('[data-request-remove]');
-      if (removeButton) {
-        remove(removeButton.dataset.requestRemove);
-        return;
-      }
-
-      if (event.target.closest('[data-request-download]')) downloadCsv();
-      if (event.target.closest('[data-request-share]')) shareCsv();
+      const openButton = event.target.closest('[data-request-open]'); if (openButton) { event.preventDefault(); openDrawer(openButton); return; }
+      if (event.target.closest('[data-request-close]')) { event.preventDefault(); closeDrawer(); return; }
+      const catalogLink = event.target.closest('[data-request-go-catalog]'); if (catalogLink) { closeDrawer(); return; }
+      const addButton = event.target.closest('[data-request-add]'); if (addButton) { event.preventDefault(); const input = addButton.dataset.quantityTarget ? document.getElementById(addButton.dataset.quantityTarget) : null; add(addButton.dataset.productId, input ? input.value : 1); return; }
+      const removeButton = event.target.closest('[data-request-remove]'); if (removeButton) { remove(removeButton.dataset.requestRemove); return; }
+      if (event.target.closest('[data-request-pdf]')) downloadPdf();
       if (event.target.closest('[data-request-whatsapp]')) sendWhatsApp();
       if (event.target.closest('[data-request-email]')) sendEmail();
+      if (event.target.closest('[data-request-copy]')) copyRequest();
     });
-
-    document.addEventListener('change', (event) => {
-      const quantity = event.target.closest('[data-request-quantity]');
-      if (quantity) updateQuantity(quantity.dataset.requestQuantity, quantity.value);
+    document.addEventListener('change', (event) => { const quantity = event.target.closest('[data-request-quantity]'); if (quantity) updateQuantity(quantity.dataset.requestQuantity, quantity.value); });
+    document.addEventListener('input', (event) => {
+      const field = event.target.closest('#clientForm [name]'); if (!field || !(field.name in defaultClient)) return;
+      state.client[field.name] = field.value; saveState(); updateReadiness();
     });
-
-    const form = document.getElementById('clientForm');
-    if (form) {
-      form.addEventListener('input', (event) => {
-        if (!event.target.name || !(event.target.name in defaultClient)) return;
-        state.client[event.target.name] = event.target.value;
-        saveState();
-      });
-    }
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeDrawer();
-    });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeDrawer(); });
   }
 
-  function openDrawer(trigger) {
-    lastFocused = trigger || document.activeElement;
-    document.body.classList.add('drawer-open');
-    document.querySelector('.request-overlay')?.classList.add('is-open');
-    const drawer = document.getElementById('requestDrawer');
-    drawer?.classList.add('is-open');
-    drawer?.setAttribute('aria-hidden', 'false');
-    setTimeout(() => drawer?.querySelector('.drawer-close')?.focus(), 30);
-  }
+  function openDrawer(trigger) { lastFocused = trigger || document.activeElement; document.body.classList.add('drawer-open'); document.querySelector('.request-overlay')?.classList.add('is-open'); const drawer = document.getElementById('requestDrawer'); drawer?.classList.add('is-open'); drawer?.setAttribute('aria-hidden', 'false'); setTimeout(() => drawer?.querySelector('.drawer-close')?.focus(), 30); }
+  function closeDrawer() { document.body.classList.remove('drawer-open'); document.querySelector('.request-overlay')?.classList.remove('is-open'); const drawer = document.getElementById('requestDrawer'); drawer?.classList.remove('is-open'); drawer?.setAttribute('aria-hidden', 'true'); if (lastFocused?.focus) lastFocused.focus(); }
+  function add(id, quantity = 1) { const product = productMap.get(id); if (!product) return; const requested = Math.max(1, Math.min(9999, Number(quantity) || 1)); state.items[id] = (Number(state.items[id]) || 0) + requested; saveState(); render(); showToast(i18n.t('added', { model: product.displayModel })); }
+  function remove(id) { delete state.items[id]; saveState(); render(); }
+  function updateQuantity(id, quantity) { if (!productMap.has(id)) return; state.items[id] = Math.max(1, Math.min(9999, Number(quantity) || 1)); saveState(); render(); }
+  function guardReady() { const status = readiness(); if (status.ready) return status; showToast(status.entries.length ? tr('incomplete') : tr('noItems')); return null; }
 
-  function closeDrawer() {
-    document.body.classList.remove('drawer-open');
-    document.querySelector('.request-overlay')?.classList.remove('is-open');
-    const drawer = document.getElementById('requestDrawer');
-    drawer?.classList.remove('is-open');
-    drawer?.setAttribute('aria-hidden', 'true');
-    if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-  }
-
-  function add(id, quantity = 1) {
-    const product = productMap.get(id);
-    if (!product) return;
-    const requested = Math.max(1, Math.min(9999, Number(quantity) || 1));
-    const existing = Number(state.items[id]) || 0;
-    state.items[id] = existing > 0 ? existing + requested : requested;
-    saveState();
-    render();
-    showToast(`${product.model} añadido a la solicitud B2B`);
-  }
-
-  function remove(id) {
-    delete state.items[id];
-    saveState();
-    render();
-  }
-
-  function updateQuantity(id, quantity) {
-    if (!productMap.has(id)) return;
-    state.items[id] = Math.max(1, Math.min(9999, Number(quantity) || 1));
-    saveState();
-    render();
-  }
-
-  function render() {
-    const entries = selectedEntries();
-    const references = entries.length;
-    const units = entries.reduce((sum, entry) => sum + entry.quantity, 0);
-
-    document.querySelectorAll('[data-request-count]').forEach((node) => {
-      node.textContent = String(references);
-    });
-
-    const summary = document.getElementById('requestSummary');
-    if (summary) summary.innerHTML = `<span><strong>${references}</strong> referencia${references === 1 ? '' : 's'}</span><span><strong>${units}</strong> unidad${units === 1 ? '' : 'es'}</span>`;
-
-    const items = document.getElementById('requestItems');
-    if (items) {
-      items.innerHTML = entries.length
-        ? entries.map(({ product, quantity }) => `
-            <article class="request-item">
-              <img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.model)}">
-              <div><h3>${escapeHtml(product.model)}</h3><p>${escapeHtml(product.color)}</p><p>${escapeHtml(product.sku)}</p></div>
-              <div class="request-item-controls">
-                <label>Cantidad <input type="number" min="1" max="9999" value="${quantity}" data-request-quantity="${escapeHtml(product.id)}" aria-label="Cantidad de ${escapeHtml(product.model)}"></label>
-                <button class="request-remove" type="button" data-request-remove="${escapeHtml(product.id)}">Quitar</button>
-              </div>
-            </article>`).join('')
-        : '<div class="request-empty"><strong>Aún no hay referencias.</strong><br>Use “Añadir a solicitud” en cualquier producto.</div>';
-    }
-
-    document.querySelectorAll('[data-request-download], [data-request-share], [data-request-whatsapp], [data-request-email]').forEach((button) => {
-      button.disabled = entries.length === 0;
-    });
-  }
-
-  function csvEscape(value) {
-    const text = String(value ?? '').replace(/\r?\n/g, ' ');
-    return `"${text.replace(/"/g, '""')}"`;
-  }
-
+  function csvEscape(value) { const valueText = String(value ?? '').replace(/\r?\n/g, ' '); return `"${valueText.replace(/"/g, '""')}"`; }
   function csvContent() {
-    const headers = [
-      'Fecha solicitud', 'Nombre contacto', 'Empresa / Óptica', 'Correo profesional', 'Teléfono', 'Ciudad / País',
-      'Modelo', 'Familia', 'Colección', 'Variante', 'Color', 'Material', 'Forma', 'Tipo de lente', 'Protección UV',
-      'Medidas', 'SKU', 'Cantidad', 'Estado de precio', 'Observaciones del cliente', 'Carpeta fuente'
-    ];
-    const date = new Date().toLocaleString('es-ES');
-    const rows = selectedEntries().map(({ product, quantity }) => [
-      date, state.client.name, state.client.company, state.client.email, state.client.phone, state.client.city,
-      product.model, product.family === 'sun' ? 'Lentes de sol' : 'Montura óptica', product.collection, product.variant,
-      product.color, product.material, product.shape, product.lens, product.protection, product.measurements, product.sku,
-      quantity, 'A cotizar según volumen', state.client.notes, product.sourceFolder
-    ]);
+    const headers = ['Número de solicitud', 'Fecha', 'Nombre', 'Empresa / Razón social', 'Óptica', 'Correo profesional', 'Teléfono', 'Ciudad', 'País', 'Modelo', 'Familia', 'Colección', 'Variante', 'Color', 'Material', 'Forma', 'Tipo de lente', 'Protección / Compatibilidad', 'Medidas', 'SKU', 'Cantidad', 'Referencia general por pieza', 'Referencia general de la solicitud', 'Estado del precio', 'Observaciones'];
+    const entries = selectedEntries(); const units = totalUnits(entries); const date = new Date().toLocaleString('es-ES');
+    const rows = entries.map(({ product, quantity }) => [state.orderNumber, date, state.client.name, state.client.company, state.client.optical, state.client.email, state.client.phone, state.client.city, state.client.country, product.displayModel, product.family === 'sun' ? 'Lentes de sol' : 'Montura óptica', product.collection, product.variant, product.color, product.material, product.shape, product.lens, product.protection, product.measurements, product.sku, quantity, 'US$60 (solo referencia general)', `US$${(units * REFERENCE_UNIT_USD).toLocaleString('en-US')} (solo referencia general)`, 'Precio final a cotizar por Innova', state.client.notes]);
     return `\uFEFF${[headers, ...rows].map((row) => row.map(csvEscape).join(';')).join('\r\n')}`;
   }
+  function csvBlob() { return new Blob([csvContent()], { type: 'text/csv;charset=utf-8' }); }
+  function slugCompany() { return (state.client.optical || state.client.company || 'cliente').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'cliente'; }
+  function csvFileName() { return `${state.orderNumber}-innova-${slugCompany()}.csv`; }
+  function pdfFileName() { return `${state.orderNumber}-champion-${slugCompany()}.pdf`; }
+  function triggerDownload(blob, name) { const link = document.createElement('a'); const url = URL.createObjectURL(blob); link.href = url; link.download = name; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1800); }
+  function downloadCsv() { triggerDownload(csvBlob(), csvFileName()); }
 
-  function csvBlob() {
-    return new Blob([csvContent()], { type: 'text/csv;charset=utf-8' });
+  async function imageData(relativePath, background = '#ffffff') {
+    return new Promise((resolve, reject) => {
+      const image = new Image(); image.decoding = 'async'; image.onload = () => {
+        const max = 1000; const scale = Math.min(1, max / Math.max(image.naturalWidth, image.naturalHeight)); const canvas = document.createElement('canvas'); canvas.width = Math.max(1, Math.round(image.naturalWidth * scale)); canvas.height = Math.max(1, Math.round(image.naturalHeight * scale)); const context = canvas.getContext('2d'); context.fillStyle = background; context.fillRect(0, 0, canvas.width, canvas.height); context.drawImage(image, 0, 0, canvas.width, canvas.height); resolve(canvas.toDataURL('image/jpeg', 0.84));
+      }; image.onerror = reject; image.src = new URL(relativePath, window.location.href).href;
+    });
   }
 
-  function fileName() {
-    const stamp = new Date().toISOString().slice(0, 10);
-    const company = (state.client.company || 'cliente').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    return `solicitud-b2b-champion-${company || 'cliente'}-${stamp}.csv`;
+  async function pdfBlob() {
+    if (!window.jspdf?.jsPDF) throw new Error('jsPDF no está disponible');
+    const { jsPDF } = window.jspdf; const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: true }); const width = 210; const height = 297; const margin = 15;
+    const entries = selectedEntries(); const units = totalUnits(entries); const localized = entries.map((entry) => ({ ...entry, product: i18n.localizeProduct(entry.product) }));
+    const [championLogo, innovaLogo, ...thumbs] = await Promise.all([imageData('./assets/images/brand/champion-header.png'), imageData('./assets/images/brand/innova-logo.png'), ...localized.map(({ product }) => imageData(`./${product.cover}`).catch(() => null))]);
+    const addHeader = () => { doc.setFillColor(248, 249, 252); doc.rect(0, 0, width, 29, 'F'); doc.addImage(championLogo, 'JPEG', margin, 8, 65, 12); doc.addImage(innovaLogo, 'JPEG', 154, 6, 40, 15); doc.setDrawColor(209, 18, 43); doc.setLineWidth(1.2); doc.line(0, 29, width, 29); };
+    const addFooter = () => { doc.setDrawColor(224, 227, 235); doc.setLineWidth(0.3); doc.line(margin, height - 14, width - margin, height - 14); doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(102, 112, 133); doc.text(`${state.orderNumber} · ${catalog.contact.email} · innova-eyewear.com`, margin, height - 8); };
+    const sectionTitle = (text, y) => { doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(28, 38, 89); doc.text(text, margin, y); doc.setDrawColor(28, 38, 89); doc.line(margin, y + 2, width - margin, y + 2); };
+    addHeader(); doc.setTextColor(28, 38, 89); doc.setFont('helvetica', 'bold'); doc.setFontSize(22); doc.text(tr('pdfTitle'), margin, 43); doc.setFontSize(9); doc.setTextColor(102, 112, 133); doc.text(`${tr('requestNumber')}: ${state.orderNumber}`, margin, 49); doc.text(`${tr('pdfFor')}: ${state.client.optical}`, margin, 54);
+    sectionTitle(tr('clientData'), 65); doc.setFont('helvetica', 'normal'); doc.setFontSize(8.8); doc.setTextColor(31, 36, 50);
+    const clientLines = [[tr('name'), state.client.name], [tr('company'), state.client.company], [tr('optical'), state.client.optical], [tr('email'), state.client.email], [tr('phone'), state.client.phone], [`${tr('city')} / ${tr('country')}`, `${state.client.city}, ${state.client.country}`]];
+    clientLines.forEach(([label, value], index) => { const x = index % 2 === 0 ? margin : 108; const y = 72 + Math.floor(index / 2) * 10; doc.setFont('helvetica', 'bold'); doc.setFontSize(7); doc.setTextColor(102, 112, 133); doc.text(`${label}:`, x, y); doc.setFont('helvetica', 'normal'); doc.setFontSize(8.8); doc.setTextColor(31, 36, 50); doc.text(doc.splitTextToSize(value, 78)[0] || '', x, y + 4.5); });
+    sectionTitle(tr('summary'), 106); const summaryY = 114; const boxes = [[tr('totalReferences'), String(entries.length)], [tr('totalUnits'), String(units)], [tr('minimumLabel'), `${MINIMUM_UNITS}`], [tr('generalReference'), `US$${(units * REFERENCE_UNIT_USD).toLocaleString('en-US')}`]];
+    boxes.forEach(([label, value], index) => { const x = margin + index * 45.2; doc.setFillColor(index === 3 ? 238 : 246, index === 3 ? 242 : 247, index === 3 ? 255 : 250); doc.roundedRect(x, summaryY, 41, 20, 2, 2, 'F'); doc.setFont('helvetica', 'normal'); doc.setFontSize(6.8); doc.setTextColor(102, 112, 133); doc.text(label, x + 3, summaryY + 6); doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.setTextColor(28, 38, 89); doc.text(value, x + 3, summaryY + 15); });
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(102, 112, 133); doc.text(doc.splitTextToSize(tr('estimateNote'), width - margin * 2), margin, 140);
+    sectionTitle(tr('selection'), 153); let y = 160;
+    localized.forEach(({ product, quantity }, index) => {
+      if (y > 254) { addFooter(); doc.addPage(); addHeader(); sectionTitle(tr('selection'), 40); y = 47; }
+      doc.setDrawColor(226, 229, 236); doc.setFillColor(252, 252, 253); doc.roundedRect(margin, y, width - margin * 2, 30, 2, 2, 'FD');
+      if (thumbs[index]) doc.addImage(thumbs[index], 'JPEG', margin + 2, y + 3, 38, 24);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.setTextColor(28, 38, 89); doc.text(product.displayModel, margin + 44, y + 8);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(7.4); doc.setTextColor(74, 85, 105); doc.text(`${tr('sku')}: ${product.sku}`, margin + 44, y + 14); doc.text(`${tr('color')}: ${doc.splitTextToSize(product.color, 62)[0]}`, margin + 44, y + 19); doc.text(`${tr('collection')}: ${product.collection}`, margin + 44, y + 24);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(28, 38, 89); doc.text(`${tr('quantity')}: ${quantity}`, width - margin - 31, y + 10); doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(102, 112, 133); doc.text(doc.splitTextToSize(`${tr('material')}: ${product.material}`, 29), width - margin - 31, y + 16);
+      y += 34;
+    });
+    if (state.client.notes) { if (y > 245) { addFooter(); doc.addPage(); addHeader(); y = 42; } sectionTitle(tr('notes'), y); doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(74, 85, 105); doc.text(doc.splitTextToSize(state.client.notes, width - margin * 2), margin, y + 8); y += 24; }
+    if (y > 250) { addFooter(); doc.addPage(); addHeader(); y = 43; }
+    doc.setFillColor(255, 246, 247); doc.roundedRect(margin, y, width - margin * 2, 26, 2, 2, 'F'); doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(209, 18, 43); doc.text(tr('referenceTitle') || 'REFERENCE', margin + 4, y + 7); doc.setFont('helvetica', 'normal'); doc.setTextColor(74, 85, 105); doc.setFontSize(7.8); doc.text(doc.splitTextToSize(tr('finalNote'), width - margin * 2 - 8), margin + 4, y + 13);
+    const pages = doc.getNumberOfPages(); for (let page = 1; page <= pages; page += 1) { doc.setPage(page); addFooter(); doc.setFont('helvetica', 'normal'); doc.setFontSize(7); doc.setTextColor(102, 112, 133); doc.text(`${tr('page')} ${page}/${pages}`, width - margin - 18, height - 8); }
+    return doc.output('blob');
   }
 
-  function downloadCsv(announce = true) {
-    if (!selectedEntries().length) return;
-    const link = document.createElement('a');
-    const objectUrl = URL.createObjectURL(csvBlob());
-    link.href = objectUrl;
-    link.download = fileName();
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    setTimeout(() => URL.revokeObjectURL(objectUrl), 1200);
-    if (announce) showToast('CSV profesional descargado');
+  async function downloadPdf(announce = true) { if (!guardReady()) return null; try { const blob = await pdfBlob(); triggerDownload(blob, pdfFileName()); if (announce) showToast(tr('pdfDownloaded')); return blob; } catch (error) { console.error(error); showToast(tr('pdfUnavailable')); return null; } }
+
+  function professionalMessage(attachmentKey) {
+    const entries = selectedEntries(); const units = totalUnits(entries); const isEs = lang() === 'es'; const productLines = entries.map(({ product, quantity }) => `• ${product.displayModel} | ${product.sku} | ${product.color} | ${quantity} ${quantity === 1 ? tr('unit') : tr('units')}`);
+    const heading = isEs ? 'Hola, equipo de Innova Eyewear:' : 'Hello, Innova Eyewear team:';
+    const requestLine = isEs ? `Deseo solicitar cotización y disponibilidad para ${entries.length} referencias Champion (${units} piezas).` : `I would like to request a quote and availability for ${entries.length} Champion references (${units} pieces).`;
+    const closing = isEs ? 'Quedo atento/a a la confirmación de precio final, disponibilidad, despacho y condiciones. Muchas gracias.' : 'I look forward to confirmation of final price, availability, dispatch and terms. Thank you.';
+    return [heading, '', `${tr('requestNumber')}: ${state.orderNumber}`, `${tr('name')}: ${state.client.name}`, `${tr('company')}: ${state.client.company}`, `${tr('optical')}: ${state.client.optical}`, `${tr('email')}: ${state.client.email}`, `${tr('phone')}: ${state.client.phone}`, `${tr('city')}: ${state.client.city}`, `${tr('country')}: ${state.client.country}`, '', requestLine, ...productLines, '', state.client.notes ? `${tr('notes')}: ${state.client.notes}` : '', tr(attachmentKey), '', closing].filter((line, index, lines) => line !== '' || lines[index - 1] !== '').join('\n');
   }
 
-  async function shareCsv() {
-    if (!selectedEntries().length) return;
-    const file = new File([csvBlob()], fileName(), { type: 'text/csv' });
-    const shareData = {
-      title: 'Solicitud B2B Champion Eyewear',
-      text: professionalMessage(false),
-      files: [file],
-    };
-    try {
-      if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
-        await navigator.share(shareData);
-        showToast('Solicitud compartida');
-      } else {
-        downloadCsv();
-        showToast('El archivo quedó descargado para compartirlo');
-      }
-    } catch (error) {
-      if (error && error.name !== 'AbortError') {
-        downloadCsv();
-        showToast('No se pudo compartir directamente; el CSV quedó descargado');
-      }
-    }
+  async function sendWhatsApp() {
+    if (!guardReady()) return; const popup = window.open('about:blank', '_blank'); const blob = await downloadPdf(false); if (!blob) { popup?.close(); return; }
+    const url = `https://wa.me/${catalog.contact.whatsapp}?text=${encodeURIComponent(professionalMessage('attachmentPdf'))}`; if (popup) popup.location.href = url; else window.location.href = url; showToast(tr('filesPreparedWhatsapp'));
   }
-
-  function professionalMessage(includeAttachmentNote = true) {
-    const entries = selectedEntries();
-    const units = entries.reduce((sum, entry) => sum + entry.quantity, 0);
-    const lines = entries.slice(0, 18).map(({ product, quantity }) => `• ${product.model} — ${quantity} unidad${quantity === 1 ? '' : 'es'} — ${product.color}`);
-    if (entries.length > 18) lines.push(`• …y ${entries.length - 18} referencias adicionales incluidas en el CSV.`);
-    return [
-      'Hola, equipo de Innova Eyewear:',
-      '',
-      `Mi nombre es ${state.client.name || '[nombre]'}. Escribo en representación de ${state.client.company || '[empresa / óptica]'}${state.client.city ? `, ubicada en ${state.client.city}` : ''}.`,
-      '',
-      `Deseo solicitar cotización, disponibilidad, mínimos de compra y condiciones comerciales para ${entries.length} referencias Champion (${units} unidades):`,
-      ...lines,
-      '',
-      state.client.notes ? `Observaciones: ${state.client.notes}` : '',
-      state.client.email ? `Correo de contacto: ${state.client.email}` : '',
-      state.client.phone ? `Teléfono: ${state.client.phone}` : '',
-      includeAttachmentNote ? 'He descargado el CSV detallado para adjuntarlo a esta conversación.' : '',
-      '',
-      'Quedo atento/a a su respuesta. Muchas gracias.'
-    ].filter((line, index, array) => line !== '' || array[index - 1] !== '').join('\n');
+  async function sendEmail() {
+    if (!guardReady()) return; const blob = await downloadPdf(false); if (!blob) return; downloadCsv(); const subject = `${state.orderNumber} — Champion Eyewear — ${state.client.optical}`; const body = `${professionalMessage('attachmentEmail')}\n\nPDF: ${pdfFileName()}\nCSV: ${csvFileName()}`; window.location.href = `mailto:${catalog.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; showToast(tr('filesPreparedEmail'));
   }
+  async function copyRequest() { if (!guardReady()) return; try { await navigator.clipboard.writeText(professionalMessage('attachmentPdf')); showToast(tr('copied')); } catch (_error) { showToast(tr('copyFailed')); } }
 
-  function sendWhatsApp() {
-    if (!selectedEntries().length) return;
-    downloadCsv(false);
-    const url = `https://wa.me/${catalog.contact.whatsapp}?text=${encodeURIComponent(professionalMessage(true))}`;
-    window.open(url, '_blank', 'noopener');
-    showToast('CSV descargado y mensaje de WhatsApp preparado');
-  }
-
-  function sendEmail() {
-    if (!selectedEntries().length) return;
-    downloadCsv(false);
-    const company = state.client.company || 'cliente profesional';
-    const subject = `Solicitud B2B Champion Eyewear — ${company}`;
-    const body = `${professionalMessage(true)}\n\nArchivo: ${fileName()}`;
-    window.location.href = `mailto:${catalog.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    showToast('CSV descargado y correo profesional preparado');
-  }
-
-  window.ChampionRequest = {
-    add,
-    open: openDrawer,
-    close: closeDrawer,
-    count: () => selectedEntries().length,
-    csvContent,
-  };
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount, { once: true });
-  else mount();
+  function mount() { saveState(); renderShell(); bindEvents(); i18n.onChange(renderShell); }
+  window.ChampionRequest = { add, open: openDrawer, close: closeDrawer, count: () => selectedEntries().length, csvContent, readiness, constants: { minimumUnits: MINIMUM_UNITS, referenceUnitUsd: REFERENCE_UNIT_USD } };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount, { once: true }); else mount();
 })();
