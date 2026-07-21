@@ -2477,23 +2477,30 @@ h3 {
 .variant-picker > div {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 11px;
 }
 
 .variant-picker a {
-  min-width: 44px;
-  padding: 9px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 900;
-  text-align: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 3px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--variant-swatch, #c8ccd4);
+  box-shadow: 0 0 0 1px rgba(28, 38, 89, 0.22), 0 4px 10px rgba(28, 38, 89, 0.12);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.variant-picker a:hover,
+.variant-picker a:focus-visible {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 0 0 2px var(--champion-blue), 0 7px 15px rgba(28, 38, 89, 0.18);
+  outline: none;
 }
 
 .variant-picker a.is-active {
-  border-color: var(--champion-blue);
-  background: var(--champion-blue);
-  color: #fff;
+  box-shadow: 0 0 0 3px var(--champion-blue), 0 7px 16px rgba(28, 38, 89, 0.24);
 }
 
 .product-request-box {

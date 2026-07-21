@@ -12,6 +12,51 @@
   }
   function detailUrl(product) { return `./product.html?id=${encodeURIComponent(product.id)}`; }
 
+  const variantSwatches = Object.freeze({
+    'Black': '#15171c',
+    'Black & Gold': 'linear-gradient(135deg, #15171c 0 48%, #d6ad37 52% 100%)',
+    'Black & Gunmetal': 'linear-gradient(135deg, #15171c 0 48%, #555c64 52% 100%)',
+    'Black & Wine': 'linear-gradient(135deg, #15171c 0 48%, #722f4b 52% 100%)',
+    'Blue': '#245a9c',
+    'Brown': '#76503a',
+    'Brown & Green': 'linear-gradient(135deg, #76503a 0 48%, #476b4b 52% 100%)',
+    'Clear': 'linear-gradient(135deg, #ffffff 0 38%, #cfe4ef 48% 54%, #f8fbfd 64% 100%)',
+    'Crystal': 'linear-gradient(135deg, #ffffff 0 35%, #bddce9 48% 56%, #eef8fb 68% 100%)',
+    'Dark Blue': '#172f55',
+    'Dark Green': '#244b3b',
+    'Dark Gunmetal': '#3e444c',
+    'Green': '#3e7a55',
+    'Grey': '#858b94',
+    'Gunmetal': '#59616b',
+    'Gunmetal & Red': 'linear-gradient(135deg, #59616b 0 48%, #c92b3b 52% 100%)',
+    'Matt blue': '#365c82',
+    'Silver & Blue': 'linear-gradient(135deg, #c9cdd3 0 48%, #2f64a4 52% 100%)',
+    'Transl. Brown': 'linear-gradient(135deg, rgba(129, 82, 54, 0.62), rgba(224, 194, 167, 0.75))',
+    'Azul marino / lente azul espejado': 'linear-gradient(135deg, #132b4d 0 45%, #2b8ee8 52% 100%)',
+    'Azul marino / lente multicolor espejado': 'conic-gradient(#132b4d, #2b8ee8, #7b4acb, #e08b35, #2f9d78, #132b4d)',
+    'Blanco / lente azul espejado': 'linear-gradient(135deg, #f7f7f3 0 45%, #328cdf 52% 100%)',
+    'Cristal / lente azul espejado': 'linear-gradient(135deg, #eef8fb 0 45%, #2786dc 52% 100%)',
+    'Gunmetal / lente azul espejado': 'linear-gradient(135deg, #59616b 0 45%, #2b8ee8 52% 100%)',
+    'Gunmetal / lente dorado espejado': 'linear-gradient(135deg, #59616b 0 45%, #d7aa35 52% 100%)',
+    'Gunmetal / lente verde espejado': 'linear-gradient(135deg, #59616b 0 45%, #3d9b6f 52% 100%)',
+    'Habana / lente dorado espejado': 'linear-gradient(135deg, #684329 0 22%, #a36f3f 23% 45%, #d7aa35 52% 100%)',
+    'Negro / lente azul espejado': 'linear-gradient(135deg, #15171c 0 45%, #2b8ee8 52% 100%)',
+    'Negro / lente azul-violeta espejado': 'linear-gradient(135deg, #15171c 0 42%, #287bd8 50%, #7046bb 100%)',
+    'Negro / lente dorado espejado': 'linear-gradient(135deg, #15171c 0 45%, #d7aa35 52% 100%)',
+    'Negro / lente dorado-verde espejado': 'linear-gradient(135deg, #15171c 0 40%, #d7aa35 48%, #3d9b6f 100%)',
+    'Negro / lente humo': 'linear-gradient(135deg, #15171c 0 45%, #73777d 52% 100%)',
+    'Negro / lente multicolor espejado': 'conic-gradient(#15171c, #2b8ee8, #7046bb, #dc475b, #d7aa35, #3d9b6f, #15171c)',
+    'Negro / lente naranja-dorado espejado': 'linear-gradient(135deg, #15171c 0 40%, #e77b2f 48%, #d7aa35 100%)',
+    'Negro / lente rojo-violeta espejado': 'linear-gradient(135deg, #15171c 0 40%, #d13e52 48%, #7046bb 100%)',
+    'Negro / lente verde espejado': 'linear-gradient(135deg, #15171c 0 45%, #3d9b6f 52% 100%)',
+    'Negro / lente verde-azul espejado': 'linear-gradient(135deg, #15171c 0 40%, #3d9b6f 48%, #2b8ee8 100%)',
+    'Negro / lente verde-violeta espejado': 'linear-gradient(135deg, #15171c 0 40%, #3d9b6f 48%, #7046bb 100%)'
+  });
+
+  function variantSwatch(color) {
+    return variantSwatches[color] || '#c8ccd4';
+  }
+
   function productCard(source) {
     const product = i18n.localizeProduct(source);
     return `<article class="product-card related-card"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span></a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a><button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button></div></div></article>`;
@@ -41,7 +86,7 @@
     root.innerHTML = `${gallery(product)}<div class="product-details">
       <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="./index.html">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="./index.html#${backAnchor}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
       <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span><h1>${escapeHtml(product.displayModel)}</h1><p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
-      ${variants.length > 1 ? `<div class="variant-picker"><span>${escapeHtml(i18n.t('variants', { series: product.series }))}</span><div>${variants.map((variant) => `<a class="${variant.id === product.id ? 'is-active' : ''}" href="${detailUrl(variant)}" aria-current="${variant.id === product.id ? 'page' : 'false'}">${escapeHtml(variant.variant)}</a>`).join('')}</div></div>` : ''}
+      ${variants.length > 1 ? `<div class="variant-picker"><span>${escapeHtml(i18n.t('variants', { series: product.series }))}</span><div>${variants.map((variant) => { const localizedVariant = i18n.localizeProduct(variant); const active = variant.id === product.id; const label = i18n.t(active ? 'currentColorVariant' : 'viewColorVariant', { color: localizedVariant.color }); return `<a class="${active ? 'is-active' : ''}" href="${detailUrl(variant)}" style="--variant-swatch: ${escapeHtml(variantSwatch(variant.color))}" aria-label="${escapeHtml(label)}" title="${escapeHtml(localizedVariant.color)}" aria-current="${active ? 'page' : 'false'}"><span class="sr-only">${escapeHtml(label)}</span></a>`; }).join('')}</div></div>` : ''}
       <div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>
       <div class="product-tabs"><div class="tab-list" role="tablist" aria-label="${escapeHtml(i18n.t('tabsAria'))}"><button class="is-active" type="button" role="tab" aria-selected="true" data-tab="description">${escapeHtml(i18n.t('tabDescription'))}</button><button type="button" role="tab" aria-selected="false" data-tab="specs">${escapeHtml(i18n.t('tabSpecs'))}</button><button type="button" role="tab" aria-selected="false" data-tab="terms">${escapeHtml(i18n.t('tabTerms'))}</button></div>
         <section class="tab-panel is-active" data-panel="description"><p>${escapeHtml(product.about?.p1 || product.shortDescription)}</p><p>${escapeHtml(product.about?.p2 || '')}</p><ul>${(product.about?.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul></section>
