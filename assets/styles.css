@@ -495,8 +495,9 @@ h3 {
 
 .sound-toggle {
   position: absolute;
+  top: 18px;
   right: 18px;
-  bottom: 18px;
+  bottom: auto;
   padding: 10px 16px;
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 999px;
@@ -2871,6 +2872,11 @@ h3 {
 
   .video-panel video {
     min-height: 330px;
+  }
+
+  .sound-toggle {
+    top: 12px;
+    right: 12px;
   }
 
   .filter-chips {
