@@ -56,14 +56,41 @@
     const mainImage = document.getElementById('productMainImage');
     const counter = document.getElementById('galleryIndex');
     const zoomLevel = document.querySelector('[data-gallery-zoom-level]');
+    const stage = document.querySelector('.product-gallery-stage');
     let zoom = 1;
-    const applyZoom = () => { if (mainImage) mainImage.style.setProperty('--gallery-zoom', String(zoom)); if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`; };
+    let touchTracking = false;
+    const resetOrigin = () => { stage?.style.setProperty('--zoom-x', '50%'); stage?.style.setProperty('--zoom-y', '50%'); };
+    const updateOrigin = (event) => {
+      if (!stage) return;
+      const rect = stage.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      stage.style.setProperty('--zoom-x', `${Math.max(0, Math.min(100, x))}%`);
+      stage.style.setProperty('--zoom-y', `${Math.max(0, Math.min(100, y))}%`);
+    };
+    const applyZoom = () => { if (mainImage) mainImage.style.setProperty('--gallery-zoom', String(zoom)); if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`; if (zoom === 1) resetOrigin(); };
+
+    stage?.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'touch') stage.classList.add('is-zooming');
+    });
+    stage?.addEventListener('pointermove', (event) => {
+      if (event.pointerType === 'touch' && (!touchTracking || zoom <= 1)) return;
+      updateOrigin(event);
+      if (event.pointerType !== 'touch') stage.classList.add('is-zooming');
+    });
+    stage?.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'touch' && zoom > 1) { touchTracking = true; updateOrigin(event); }
+    });
+    stage?.addEventListener('pointerup', () => { touchTracking = false; });
+    stage?.addEventListener('pointercancel', () => { touchTracking = false; });
+    stage?.addEventListener('pointerleave', () => { touchTracking = false; stage.classList.remove('is-zooming'); resetOrigin(); });
+
     document.querySelector('[data-gallery]')?.addEventListener('click', (event) => {
       const zoomButton = event.target.closest('[data-gallery-zoom]');
-      if (zoomButton) { const action = zoomButton.dataset.galleryZoom; zoom = action === 'reset' ? 1 : Math.max(1, Math.min(2.5, zoom + (action === 'in' ? 0.25 : -0.25))); applyZoom(); return; }
+      if (zoomButton) { const action = zoomButton.dataset.galleryZoom; zoom = action === 'reset' ? 1 : Math.max(1, Math.min(3, zoom + (action === 'in' ? 0.35 : -0.35))); stage?.classList.remove('is-zooming'); applyZoom(); return; }
       const button = event.target.closest('[data-gallery-index]'); if (!button || !mainImage) return;
       const index = Number(button.dataset.galleryIndex); mainImage.src = button.dataset.image; mainImage.alt = `${i18n.t('viewNumber', { number: index + 1 })}: ${product.displayModel}`; if (counter) counter.textContent = String(index + 1).padStart(2, '0');
-      zoom = 1; applyZoom();
+      zoom = 1; stage?.classList.remove('is-zooming'); resetOrigin(); applyZoom();
       button.parentElement.querySelectorAll('[data-gallery-index]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
     });
   }

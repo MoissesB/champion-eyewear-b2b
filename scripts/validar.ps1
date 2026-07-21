@@ -124,6 +124,7 @@ $productScriptPath = Join-Path $repoRoot "assets/product.js"
 if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
   $productScript = [System.IO.File]::ReadAllText($productScriptPath, $utf8)
   if ($productScript -notmatch 'data-gallery-zoom') { $failures.Add("assets/product.js: faltan controles de zoom") | Out-Null }
+  if ($productScript -notmatch 'pointermove' -or $productScript -notmatch '--zoom-x' -or $productScript -notmatch '--zoom-y') { $failures.Add("assets/product.js: falta el seguimiento panorámico del cursor") | Out-Null }
   if ($productScript -match 'trade-price') { $failures.Add("assets/product.js: todavía muestra el bloque de precio mayorista") | Out-Null }
   if ($productScript -notmatch 'orderWhatsapp' -or $productScript -notmatch 'orderEmail') { $failures.Add("assets/product.js: faltan botones de pedido por WhatsApp y correo") | Out-Null }
 }

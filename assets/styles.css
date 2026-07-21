@@ -2309,11 +2309,13 @@ h3 {
   height: 100%;
   object-fit: contain;
   transform: scale(var(--gallery-zoom, 1));
-  transition: transform 0.3s ease;
+  transform-origin: var(--zoom-x, 50%) var(--zoom-y, 50%);
+  transition: transform 90ms ease-out;
+  will-change: transform;
 }
 
-.product-gallery-stage:hover > img {
-  transform: scale(calc(var(--gallery-zoom, 1) + 0.12));
+.product-gallery-stage.is-zooming > img {
+  transform: scale(2.85);
 }
 
 .gallery-zoom-controls {
@@ -2999,7 +3001,7 @@ h3 {
     display: flex;
   }
 
-  .product-gallery-stage:hover > img {
+  .product-gallery-stage.is-zooming > img {
     transform: scale(var(--gallery-zoom, 1));
   }
 
