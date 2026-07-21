@@ -1535,10 +1535,16 @@ h3 {
 
 .request-note {
   grid-column: 1 / -1;
-  color: var(--muted);
-  font-size: 0.68rem;
-  line-height: 1.45;
-  text-align: center;
+  margin-top: 3px;
+  padding: 12px 14px;
+  border: 1px solid #f2c98a;
+  border-radius: 12px;
+  background: #fff8eb;
+  color: #6f4813;
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1.5;
+  text-align: left;
 }
 
 .toast {

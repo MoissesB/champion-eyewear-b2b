@@ -99,7 +99,7 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
 $requestPath = Join-Path $repoRoot "assets/request.js"
 if (Test-Path -LiteralPath $requestPath -PathType Leaf) {
   $requestText = [System.IO.File]::ReadAllText($requestPath, $utf8)
-  foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*18', 'REFERENCE_UNIT_USD\s*=\s*60', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png')) {
+  foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*18', 'REFERENCE_UNIT_USD\s*=\s*60', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png', 'addContainedImage', 'trimmedCanvas', 'adjunte manualmente', 'pdfFileName\(\)', 'csvFileName\(\)')) {
     if ($requestText -notmatch $requiredPattern) { $failures.Add("assets/request.js: falta requisito $requiredPattern") | Out-Null }
   }
 }
