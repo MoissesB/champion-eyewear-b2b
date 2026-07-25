@@ -1383,7 +1383,10 @@ h3 {
 .footer-grid img {
   width: 190px;
   margin-bottom: 6px;
-  filter: brightness(0) invert(1);
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: #fff;
+  filter: none;
 }
 
 .footer-grid strong {
