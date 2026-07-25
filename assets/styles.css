@@ -3579,21 +3579,34 @@ h3 {
     transform: none;
   }
 
-  .gallery-zoom-menu {
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
+  .gallery-zoom-controls .gallery-zoom-menu {
+    width: 86px;
+    min-width: 86px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 12px;
     border: 2px solid #fff;
     background: var(--champion-blue-deep);
     color: #fff;
-    box-shadow: 0 9px 22px rgba(9, 14, 47, 0.32);
+    box-shadow: 0 10px 24px rgba(9, 14, 47, 0.38);
   }
 
-  .gallery-zoom-menu svg {
+  .gallery-zoom-controls .gallery-zoom-menu::after {
+    content: "ZOOM";
+    color: currentColor;
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .gallery-zoom-controls .gallery-zoom-menu svg {
     width: 22px;
     height: 22px;
+    flex: 0 0 auto;
+    display: block;
   }
 
   .gallery-zoom-actions {

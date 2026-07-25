@@ -152,6 +152,7 @@ if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
   if ($productScript -notmatch '--variant-swatch' -or $productScript -notmatch 'currentColorVariant') { $failures.Add("assets/product.js: faltan las muestras de color para las variantes") | Out-Null }
   if ($productScript -notmatch 'mobile-product-order-bar' -or $productScript -notmatch 'mobileProductQuantity') { $failures.Add("assets/product.js: falta la barra móvil anclada para añadir productos") | Out-Null }
   if ($productScript -notmatch 'data-gallery-zoom-menu' -or $productScript -notmatch 'maximum = mobileZoom\(\) \? 7 : 3' -or $productScript -notmatch 'pinchStartDist' -or $productScript -notmatch 'panX' -or $productScript -notmatch 'setPointerCapture') { $failures.Add("assets/product.js: falta el zoom móvil basado en la ficha original") | Out-Null }
+  if ($productScript -notmatch '(?s)gallery-zoom-menu.*?<svg') { $failures.Add("assets/product.js: falta la lupa visible del zoom móvil") | Out-Null }
   if ($productScript -notmatch "product\.family === 'optical'" -or $productScript -notmatch 'Set\(product\.images') { $failures.Add("assets/product.js: la ficha óptica no separa la portada de las cuatro imágenes internas") | Out-Null }
   if ($null -ne $products) {
     foreach ($color in @($products.color | Sort-Object -Unique)) {
@@ -168,6 +169,7 @@ if (Test-Path -LiteralPath $stylesPath -PathType Leaf) {
   if ($stylesText -notmatch 'aspect-ratio:\s*16\s*/\s*9' -or $stylesText -notmatch '\.filter-panel' -or $stylesText -notmatch '\.facet-grid' -or $stylesText -notmatch '\.facet-choice-color') { $failures.Add("assets/styles.css: faltan el video panorámico o el panel compacto de filtros") | Out-Null }
   if ($stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.mobile-product-order-bar\s*\{.*?position:\s*fixed') { $failures.Add("assets/styles.css: falta la barra móvil fija de producto") | Out-Null }
   if ($stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.header-request\s*\{.*?display:\s*inline-flex' -or $stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.product-header nav \[data-request-open\]\s*\{\s*display:\s*inline-flex' -or $stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.mobile-nav \[data-request-open\]\s*\{\s*display:\s*none') { $failures.Add("assets/styles.css: Mi pedido no está visible junto al traductor en las cabeceras móviles") | Out-Null }
+  if ($stylesText -notmatch '(?s)\.gallery-zoom-controls \.gallery-zoom-menu\s*\{.*?background:\s*var\(--champion-blue-deep\)' -or $stylesText -notmatch '(?s)\.gallery-zoom-controls \.gallery-zoom-menu::after\s*\{.*?content:\s*"ZOOM"') { $failures.Add("assets/styles.css: la lupa de zoom móvil no tiene contraste o identificación visible") | Out-Null }
   if ($stylesText -notmatch 'translate\(var\(--gallery-pan-x' -or $stylesText -notmatch '\.product-gallery-stage\.is-dragging') { $failures.Add("assets/styles.css: falta el desplazamiento del zoom móvil") | Out-Null }
 }
 
