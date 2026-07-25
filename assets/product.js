@@ -66,6 +66,10 @@
     return `<article class="product-card related-card"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span></a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a><button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button></div></div></article>`;
   }
 
+  function relatedSection() {
+    return `<section class="related-section related-section-inline" id="similares"><div class="related-inline-heading"><span class="eyebrow">${escapeHtml(i18n.t('relatedKicker'))}</span><h2 id="relatedTitle">${escapeHtml(i18n.t('relatedTitle'))}</h2></div><div class="product-grid related-grid" id="relatedGrid"></div></section>`;
+  }
+
   function variantPickerMarkup(variants, product, extraClass = '') {
     if (variants.length < 2) return '';
     const links = variants.map((variant) => {
@@ -104,7 +108,7 @@
     document.querySelector('meta[name="description"]')?.setAttribute('content', `${product.displayModel}: ${product.subline}`);
     document.querySelector('.back-control')?.setAttribute('href', `./index.html#${backAnchor}`);
     if (!root) return;
-    root.innerHTML = `${gallery(product)}<div class="product-details">
+    root.innerHTML = `<div class="product-media-column">${gallery(product)}${relatedSection()}</div><div class="product-details">
       <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="./index.html">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="./index.html#${backAnchor}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
       <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span><h1>${escapeHtml(product.displayModel)}</h1>${variantPickerMarkup(variants, product, 'mobile-product-variants')}<p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
       ${variantPickerMarkup(variants, product, 'desktop-product-variants')}
