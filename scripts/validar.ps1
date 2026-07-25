@@ -95,6 +95,14 @@ foreach ($htmlName in @("index.html", "product.html")) {
   if ($html -notmatch 'champion-header\.png') { $failures.Add("${htmlName}: no usa el logotipo de cabecera solicitado") | Out-Null }
 }
 
+$productHtmlPath = Join-Path $repoRoot "product.html"
+if (Test-Path -LiteralPath $productHtmlPath -PathType Leaf) {
+  $productHtml = [System.IO.File]::ReadAllText($productHtmlPath, $utf8)
+  if ($productHtml -match 'footerShipping' -or $productHtml -notmatch 'data-i18n="footerMinimum"' -or $productHtml -notmatch 'data-i18n="footerMix"') {
+    $failures.Add("product.html: el pie debe resumir solo el mínimo y la combinación de cantidades") | Out-Null
+  }
+}
+
 if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
   $homeText = [System.IO.File]::ReadAllText((Join-Path $repoRoot "index.html"), $utf8)
   if ($homeText -notmatch 'id="opticalGrid"' -or $homeText -notmatch 'id="sunGrid"') {
@@ -134,6 +142,12 @@ if (Test-Path -LiteralPath $i18nPath -PathType Leaf) {
   $i18nText = [System.IO.File]::ReadAllText($i18nPath, $utf8)
   foreach ($collection in @('Steel', 'Bold', 'Flex', 'Sport Urban', 'Sport Metal', 'Performance Shield')) {
     if ($i18nText -notmatch [regex]::Escape($collection)) { $failures.Add("assets/i18n.js: falta explicación para $collection") | Out-Null }
+  }
+  if ($i18nText -notmatch "footerMix:\s*'Combine modelos, colores y cantidades'" -or $i18nText -notmatch "footerMix:\s*'Combine models, colors and quantities'") {
+    $failures.Add("assets/i18n.js: falta el resumen bilingüe de cantidades en el pie") | Out-Null
+  }
+  if ($i18nText -match "term3:\s*'[^']*(envío gratuito|free shipping|shipping is)") {
+    $failures.Add("assets/i18n.js: las condiciones del producto todavía mencionan el envío") | Out-Null
   }
 }
 
