@@ -3458,9 +3458,36 @@ h3 {
     display: none;
   }
 
+  .request-drawer {
+    display: block;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--champion-blue) #eef0f5;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .request-drawer::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .request-drawer::-webkit-scrollbar-track {
+    background: #eef0f5;
+  }
+
+  .request-drawer::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--champion-blue);
+  }
+
   .request-drawer-header,
   .request-drawer-body {
     padding-inline: 18px;
+  }
+
+  .request-drawer-body {
+    overflow: visible;
+    padding-bottom: 0;
   }
 
   .client-form-grid,
@@ -3473,8 +3500,11 @@ h3 {
   }
 
   .request-actions {
-    margin-inline: -18px;
-    padding-inline: 18px;
+    position: static;
+    bottom: auto;
+    margin: 28px -18px 0;
+    padding: 18px 18px calc(24px + env(safe-area-inset-bottom));
+    backdrop-filter: none;
   }
 
   .request-item {
