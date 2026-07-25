@@ -900,7 +900,7 @@ h3 {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: linear-gradient(145deg, #fff, #f1f3f8);
+  background: #fff;
 }
 
 .product-card-image img {
@@ -1033,7 +1033,7 @@ h3 {
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: linear-gradient(145deg, #fff, #f1f3f8);
+  background: #fff;
 }
 
 .product-image-link::after {
@@ -1617,7 +1617,7 @@ h3 {
   height: 64px;
   border-radius: 10px;
   object-fit: contain;
-  background: var(--soft);
+  background: #fff;
 }
 
 .request-item h3 {
@@ -2228,7 +2228,7 @@ h3 {
   overflow: hidden;
   border-top: 4px solid transparent;
   border-image: linear-gradient(90deg, var(--champion-red), var(--champion-blue)) 1;
-  background: linear-gradient(145deg, #fff, #f6f7fa);
+  background: #fff;
 }
 
 .gallery-main img {
