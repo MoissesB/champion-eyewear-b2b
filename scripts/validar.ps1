@@ -167,7 +167,7 @@ if (Test-Path -LiteralPath $stylesPath -PathType Leaf) {
   if ($stylesText -notmatch '(?s)\.variant-picker\s+a\s*\{.*?border-radius:\s*50%\s*;') { $failures.Add("assets/styles.css: las variantes no se muestran como burbujas de color") | Out-Null }
   if ($stylesText -notmatch 'aspect-ratio:\s*16\s*/\s*9' -or $stylesText -notmatch '\.filter-panel' -or $stylesText -notmatch '\.facet-grid' -or $stylesText -notmatch '\.facet-choice-color') { $failures.Add("assets/styles.css: faltan el video panorámico o el panel compacto de filtros") | Out-Null }
   if ($stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.mobile-product-order-bar\s*\{.*?position:\s*fixed') { $failures.Add("assets/styles.css: falta la barra móvil fija de producto") | Out-Null }
-  if ($stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.mobile-nav \[data-request-open\],\s*\.product-header nav \[data-request-open\]\s*\{\s*display:\s*none') { $failures.Add("assets/styles.css: el acceso Mi pedido sigue visible en las cabeceras móviles") | Out-Null }
+  if ($stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.header-request\s*\{.*?display:\s*inline-flex' -or $stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.product-header nav \[data-request-open\]\s*\{\s*display:\s*inline-flex' -or $stylesText -notmatch '(?s)@media \(max-width: 680px\).*?\.mobile-nav \[data-request-open\]\s*\{\s*display:\s*none') { $failures.Add("assets/styles.css: Mi pedido no está visible junto al traductor en las cabeceras móviles") | Out-Null }
   if ($stylesText -notmatch 'translate\(var\(--gallery-pan-x' -or $stylesText -notmatch '\.product-gallery-stage\.is-dragging') { $failures.Add("assets/styles.css: falta el desplazamiento del zoom móvil") | Out-Null }
 }
 
