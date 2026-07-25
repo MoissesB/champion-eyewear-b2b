@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/styles.css?v=mobile-drawer-20260725">
+  <link rel="stylesheet" href="./assets/styles.css?v=sound-below-20260725">
   <script defer src="./data/products.js?v=sun-20260725"></script>
   <script defer src="./assets/i18n.js?v=sun-20260725"></script>
   <script defer src="./assets/vendor/jspdf.umd.min.js"></script>
@@ -75,10 +75,12 @@
 
     <section class="section benefits-section" id="beneficios">
       <div class="container split-layout">
-        <div class="video-panel reveal">
-          <video id="explainVideo" autoplay muted loop playsinline preload="metadata" poster="https://storage.googleapis.com/msgsndr/fHXK54ukeNMjxEcZtyDv/media/6945b7dbaad36032ab810c68.png" aria-label="Presentación comercial Champion Eyewear">
-            <source src="https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69e45ad38696a78b8d076627.mp4" type="video/mp4">
-          </video>
+        <div class="video-panel-shell reveal">
+          <div class="video-panel">
+            <video id="explainVideo" autoplay muted loop playsinline preload="metadata" poster="https://storage.googleapis.com/msgsndr/fHXK54ukeNMjxEcZtyDv/media/6945b7dbaad36032ab810c68.png" aria-label="Presentación comercial Champion Eyewear">
+              <source src="https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/69e45ad38696a78b8d076627.mp4" type="video/mp4">
+            </video>
+          </div>
           <button class="sound-toggle" type="button" data-sound-toggle data-i18n="soundOn">Activar sonido</button>
         </div>
         <div class="section-copy reveal">
