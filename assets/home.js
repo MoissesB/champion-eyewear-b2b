@@ -241,7 +241,18 @@
   function bindVideo() {
     const button = document.querySelector('[data-sound-toggle]');
     const video = document.getElementById('explainVideo');
+    const updateLanguageVideo = (language) => {
+      if (!video) return;
+      const source = video.querySelector('source');
+      const nextSource = language === 'en' ? video.dataset.videoEn : video.dataset.videoEs;
+      if (!source || !nextSource || source.getAttribute('src') === nextSource) return;
+      source.setAttribute('src', nextSource);
+      video.load();
+      video.play().catch(() => {});
+    };
+    updateLanguageVideo(i18n.language);
     button?.addEventListener('click', () => { if (!video) return; video.muted = !video.muted; button.textContent = i18n.t(video.muted ? 'soundOn' : 'soundOff'); if (video.paused) video.play().catch(() => {}); });
+    return updateLanguageVideo;
   }
 
   function initReveal() {
@@ -251,14 +262,16 @@
     nodes.forEach((node) => observer.observe(node));
   }
 
-  function rerenderLocalized() { renderFacets('optical'); renderFacets('sun'); renderFamily('optical'); renderFamily('sun'); renderFaq(); }
+  let updateLanguageVideo = () => {};
+
+  function rerenderLocalized(language) { renderFacets('optical'); renderFacets('sun'); renderFamily('optical'); renderFamily('sun'); renderFaq(); updateLanguageVideo(language); }
 
   function init() {
     const opticalCount = products.filter((product) => product.family === 'optical').length;
     const sunCount = products.filter((product) => product.family === 'sun').length;
     document.querySelectorAll('[data-optical-count]').forEach((node) => { node.textContent = String(opticalCount); });
     document.querySelectorAll('[data-sun-count]').forEach((node) => { node.textContent = String(sunCount); });
-    bindCatalog('optical'); bindCatalog('sun'); renderFamily('optical'); renderFamily('sun'); renderFaq(); bindFaq(); bindHeader(); bindVideo(); initReveal();
+    bindCatalog('optical'); bindCatalog('sun'); renderFamily('optical'); renderFamily('sun'); renderFaq(); bindFaq(); bindHeader(); updateLanguageVideo = bindVideo(); initReveal();
     i18n.onChange(rerenderLocalized);
   }
 

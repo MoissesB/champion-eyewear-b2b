@@ -103,6 +103,9 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
   if ($homeText -notmatch '<video\s+class="hero-video"' -or $homeText -notmatch '<video\s+id="explainVideo"') {
     $failures.Add("index.html: faltan uno o ambos vídeos") | Out-Null
   }
+  if ($homeText -notmatch 'data-video-es="https://assets\.cdn\.filesafe\.space/itkQlAHHVlUS0uDAETp3/media/69e45ad38696a78b8d076627\.mp4"' -or $homeText -notmatch 'data-video-en="https://assets\.cdn\.filesafe\.space/itkQlAHHVlUS0uDAETp3/media/69f65b406b07ab33031dd1ae\.mp4"') {
+    $failures.Add("index.html: faltan las versiones española o inglesa del vídeo comercial") | Out-Null
+  }
   if ($homeText -notmatch 'id="faqRoot"') { $failures.Add("index.html: falta la sección de preguntas frecuentes") | Out-Null }
   if ($homeText -notmatch 'id="opticalCollectionInfo"' -or $homeText -notmatch 'id="sunCollectionInfo"') { $failures.Add("index.html: faltan las explicaciones de colecciones") | Out-Null }
   if ($homeText -notmatch 'data-filter-toggle="optical"' -or $homeText -notmatch 'data-filter-toggle="sun"' -or $homeText -notmatch 'id="opticalFacetGrid"' -or $homeText -notmatch 'id="sunFacetGrid"') { $failures.Add("index.html: faltan los filtros desplegables completos") | Out-Null }
@@ -115,6 +118,7 @@ if (Test-Path -LiteralPath $homeScriptPath -PathType Leaf) {
     if ($homeScript -notmatch $requiredPattern) { $failures.Add("assets/home.js: falta requisito de filtros $requiredPattern") | Out-Null }
   }
   if ($homeScript -match "key:\s*'(measurements|shape|lens)'") { $failures.Add("assets/home.js: los filtros deben limitarse a coleccion, modelo, material y color") | Out-Null }
+  if ($homeScript -notmatch 'video\.dataset\.videoEn' -or $homeScript -notmatch 'video\.dataset\.videoEs' -or $homeScript -notmatch 'updateLanguageVideo\(language\)') { $failures.Add("assets/home.js: el vídeo comercial no cambia con el idioma") | Out-Null }
 }
 
 $requestPath = Join-Path $repoRoot "assets/request.js"
