@@ -42,16 +42,19 @@
     'Gunmetal / lente verde espejado': 'linear-gradient(135deg, #59616b 0 45%, #3d9b6f 52% 100%)',
     'Habana / lente dorado espejado': 'linear-gradient(135deg, #684329 0 22%, #a36f3f 23% 45%, #d7aa35 52% 100%)',
     'Negro / lente azul espejado': 'linear-gradient(135deg, #15171c 0 45%, #2b8ee8 52% 100%)',
+    'Negro / lente azul-verde espejado': 'linear-gradient(135deg, #15171c 0 40%, #2b8ee8 48%, #31bf91 100%)',
     'Negro / lente azul-violeta espejado': 'linear-gradient(135deg, #15171c 0 42%, #287bd8 50%, #7046bb 100%)',
     'Negro / lente dorado espejado': 'linear-gradient(135deg, #15171c 0 45%, #d7aa35 52% 100%)',
     'Negro / lente dorado-verde espejado': 'linear-gradient(135deg, #15171c 0 40%, #d7aa35 48%, #3d9b6f 100%)',
     'Negro / lente humo': 'linear-gradient(135deg, #15171c 0 45%, #73777d 52% 100%)',
     'Negro / lente multicolor espejado': 'conic-gradient(#15171c, #2b8ee8, #7046bb, #dc475b, #d7aa35, #3d9b6f, #15171c)',
+    'Negro / lente naranja espejado': 'linear-gradient(135deg, #15171c 0 45%, #f48a1f 52% 100%)',
     'Negro / lente naranja-dorado espejado': 'linear-gradient(135deg, #15171c 0 40%, #e77b2f 48%, #d7aa35 100%)',
     'Negro / lente rojo-violeta espejado': 'linear-gradient(135deg, #15171c 0 40%, #d13e52 48%, #7046bb 100%)',
     'Negro / lente verde espejado': 'linear-gradient(135deg, #15171c 0 45%, #3d9b6f 52% 100%)',
     'Negro / lente verde-azul espejado': 'linear-gradient(135deg, #15171c 0 40%, #3d9b6f 48%, #2b8ee8 100%)',
-    'Negro / lente verde-violeta espejado': 'linear-gradient(135deg, #15171c 0 40%, #3d9b6f 48%, #7046bb 100%)'
+    'Negro / lente verde-violeta espejado': 'linear-gradient(135deg, #15171c 0 40%, #3d9b6f 48%, #7046bb 100%)',
+    'Transparente / lente azul-dorado espejado': 'linear-gradient(135deg, #f4f7f8 0 38%, #2b8ee8 46%, #d7aa35 100%)'
   });
 
   function variantSwatch(color) {

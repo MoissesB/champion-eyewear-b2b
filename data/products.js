@@ -1,5 +1,5 @@
 window.CHAMPION_CATALOG = {
-  "generatedAt": "2026-07-21T21:38:51.415Z",
+  "generatedAt": "2026-07-25T03:09:05.840Z",
   "contact": {
     "company": "Innova Eyewear",
     "whatsapp": "17542360600",
@@ -7,8 +7,8 @@ window.CHAMPION_CATALOG = {
   },
   "counts": {
     "optical": 64,
-    "sun": 29,
-    "total": 93
+    "sun": 36,
+    "total": 100
   },
   "products": [
     {
@@ -2732,13 +2732,136 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-01-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-01-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-01-c1/01-v2.webp",
-        "assets/images/sun/chs-01-c1/02-v2.webp",
-        "assets/images/sun/chs-01-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-01-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-01-c1"
+    },
+    {
+      "id": "chs-01-c2",
+      "family": "sun",
+      "collection": "Sport Urban",
+      "series": "CHS-01",
+      "variant": "C2",
+      "model": "CHS-01 C2",
+      "displayModel": "CHS-01 C2",
+      "color": "Negro / lente azul-violeta espejado",
+      "measurements": "Por confirmar con Innova",
+      "material": "Material técnico de alta resistencia",
+      "shape": "Rectangular deportiva",
+      "lens": "Lente solar espejado",
+      "protection": "Categoría UV por confirmar con Innova",
+      "sku": "CHS-01-C2",
+      "shortDescription": "Rectangular deportiva con identidad Champion y acabado negro / lente azul-violeta espejado.",
+      "subline": "CHS-01 C2 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
+      "tags": [
+        "Champion Sun",
+        "Sport Urban",
+        "Colección solar",
+        "C2"
+      ],
+      "about": {
+        "p1": "El CHS-01 C2 combina una silueta rectangular deportiva con negro / lente azul-violeta espejado, aportando presencia inmediata en exhibición.",
+        "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
+        "bullets": [
+          "Negro / lente azul-violeta espejado",
+          "Rectangular deportiva",
+          "Presentación B2B para ópticas",
+          "Disponibilidad sujeta a confirmación"
+        ]
+      },
+      "cover": "assets/producto-de-lentes-de-sol/chs-01-c2/front.webp",
+      "images": [
+        "assets/producto-de-lentes-de-sol/chs-01-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c2/04.webp"
+      ],
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-01-c2"
+    },
+    {
+      "id": "chs-01-c3",
+      "family": "sun",
+      "collection": "Sport Urban",
+      "series": "CHS-01",
+      "variant": "C3",
+      "model": "CHS-01 C3",
+      "displayModel": "CHS-01 C3",
+      "color": "Negro / lente humo",
+      "measurements": "Por confirmar con Innova",
+      "material": "Material técnico de alta resistencia",
+      "shape": "Rectangular deportiva",
+      "lens": "Lente solar humo",
+      "protection": "Categoría UV por confirmar con Innova",
+      "sku": "CHS-01-C3",
+      "shortDescription": "Rectangular deportiva con identidad Champion y acabado negro / lente humo.",
+      "subline": "CHS-01 C3 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
+      "tags": [
+        "Champion Sun",
+        "Sport Urban",
+        "Colección solar",
+        "C3"
+      ],
+      "about": {
+        "p1": "El CHS-01 C3 combina una silueta rectangular deportiva con negro / lente humo, aportando presencia inmediata en exhibición.",
+        "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
+        "bullets": [
+          "Negro / lente humo",
+          "Rectangular deportiva",
+          "Presentación B2B para ópticas",
+          "Disponibilidad sujeta a confirmación"
+        ]
+      },
+      "cover": "assets/producto-de-lentes-de-sol/chs-01-c3/front.webp",
+      "images": [
+        "assets/producto-de-lentes-de-sol/chs-01-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c3/04.webp"
+      ],
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-01-c3"
+    },
+    {
+      "id": "chs-01-c4",
+      "family": "sun",
+      "collection": "Sport Urban",
+      "series": "CHS-01",
+      "variant": "C4",
+      "model": "CHS-01 C4",
+      "displayModel": "CHS-01 C4",
+      "color": "Negro / lente azul-verde espejado",
+      "measurements": "Por confirmar con Innova",
+      "material": "Material técnico de alta resistencia",
+      "shape": "Rectangular deportiva",
+      "lens": "Lente solar espejado",
+      "protection": "Categoría UV por confirmar con Innova",
+      "sku": "CHS-01-C4",
+      "shortDescription": "Rectangular deportiva con identidad Champion y acabado negro / lente azul-verde espejado.",
+      "subline": "CHS-01 C4 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
+      "tags": [
+        "Champion Sun",
+        "Sport Urban",
+        "Colección solar",
+        "C4"
+      ],
+      "about": {
+        "p1": "El CHS-01 C4 combina una silueta rectangular deportiva con negro / lente azul-verde espejado, aportando presencia inmediata en exhibición.",
+        "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
+        "bullets": [
+          "Negro / lente azul-verde espejado",
+          "Rectangular deportiva",
+          "Presentación B2B para ópticas",
+          "Disponibilidad sujeta a confirmación"
+        ]
+      },
+      "cover": "assets/producto-de-lentes-de-sol/chs-01-c4/front.webp",
+      "images": [
+        "assets/producto-de-lentes-de-sol/chs-01-c4/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c4/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-01-c4/04.webp"
+      ],
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-01-c4"
     },
     {
       "id": "chs-02-c1",
@@ -2773,13 +2896,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-02-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-02-c1/01-v2.webp",
-        "assets/images/sun/chs-02-c1/02-v2.webp",
-        "assets/images/sun/chs-02-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-02-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-02-c1"
     },
     {
       "id": "chs-02-c2",
@@ -2814,12 +2937,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-02-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-02-c2/01-v2.webp",
-        "assets/images/sun/chs-02-c2/02-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-02-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-02-c2"
     },
     {
       "id": "chs-02-c3",
@@ -2854,12 +2978,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-02-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-02-c3/01-v2.webp",
-        "assets/images/sun/chs-02-c3/02-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-02-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-02-c3"
     },
     {
       "id": "chs-02-c4",
@@ -2894,13 +3019,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-02-c4/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-02-c4/front.webp",
       "images": [
-        "assets/images/sun/chs-02-c4/01-v2.webp",
-        "assets/images/sun/chs-02-c4/02-v2.webp",
-        "assets/images/sun/chs-02-c4/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-02-c4/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c4/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c4/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-02-c4"
     },
     {
       "id": "chs-03-c1",
@@ -2935,13 +3060,136 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-03-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-03-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-03-c1/01-v2.webp",
-        "assets/images/sun/chs-03-c1/02-v2.webp",
-        "assets/images/sun/chs-03-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-03-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-03-c1"
+    },
+    {
+      "id": "chs-03-c2",
+      "family": "sun",
+      "collection": "Sport Urban",
+      "series": "CHS-03",
+      "variant": "C2",
+      "model": "CHS-03 C2",
+      "displayModel": "CHS-03 C2",
+      "color": "Transparente / lente azul-dorado espejado",
+      "measurements": "Por confirmar con Innova",
+      "material": "Material técnico de alta resistencia",
+      "shape": "Rectangular deportiva",
+      "lens": "Lente solar espejado",
+      "protection": "Categoría UV por confirmar con Innova",
+      "sku": "CHS-03-C2",
+      "shortDescription": "Rectangular deportiva con identidad Champion y acabado transparente / lente azul-dorado espejado.",
+      "subline": "CHS-03 C2 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
+      "tags": [
+        "Champion Sun",
+        "Sport Urban",
+        "Colección solar",
+        "C2"
+      ],
+      "about": {
+        "p1": "El CHS-03 C2 combina una silueta rectangular deportiva con transparente / lente azul-dorado espejado, aportando presencia inmediata en exhibición.",
+        "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
+        "bullets": [
+          "Transparente / lente azul-dorado espejado",
+          "Rectangular deportiva",
+          "Presentación B2B para ópticas",
+          "Disponibilidad sujeta a confirmación"
+        ]
+      },
+      "cover": "assets/producto-de-lentes-de-sol/chs-03-c2/front.webp",
+      "images": [
+        "assets/producto-de-lentes-de-sol/chs-03-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c2/04.webp"
+      ],
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-03-c2"
+    },
+    {
+      "id": "chs-03-c3",
+      "family": "sun",
+      "collection": "Sport Urban",
+      "series": "CHS-03",
+      "variant": "C3",
+      "model": "CHS-03 C3",
+      "displayModel": "CHS-03 C3",
+      "color": "Negro / lente naranja espejado",
+      "measurements": "Por confirmar con Innova",
+      "material": "Material técnico de alta resistencia",
+      "shape": "Rectangular deportiva",
+      "lens": "Lente solar espejado",
+      "protection": "Categoría UV por confirmar con Innova",
+      "sku": "CHS-03-C3",
+      "shortDescription": "Rectangular deportiva con identidad Champion y acabado negro / lente naranja espejado.",
+      "subline": "CHS-03 C3 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
+      "tags": [
+        "Champion Sun",
+        "Sport Urban",
+        "Colección solar",
+        "C3"
+      ],
+      "about": {
+        "p1": "El CHS-03 C3 combina una silueta rectangular deportiva con negro / lente naranja espejado, aportando presencia inmediata en exhibición.",
+        "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
+        "bullets": [
+          "Negro / lente naranja espejado",
+          "Rectangular deportiva",
+          "Presentación B2B para ópticas",
+          "Disponibilidad sujeta a confirmación"
+        ]
+      },
+      "cover": "assets/producto-de-lentes-de-sol/chs-03-c3/front.webp",
+      "images": [
+        "assets/producto-de-lentes-de-sol/chs-03-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c3/04.webp"
+      ],
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-03-c3"
+    },
+    {
+      "id": "chs-03-c4",
+      "family": "sun",
+      "collection": "Sport Urban",
+      "series": "CHS-03",
+      "variant": "C4",
+      "model": "CHS-03 C4",
+      "displayModel": "CHS-03 C4",
+      "color": "Negro / lente azul-verde espejado",
+      "measurements": "Por confirmar con Innova",
+      "material": "Material técnico de alta resistencia",
+      "shape": "Rectangular deportiva",
+      "lens": "Lente solar espejado",
+      "protection": "Categoría UV por confirmar con Innova",
+      "sku": "CHS-03-C4",
+      "shortDescription": "Rectangular deportiva con identidad Champion y acabado negro / lente azul-verde espejado.",
+      "subline": "CHS-03 C4 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
+      "tags": [
+        "Champion Sun",
+        "Sport Urban",
+        "Colección solar",
+        "C4"
+      ],
+      "about": {
+        "p1": "El CHS-03 C4 combina una silueta rectangular deportiva con negro / lente azul-verde espejado, aportando presencia inmediata en exhibición.",
+        "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
+        "bullets": [
+          "Negro / lente azul-verde espejado",
+          "Rectangular deportiva",
+          "Presentación B2B para ópticas",
+          "Disponibilidad sujeta a confirmación"
+        ]
+      },
+      "cover": "assets/producto-de-lentes-de-sol/chs-03-c4/front.webp",
+      "images": [
+        "assets/producto-de-lentes-de-sol/chs-03-c4/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c4/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-03-c4/04.webp"
+      ],
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-03-c4"
     },
     {
       "id": "chs-04-c1",
@@ -2976,12 +3224,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-04-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-04-c1/01-v2.webp",
-        "assets/images/sun/chs-04-c1/02-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-04-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-04-c1"
     },
     {
       "id": "chs-04-c2",
@@ -3016,13 +3265,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-04-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-04-c2/01-v2.webp",
-        "assets/images/sun/chs-04-c2/02-v2.webp",
-        "assets/images/sun/chs-04-c2/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-04-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-04-c2"
     },
     {
       "id": "chs-04-c3",
@@ -3057,13 +3306,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-04-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-04-c3/01-v2.webp",
-        "assets/images/sun/chs-04-c3/02-v2.webp",
-        "assets/images/sun/chs-04-c3/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-04-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-04-c3"
     },
     {
       "id": "chs-04-c4",
@@ -3098,12 +3347,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-04-c4/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-04-c4/front.webp",
       "images": [
-        "assets/images/sun/chs-04-c4/01-v2.webp",
-        "assets/images/sun/chs-04-c4/02-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-04-c4/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c4/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-04-c4/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-04-c4"
     },
     {
       "id": "chs-05-c1",
@@ -3138,13 +3388,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-05-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-05-c1/01-v2.webp",
-        "assets/images/sun/chs-05-c1/02-v2.webp",
-        "assets/images/sun/chs-05-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-05-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-05-c1"
     },
     {
       "id": "chs-05-c2",
@@ -3179,13 +3429,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-05-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-05-c2/01-v2.webp",
-        "assets/images/sun/chs-05-c2/02-v2.webp",
-        "assets/images/sun/chs-05-c2/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-05-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-05-c2"
     },
     {
       "id": "chs-05-c3",
@@ -3220,13 +3470,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-05-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-05-c3/01-v2.webp",
-        "assets/images/sun/chs-05-c3/02-v2.webp",
-        "assets/images/sun/chs-05-c3/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-05-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-05-c3"
     },
     {
       "id": "chs-05-c4",
@@ -3261,13 +3511,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-05-c4/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-05-c4/front.webp",
       "images": [
-        "assets/images/sun/chs-05-c4/01-v2.webp",
-        "assets/images/sun/chs-05-c4/02-v2.webp",
-        "assets/images/sun/chs-05-c4/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-05-c4/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c4/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-05-c4/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-05-c4"
     },
     {
       "id": "chs-06-c1",
@@ -3302,13 +3552,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-06-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-06-c1/01-v2.webp",
-        "assets/images/sun/chs-06-c1/02-v2.webp",
-        "assets/images/sun/chs-06-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-06-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-06-c1"
     },
     {
       "id": "chs-06-c2",
@@ -3343,11 +3593,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-06-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-06-c2/01-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-06-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-06-c2"
     },
     {
       "id": "chs-06-c3",
@@ -3382,13 +3634,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-06-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-06-c3/01-v2.webp",
-        "assets/images/sun/chs-06-c3/02-v2.webp",
-        "assets/images/sun/chs-06-c3/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-06-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-06-c3"
     },
     {
       "id": "chs-06-c4",
@@ -3423,13 +3675,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-06-c4/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-06-c4/front.webp",
       "images": [
-        "assets/images/sun/chs-06-c4/01-v2.webp",
-        "assets/images/sun/chs-06-c4/02-v2.webp",
-        "assets/images/sun/chs-06-c4/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-06-c4/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c4/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-06-c4/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-06-c4"
     },
     {
       "id": "chs-07-c1",
@@ -3464,13 +3716,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-07-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-07-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-07-c1/01-v2.webp",
-        "assets/images/sun/chs-07-c1/02-v2.webp",
-        "assets/images/sun/chs-07-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-07-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-07-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-07-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-07-c1"
     },
     {
       "id": "chs-07-c2",
@@ -3505,13 +3757,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-07-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-07-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-07-c2/01-v2.webp",
-        "assets/images/sun/chs-07-c2/02-v2.webp",
-        "assets/images/sun/chs-07-c2/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-07-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-07-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-07-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-07-c2"
     },
     {
       "id": "chs-07-c3",
@@ -3546,13 +3798,54 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-07-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-07-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-07-c3/01-v2.webp",
-        "assets/images/sun/chs-07-c3/02-v2.webp",
-        "assets/images/sun/chs-07-c3/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-07-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-07-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-07-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-07-c3"
+    },
+    {
+      "id": "chs-08-c1",
+      "family": "sun",
+      "collection": "Performance Shield",
+      "series": "CHS-08",
+      "variant": "C1",
+      "model": "CHS-08 C1",
+      "displayModel": "CHS-08 C1",
+      "color": "Negro / lente naranja-dorado espejado",
+      "measurements": "Por confirmar con Innova",
+      "material": "Material técnico de alta resistencia",
+      "shape": "Pantalla deportiva envolvente",
+      "lens": "Lente solar espejado",
+      "protection": "Categoría UV por confirmar con Innova",
+      "sku": "CHS-08-C1",
+      "shortDescription": "Pantalla deportiva envolvente con identidad Champion y acabado negro / lente naranja-dorado espejado.",
+      "subline": "CHS-08 C1 de la colección solar Champion, desarrollada para vitrinas deportivas y urbanas de alta rotación.",
+      "tags": [
+        "Champion Sun",
+        "Performance Shield",
+        "Colección solar",
+        "C1"
+      ],
+      "about": {
+        "p1": "El CHS-08 C1 combina una silueta pantalla deportiva envolvente con negro / lente naranja-dorado espejado, aportando presencia inmediata en exhibición.",
+        "p2": "Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.",
+        "bullets": [
+          "Negro / lente naranja-dorado espejado",
+          "Pantalla deportiva envolvente",
+          "Presentación B2B para ópticas",
+          "Disponibilidad sujeta a confirmación"
+        ]
+      },
+      "cover": "assets/producto-de-lentes-de-sol/chs-08-c1/front.webp",
+      "images": [
+        "assets/producto-de-lentes-de-sol/chs-08-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-08-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-08-c1/04.webp"
+      ],
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-08-c1"
     },
     {
       "id": "chs-08-c2",
@@ -3587,13 +3880,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-08-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-08-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-08-c2/01-v2.webp",
-        "assets/images/sun/chs-08-c2/02-v2.webp",
-        "assets/images/sun/chs-08-c2/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-08-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-08-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-08-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-08-c2"
     },
     {
       "id": "chs-08-c3",
@@ -3628,13 +3921,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-08-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-08-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-08-c3/01-v2.webp",
-        "assets/images/sun/chs-08-c3/02-v2.webp",
-        "assets/images/sun/chs-08-c3/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-08-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-08-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-08-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-08-c3"
     },
     {
       "id": "chs-09-c1",
@@ -3669,13 +3962,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-09-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-09-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-09-c1/01-v2.webp",
-        "assets/images/sun/chs-09-c1/02-v2.webp",
-        "assets/images/sun/chs-09-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-09-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-09-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-09-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-09-c1"
     },
     {
       "id": "chs-09-c2",
@@ -3710,13 +4003,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-09-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-09-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-09-c2/01-v2.webp",
-        "assets/images/sun/chs-09-c2/02-v2.webp",
-        "assets/images/sun/chs-09-c2/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-09-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-09-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-09-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-09-c2"
     },
     {
       "id": "chs-09-c3",
@@ -3751,13 +4044,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-09-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-09-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-09-c3/01-v2.webp",
-        "assets/images/sun/chs-09-c3/02-v2.webp",
-        "assets/images/sun/chs-09-c3/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-09-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-09-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-09-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-09-c3"
     },
     {
       "id": "chs-10-c1",
@@ -3792,13 +4085,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-10-c1/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-10-c1/front.webp",
       "images": [
-        "assets/images/sun/chs-10-c1/01-v2.webp",
-        "assets/images/sun/chs-10-c1/02-v2.webp",
-        "assets/images/sun/chs-10-c1/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-10-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-10-c1/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-10-c1/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-10-c1"
     },
     {
       "id": "chs-10-c2",
@@ -3833,13 +4126,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-10-c2/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-10-c2/front.webp",
       "images": [
-        "assets/images/sun/chs-10-c2/01-v2.webp",
-        "assets/images/sun/chs-10-c2/02-v2.webp",
-        "assets/images/sun/chs-10-c2/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-10-c2/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-10-c2/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-10-c2/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-10-c2"
     },
     {
       "id": "chs-10-c3",
@@ -3874,13 +4167,13 @@ window.CHAMPION_CATALOG = {
           "Disponibilidad sujeta a confirmación"
         ]
       },
-      "cover": "assets/images/sun/chs-10-c3/cover-v2.webp",
+      "cover": "assets/producto-de-lentes-de-sol/chs-10-c3/front.webp",
       "images": [
-        "assets/images/sun/chs-10-c3/01-v2.webp",
-        "assets/images/sun/chs-10-c3/02-v2.webp",
-        "assets/images/sun/chs-10-c3/03-v2.webp"
+        "assets/producto-de-lentes-de-sol/chs-10-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-10-c3/03.webp",
+        "assets/producto-de-lentes-de-sol/chs-10-c3/04.webp"
       ],
-      "sourceFolder": "Catalogo Champion/Lentes de sol/SKU"
+      "sourceFolder": "assets/producto-de-lentes-de-sol/chs-10-c3"
     }
   ]
 };

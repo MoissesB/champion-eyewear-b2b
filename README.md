@@ -5,10 +5,11 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 ## Arquitectura
 
 - `index.html`: portada, buscadores y catálogos de monturas y lentes de sol.
-- `product.html?id=…`: única plantilla para las 93 fichas de producto.
-- `data/products.json`: fuente de datos editable (64 monturas + 29 lentes de sol).
+- `product.html?id=…`: única plantilla para las 100 fichas de producto.
+- `data/products.json`: fuente de datos editable (64 monturas + 36 lentes de sol).
 - `data/products.js`: versión del catálogo que consume el navegador sin backend.
-- `assets/images/`: 474 imágenes WebP optimizadas desde los originales locales.
+- `assets/producto-de-lentes-de-sol/`: carpeta incorporada al proyecto con 36 referencias solares; cada modelo conserva `front.webp` como portada y tres vistas adicionales.
+- `assets/images/`: recursos de marca y monturas WebP optimizados desde los originales locales.
 - `assets/images/brand/champion-social.png`: imagen social de presentación del catálogo.
 - `assets/i18n.js`: traducción ES/EN, preguntas frecuentes y explicación de cada colección.
 - `assets/home.js`: filtros, buscadores, explicaciones contextuales y tarjetas del catálogo.
@@ -62,7 +63,7 @@ WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un naveg
 powershell -ExecutionPolicy Bypass -File .\scripts\validar.ps1
 ```
 
-El validador comprueba que solo haya una plantilla de producto, que estén los 93 productos esperados y que todas las imágenes referenciadas existan dentro del repositorio.
+El validador comprueba que solo haya una plantilla de producto, que estén los 100 productos esperados y que todas las imágenes referenciadas existan dentro del repositorio.
 
 Para preparar una versión publicable:
 

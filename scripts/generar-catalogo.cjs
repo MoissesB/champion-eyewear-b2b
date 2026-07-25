@@ -1,4 +1,3 @@
-const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -7,6 +6,7 @@ const repoRoot = path.resolve(__dirname, '..');
 const championRoot = path.resolve(repoRoot, '..');
 const sourceCode = path.join(championRoot, 'Codigos Champion', 'Catalogo');
 const sourceImages = path.join(championRoot, 'Catalogo Champion');
+const sourceSunProducts = path.join(championRoot, 'producto de lentes de sol', 'RAW');
 const homeSource = path.join(sourceCode, 'Home.html');
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp', '.jfif', '.avif']);
@@ -177,11 +177,17 @@ function localOpticalImages(seriesNumber, code, slug, manifest) {
 
 const sunColors = {
   'CHS-01 C1': 'Negro / lente azul espejado',
+  'CHS-01 C2': 'Negro / lente azul-violeta espejado',
+  'CHS-01 C3': 'Negro / lente humo',
+  'CHS-01 C4': 'Negro / lente azul-verde espejado',
   'CHS-02 C1': 'Negro / lente humo',
   'CHS-02 C2': 'Negro / lente dorado espejado',
   'CHS-02 C3': 'Azul oscuro / lente azul espejado',
   'CHS-02 C4': 'Negro / lente verde espejado',
   'CHS-03 C1': 'Negro / lente dorado espejado',
+  'CHS-03 C2': 'Transparente / lente azul-dorado espejado',
+  'CHS-03 C3': 'Negro / lente naranja espejado',
+  'CHS-03 C4': 'Negro / lente azul-verde espejado',
   'CHS-04 C1': 'Negro / lente humo',
   'CHS-04 C2': 'Gunmetal / lente azul espejado',
   'CHS-04 C3': 'Gunmetal / lente dorado espejado',
@@ -199,6 +205,7 @@ const sunColors = {
   'CHS-07 C3': 'Azul marino / lente multicolor espejado',
   'CHS-08 C2': 'Negro / lente azul-violeta espejado',
   'CHS-08 C3': 'Azul marino / lente azul espejado',
+  'CHS-08 C1': 'Negro / lente naranja-dorado espejado',
   'CHS-09 C1': 'Negro / lente rojo-violeta espejado',
   'CHS-09 C2': 'Azul marino / lente azul espejado',
   'CHS-09 C3': 'Habana / lente dorado espejado',
@@ -221,84 +228,57 @@ function sunShape(code) {
   return 'Rectangular deportiva';
 }
 
-function productCodeFromSunFile(name) {
-  const normalized = name.toUpperCase().replace(/^CHS03\b/, 'CHS-03');
-  const match = normalized.match(/CHS-?(\d{2})\s+C([1-4])/);
-  return match ? `CHS-${match[1]} C${match[2]}` : null;
+function productCodeFromSunDirectory(name) {
+  const normalized = name.toUpperCase().replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim();
+  const match = normalized.match(/^CHS\s*0?(\d{1,2})\s+C([1-4])$/);
+  return match ? `CHS-${String(Number(match[1])).padStart(2, '0')} C${match[2]}` : null;
 }
 
-function hashFile(file) {
-  return crypto.createHash('sha1').update(fs.readFileSync(file)).digest('hex');
+function numberedSunView(file) {
+  if (/front/i.test(path.basename(file))) return 1;
+  const stem = path.basename(file, path.extname(file));
+  const matches = [...stem.matchAll(/(?<!\d)([2-9])(?!\d)/g)];
+  return matches.length ? Number(matches[matches.length - 1][1]) : null;
 }
 
-function coverRank(file, code) {
-  const stem = path.basename(file, path.extname(file)).toUpperCase().replace(/^CHS03\b/, 'CHS-03').trim();
-  if (stem === code) return 0;
-  if (stem.replace(/\s+/g, ' ') === code) return 1;
-  if (!/[()]/.test(stem) && !/\s+[2-9]$/.test(stem)) return 2;
-  return 3;
-}
+function localSunImages(productDir, code, slug, manifest) {
+  const ready = listDirectories(productDir, true)
+    .find((directory) => /^listas?(?:\s|$)|^listo(?:\s|$)/i.test(path.basename(directory)));
+  if (!ready) throw new Error(`${code} no tiene carpeta Listo/Lista.`);
 
-const sunCoverOverrides = {
-  'CHS-01 C1': 'CHS-01 C1 3.png',
-  'CHS-02 C3': 'CHS-02 C3 4.png',
-  'CHS-03 C1': 'CHS03 C1 (3).png',
-  'CHS-05 C1': 'CHS-05 C1 3.png',
-  'CHS-06 C2': 'CHS-06 C2 2.png',
-};
+  const files = listFiles(ready, false);
+  const front = files.find((file) => /front/i.test(path.basename(file)));
+  if (!front) throw new Error(`${code} no tiene una imagen marcada como front en ${ready}.`);
 
-function selectSunProductFiles(files, code) {
-  if (code === 'CHS-03 C1') {
-    return files.filter((file) => path.basename(file).toUpperCase().startsWith('CHS03 C1'));
+  const byView = new Map([[1, front]]);
+  for (const file of files.filter((candidate) => candidate !== front).sort(naturalCompare)) {
+    const view = numberedSunView(file);
+    if (view && view <= 4 && !byView.has(view)) byView.set(view, file);
   }
-  if (code === 'CHS-02 C3') {
-    return files.filter((file) => path.basename(file).toUpperCase() !== 'CHS-02 C3 .PNG');
-  }
-  const strictPrefix = code.toUpperCase();
-  const strictFiles = files.filter((file) => path.basename(file).toUpperCase().startsWith(strictPrefix));
-  return strictFiles.length >= 4 ? strictFiles : files;
-}
+  const ordered = [1, 2, 3, 4].map((view) => byView.get(view));
+  if (ordered.some((file) => !file)) throw new Error(`${code} necesita front y vistas 2, 3 y 4 en ${ready}.`);
 
-function selectSunCover(files, code) {
-  const override = sunCoverOverrides[code];
-  if (override) {
-    const selected = files.find((file) => path.basename(file).toLowerCase() === override.toLowerCase());
-    if (selected) return selected;
-  }
-  return [...files].sort((a, b) => coverRank(a, code) - coverRank(b, code) || naturalCompare(a, b))[0];
+  const targetFolder = `assets/producto-de-lentes-de-sol/${slug}`;
+  const coverTarget = `${targetFolder}/front.webp`;
+  manifest.push({ family: 'sun', code, role: 'cover', source: ordered[0], target: coverTarget, maxWidth: 1200, maxHeight: 900 });
+  const imageTargets = ordered.slice(1).map((source, index) => {
+    const target = `${targetFolder}/${String(index + 2).padStart(2, '0')}.webp`;
+    manifest.push({ family: 'sun', code, role: 'gallery', source, target, maxWidth: 1600, maxHeight: 1200 });
+    return target;
+  });
+  return { cover: coverTarget, images: imageTargets, sourceFolder: targetFolder };
 }
 
 function buildSunProducts(manifest) {
-  const skuDir = path.join(sourceImages, 'Lentes de sol', 'SKU');
-  const groups = new Map();
-  for (const file of listFiles(skuDir, false)) {
-    if (/^LOGO/i.test(path.basename(file))) continue;
-    const code = productCodeFromSunFile(path.basename(file));
-    if (!code) continue;
-    if (!groups.has(code)) groups.set(code, []);
-    groups.get(code).push(file);
-  }
+  if (!fs.existsSync(sourceSunProducts)) throw new Error(`No existe ${sourceSunProducts}.`);
+  const productDirectories = fs.readdirSync(sourceSunProducts, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && productCodeFromSunDirectory(entry.name))
+    .map((entry) => ({ code: productCodeFromSunDirectory(entry.name), directory: path.join(sourceSunProducts, entry.name) }))
+    .sort((a, b) => naturalCompare(a.code, b.code));
 
-  return [...groups.entries()].sort((a, b) => naturalCompare(a[0], b[0])).map(([code, files]) => {
+  return productDirectories.map(({ code, directory }) => {
     const slug = sunSlug(code);
-    const productFiles = selectSunProductFiles(files, code);
-    const unique = [];
-    const seen = new Set();
-    for (const file of productFiles.sort(naturalCompare)) {
-      const hash = hashFile(file);
-      if (seen.has(hash)) continue;
-      seen.add(hash);
-      unique.push(file);
-    }
-    const cover = selectSunCover(unique, code);
-    const detailViews = unique.filter((file) => file !== cover).slice(0, 3);
-    const coverTarget = `assets/images/sun/${slug}/cover-v2.webp`;
-    manifest.push({ family: 'sun', code, role: 'cover', source: cover, target: coverTarget, maxWidth: 1100, maxHeight: 800 });
-    const imageTargets = detailViews.map((source, index) => {
-      const target = `assets/images/sun/${slug}/${String(index + 1).padStart(2, '0')}-v2.webp`;
-      manifest.push({ family: 'sun', code, role: 'gallery', source, target, maxWidth: 1500, maxHeight: 1100 });
-      return target;
-    });
+    const local = localSunImages(directory, code, slug, manifest);
     const style = sunStyle(code);
     const color = sunColors[code] || `Variante ${code.split(' ')[1]}`;
     const series = code.split(' ')[0];
@@ -326,9 +306,9 @@ function buildSunProducts(manifest) {
         p2: 'Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.',
         bullets: [color, sunShape(code), 'Presentación B2B para ópticas', 'Disponibilidad sujeta a confirmación'],
       },
-      cover: coverTarget,
-      images: imageTargets,
-      sourceFolder: 'Catalogo Champion/Lentes de sol/SKU',
+      cover: local.cover,
+      images: local.images,
+      sourceFolder: local.sourceFolder,
     };
   });
 }

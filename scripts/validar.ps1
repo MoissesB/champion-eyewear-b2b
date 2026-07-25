@@ -42,9 +42,9 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
     $optical = @($products | Where-Object family -eq "optical")
     $sun = @($products | Where-Object family -eq "sun")
 
-    if ($products.Count -ne 93) { $failures.Add("Se esperaban 93 productos y se encontraron $($products.Count)") | Out-Null }
+    if ($products.Count -ne 100) { $failures.Add("Se esperaban 100 productos y se encontraron $($products.Count)") | Out-Null }
     if ($optical.Count -ne 64) { $failures.Add("Se esperaban 64 monturas y se encontraron $($optical.Count)") | Out-Null }
-    if ($sun.Count -ne 29) { $failures.Add("Se esperaban 29 solares y se encontraron $($sun.Count)") | Out-Null }
+    if ($sun.Count -ne 36) { $failures.Add("Se esperaban 36 solares y se encontraron $($sun.Count)") | Out-Null }
 
     $duplicateIds = $products | Group-Object id | Where-Object Count -gt 1
     if ($duplicateIds) { $failures.Add("Hay identificadores de producto duplicados") | Out-Null }
@@ -62,7 +62,13 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
       if (($media | Sort-Object -Unique).Count -ne $media.Count) { $failures.Add("Producto $($product.id): tiene vistas duplicadas") | Out-Null }
       if ($product.family -eq "optical" -and $gallery.Count -ne 4) { $failures.Add("Producto $($product.id): la carpeta Listo no aporta exactamente cuatro vistas internas") | Out-Null }
       if ($product.family -eq "optical" -and $product.cover -in $gallery) { $failures.Add("Producto $($product.id): la portada no puede formar parte de la galería interna") | Out-Null }
-      if ($product.family -eq "sun" -and $media.Count -gt 4) { $failures.Add("Producto $($product.id): el solar tiene más de cuatro vistas") | Out-Null }
+      if ($product.family -eq "sun" -and $media.Count -ne 4) { $failures.Add("Producto $($product.id): el solar no tiene exactamente cuatro vistas, incluida la portada front") | Out-Null }
+      if ($product.family -eq "sun" -and [string]$product.cover -notmatch '^assets/producto-de-lentes-de-sol/[^/]+/front\.webp$') {
+        $failures.Add("Producto $($product.id): la portada solar no corresponde a su imagen front") | Out-Null
+      }
+      if ($product.family -eq "sun" -and [string]$product.sourceFolder -notmatch '^assets/producto-de-lentes-de-sol/[^/]+$') {
+        $failures.Add("Producto $($product.id): la carpeta solar no está incluida dentro del proyecto") | Out-Null
+      }
       foreach ($relativeAsset in ($media | Sort-Object -Unique)) {
         $normalizedAsset = [string]$relativeAsset -replace '/', [IO.Path]::DirectorySeparatorChar
         $assetPath = Join-Path $repoRoot $normalizedAsset
@@ -170,5 +176,5 @@ if ($failures.Count -gt 0) {
   throw "La validación terminó con $($failures.Count) error(es)."
 }
 
-$imageCount = (Get-ChildItem -LiteralPath (Join-Path $repoRoot "assets/images") -Recurse -File -Filter "*.webp").Count
-Write-Host "validación-ok (93 productos; 2 HTML; $imageCount imágenes WebP; 1 plantilla de producto)"
+$imageCount = (Get-ChildItem -LiteralPath (Join-Path $repoRoot "assets") -Recurse -File -Filter "*.webp").Count
+Write-Host "validación-ok (100 productos; 2 HTML; $imageCount imágenes WebP; 1 plantilla de producto)"
