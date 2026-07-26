@@ -29,6 +29,7 @@
     optical: { query: '', facets: emptyFacets('optical') },
     sun: { query: '', facets: emptyFacets('sun') },
   };
+  const initialized = { optical: false, sun: false, faq: false };
 
   function escapeHtml(value) {
     return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
@@ -238,20 +239,64 @@
     mobileNav?.addEventListener('click', (event) => { if (!event.target.closest('a,button')) return; mobileNav.hidden = true; menuButton?.setAttribute('aria-expanded', 'false'); });
   }
 
-  function bindVideo() {
-    const button = document.querySelector('[data-sound-toggle]');
-    const video = document.getElementById('explainVideo');
-    const updateLanguageVideo = (language) => {
-      if (!video) return;
-      const source = video.querySelector('source');
-      const nextSource = language === 'en' ? video.dataset.videoEn : video.dataset.videoEs;
-      if (!source || !nextSource || source.getAttribute('src') === nextSource) return;
-      source.setAttribute('src', nextSource);
+  function bindHeroVideo() {
+    const video = document.getElementById('heroVideo');
+    if (!video || !video.dataset.videoSrc || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let loaded = false;
+    const interactionEvents = ['pointerdown', 'touchstart', 'keydown'];
+    const load = () => {
+      if (loaded) return;
+      loaded = true;
+      interactionEvents.forEach((eventName) => window.removeEventListener(eventName, load));
+      video.src = video.dataset.videoSrc;
       video.load();
       video.play().catch(() => {});
     };
-    updateLanguageVideo(i18n.language);
-    button?.addEventListener('click', () => { if (!video) return; video.muted = !video.muted; button.textContent = i18n.t(video.muted ? 'soundOn' : 'soundOff'); if (video.paused) video.play().catch(() => {}); });
+    interactionEvents.forEach((eventName) => window.addEventListener(eventName, load, { once: true, passive: eventName !== 'keydown' }));
+    const schedule = () => window.setTimeout(load, window.matchMedia('(max-width: 767px)').matches ? 4200 : 1400);
+    if (document.readyState === 'complete') schedule();
+    else window.addEventListener('load', schedule, { once: true });
+  }
+
+  function bindVideo() {
+    const button = document.querySelector('[data-sound-toggle]');
+    const video = document.getElementById('explainVideo');
+    let activeLanguage = i18n.language;
+    let loaded = false;
+    const sourceFor = (language) => (language === 'en' ? video?.dataset.videoEn : video?.dataset.videoEs);
+    const load = () => {
+      if (!video) return;
+      const nextSource = sourceFor(activeLanguage);
+      if (!nextSource) return;
+      if (video.getAttribute('src') !== nextSource) {
+        video.src = nextSource;
+        video.load();
+      }
+      loaded = true;
+      video.play().catch(() => {});
+    };
+    const updateLanguageVideo = (language) => {
+      activeLanguage = language;
+      if (loaded) load();
+    };
+    if (video) {
+      const loadWhenReached = () => {
+        if (window.scrollY < 200 || video.getBoundingClientRect().top > window.innerHeight + 240) return;
+        window.removeEventListener('scroll', loadWhenReached);
+        load();
+      };
+      window.addEventListener('scroll', loadWhenReached, { passive: true });
+      window.addEventListener('load', () => {
+        if (window.scrollY > 200) loadWhenReached();
+      }, { once: true });
+    }
+    button?.addEventListener('click', () => {
+      if (!video) return;
+      if (!loaded) load();
+      video.muted = !video.muted;
+      button.textContent = i18n.t(video.muted ? 'soundOn' : 'soundOff');
+      if (video.paused) video.play().catch(() => {});
+    });
     return updateLanguageVideo;
   }
 
@@ -262,16 +307,67 @@
     nodes.forEach((node) => observer.observe(node));
   }
 
+  function initializeFamily(family) {
+    if (initialized[family]) return;
+    initialized[family] = true;
+    bindCatalog(family);
+    renderFamily(family);
+  }
+
+  function initializeFaq() {
+    if (initialized.faq) return;
+    initialized.faq = true;
+    renderFaq();
+    bindFaq();
+  }
+
+  function initDeferredContent() {
+    const sections = [
+      { id: 'monturas', initialize: () => initializeFamily('optical') },
+      { id: 'lentes-sol', initialize: () => initializeFamily('sun') },
+      { id: 'faq', initialize: initializeFaq },
+    ];
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const match = sections.find(({ id }) => id === entry.target.id);
+          match?.initialize();
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '400px 0px', threshold: 0.01 });
+      sections.forEach(({ id }) => {
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
+      });
+    } else {
+      sections.forEach(({ initialize }) => initialize());
+    }
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      const target = link.getAttribute('href');
+      if (target === '#monturas') initializeFamily('optical');
+      if (target === '#lentes-sol') initializeFamily('sun');
+      if (target === '#faq') initializeFaq();
+    });
+  }
+
   let updateLanguageVideo = () => {};
 
-  function rerenderLocalized(language) { renderFacets('optical'); renderFacets('sun'); renderFamily('optical'); renderFamily('sun'); renderFaq(); updateLanguageVideo(language); }
+  function rerenderLocalized(language) {
+    if (initialized.optical) { renderFacets('optical'); renderFamily('optical'); }
+    if (initialized.sun) { renderFacets('sun'); renderFamily('sun'); }
+    if (initialized.faq) renderFaq();
+    updateLanguageVideo(language);
+  }
 
   function init() {
     const opticalCount = products.filter((product) => product.family === 'optical').length;
     const sunCount = products.filter((product) => product.family === 'sun').length;
     document.querySelectorAll('[data-optical-count]').forEach((node) => { node.textContent = String(opticalCount); });
     document.querySelectorAll('[data-sun-count]').forEach((node) => { node.textContent = String(sunCount); });
-    bindCatalog('optical'); bindCatalog('sun'); renderFamily('optical'); renderFamily('sun'); renderFaq(); bindFaq(); bindHeader(); updateLanguageVideo = bindVideo(); initReveal();
+    bindHeader(); bindHeroVideo(); updateLanguageVideo = bindVideo(); initReveal(); initDeferredContent();
     i18n.onChange(rerenderLocalized);
   }
 

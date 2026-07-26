@@ -14,6 +14,7 @@
   const requiredFields = ['name', 'company', 'optical', 'email', 'phone', 'city', 'country'];
   let toastTimer;
   let lastFocused;
+  let pdfLibraryPromise;
 
   const copy = {
     es: {
@@ -174,6 +175,24 @@
   function triggerDownload(blob, name) { const link = document.createElement('a'); const url = URL.createObjectURL(blob); link.href = url; link.download = name; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1800); }
   function downloadCsv() { triggerDownload(csvBlob(), csvFileName()); }
 
+  function ensurePdfLibrary() {
+    if (window.jspdf?.jsPDF) return Promise.resolve();
+    if (pdfLibraryPromise) return pdfLibraryPromise;
+    pdfLibraryPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = './assets/vendor/jspdf.umd.min.js';
+      script.async = true;
+      script.dataset.jspdfLoader = 'true';
+      script.onload = () => (window.jspdf?.jsPDF ? resolve() : reject(new Error('jsPDF no está disponible')));
+      script.onerror = () => {
+        pdfLibraryPromise = null;
+        reject(new Error('No se pudo cargar jsPDF'));
+      };
+      document.head.appendChild(script);
+    });
+    return pdfLibraryPromise;
+  }
+
   function trimmedCanvas(sourceCanvas, background = [255, 255, 255]) {
     const context = sourceCanvas.getContext('2d', { willReadFrequently: true });
     const { width, height } = sourceCanvas; const pixels = context.getImageData(0, 0, width, height).data;
@@ -205,6 +224,7 @@
   }
 
   async function pdfBlob() {
+    await ensurePdfLibrary();
     if (!window.jspdf?.jsPDF) throw new Error('jsPDF no está disponible');
     const { jsPDF } = window.jspdf; const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: true }); const width = 210; const height = 297; const margin = 15;
     const entries = selectedEntries(); const units = totalUnits(entries); const localized = entries.map((entry) => ({ ...entry, product: i18n.localizeProduct(entry.product) }));

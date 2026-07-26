@@ -1,3 +1,19 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: optional;
+  src: url("./fonts/inter-latin-variable.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 800;
+  font-display: optional;
+  src: url("./fonts/barlow-condensed-800-latin.woff2") format("woff2");
+}
+
 :root {
   --champion-red: #d1122b;
   --champion-blue: #1c2659;
@@ -68,6 +84,10 @@ img,
 video {
   display: block;
   max-width: 100%;
+}
+
+img {
+  height: auto;
 }
 
 h1,
@@ -885,6 +905,22 @@ h3 {
   background: #fff;
   box-shadow: 0 12px 35px rgba(16, 24, 40, 0.055);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+@supports (content-visibility: auto) {
+  .product-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 520px;
+  }
+
+  .reference-section,
+  .process-section,
+  .faq-section,
+  .commercial-cta,
+  .site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 720px;
+  }
 }
 
 .product-card:hover {
@@ -2175,6 +2211,7 @@ h3 {
 
 .product-layout {
   width: min(1600px, calc(100% - 48px));
+  min-height: calc(100svh - 108px);
   margin: 0 auto;
   padding: 28px 0 70px;
 }

@@ -16,14 +16,30 @@ $requiredFiles = @(
   "product.html",
   "data/products.json",
   "data/products.js",
+  "data/products.min.js",
   "assets/styles.css",
+  "assets/styles.min.css",
   "assets/i18n.js",
+  "assets/i18n.min.js",
+  "assets/bootstrap.js",
+  "assets/bootstrap.min.js",
   "assets/home.js",
+  "assets/home.min.js",
   "assets/product.js",
+  "assets/product.min.js",
   "assets/request.js",
+  "assets/request.min.js",
   "assets/vendor/jspdf.umd.min.js",
   "assets/images/brand/champion-header.png",
-  "assets/images/brand/innova-logo.png"
+  "assets/images/brand/champion-header-display.webp",
+  "assets/images/brand/innova-logo.png",
+  "assets/images/brand/favicon-32.png",
+  "assets/images/brand/favicon-192.png",
+  "assets/images/brand/apple-touch-icon.png",
+  "assets/fonts/inter-latin-variable.woff2",
+  "assets/fonts/barlow-condensed-800-latin.woff2",
+  "assets/video/champion-hero.mp4",
+  "favicon.ico"
 )
 $requiredFiles | ForEach-Object { Require-File $_ }
 
@@ -87,12 +103,22 @@ foreach ($htmlName in @("index.html", "product.html")) {
   $htmlPath = Join-Path $repoRoot $htmlName
   if (-not (Test-Path -LiteralPath $htmlPath -PathType Leaf)) { continue }
   $html = [System.IO.File]::ReadAllText($htmlPath, $utf8)
+  $usesBootstrap = $html -match 'assets/bootstrap(?:\.min)?\.js'
   if ($html -notmatch '(?i)<!doctype html>') { $failures.Add("${htmlName}: falta <!doctype html>") | Out-Null }
-  if ($html -notmatch 'data/products\.js') { $failures.Add("${htmlName}: no carga el catálogo estructurado") | Out-Null }
-  if ($html -notmatch 'assets/request\.js') { $failures.Add("${htmlName}: no carga la solicitud B2B") | Out-Null }
-  if ($html -notmatch 'assets/i18n\.js' -or $html -notmatch 'data-language-toggle') { $failures.Add("${htmlName}: falta la traducción ES/EN") | Out-Null }
-  if ($html -notmatch 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: falta el generador PDF") | Out-Null }
-  if ($html -notmatch 'champion-header\.png') { $failures.Add("${htmlName}: no usa el logotipo de cabecera solicitado") | Out-Null }
+  if ($html -notmatch 'data/products(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga el catálogo estructurado") | Out-Null }
+  if ($html -notmatch 'assets/request(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga la solicitud B2B") | Out-Null }
+  if (($html -notmatch 'assets/i18n(?:\.min)?\.js' -and -not $usesBootstrap) -or $html -notmatch 'data-language-toggle') { $failures.Add("${htmlName}: falta la traducción ES/EN") | Out-Null }
+  if ($html -match 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: el generador PDF no debe bloquear la carga inicial") | Out-Null }
+  if ($html -notmatch 'champion-header-display\.webp') { $failures.Add("${htmlName}: no usa el logotipo optimizado de cabecera") | Out-Null }
+  if ($html -notmatch 'favicon\.ico' -or $html -notmatch 'apple-touch-icon\.png') { $failures.Add("${htmlName}: falta el icono del navegador") | Out-Null }
+}
+
+$bootstrapPath = Join-Path $repoRoot "assets/bootstrap.js"
+if (Test-Path -LiteralPath $bootstrapPath -PathType Leaf) {
+  $bootstrapText = [System.IO.File]::ReadAllText($bootstrapPath, $utf8)
+  foreach ($requiredPattern in @('data/products\.min\.js', 'assets/i18n\.min\.js', 'assets/request\.min\.js', 'assets/home\.min\.js', 'loadApplication')) {
+    if ($bootstrapText -notmatch $requiredPattern) { $failures.Add("assets/bootstrap.js: falta la carga diferida de $requiredPattern") | Out-Null }
+  }
 }
 
 $productHtmlPath = Join-Path $repoRoot "product.html"
@@ -108,7 +134,7 @@ if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
   if ($homeText -notmatch 'id="opticalGrid"' -or $homeText -notmatch 'id="sunGrid"') {
     $failures.Add("index.html: faltan uno o ambos catálogos dinámicos") | Out-Null
   }
-  if ($homeText -notmatch '<video\s+class="hero-video"' -or $homeText -notmatch '<video\s+id="explainVideo"') {
+  if ($homeText -notmatch '<video[^>]+class="hero-video"' -or $homeText -notmatch '<video\s+id="explainVideo"') {
     $failures.Add("index.html: faltan uno o ambos vídeos") | Out-Null
   }
   if ($homeText -notmatch 'data-video-es="https://assets\.cdn\.filesafe\.space/itkQlAHHVlUS0uDAETp3/media/69e45ad38696a78b8d076627\.mp4"' -or $homeText -notmatch 'data-video-en="https://assets\.cdn\.filesafe\.space/itkQlAHHVlUS0uDAETp3/media/69f65b406b07ab33031dd1ae\.mp4"') {
@@ -126,7 +152,8 @@ if (Test-Path -LiteralPath $homeScriptPath -PathType Leaf) {
     if ($homeScript -notmatch $requiredPattern) { $failures.Add("assets/home.js: falta requisito de filtros $requiredPattern") | Out-Null }
   }
   if ($homeScript -match "key:\s*'(measurements|shape|lens)'") { $failures.Add("assets/home.js: los filtros deben limitarse a coleccion, modelo, material y color") | Out-Null }
-  if ($homeScript -notmatch 'video\.dataset\.videoEn' -or $homeScript -notmatch 'video\.dataset\.videoEs' -or $homeScript -notmatch 'updateLanguageVideo\(language\)') { $failures.Add("assets/home.js: el vídeo comercial no cambia con el idioma") | Out-Null }
+  if ($homeScript -notmatch 'dataset\.videoEn' -or $homeScript -notmatch 'dataset\.videoEs' -or $homeScript -notmatch 'updateLanguageVideo\(language\)') { $failures.Add("assets/home.js: el vídeo comercial no cambia con el idioma") | Out-Null }
+  if ($homeScript -notmatch 'bindHeroVideo' -or $homeScript -notmatch 'dataset\.videoSrc') { $failures.Add("assets/home.js: falta la carga diferida del vídeo principal") | Out-Null }
 }
 
 $requestPath = Join-Path $repoRoot "assets/request.js"
@@ -135,6 +162,7 @@ if (Test-Path -LiteralPath $requestPath -PathType Leaf) {
   foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*18', 'REFERENCE_UNIT_USD\s*=\s*60', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png', 'addContainedImage', 'trimmedCanvas', 'adjunte manualmente', 'pdfFileName\(\)', 'csvFileName\(\)')) {
     if ($requestText -notmatch $requiredPattern) { $failures.Add("assets/request.js: falta requisito $requiredPattern") | Out-Null }
   }
+  if ($requestText -notmatch 'ensurePdfLibrary' -or $requestText -notmatch 'jspdf\.umd\.min\.js') { $failures.Add("assets/request.js: falta la carga diferida del generador PDF") | Out-Null }
 }
 
 $i18nPath = Join-Path $repoRoot "assets/i18n.js"
@@ -153,7 +181,7 @@ if (Test-Path -LiteralPath $i18nPath -PathType Leaf) {
 
 if (Test-Path -LiteralPath (Join-Path $repoRoot "product.html")) {
   $template = [System.IO.File]::ReadAllText((Join-Path $repoRoot "product.html"), $utf8)
-  if ($template -notmatch 'id="productRoot"' -or $template -notmatch 'assets/product\.js') {
+  if ($template -notmatch 'id="productRoot"' -or $template -notmatch 'assets/product(?:\.min)?\.js') {
     $failures.Add("product.html: la plantilla dinámica está incompleta") | Out-Null
   }
   if ($template -notmatch 'id="productFaqRoot"') { $failures.Add("product.html: falta la sección visible de preguntas") | Out-Null }

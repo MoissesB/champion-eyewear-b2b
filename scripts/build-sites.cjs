@@ -15,7 +15,7 @@ async function build() {
   await mkdir(client, { recursive: true });
   await mkdir(server, { recursive: true });
 
-  for (const file of ['index.html', 'product.html', '.nojekyll']) {
+  for (const file of ['index.html', 'product.html', '.nojekyll', 'favicon.ico']) {
     await cp(path.join(root, file), path.join(client, file));
   }
 
