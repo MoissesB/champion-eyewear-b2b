@@ -309,6 +309,21 @@
     const title = document.getElementById('relatedTitle'); if (title) title.textContent = i18n.t(source.family === 'sun' ? 'moreSun' : 'moreOptical');
   }
 
+  function renderSecondaryContent(source) {
+    const tasks = [
+      () => renderRelated(source),
+      () => renderProductFaq(),
+    ];
+    const runNext = () => {
+      const task = tasks.shift();
+      if (!task) return;
+      task();
+      if (tasks.length) window.setTimeout(runNext, 0);
+    };
+    if ('requestIdleCallback' in window) window.requestIdleCallback(runNext, { timeout: 1200 });
+    else window.setTimeout(runNext, 120);
+  }
+
   function renderNotFound() {
     const root = document.getElementById('productRoot'); if (!root) return;
     root.innerHTML = `<div class="product-not-found"><span class="eyebrow">${escapeHtml(i18n.t('productNotFoundKicker'))}</span><h1>${escapeHtml(i18n.t('productNotFoundTitle'))}</h1><p>${escapeHtml(i18n.t('productNotFoundText'))}</p><a class="button button-primary" href="./index.html#monturas">${escapeHtml(i18n.t('productNotFoundCta'))}</a></div>`;
@@ -318,7 +333,7 @@
   function init() {
     const id = new URLSearchParams(window.location.search).get('id'); currentProduct = products.find((candidate) => candidate.id === id);
     if (!currentProduct) { renderNotFound(); document.getElementById('similares')?.remove(); i18n.onChange(renderNotFound); return; }
-    renderProduct(currentProduct); renderRelated(currentProduct); renderProductFaq(); i18n.onChange(rerender);
+    renderProduct(currentProduct); renderSecondaryContent(currentProduct); i18n.onChange(rerender);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
