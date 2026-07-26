@@ -27,6 +27,8 @@ $requiredFiles = @(
   "assets/home.min.js",
   "assets/product.js",
   "assets/product.min.js",
+  "assets/request-loader.js",
+  "assets/request-loader.min.js",
   "assets/request.js",
   "assets/request.min.js",
   "assets/vendor/jspdf.umd.min.js",
@@ -106,11 +108,19 @@ foreach ($htmlName in @("index.html", "product.html")) {
   $usesBootstrap = $html -match 'assets/bootstrap(?:\.min)?\.js'
   if ($html -notmatch '(?i)<!doctype html>') { $failures.Add("${htmlName}: falta <!doctype html>") | Out-Null }
   if ($html -notmatch 'data/products(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga el catálogo estructurado") | Out-Null }
-  if ($html -notmatch 'assets/request(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga la solicitud B2B") | Out-Null }
+  if ($html -notmatch 'assets/request(?:-loader)?(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga la solicitud B2B") | Out-Null }
   if (($html -notmatch 'assets/i18n(?:\.min)?\.js' -and -not $usesBootstrap) -or $html -notmatch 'data-language-toggle') { $failures.Add("${htmlName}: falta la traducción ES/EN") | Out-Null }
   if ($html -match 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: el generador PDF no debe bloquear la carga inicial") | Out-Null }
   if ($html -notmatch 'champion-header-display\.webp') { $failures.Add("${htmlName}: no usa el logotipo optimizado de cabecera") | Out-Null }
   if ($html -notmatch 'favicon\.ico' -or $html -notmatch 'apple-touch-icon\.png') { $failures.Add("${htmlName}: falta el icono del navegador") | Out-Null }
+}
+
+$requestLoaderPath = Join-Path $repoRoot "assets/request-loader.js"
+if (Test-Path -LiteralPath $requestLoaderPath -PathType Leaf) {
+  $requestLoaderText = [System.IO.File]::ReadAllText($requestLoaderPath, $utf8)
+  if ($requestLoaderText -notmatch 'request\.min\.js' -or $requestLoaderText -notmatch 'loadRequest') {
+    $failures.Add("assets/request-loader.js: falta la carga diferida del pedido") | Out-Null
+  }
 }
 
 $bootstrapPath = Join-Path $repoRoot "assets/bootstrap.js"
@@ -124,6 +134,9 @@ if (Test-Path -LiteralPath $bootstrapPath -PathType Leaf) {
 $productHtmlPath = Join-Path $repoRoot "product.html"
 if (Test-Path -LiteralPath $productHtmlPath -PathType Leaf) {
   $productHtml = [System.IO.File]::ReadAllText($productHtmlPath, $utf8)
+  if ($productHtml -notmatch 'product-preload:start' -or $productHtml -notmatch 'fetchPriority') {
+    $failures.Add("product.html: falta la precarga de la imagen principal") | Out-Null
+  }
   if ($productHtml -match 'footerShipping' -or $productHtml -notmatch 'data-i18n="footerMinimum"' -or $productHtml -notmatch 'data-i18n="footerMix"') {
     $failures.Add("product.html: el pie debe resumir solo el mínimo y la combinación de cantidades") | Out-Null
   }
