@@ -14,6 +14,11 @@ function Require-File([string]$relativePath) {
 $requiredFiles = @(
   "index.html",
   "product.html",
+  "catalogo.html",
+  "404.html",
+  "robots.txt",
+  "sitemap.xml",
+  "scripts/generate-sitemap.cjs",
   "data/products.json",
   "data/products.js",
   "data/products.min.js",
@@ -113,6 +118,76 @@ foreach ($htmlName in @("index.html", "product.html")) {
   if ($html -match 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: el generador PDF no debe bloquear la carga inicial") | Out-Null }
   if ($html -notmatch 'champion-header-display\.webp') { $failures.Add("${htmlName}: no usa el logotipo optimizado de cabecera") | Out-Null }
   if ($html -notmatch 'favicon\.ico' -or $html -notmatch 'apple-touch-icon\.png') { $failures.Add("${htmlName}: falta el icono del navegador") | Out-Null }
+}
+
+$indexPath = Join-Path $repoRoot "index.html"
+if (Test-Path -LiteralPath $indexPath -PathType Leaf) {
+  $indexHtml = [System.IO.File]::ReadAllText($indexPath, $utf8)
+  if ($indexHtml -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/">') {
+    $failures.Add("index.html: falta el canonical absoluto de la portada") | Out-Null
+  }
+  if ($indexHtml -notmatch 'href="\./catalogo\.html"') {
+    $failures.Add("index.html: falta el enlace estático al índice completo") | Out-Null
+  }
+}
+
+$productTemplatePath = Join-Path $repoRoot "product.html"
+if (Test-Path -LiteralPath $productTemplatePath -PathType Leaf) {
+  $productTemplate = [System.IO.File]::ReadAllText($productTemplatePath, $utf8)
+  if ($productTemplate -notmatch 'champion-innova\.com/product\.html\?id=' -or $productTemplate -notmatch 'noindex,\s*follow' -or $productTemplate -notmatch 'referencia-no-encontrada') {
+    $failures.Add("product.html: faltan canonical dinámico, noindex o desvío a 404 para IDs inválidos") | Out-Null
+  }
+  if ($productTemplate -match '<link\s+rel="canonical"\s+href="https://champion-innova\.com/product\.html">') {
+    $failures.Add("product.html: la plantilla no puede usar un canonical genérico sin ID") | Out-Null
+  }
+}
+
+$catalogIndexPath = Join-Path $repoRoot "catalogo.html"
+if (Test-Path -LiteralPath $catalogIndexPath -PathType Leaf) {
+  $catalogIndex = [System.IO.File]::ReadAllText($catalogIndexPath, $utf8)
+  $staticProductLinks = ([regex]::Matches($catalogIndex, 'href="\./product\.html\?id=[^"]+"')).Count
+  if ($staticProductLinks -ne 100) {
+    $failures.Add("catalogo.html: se esperaban 100 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
+  }
+  if ($catalogIndex -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/catalogo\.html">') {
+    $failures.Add("catalogo.html: falta el canonical absoluto") | Out-Null
+  }
+}
+
+$sitemapPath = Join-Path $repoRoot "sitemap.xml"
+if (Test-Path -LiteralPath $sitemapPath -PathType Leaf) {
+  $sitemapText = [System.IO.File]::ReadAllText($sitemapPath, $utf8)
+  $sitemapUrls = @([regex]::Matches($sitemapText, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value })
+  if ($sitemapUrls.Count -ne 102) { $failures.Add("sitemap.xml: se esperaban 102 URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
+  if (($sitemapUrls | Sort-Object -Unique).Count -ne $sitemapUrls.Count) { $failures.Add("sitemap.xml: contiene URLs duplicadas") | Out-Null }
+  if ($sitemapText -match '<lastmod>') { $failures.Add("sitemap.xml: no debe incluir lastmod artificial") | Out-Null }
+  if (@($sitemapUrls | Where-Object { $_ -notmatch '^https://champion-innova\.com/' }).Count -gt 0) {
+    $failures.Add("sitemap.xml: todas las URLs deben usar el dominio canónico HTTPS") | Out-Null
+  }
+}
+
+$robotsPath = Join-Path $repoRoot "robots.txt"
+if (Test-Path -LiteralPath $robotsPath -PathType Leaf) {
+  $robotsText = [System.IO.File]::ReadAllText($robotsPath, $utf8)
+  if ($robotsText -notmatch 'User-agent:\s*\*' -or $robotsText -notmatch 'Allow:\s*/' -or $robotsText -notmatch 'Sitemap:\s*https://champion-innova\.com/sitemap\.xml') {
+    $failures.Add("robots.txt: faltan permiso general o referencia al sitemap canónico") | Out-Null
+  }
+}
+
+$notFoundPath = Join-Path $repoRoot "404.html"
+if (Test-Path -LiteralPath $notFoundPath -PathType Leaf) {
+  $notFoundHtml = [System.IO.File]::ReadAllText($notFoundPath, $utf8)
+  if ($notFoundHtml -notmatch '<meta\s+name="robots"\s+content="noindex, follow">') {
+    $failures.Add("404.html: falta noindex, follow") | Out-Null
+  }
+}
+
+$workerPath = Join-Path $repoRoot "hosting/worker.js"
+if (Test-Path -LiteralPath $workerPath -PathType Leaf) {
+  $workerText = [System.IO.File]::ReadAllText($workerPath, $utf8)
+  foreach ($requiredPattern in @("url\.protocol === 'http:'", 'PRODUCT_IDS\.has\(id\)', "headers\.set\('X-Robots-Tag', 'noindex, follow'\)", "url\.pathname === '/index\.html'")) {
+    if ($workerText -notmatch $requiredPattern) { $failures.Add("hosting/worker.js: falta control SEO $requiredPattern") | Out-Null }
+  }
 }
 
 $requestLoaderPath = Join-Path $repoRoot "assets/request-loader.js"

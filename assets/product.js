@@ -4,6 +4,7 @@
   const catalog = window.CHAMPION_CATALOG;
   const i18n = window.ChampionI18n;
   if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
+  const SITE_ORIGIN = 'https://champion-innova.com';
   const products = catalog.products;
   let currentProduct;
 
@@ -11,6 +12,49 @@
     return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
   function detailUrl(product) { return `./product.html?id=${encodeURIComponent(product.id)}`; }
+
+  function upsertMeta(name, content) {
+    let meta = document.querySelector(`meta[name="${name}"]`);
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', name);
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
+    return meta;
+  }
+
+  function productCanonicalUrl(id) {
+    const canonical = new URL('/product.html', SITE_ORIGIN);
+    canonical.searchParams.set('id', id);
+    return canonical.href;
+  }
+
+  function updateSearchMetadata(product) {
+    document.title = `${product.displayModel} | Champion Eyewear`;
+    upsertMeta('description', `${product.displayModel}: ${product.subline}`);
+    document.querySelector('meta[name="robots"][data-product-seo]')?.remove();
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', productCanonicalUrl(product.id));
+  }
+
+  function markProductNotFound() {
+    document.title = 'Producto no encontrado | Champion Eyewear';
+    upsertMeta('description', 'La referencia solicitada no existe en el catálogo profesional Champion Eyewear.');
+    const robots = upsertMeta('robots', 'noindex, follow');
+    robots.setAttribute('data-product-seo', '');
+    document.querySelector('link[rel="canonical"]')?.remove();
+    if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+      window.location.replace('/referencia-no-encontrada');
+      return true;
+    }
+    return false;
+  }
 
   const variantSwatches = Object.freeze({
     'Black': '#15171c',
@@ -104,8 +148,7 @@
     const root = document.getElementById('productRoot');
     const variants = products.filter((candidate) => candidate.series === source.series);
     const backAnchor = product.family === 'sun' ? 'lentes-sol' : 'monturas';
-    document.title = `${product.displayModel} | Champion Eyewear`;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', `${product.displayModel}: ${product.subline}`);
+    updateSearchMetadata(product);
     document.querySelector('.back-control')?.setAttribute('href', `./index.html#${backAnchor}`);
     if (!root) return;
     root.innerHTML = `<div class="product-media-column">${gallery(product)}${relatedSection()}</div><div class="product-details">
@@ -332,7 +375,7 @@
   function rerender() { if (currentProduct) { renderProduct(currentProduct); renderRelated(currentProduct); renderProductFaq(); } else renderNotFound(); }
   function init() {
     const id = new URLSearchParams(window.location.search).get('id'); currentProduct = products.find((candidate) => candidate.id === id);
-    if (!currentProduct) { renderNotFound(); document.getElementById('similares')?.remove(); i18n.onChange(renderNotFound); return; }
+    if (!currentProduct) { if (markProductNotFound()) return; renderNotFound(); document.getElementById('similares')?.remove(); i18n.onChange(renderNotFound); return; }
     renderProduct(currentProduct); renderSecondaryContent(currentProduct); i18n.onChange(rerender);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();

@@ -19,8 +19,10 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 - `assets/images/brand/innova-logo.png`: logotipo de Innova incluido en los PDF.
 - `scripts/generar-catalogo.cjs`: reconstruye los datos y el manifiesto desde las carpetas fuente.
 - `scripts/preparar-imagenes.py`: exporta los originales a formatos web optimizados.
+- `scripts/generate-sitemap.cjs`: genera `robots.txt`, `sitemap.xml` y `catalogo.html` desde los 100 IDs válidos, sin fechas `lastmod` artificiales.
 - `scripts/validar.ps1`: verifica arquitectura, datos y recursos locales.
 - `scripts/build-sites.cjs`: prepara la distribución estática y el adaptador de hosting.
+- `404.html`: respuesta visible y no indexable para rutas o referencias inexistentes.
 
 ## Vista local
 
@@ -63,10 +65,12 @@ WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un naveg
 powershell -ExecutionPolicy Bypass -File .\scripts\validar.ps1
 ```
 
-El validador comprueba que solo haya una plantilla de producto, que estén los 100 productos esperados y que todas las imágenes referenciadas existan dentro del repositorio.
+El validador comprueba que solo haya una plantilla de producto, que estén los 100 productos esperados, que todas las imágenes referenciadas existan y que las señales de rastreo, canonicalización y 404 sean coherentes.
 
 Para preparar una versión publicable:
 
 ```powershell
 npm run build
 ```
+
+El build regenera el sitemap, `robots.txt`, el índice HTML estático y el worker con la lista de IDs válidos. En GitHub Pages, la redirección HTTP→HTTPS depende además de activar `Enforce HTTPS` en la configuración externa del repositorio.
