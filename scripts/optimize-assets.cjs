@@ -5,6 +5,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const targets = [
   ['assets/styles.css', 'assets/styles.min.css', 'css'],
+  ['assets/analytics.js', 'assets/analytics.min.js', 'js'],
   ['data/products.js', 'data/products.min.js', 'js'],
   ['assets/i18n.js', 'assets/i18n.min.js', 'js'],
   ['assets/bootstrap.js', 'assets/bootstrap.min.js', 'js'],
