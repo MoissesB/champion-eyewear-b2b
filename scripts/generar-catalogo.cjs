@@ -303,7 +303,7 @@ function buildSunProducts(manifest) {
       tags: ['Champion Sun', style, 'Colección solar', variant],
       about: {
         p1: `El ${code} combina una silueta ${sunShape(code).toLowerCase()} con ${color.toLowerCase()}, aportando presencia inmediata en exhibición.`,
-        p2: 'Referencia preparada para consulta mayorista. Precio, disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.',
+        p2: 'Referencia preparada para consulta mayorista. Disponibilidad, protección UV y condiciones comerciales se confirman directamente con Innova Eyewear.',
         bullets: [color, sunShape(code), 'Presentación B2B para ópticas', 'Disponibilidad sujeta a confirmación'],
       },
       cover: local.cover,

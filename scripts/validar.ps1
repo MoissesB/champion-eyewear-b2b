@@ -247,10 +247,38 @@ if (Test-Path -LiteralPath $homeScriptPath -PathType Leaf) {
 $requestPath = Join-Path $repoRoot "assets/request.js"
 if (Test-Path -LiteralPath $requestPath -PathType Leaf) {
   $requestText = [System.IO.File]::ReadAllText($requestPath, $utf8)
-  foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*18', 'REFERENCE_UNIT_USD\s*=\s*60', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png', 'addContainedImage', 'trimmedCanvas', 'adjunte manualmente', 'pdfFileName\(\)', 'csvFileName\(\)')) {
+  foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*24', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png', 'addContainedImage', 'trimmedCanvas', 'adjunte manualmente', 'pdfFileName\(\)', 'csvFileName\(\)')) {
     if ($requestText -notmatch $requiredPattern) { $failures.Add("assets/request.js: falta requisito $requiredPattern") | Out-Null }
   }
   if ($requestText -notmatch 'ensurePdfLibrary' -or $requestText -notmatch 'jspdf\.umd\.min\.js') { $failures.Add("assets/request.js: falta la carga diferida del generador PDF") | Out-Null }
+}
+
+$publicCommercialFiles = @(
+  'index.html', 'product.html', 'catalogo.html', '404.html',
+  'assets/i18n.js', 'assets/i18n.min.js', 'assets/request.js', 'assets/request.min.js',
+  'assets/home.js', 'assets/home.min.js', 'assets/product.js', 'assets/product.min.js',
+  'assets/styles.css', 'assets/styles.min.css',
+  'data/products.json', 'data/products.js', 'data/products.min.js'
+)
+$forbiddenCommercialPatterns = @(
+  'US\$', '(?<!\{)\$\s*\d',
+  '\b(USD|EUR)\b|[\u20AC\u00A3\u00A5]',
+  '\b(precio|precios|price|prices|pricing|costo|costos|cost|costs)\b',
+  '\b(amount|amounts|importe|importes|monto|montos|tarifa|tarifas|fee|fees|rate|rates)\b',
+  '\b(valor de referencia|reference value|referencia general|general reference)\b',
+  '\b1,?080\b',
+  '\b18\s*(piezas|pieces)\b', '\b18-piece\b',
+  '\bREFERENCE_UNIT_USD\b'
+)
+foreach ($relativePath in $publicCommercialFiles) {
+  $publicPath = Join-Path $repoRoot $relativePath
+  if (-not (Test-Path -LiteralPath $publicPath -PathType Leaf)) { continue }
+  $publicText = [System.IO.File]::ReadAllText($publicPath, $utf8)
+  foreach ($forbiddenPattern in $forbiddenCommercialPatterns) {
+    if ($publicText -match $forbiddenPattern) {
+      $failures.Add("${relativePath}: conserva contenido comercial prohibido ($forbiddenPattern)") | Out-Null
+    }
+  }
 }
 
 $i18nPath = Join-Path $repoRoot "assets/i18n.js"
@@ -280,7 +308,6 @@ if (Test-Path -LiteralPath $productScriptPath -PathType Leaf) {
   $productScript = [System.IO.File]::ReadAllText($productScriptPath, $utf8)
   if ($productScript -notmatch 'data-gallery-zoom') { $failures.Add("assets/product.js: faltan controles de zoom") | Out-Null }
   if ($productScript -notmatch 'pointermove' -or $productScript -notmatch '--zoom-x' -or $productScript -notmatch '--zoom-y') { $failures.Add("assets/product.js: falta el seguimiento panorámico del cursor") | Out-Null }
-  if ($productScript -match 'trade-price') { $failures.Add("assets/product.js: todavía muestra el bloque de precio mayorista") | Out-Null }
   if ($productScript -notmatch 'orderWhatsapp' -or $productScript -notmatch 'orderEmail') { $failures.Add("assets/product.js: faltan botones de pedido por WhatsApp y correo") | Out-Null }
   if (($productScript | Select-String -Pattern 'order-action-icon' -AllMatches).Matches.Count -lt 2) { $failures.Add("assets/product.js: faltan los iconos en las acciones de pedido") | Out-Null }
   if ($productScript -notmatch '--variant-swatch' -or $productScript -notmatch 'currentColorVariant') { $failures.Add("assets/product.js: faltan las muestras de color para las variantes") | Out-Null }

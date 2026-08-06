@@ -14,7 +14,7 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 - `assets/i18n.js`: traducción ES/EN, preguntas frecuentes y explicación de cada colección.
 - `assets/home.js`: filtros, buscadores, explicaciones contextuales y tarjetas del catálogo.
 - `assets/product.js`: carga y traduce la ficha solicitada dentro de la plantilla única.
-- `assets/request.js`: selección profesional, mínimo de 18 piezas, PDF, CSV, WhatsApp y correo.
+- `assets/request.js`: selección profesional, mínimo de 24 piezas, PDF, CSV, WhatsApp y correo.
 - `assets/images/brand/champion-header.png`: logotipo oficial de cabecera.
 - `assets/images/brand/innova-logo.png`: logotipo de Innova incluido en los PDF.
 - `scripts/generar-catalogo.cjs`: reconstruye los datos y el manifiesto desde las carpetas fuente.
@@ -49,13 +49,13 @@ Cuando los cambios procedan de las carpetas maestras, es preferible ejecutar el 
 La selección se guarda en el navegador del usuario. Puede:
 
 - definir cantidades por referencia;
-- comprobar el mínimo inicial de 18 piezas;
+- comprobar el mínimo inicial de 24 piezas;
 - completar nombre, empresa, óptica, correo, teléfono, ciudad y país;
 - generar un PDF con número de pedido, logotipos, imágenes y detalles de productos;
 - preparar un CSV operativo y un correo profesional para Innova;
 - abrir un mensaje de WhatsApp con todos los datos y la selección en texto.
 
-No se muestran precios individuales. El sitio informa únicamente la referencia general aprobada de US$60 por pieza y US$1,080 para el mínimo de 18 piezas; el valor final depende de la validación comercial de Innova.
+El sitio publica únicamente el requisito de pedido inicial mínimo de 24 piezas; las condiciones finales dependen de la validación comercial de Innova.
 
 WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un navegador por motivos de seguridad. Por eso WhatsApp descarga el PDF y abre el texto preparado; correo descarga el PDF y el CSV y abre el mensaje para que el usuario adjunte ambos archivos.
 

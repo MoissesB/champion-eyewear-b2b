@@ -2313,13 +2313,6 @@ h3 {
   font-weight: 700;
 }
 
-.price-note {
-  margin-top: 18px;
-  color: var(--champion-blue);
-  font-size: 1rem;
-  font-weight: 900;
-}
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -2853,37 +2846,6 @@ h3 {
   color: var(--champion-blue);
   font-size: 0.68rem;
   font-weight: 800;
-}
-
-.trade-price {
-  margin-top: 24px;
-  padding: 20px;
-  border-left: 4px solid var(--champion-red);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background: var(--soft);
-}
-
-.trade-price span {
-  display: block;
-  color: var(--muted);
-  font-size: 0.66rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.trade-price strong {
-  display: block;
-  margin-top: 3px;
-  color: var(--champion-blue);
-  font: 800 1.75rem/1.1 "Barlow Condensed", sans-serif;
-  text-transform: uppercase;
-}
-
-.trade-price p {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 0.75rem;
 }
 
 .variant-picker {
