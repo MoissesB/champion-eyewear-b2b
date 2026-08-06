@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const version = 'performance-20260726';
+  const version = 'commercial-20260807-24';
   let ready = false;
   let loading;
 

@@ -9,7 +9,7 @@
 
     loading = new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = './assets/request.min.js?v=performance-20260726';
+      script.src = './assets/request.min.js?v=commercial-20260807-24';
       script.async = true;
       script.onload = () => {
         ready = true;
