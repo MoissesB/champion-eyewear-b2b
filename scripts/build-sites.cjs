@@ -16,11 +16,11 @@ async function build() {
   await mkdir(client, { recursive: true });
   await mkdir(server, { recursive: true });
 
-  for (const file of ['index.html', 'product.html', 'catalogo.html', '404.html', '.nojekyll', 'favicon.ico', 'sitemap.xml', 'robots.txt']) {
+  for (const file of ['index.html', 'product.html', 'catalogo.html', 'blog.html', '404.html', '.nojekyll', 'favicon.ico', 'sitemap.xml', 'robots.txt']) {
     await cp(path.join(root, file), path.join(client, file));
   }
 
-  for (const directory of ['assets', 'data']) {
+  for (const directory of ['assets', 'data', 'blog']) {
     await cp(path.join(root, directory), path.join(client, directory), { recursive: true });
   }
 

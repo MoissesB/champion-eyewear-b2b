@@ -5,6 +5,8 @@ const root = path.resolve(__dirname, '..');
 const origin = 'https://champion-innova.com';
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data', 'products.json'), 'utf8'));
 const products = Array.isArray(catalog.products) ? catalog.products : [];
+const blogCatalog = JSON.parse(fs.readFileSync(path.join(root, 'data', 'blog-posts.json'), 'utf8'));
+const blogPosts = Array.isArray(blogCatalog.posts) ? blogCatalog.posts : [];
 
 function productPath(product) {
   return `/product.html?id=${encodeURIComponent(product.id)}`;
@@ -26,6 +28,8 @@ function escapeHtml(value) {
 const urls = [
   `${origin}/`,
   `${origin}/catalogo.html`,
+  `${origin}/blog.html`,
+  ...blogPosts.map((post) => `${origin}/blog/${encodeURIComponent(post.slug)}.html`),
   ...products.map((product) => `${origin}${productPath(product)}`),
 ];
 

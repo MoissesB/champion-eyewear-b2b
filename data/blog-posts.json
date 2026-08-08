@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "slug": "seleccion-lentes-sol-para-opticas",
+      "title": "Cómo seleccionar lentes de sol para una óptica",
+      "description": "Guía B2B para construir un surtido de lentes de sol Champion con siluetas urbanas, deportivas y de impacto para una vitrina equilibrada.",
+      "image": "assets/producto-de-lentes-de-sol/chs-02-c3/front.webp",
+      "detailImages": [
+        "assets/producto-de-lentes-de-sol/chs-02-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-02-c3/04.webp"
+      ],
+      "detailImageType": "catalog-detail",
+      "model": "CHS-02 C3"
+    },
+    {
+      "slug": "lentes-sol-deportivos-vitrina-optica",
+      "title": "Lentes de sol deportivos: cómo presentar su silueta",
+      "description": "Claves B2B para presentar lentes de sol deportivos Champion en ópticas: cobertura visual, ajuste, estética y argumentos comerciales responsables.",
+      "image": "assets/producto-de-lentes-de-sol/chs-07-c1/front.webp",
+      "detailImages": [
+        "assets/producto-de-lentes-de-sol/chs-07-c1/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-07-c1/04.webp"
+      ],
+      "detailImageType": "catalog-detail",
+      "model": "CHS-07 C1"
+    },
+    {
+      "slug": "exhibir-lentes-sol-champion-optica",
+      "title": "Cómo exhibir lentes de sol Champion en ópticas",
+      "description": "Ideas B2B para exhibir lentes de sol Champion por uso, forma y color, mejorar la lectura de la vitrina y facilitar la recomendación del asesor.",
+      "image": "assets/producto-de-lentes-de-sol/chs-10-c3/front.webp",
+      "detailImages": [
+        "assets/producto-de-lentes-de-sol/chs-10-c3/02.webp",
+        "assets/producto-de-lentes-de-sol/chs-10-c3/04.webp"
+      ],
+      "detailImageType": "catalog-detail",
+      "model": "CHS-10 C3"
+    }
+  ]
+}

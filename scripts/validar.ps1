@@ -15,11 +15,13 @@ $requiredFiles = @(
   "index.html",
   "product.html",
   "catalogo.html",
+  "blog.html",
   "404.html",
   "robots.txt",
   "sitemap.xml",
   "scripts/generate-sitemap.cjs",
   "data/products.json",
+  "data/blog-posts.json",
   "data/products.js",
   "data/products.min.js",
   "assets/styles.css",
@@ -129,6 +131,111 @@ if (Test-Path -LiteralPath $indexPath -PathType Leaf) {
   if ($indexHtml -notmatch 'href="\./catalogo\.html"') {
     $failures.Add("index.html: falta el enlace estático al índice completo") | Out-Null
   }
+  if (([regex]::Matches($indexHtml, 'href="\./blog\.html"')).Count -lt 3) {
+    $failures.Add("index.html: el blog debe estar visible en la navegación de escritorio, la navegación móvil y el pie") | Out-Null
+  }
+}
+
+$blogPosts = @()
+$blogDataPath = Join-Path $repoRoot "data/blog-posts.json"
+if (Test-Path -LiteralPath $blogDataPath -PathType Leaf) {
+  try {
+    $blogData = [System.IO.File]::ReadAllText($blogDataPath, $utf8) | ConvertFrom-Json
+    $blogPosts = @($blogData.posts)
+    if ($blogPosts.Count -ne 3) { $failures.Add("data/blog-posts.json: se esperaban exactamente tres publicaciones") | Out-Null }
+    if (($blogPosts.slug | Sort-Object -Unique).Count -ne $blogPosts.Count) { $failures.Add("data/blog-posts.json: contiene slugs duplicados") | Out-Null }
+  }
+  catch {
+    $failures.Add("No se pudo leer data/blog-posts.json: $($_.Exception.Message)") | Out-Null
+  }
+}
+
+$blogPath = Join-Path $repoRoot "blog.html"
+if (Test-Path -LiteralPath $blogPath -PathType Leaf) {
+  $blogHtml = [System.IO.File]::ReadAllText($blogPath, $utf8)
+  if ($blogHtml -notmatch '(?i)<!doctype html>') { $failures.Add("blog.html: falta <!doctype html>") | Out-Null }
+  if ($blogHtml -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/blog\.html">') {
+    $failures.Add("blog.html: falta el canonical absoluto") | Out-Null
+  }
+  if ($blogHtml -match '<meta\s+name="robots"\s+content="noindex') {
+    $failures.Add("blog.html: no puede usar noindex si forma parte del sitemap") | Out-Null
+  }
+  if ($blogHtml -notmatch 'data-menu-toggle' -or $blogHtml -notmatch 'id="mobileNav"') {
+    $failures.Add("blog.html: falta la navegación móvil accesible") | Out-Null
+  }
+  if (([regex]::Matches($blogHtml, 'href="\./blog\.html"')).Count -lt 3) {
+    $failures.Add("blog.html: el blog debe permanecer visible en su navegación y pie") | Out-Null
+  }
+}
+
+$catalogMedia = @()
+if ($null -ne $products) {
+  $catalogMedia = @($products | ForEach-Object { @($_.cover) + @($_.images) } | Sort-Object -Unique)
+}
+
+foreach ($post in $blogPosts) {
+  $slug = [string]$post.slug
+  $title = [string]$post.title
+  $description = [string]$post.description
+  $image = [string]$post.image
+  $model = [string]$post.model
+  $detailImages = @($post.detailImages)
+  $detailImageType = [string]$post.detailImageType
+  $postRelativePath = "blog/$slug.html"
+  $postPath = Join-Path $repoRoot ($postRelativePath -replace '/', [IO.Path]::DirectorySeparatorChar)
+  Require-File $postRelativePath
+
+  if ($slug -notmatch '^[a-z0-9]+(?:-[a-z0-9]+)*$') { $failures.Add("${postRelativePath}: slug invalido") | Out-Null }
+  if ($description.Length -lt 110 -or $description.Length -gt 160) { $failures.Add("${postRelativePath}: la meta descripcion debe tener entre 110 y 160 caracteres") | Out-Null }
+  if ($image -notin $catalogMedia) { $failures.Add("${postRelativePath}: la imagen no pertenece a un modelo real del catalogo") | Out-Null }
+  $imagePath = Join-Path $repoRoot ($image -replace '/', [IO.Path]::DirectorySeparatorChar)
+  if (-not (Test-Path -LiteralPath $imagePath -PathType Leaf)) { $failures.Add("${postRelativePath}: no existe la imagen $image") | Out-Null }
+  $matchedProduct = @($products | Where-Object { $_.displayModel -eq $model -and $image -in (@($_.cover) + @($_.images)) })
+  if ($matchedProduct.Count -ne 1 -or $matchedProduct[0].family -ne 'sun') { $failures.Add("${postRelativePath}: imagen y modelo no corresponden a un solar real unico") | Out-Null }
+
+  if ($detailImages.Count -lt 2 -or ($detailImages | Sort-Object -Unique).Count -ne $detailImages.Count) { $failures.Add("${postRelativePath}: requiere al menos dos imagenes internas unicas") | Out-Null }
+  if ($detailImageType -ne 'catalog-detail') { $failures.Add("${postRelativePath}: debe documentar las imagenes internas como detalles de catalogo") | Out-Null }
+  foreach ($detailImage in $detailImages) {
+    $detailImage = [string]$detailImage
+    $detailImagePath = Join-Path $repoRoot ($detailImage -replace '/', [IO.Path]::DirectorySeparatorChar)
+    if (-not (Test-Path -LiteralPath $detailImagePath -PathType Leaf)) { $failures.Add("${postRelativePath}: no existe la imagen interna $detailImage") | Out-Null }
+    if ($detailImage -notin $catalogMedia -or $detailImage -eq $image) { $failures.Add("${postRelativePath}: la imagen interna no es un detalle real distinto de la portada") | Out-Null }
+    if ($matchedProduct.Count -eq 1 -and $detailImage -notin @($matchedProduct[0].images)) { $failures.Add("${postRelativePath}: la imagen interna no pertenece al mismo modelo $model") | Out-Null }
+  }
+
+  if ($null -ne $blogHtml) {
+    if (-not $blogHtml.Contains('href="./blog/' + $slug + '.html"') -or -not $blogHtml.Contains('data-post-slug="' + $slug + '"')) { $failures.Add("blog.html: falta la tarjeta enlazada de $slug") | Out-Null }
+    if (-not $blogHtml.Contains($title) -or -not $blogHtml.Contains($description) -or -not $blogHtml.Contains('./' + $image)) { $failures.Add("blog.html: la tarjeta $slug no conserva tÃ­tulo, meta descripciÃ³n e imagen") | Out-Null }
+  }
+
+  if (-not (Test-Path -LiteralPath $postPath -PathType Leaf)) { continue }
+  $postHtml = [System.IO.File]::ReadAllText($postPath, $utf8)
+  $canonical = "https://champion-innova.com/blog/$slug.html"
+  $absoluteImage = "https://champion-innova.com/$image"
+  if ($postHtml -notmatch '(?i)<!doctype html>') { $failures.Add("${postRelativePath}: falta <!doctype html>") | Out-Null }
+  if (-not $postHtml.Contains('<meta name="description" content="' + $description + '">')) { $failures.Add("${postRelativePath}: la meta descripcion no coincide con el listado") | Out-Null }
+  if (-not $postHtml.Contains('<link rel="canonical" href="' + $canonical + '">')) { $failures.Add("${postRelativePath}: falta el canonical absoluto") | Out-Null }
+  if (-not $postHtml.Contains('<meta property="og:description" content="' + $description + '">') -or -not $postHtml.Contains('<meta property="og:image" content="' + $absoluteImage + '">')) { $failures.Add("${postRelativePath}: Open Graph no coincide con la publicacion") | Out-Null }
+  if ($postHtml -match '<meta\s+name="robots"\s+content="noindex') { $failures.Add("${postRelativePath}: no puede usar noindex") | Out-Null }
+  if (([regex]::Matches($postHtml, '<h1(?:\s[^>]*)?>')).Count -ne 1) { $failures.Add("${postRelativePath}: debe tener exactamente un H1") | Out-Null }
+  if ($postHtml -notmatch 'data-menu-toggle' -or $postHtml -notmatch 'id="mobileNav"') { $failures.Add("${postRelativePath}: falta la navegacion movil accesible") | Out-Null }
+  if ($matchedProduct.Count -eq 1 -and $postHtml -notmatch ('product\.html\?id=' + [regex]::Escape([string]$matchedProduct[0].id))) { $failures.Add("${postRelativePath}: falta el enlace a la ficha del modelo real") | Out-Null }
+
+  if (([regex]::Matches($postHtml, 'data-model="' + [regex]::Escape($model) + '"')).Count -lt 2) { $failures.Add("${postRelativePath}: faltan dos bloques visuales identificados con el mismo modelo") | Out-Null }
+  if (([regex]::Matches($postHtml, 'data-media-type="catalog-detail"')).Count -lt 2) { $failures.Add("${postRelativePath}: falta documentar los detalles de catalogo dentro del articulo") | Out-Null }
+  foreach ($detailImage in $detailImages) {
+    if (-not $postHtml.Contains('src="../' + [string]$detailImage + '"')) { $failures.Add("${postRelativePath}: falta insertar la imagen interna $detailImage") | Out-Null }
+  }
+
+  $postDirectory = Split-Path -Parent $postPath
+  foreach ($resource in [regex]::Matches($postHtml, '(?:href|src)="([^"]+)"')) {
+    $target = $resource.Groups[1].Value
+    if ($target -match '^(?:https?:|mailto:|tel:|#)') { continue }
+    $localTarget = ($target -split '[?#]')[0]
+    if ([string]::IsNullOrWhiteSpace($localTarget)) { continue }
+    $resolvedTarget = [IO.Path]::GetFullPath((Join-Path $postDirectory ($localTarget -replace '/', [IO.Path]::DirectorySeparatorChar)))
+    if (-not $resolvedTarget.StartsWith($repoRoot, [StringComparison]::OrdinalIgnoreCase) -or -not (Test-Path -LiteralPath $resolvedTarget)) { $failures.Add("${postRelativePath}: enlace o recurso local roto: $target") | Out-Null }
+  }
 }
 
 $productTemplatePath = Join-Path $repoRoot "product.html"
@@ -158,7 +265,8 @@ $sitemapPath = Join-Path $repoRoot "sitemap.xml"
 if (Test-Path -LiteralPath $sitemapPath -PathType Leaf) {
   $sitemapText = [System.IO.File]::ReadAllText($sitemapPath, $utf8)
   $sitemapUrls = @([regex]::Matches($sitemapText, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value })
-  if ($sitemapUrls.Count -ne 102) { $failures.Add("sitemap.xml: se esperaban 102 URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
+  $expectedSitemapUrls = 103 + $blogPosts.Count
+  if ($sitemapUrls.Count -ne $expectedSitemapUrls) { $failures.Add("sitemap.xml: se esperaban $expectedSitemapUrls URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
   if (($sitemapUrls | Sort-Object -Unique).Count -ne $sitemapUrls.Count) { $failures.Add("sitemap.xml: contiene URLs duplicadas") | Out-Null }
   if ($sitemapText -match '<lastmod>') { $failures.Add("sitemap.xml: no debe incluir lastmod artificial") | Out-Null }
   if (@($sitemapUrls | Where-Object { $_ -notmatch '^https://champion-innova\.com/' }).Count -gt 0) {
@@ -346,4 +454,4 @@ if ($failures.Count -gt 0) {
 }
 
 $imageCount = (Get-ChildItem -LiteralPath (Join-Path $repoRoot "assets") -Recurse -File -Filter "*.webp").Count
-Write-Host "validación-ok (100 productos; 2 HTML; $imageCount imágenes WebP; 1 plantilla de producto)"
+Write-Host "validación-ok (100 productos; 2 HTML de catálogo; blog con $($blogPosts.Count) publicaciones individuales; $imageCount imágenes WebP; 1 plantilla de producto)"
