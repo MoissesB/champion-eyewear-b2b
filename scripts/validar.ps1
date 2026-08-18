@@ -28,6 +28,12 @@ $requiredFiles = @(
   "assets/styles.min.css",
   "assets/i18n.js",
   "assets/i18n.min.js",
+  "assets/audience.js",
+  "assets/audience.min.js",
+  "assets/audience.css",
+  "assets/audience.min.css",
+  "assets/interest.js",
+  "assets/interest.min.js",
   "assets/bootstrap.js",
   "assets/bootstrap.min.js",
   "assets/home.js",
@@ -119,6 +125,7 @@ foreach ($htmlName in @("index.html", "product.html")) {
   if (($html -notmatch 'assets/i18n(?:\.min)?\.js' -and -not $usesBootstrap) -or $html -notmatch 'data-language-toggle') { $failures.Add("${htmlName}: falta la traducción ES/EN") | Out-Null }
   if ($html -match 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: el generador PDF no debe bloquear la carga inicial") | Out-Null }
   if ($html -notmatch 'champion-header-display\.webp') { $failures.Add("${htmlName}: no usa el logotipo optimizado de cabecera") | Out-Null }
+  if ($html -notmatch 'assets/audience(?:\.min)?\.js' -or $html -notmatch 'assets/audience(?:\.min)?\.css') { $failures.Add("${htmlName}: falta la compuerta B2C/B2B") | Out-Null }
   if ($html -notmatch 'favicon\.ico' -or $html -notmatch 'apple-touch-icon\.png') { $failures.Add("${htmlName}: falta el icono del navegador") | Out-Null }
 }
 
@@ -355,10 +362,64 @@ if (Test-Path -LiteralPath $homeScriptPath -PathType Leaf) {
 $requestPath = Join-Path $repoRoot "assets/request.js"
 if (Test-Path -LiteralPath $requestPath -PathType Leaf) {
   $requestText = [System.IO.File]::ReadAllText($requestPath, $utf8)
-  foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*24', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png', 'addContainedImage', 'trimmedCanvas', 'adjunte manualmente', 'pdfFileName\(\)', 'csvFileName\(\)')) {
+  foreach ($requiredPattern in @('MINIMUM_UNITS\s*=\s*24', 'data-request-pdf', 'data-request-whatsapp', 'data-request-email', 'orderNumber', 'innova-logo\.png', 'addContainedImage', 'trimmedCanvas', 'adjunte manualmente', 'pdfFileName\(\)', 'csvFileName\(\)', 'phoneCountryCode', 'renderPhoneField', 'renderCountryCombobox', 'normalizeCountryCode', 'validPhoneWithPrefix', 'fullClientPhone')) {
     if ($requestText -notmatch $requiredPattern) { $failures.Add("assets/request.js: falta requisito $requiredPattern") | Out-Null }
   }
   if ($requestText -notmatch 'ensurePdfLibrary' -or $requestText -notmatch 'jspdf\.umd\.min\.js') { $failures.Add("assets/request.js: falta la carga diferida del generador PDF") | Out-Null }
+}
+
+$audiencePath = Join-Path $repoRoot "assets/audience.js"
+if (Test-Path -LiteralPath $audiencePath -PathType Leaf) {
+  $audienceText = [System.IO.File]::ReadAllText($audiencePath, $utf8)
+  foreach ($requiredPattern in @('champion-audience-profile-v1', 'champion-b2c-profile-v1', 'champion-b2b-profile-v1', 'data-audience-select="b2c"', 'data-audience-select="b2b"', 'data-country-search', 'data-country-toggle', 'data-phone-search', 'data-phone-toggle', 'role="combobox"', 'aria-autocomplete="list"', 'aria-expanded', 'countryOrigin', 'phoneCountryCode', 'validPhoneWithPrefix', 'formattedPhone', 'productInterest', 'contactPreference', 'initialPurchase', 'usualPrice', 'frameStyle', 'postalAddress', 'consentContact', 'consentMarketing', 'pedido m.nimo vigente es de 24 piezas', 'sessionStorage', 'data-request-open', 'data-request-add', 'product\.html\?id=')) {
+    if ($audienceText -notmatch $requiredPattern) { $failures.Add("assets/audience.js: falta requisito $requiredPattern") | Out-Null }
+  }
+  foreach ($requiredQuestion in @('producto o modelo Champion te interesa', 'continuar la atenci.n', 'Precio que vende mejor', 'estilo de marcos tiene mayor salida en su .ptica')) {
+    if ($audienceText -notmatch $requiredQuestion) { $failures.Add("assets/audience.js: falta la pregunta controlada $requiredQuestion") | Out-Null }
+  }
+  if ($audienceText -notmatch "renderPhoneField\('b2c'.*'phone'.*'N.mero telef.nico'" -or $audienceText -notmatch "renderPhoneField\('b2b'.*'phone'.*'N.mero telef.nico'") {
+    $failures.Add("assets/audience.js: B2C y B2B deben usar el campo Número telefónico") | Out-Null
+  }
+  if ($audienceText -match "renderPhoneField\('b2c'.*'whatsapp'" -or $audienceText -match 'name="whatsapp"') {
+    $failures.Add("assets/audience.js: WhatsApp no debe existir como campo de contacto") | Out-Null
+  }
+  if ($audienceText -notmatch 'audience-phone-control' -or $audienceText -match 'audience-phone-row|request-phone-row') {
+    $failures.Add('assets/audience.js: el teléfono debe ser un solo control visual integrado') | Out-Null
+  }
+  if ($audienceText -notmatch "CONTACT_OPTIONS\s*=\s*\['WhatsApp'") {
+    $failures.Add("assets/audience.js: WhatsApp debe conservarse como preferencia de atención B2C") | Out-Null
+  }
+  foreach ($forbiddenB2CPreference in @('gustar.a comprar tus pr.ximos lentes', 'prefieres en tus lentes', 'rango orientativo tienes pensado')) {
+    if ($audienceText -match $forbiddenB2CPreference) { $failures.Add("assets/audience.js: conserva una preferencia B2C no aprobada ($forbiddenB2CPreference)") | Out-Null }
+  }
+  foreach ($country in @('islas_britanicas', 'jamaica', 'surinam', 'guyana', 'trinidad_y_tobago', 'costa_rica', 'honduras', 'el_salvador', 'republica_dominicana', 'colombia', 'nicaragua')) {
+    if ($audienceText -notmatch [regex]::Escape($country)) { $failures.Add("assets/audience.js: falta el país controlado $country") | Out-Null }
+  }
+  $dialDataMatch = [regex]::Match($audienceText, "REGION_DIALS\s*=\s*'([^']+)'\.split")
+  if (-not $dialDataMatch.Success) {
+    $failures.Add('assets/audience.js: falta la fuente global controlada de prefijos') | Out-Null
+  } else {
+    $dialEntries = $dialDataMatch.Groups[1].Value.Split(',', [System.StringSplitOptions]::RemoveEmptyEntries)
+    if ($dialEntries.Count -lt 240) { $failures.Add("assets/audience.js: la lista telefónica global tiene solo $($dialEntries.Count) regiones") | Out-Null }
+    foreach ($phoneCode in @('GB', 'JM', 'SR', 'GY', 'TT', 'CR', 'HN', 'SV', 'DO', 'CO', 'NI', 'US', 'ES', 'MX', 'JP', 'ZA', 'AU')) {
+      if ($dialEntries -notcontains ($dialEntries | Where-Object { $_ -like "$phoneCode`:*" } | Select-Object -First 1)) { $failures.Add("assets/audience.js: falta el prefijo global controlado $phoneCode") | Out-Null }
+    }
+  }
+  if ($audienceText -notmatch "COUNTRY_CODES\s*=.*'AQ'.*'BV'.*'GS'.*'HM'.*'UM'" -or $audienceText -notmatch 'renderCountryCombobox') {
+    $failures.Add('assets/audience.js: País o región no conserva cobertura global controlada') | Out-Null
+  }
+  if ($audienceText -match 'name="(?:state|province)"') { $failures.Add("assets/audience.js: Estado/provincia no debe existir en B2C ni B2B") | Out-Null }
+  if ($audienceText -match '\bfetch\s*\(' -or $audienceText -match 'webhook') { $failures.Add("assets/audience.js: no debe enviar datos ni declarar webhooks") | Out-Null }
+}
+
+$interestPath = Join-Path $repoRoot "assets/interest.js"
+if (Test-Path -LiteralPath $interestPath -PathType Leaf) {
+  $interestText = [System.IO.File]::ReadAllText($interestPath, $utf8)
+  foreach ($requiredPattern in @('champion-b2c-interest-v1', 'data-interest-add', 'data-interest-open', 'countryOrigin', 'phoneCountryCode', 'phoneDialCode', 'phoneInternational', 'city', 'buildLocalPayload', 'disabled')) {
+    if ($interestText -notmatch $requiredPattern) { $failures.Add("assets/interest.js: falta requisito $requiredPattern") | Out-Null }
+  }
+  if ($interestText -match 'champion-professional-request-v3' -or $interestText -match '\bfetch\s*\(') { $failures.Add("assets/interest.js: mezcla el estado B2B o intenta enviar datos") | Out-Null }
+  if ($interestText -match '\bwhatsapp\s*:' -or $interestText -match 'whatsappInternational') { $failures.Add("assets/interest.js: conserva WhatsApp como campo de contacto B2C") | Out-Null }
 }
 
 $publicCommercialFiles = @(

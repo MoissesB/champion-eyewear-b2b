@@ -24,6 +24,9 @@
 
   document.addEventListener('click', (event) => {
     if (ready) return;
+    const profile = window.ChampionAudience?.getProfile?.();
+    if (profile && profile !== 'b2b') return;
+    if (!profile && window.ChampionAudience) return;
     const control = event.target.closest('[data-request-open], [data-request-add]');
     if (!control) return;
 
@@ -33,7 +36,9 @@
   }, true);
 
   ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
-    window.addEventListener(eventName, loadRequest, {
+    window.addEventListener(eventName, () => {
+      if (!window.ChampionAudience || window.ChampionAudience.getProfile() === 'b2b') loadRequest();
+    }, {
       once: true,
       passive: eventName !== 'keydown',
     });
@@ -41,6 +46,8 @@
 
   window.addEventListener('load', () => {
     const delay = window.matchMedia('(max-width: 767px)').matches ? 4200 : 900;
-    window.setTimeout(loadRequest, delay);
+    window.setTimeout(() => {
+      if (!window.ChampionAudience || window.ChampionAudience.getProfile() === 'b2b') loadRequest();
+    }, delay);
   }, { once: true });
 })();

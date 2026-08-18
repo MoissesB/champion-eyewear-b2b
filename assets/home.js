@@ -116,6 +116,10 @@
   function card(source) {
     const product = i18n.localizeProduct(source);
     const detailUrl = `./product.html?id=${encodeURIComponent(product.id)}`;
+    const b2c = window.ChampionAudience?.getProfile?.() === 'b2c';
+    const action = b2c
+      ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">Me interesa este modelo</button>`
+      : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
     return `
       <article class="product-card" data-product-id="${escapeHtml(product.id)}">
         <a class="product-card-image" href="${detailUrl}" aria-label="${escapeHtml(i18n.t('viewDetails'))}: ${escapeHtml(product.displayModel)}">
@@ -127,7 +131,7 @@
           <h3><a href="${detailUrl}">${escapeHtml(product.displayModel)}</a></h3>
           <p class="product-card-color">${escapeHtml(product.color)}</p>
           <p class="product-card-spec">${escapeHtml(product.family === 'sun' ? product.shape : `${product.material} · ${product.measurements}`)}</p>
-          <div class="product-card-actions"><a href="${detailUrl}">${escapeHtml(i18n.t('viewDetails'))}</a><button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button></div>
+          <div class="product-card-actions"><a href="${detailUrl}">${escapeHtml(i18n.t('viewDetails'))}</a>${action}</div>
         </div>
       </article>`;
   }

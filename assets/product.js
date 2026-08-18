@@ -3,6 +3,7 @@
 
   const catalog = window.CHAMPION_CATALOG;
   const i18n = window.ChampionI18n;
+  const audience = window.ChampionAudience;
   if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
   const SITE_ORIGIN = 'https://champion-innova.com';
   const products = catalog.products;
@@ -12,6 +13,7 @@
     return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
   function detailUrl(product) { return `./product.html?id=${encodeURIComponent(product.id)}`; }
+  function isB2C() { return audience?.getProfile?.() === 'b2c'; }
 
   function upsertMeta(name, content) {
     let meta = document.querySelector(`meta[name="${name}"]`);
@@ -107,7 +109,10 @@
 
   function productCard(source) {
     const product = i18n.localizeProduct(source);
-    return `<article class="product-card related-card"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span></a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a><button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button></div></div></article>`;
+    const action = isB2C()
+      ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">Me interesa este modelo</button>`
+      : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
+    return `<article class="product-card related-card"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span></a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a>${action}</div></div></article>`;
   }
 
   function relatedSection() {
@@ -126,7 +131,55 @@
   }
 
   function mobileOrderBar(product) {
+    if (isB2C()) {
+      return `<div class="mobile-product-order-bar mobile-product-interest-bar"><div class="mobile-order-product"><strong>${escapeHtml(product.displayModel)}</strong><span>${escapeHtml(product.color)}</span></div><button class="button button-primary" type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">Me interesa este modelo</button></div>`;
+    }
     return `<div class="mobile-product-order-bar"><div class="mobile-order-product"><strong>${escapeHtml(product.displayModel)}</strong><span>${escapeHtml(product.color)}</span></div><label><span class="sr-only">${escapeHtml(i18n.t('requestedQuantity'))}</span><input id="mobileProductQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric" aria-label="${escapeHtml(i18n.t('requestedQuantity'))}"></label><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="mobileProductQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div>`;
+  }
+
+  function productActionBox(product) {
+    if (isB2C()) {
+      return `<div class="product-request-box product-interest-box"><span class="eyebrow">Selección personal</span><h2>¿Te interesa este modelo?</h2><p>Guárdalo junto con otras referencias Champion. No es una compra, reserva ni pedido.</p><div class="product-interest-actions"><button class="button button-primary" type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">Me interesa este modelo</button><button class="request-link" type="button" data-interest-open>Ver mis modelos</button></div></div>`;
+    }
+    return `<div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div class="product-order-entry"><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>`;
+  }
+
+  function updateAudienceChrome() {
+    const profile = isB2C() ? 'b2c' : 'b2b';
+    document.body.dataset.audience = profile;
+    document.documentElement.dataset.championAudience = profile;
+    const announcement = document.querySelector('.product-announcement');
+    const requestButton = document.querySelector('.product-header [data-request-open], .product-header [data-interest-open]');
+    if (profile === 'b2c') {
+      if (announcement) { announcement.removeAttribute('data-i18n'); announcement.textContent = 'CHAMPION EYEWEAR · Guarda tus modelos favoritos y solicita orientación'; }
+      if (requestButton) {
+        requestButton.setAttribute('data-interest-open', '');
+        requestButton.setAttribute('aria-label', 'Abrir mis modelos Champion');
+        requestButton.innerHTML = `<span>Mis modelos</span> <span data-interest-count>${window.ChampionInterest?.count?.() || 0}</span>`;
+      }
+      const conditions = document.querySelector('[data-i18n="footerConditions"]');
+      const minimum = document.querySelector('[data-i18n="footerMinimum"]');
+      const mix = document.querySelector('[data-i18n="footerMix"]');
+      [conditions, minimum, mix].forEach((node) => node?.removeAttribute('data-i18n'));
+      if (conditions) conditions.textContent = 'Tu selección Champion';
+      if (minimum) minimum.textContent = 'Guarda los modelos que te interesan';
+      if (mix) mix.textContent = 'No es una compra, reserva ni pedido';
+      const brandText = document.querySelector('.product-brand span');
+      if (brandText) { brandText.removeAttribute('data-i18n'); brandText.textContent = 'Modelos Champion para tu estilo.'; }
+      const faqSection = document.getElementById('preguntas');
+      if (faqSection) faqSection.hidden = true;
+      const faqLink = document.querySelector('.product-header nav a[href="#preguntas"]');
+      if (faqLink) faqLink.hidden = true;
+    }
+    const nav = document.querySelector('.product-header nav');
+    if (nav && !nav.querySelector('[data-audience-change]')) {
+      const change = document.createElement('button');
+      change.type = 'button';
+      change.className = 'audience-switch';
+      change.dataset.audienceChange = '';
+      change.textContent = 'Cambiar perfil';
+      nav.insertBefore(change, requestButton || null);
+    }
   }
 
   function gallery(product) {
@@ -149,17 +202,18 @@
     const variants = products.filter((candidate) => candidate.series === source.series);
     const backAnchor = product.family === 'sun' ? 'lentes-sol' : 'monturas';
     updateSearchMetadata(product);
+    updateAudienceChrome();
     document.querySelector('.back-control')?.setAttribute('href', `./index.html#${backAnchor}`);
     if (!root) return;
     root.innerHTML = `<div class="product-media-column">${gallery(product)}${relatedSection()}</div><div class="product-details">
       <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="./index.html">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="./index.html#${backAnchor}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
       <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span><h1>${escapeHtml(product.displayModel)}</h1>${variantPickerMarkup(variants, product, 'mobile-product-variants')}<p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
       ${variantPickerMarkup(variants, product, 'desktop-product-variants')}
-      <div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div class="product-order-entry"><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>
-      <div class="product-tabs"><div class="tab-list" role="tablist" aria-label="${escapeHtml(i18n.t('tabsAria'))}"><button class="is-active" type="button" role="tab" aria-selected="true" data-tab="description">${escapeHtml(i18n.t('tabDescription'))}</button><button type="button" role="tab" aria-selected="false" data-tab="specs">${escapeHtml(i18n.t('tabSpecs'))}</button><button type="button" role="tab" aria-selected="false" data-tab="terms">${escapeHtml(i18n.t('tabTerms'))}</button></div>
+      ${productActionBox(product)}
+      <div class="product-tabs"><div class="tab-list" role="tablist" aria-label="${escapeHtml(i18n.t('tabsAria'))}"><button class="is-active" type="button" role="tab" aria-selected="true" data-tab="description">${escapeHtml(i18n.t('tabDescription'))}</button><button type="button" role="tab" aria-selected="false" data-tab="specs">${escapeHtml(i18n.t('tabSpecs'))}</button>${isB2C() ? '' : `<button type="button" role="tab" aria-selected="false" data-tab="terms">${escapeHtml(i18n.t('tabTerms'))}</button>`}</div>
         <section class="tab-panel is-active" data-panel="description"><p>${escapeHtml(product.about?.p1 || product.shortDescription)}</p><p>${escapeHtml(product.about?.p2 || '')}</p><ul>${(product.about?.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul></section>
         <section class="tab-panel" data-panel="specs" hidden><dl class="spec-list">${specs(product)}</dl></section>
-        <section class="tab-panel" data-panel="terms" hidden><p>${escapeHtml(i18n.t('termIntro'))}</p><ul><li>${escapeHtml(i18n.t('term1'))}</li><li>${escapeHtml(i18n.t('term2'))}</li><li>${escapeHtml(i18n.t('term3'))}</li></ul></section>
+        ${isB2C() ? '' : `<section class="tab-panel" data-panel="terms" hidden><p>${escapeHtml(i18n.t('termIntro'))}</p><ul><li>${escapeHtml(i18n.t('term1'))}</li><li>${escapeHtml(i18n.t('term2'))}</li><li>${escapeHtml(i18n.t('term3'))}</li></ul></section>`}
       </div>
     </div>${mobileOrderBar(product)}`;
     bindGallery(product); bindTabs();
@@ -335,6 +389,7 @@
 
   function renderProductFaq() {
     const root = document.getElementById('productFaqRoot'); if (!root) return;
+    if (isB2C()) { root.innerHTML = ''; return; }
     root.innerHTML = i18n.faq().map((group, groupIndex) => `<section class="product-faq-group"><h3>${escapeHtml(group.title)}</h3>${group.items.map(([question, answer], itemIndex) => `<details ${groupIndex === 0 && itemIndex === 0 ? 'open' : ''}><summary><span>${escapeHtml(question)}</span><span aria-hidden="true">⌄</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</section>`).join('');
   }
 
@@ -373,9 +428,12 @@
   }
 
   function rerender() { if (currentProduct) { renderProduct(currentProduct); renderRelated(currentProduct); renderProductFaq(); } else renderNotFound(); }
-  function init() {
+  async function init() {
     const id = new URLSearchParams(window.location.search).get('id'); currentProduct = products.find((candidate) => candidate.id === id);
     if (!currentProduct) { if (markProductNotFound()) return; renderNotFound(); document.getElementById('similares')?.remove(); i18n.onChange(renderNotFound); return; }
+    const profile = await (audience?.guard?.({ type: 'view-product', productId: id, required: true, deferDispatch: true }) || Promise.resolve('b2b'));
+    if (!profile) return;
+    await audience?.ensureController?.(profile);
     renderProduct(currentProduct); renderSecondaryContent(currentProduct); i18n.onChange(rerender);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();

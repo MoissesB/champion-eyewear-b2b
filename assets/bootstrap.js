@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const version = 'commercial-20260807-24';
+  const version = 'audience-20260818-11';
   let ready = false;
   let loading;
 
@@ -19,11 +19,13 @@
   function loadApplication() {
     if (loading) return loading;
 
-    loading = Promise.all([
+    const audience = window.ChampionAudience;
+    const base = audience?.loadBase?.() || Promise.all([
       loadScript('./data/products.min.js'),
       loadScript('./assets/i18n.min.js'),
-    ])
-      .then(() => loadScript('./assets/request.min.js'))
+    ]);
+    loading = base
+      .then(() => audience?.ensureController?.(audience.getProfile()) || loadScript('./assets/request.min.js'))
       .then(() => loadScript('./assets/home.min.js'))
       .then(() => {
         ready = true;
@@ -34,7 +36,7 @@
 
   document.addEventListener('click', (event) => {
     if (ready) return;
-    const control = event.target.closest('[data-language-toggle], [data-request-open], [data-menu-toggle]');
+    const control = event.target.closest('[data-language-toggle], [data-menu-toggle]');
     if (!control) return;
 
     event.preventDefault();
