@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const version = 'audience-20260818-11';
+  const version = 'audience-20260818-12';
   let ready = false;
   let loading;
 

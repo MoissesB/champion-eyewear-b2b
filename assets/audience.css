@@ -397,6 +397,38 @@ body.audience-modal-open {
   min-width: 0;
 }
 
+.audience-phone-selected-flag {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 12px;
+  width: 24px;
+  height: 18px;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(11, 16, 45, .12);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.audience-phone-selected-flag[hidden] { display: none !important; }
+
+.audience-phone-selected-flag img,
+.audience-phone-flag img {
+  width: 24px;
+  height: 18px;
+  display: block;
+  object-fit: cover;
+}
+
+.audience-phone-selected-flag .audience-phone-flag-fallback {
+  width: 24px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  font-size: .95rem;
+}
+
 .audience-phone-search {
   width: 100%;
   min-height: 50px;
@@ -408,6 +440,10 @@ body.audience-modal-open {
   font: inherit;
   font-weight: 600;
   outline: none !important;
+}
+
+.audience-phone-search.has-selected-flag {
+  padding-left: 44px !important;
 }
 
 .audience-phone-number-input {
@@ -478,7 +514,11 @@ body.audience-modal-open {
 }
 
 .audience-phone-flag {
-  font-size: 1.18rem;
+  width: 24px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 1.05rem;
 }
 
 .audience-phone-option:hover,

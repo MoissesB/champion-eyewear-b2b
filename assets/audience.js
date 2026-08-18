@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const VERSION = 'audience-20260818-11';
+  const VERSION = 'audience-20260818-12';
   const PROFILE_KEY = 'champion-audience-profile-v1';
   const B2C_PROFILE_KEY = 'champion-b2c-profile-v1';
   const B2B_PROFILE_KEY = 'champion-b2b-profile-v1';
@@ -17,6 +17,10 @@
   const displayNamesEs = typeof Intl.DisplayNames === 'function' ? new Intl.DisplayNames(['es'], { type: 'region' }) : null;
   const regionName = (code) => REGION_NAME_OVERRIDES[code] || displayNamesEs?.of(code) || code;
   const flagForRegion = (code) => String(code).replace(/[A-Z]/g, (letter) => String.fromCodePoint(127397 + letter.charCodeAt(0)));
+  const flagImageUrl = (code) => `https://flagcdn.com/24x18/${String(code).toLowerCase()}.png`;
+  const flagMarkup = (code, emoji) => ['AC', 'TA'].includes(code)
+    ? `<span class="audience-phone-flag-fallback" aria-hidden="true">${emoji}</span>`
+    : `<img src="${flagImageUrl(code)}" alt="" width="24" height="18" loading="lazy" decoding="async">`;
   const COUNTRY_CODES = [...new Set([...REGION_DIALS.map(({ code }) => code), 'AQ', 'BV', 'GS', 'HM', 'UM'])];
   const COUNTRIES = COUNTRY_CODES.map((code) => [code, regionName(code)]).sort((a, b) => a[1].localeCompare(b[1], 'es'));
   const PHONE_PREFIXES = REGION_DIALS.map(({ code, dial }) => ({ code, dial, flag: flagForRegion(code), label: regionName(code) })).sort((a, b) => a.label.localeCompare(b.label, 'es'));
@@ -275,13 +279,14 @@
     const labelId = `${prefix}PhonePrefixLabel`;
     const listId = `${prefix}PhonePrefixListbox`;
     const selected = phonePrefix(selectedCode);
-    const options = PHONE_PREFIXES.map((item, index) => `<button id="${prefix}PhonePrefixOption${index}" class="audience-phone-option" type="button" role="option" aria-selected="${selected?.code === item.code ? 'true' : 'false'}" data-phone-option data-phone-code="${item.code}" data-phone-dial="${item.dial}" data-phone-label="${escapeHtml(item.label)}" data-phone-search-text="${escapeHtml(`${item.label} ${item.code} ${item.dial}`)}"><span class="audience-phone-flag" aria-hidden="true">${item.flag}</span><span><strong>${item.code}</strong><small>${escapeHtml(item.label)}</small></span><b>${item.dial}</b></button>`).join('');
+    const options = PHONE_PREFIXES.map((item, index) => `<button id="${prefix}PhonePrefixOption${index}" class="audience-phone-option" type="button" role="option" aria-selected="${selected?.code === item.code ? 'true' : 'false'}" data-phone-option data-phone-code="${item.code}" data-phone-dial="${item.dial}" data-phone-label="${escapeHtml(item.label)}" data-phone-search-text="${escapeHtml(`${item.label} ${item.code} ${item.dial}`)}"><span class="audience-phone-flag" aria-hidden="true">${flagMarkup(item.code, item.flag)}</span><span><strong>${item.code}</strong><small>${escapeHtml(item.label)}</small></span><b>${item.dial}</b></button>`).join('');
     const controlledOptions = PHONE_PREFIXES.map((item) => `<option value="${item.code}"${selected?.code === item.code ? ' selected' : ''}>${escapeHtml(`${item.label} ${item.dial}`)}</option>`).join('');
-    const selectedDisplay = selected ? (integrated ? `${selected.flag} ${selected.dial}` : phonePrefixDisplay(selectedCode)) : '';
+    const selectedDisplay = selected ? (integrated ? selected.dial : phonePrefixDisplay(selectedCode)) : '';
     return `<div class="audience-phone-prefix${integrated ? ' is-integrated' : ''}">
       ${integrated ? `<span class="sr-only" id="${labelId}">${escapeHtml(label)}</span>` : `<label id="${labelId}" for="${inputId}">${escapeHtml(label)} *</label>`}
       <div class="audience-phone-combobox">
-        <input id="${inputId}" class="audience-phone-search" type="search" role="combobox" aria-labelledby="${labelId}" aria-controls="${listId}" aria-expanded="false" aria-autocomplete="list" aria-required="true" placeholder="Prefijo" autocomplete="off" value="${escapeHtml(selectedDisplay)}" data-phone-search required>
+        ${integrated ? `<span class="audience-phone-selected-flag" data-phone-selected-flag${selected ? '' : ' hidden'}>${selected ? flagMarkup(selected.code, selected.flag) : ''}</span>` : ''}
+        <input id="${inputId}" class="audience-phone-search${integrated && selected ? ' has-selected-flag' : ''}" type="search" role="combobox" aria-labelledby="${labelId}" aria-controls="${listId}" aria-expanded="false" aria-autocomplete="list" aria-required="true" placeholder="Prefijo" autocomplete="off" value="${escapeHtml(selectedDisplay)}" data-phone-search required>
         <button class="audience-combobox-toggle" type="button" data-phone-toggle aria-label="Abrir o cerrar la lista de prefijos internacionales" aria-controls="${listId}" aria-expanded="false"><span aria-hidden="true">⌄</span></button>
         <div id="${listId}" class="audience-phone-listbox" role="listbox" aria-labelledby="${labelId}" hidden>${options}<p class="audience-phone-empty" role="status" hidden>No se encontraron países o prefijos.</p></div>
         <select class="audience-phone-value" name="phoneCountryCode" hidden><option value=""></option>${controlledOptions}</select>
@@ -594,6 +599,15 @@
     if (help) help.textContent = dial ? `Prefijo ${dial} seleccionado.` : 'Selecciona primero el prefijo internacional.';
   }
 
+  function updateSelectedPhoneFlag(input, code = '') {
+    const slot = input?.closest('.audience-phone-prefix')?.querySelector('[data-phone-selected-flag]');
+    if (!slot) return;
+    const prefix = phonePrefix(code);
+    slot.innerHTML = prefix ? flagMarkup(prefix.code, prefix.flag) : '';
+    slot.hidden = !prefix;
+    input.classList.toggle('has-selected-flag', Boolean(prefix));
+  }
+
   function visiblePhoneOptions(input) {
     const { listbox } = phoneParts(input);
     return listbox ? Array.from(listbox.querySelectorAll('[data-phone-option]')).filter((option) => !option.hidden) : [];
@@ -637,6 +651,7 @@
     const { listbox, select, empty } = phoneParts(input);
     if (!listbox || !select) return;
     select.value = '';
+    updateSelectedPhoneFlag(input);
     updatePhoneHelp(input);
     select.dispatchEvent(new Event('input', { bubbles: true }));
     listbox.querySelectorAll('[data-phone-option]').forEach((option) => {
@@ -656,10 +671,9 @@
     const { listbox, select } = phoneParts(input);
     if (!listbox || !select || !phonePrefixValues.has(option.dataset.phoneCode)) return;
     const integrated = Boolean(input.closest('.audience-phone-field'));
-    input.value = integrated
-      ? `${option.querySelector('.audience-phone-flag')?.textContent || ''} ${option.dataset.phoneDial}`.trim()
-      : `${option.querySelector('.audience-phone-flag')?.textContent || ''} ${option.dataset.phoneCode} · ${option.dataset.phoneDial}`.trim();
+    input.value = integrated ? option.dataset.phoneDial : `${option.dataset.phoneCode} · ${option.dataset.phoneDial}`;
     select.value = option.dataset.phoneCode;
+    updateSelectedPhoneFlag(input, option.dataset.phoneCode);
     updatePhoneHelp(input, option.dataset.phoneDial);
     input.setCustomValidity('');
     listbox.querySelectorAll('[data-phone-option]').forEach((node) => node.setAttribute('aria-selected', String(node === option)));
