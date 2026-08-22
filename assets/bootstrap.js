@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  const version = 'audience-20260818-12';
+  const version = 'catalog-20260823-1';
+  const reviewMode = document.documentElement.hasAttribute('data-champion-review');
   let ready = false;
   let loading;
 
@@ -25,7 +26,7 @@
       loadScript('./assets/i18n.min.js'),
     ]);
     loading = base
-      .then(() => audience?.ensureController?.(audience.getProfile()) || loadScript('./assets/request.min.js'))
+      .then(() => reviewMode ? undefined : (audience?.ensureController?.(audience.getProfile()) || loadScript('./assets/request.min.js')))
       .then(() => loadScript('./assets/home.min.js'))
       .then(() => {
         ready = true;

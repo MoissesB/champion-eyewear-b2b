@@ -30,6 +30,8 @@ $requiredFiles = @(
   "assets/i18n.min.js",
   "assets/audience.js",
   "assets/audience.min.js",
+  "assets/review.js",
+  "assets/review.min.js",
   "assets/audience.css",
   "assets/audience.min.css",
   "assets/interest.js",
@@ -126,6 +128,7 @@ foreach ($htmlName in @("index.html", "product.html")) {
   if ($html -match 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: el generador PDF no debe bloquear la carga inicial") | Out-Null }
   if ($html -notmatch 'champion-header-display\.webp') { $failures.Add("${htmlName}: no usa el logotipo optimizado de cabecera") | Out-Null }
   if ($html -notmatch 'assets/audience(?:\.min)?\.js' -or $html -notmatch 'assets/audience(?:\.min)?\.css') { $failures.Add("${htmlName}: falta la compuerta B2C/B2B") | Out-Null }
+  if ($html -notmatch 'assets/review(?:\.min)?\.js') { $failures.Add("${htmlName}: falta el modo privado de revisión") | Out-Null }
   if ($html -notmatch 'favicon\.ico' -or $html -notmatch 'apple-touch-icon\.png') { $failures.Add("${htmlName}: falta el icono del navegador") | Out-Null }
 }
 
@@ -300,8 +303,19 @@ if (Test-Path -LiteralPath $notFoundPath -PathType Leaf) {
 $workerPath = Join-Path $repoRoot "hosting/worker.js"
 if (Test-Path -LiteralPath $workerPath -PathType Leaf) {
   $workerText = [System.IO.File]::ReadAllText($workerPath, $utf8)
-  foreach ($requiredPattern in @("url\.protocol === 'http:'", 'PRODUCT_IDS\.has\(id\)', "headers\.set\('X-Robots-Tag', 'noindex, follow'\)", "url\.pathname === '/index\.html'")) {
+  foreach ($requiredPattern in @("url\.protocol === 'http:'", 'PRODUCT_IDS\.has\(id\)', "headers\.set\('X-Robots-Tag', 'noindex, follow'\)", "url\.pathname === '/index\.html'", 'REVIEW_PARAMS', 'private, no-store', 'noindex, nofollow, noarchive')) {
     if ($workerText -notmatch $requiredPattern) { $failures.Add("hosting/worker.js: falta control SEO $requiredPattern") | Out-Null }
+  }
+}
+
+$reviewPath = Join-Path $repoRoot "assets/review.js"
+if (Test-Path -LiteralPath $reviewPath -PathType Leaf) {
+  $reviewText = [System.IO.File]::ReadAllText($reviewPath, $utf8)
+  foreach ($requiredPattern in @('champion_review', 'champion_review_exit', 'champion-review-session-v1', 'sessionStorage', 'history\.replaceState', 'data-champion-review', 'noindex, nofollow, noarchive', 'EXPECTED_FINGERPRINT')) {
+    if ($reviewText -notmatch $requiredPattern) { $failures.Add("assets/review.js: falta requisito privado $requiredPattern") | Out-Null }
+  }
+  if ($reviewText -match 'EXPECTED_TOKEN|reviewToken\s*=') {
+    $failures.Add("assets/review.js: no debe guardar el token de revisión en claro") | Out-Null
   }
 }
 
@@ -311,6 +325,9 @@ if (Test-Path -LiteralPath $requestLoaderPath -PathType Leaf) {
   if ($requestLoaderText -notmatch 'request\.min\.js' -or $requestLoaderText -notmatch 'loadRequest') {
     $failures.Add("assets/request-loader.js: falta la carga diferida del pedido") | Out-Null
   }
+  if ($requestLoaderText -notmatch 'data-champion-review') {
+    $failures.Add("assets/request-loader.js: no respeta la sesión privada de revisión") | Out-Null
+  }
 }
 
 $bootstrapPath = Join-Path $repoRoot "assets/bootstrap.js"
@@ -318,6 +335,9 @@ if (Test-Path -LiteralPath $bootstrapPath -PathType Leaf) {
   $bootstrapText = [System.IO.File]::ReadAllText($bootstrapPath, $utf8)
   foreach ($requiredPattern in @('data/products\.min\.js', 'assets/i18n\.min\.js', 'assets/request\.min\.js', 'assets/home\.min\.js', 'loadApplication')) {
     if ($bootstrapText -notmatch $requiredPattern) { $failures.Add("assets/bootstrap.js: falta la carga diferida de $requiredPattern") | Out-Null }
+  }
+  if ($bootstrapText -notmatch 'data-champion-review') {
+    $failures.Add("assets/bootstrap.js: no respeta la sesión privada de revisión") | Out-Null
   }
 }
 
@@ -371,6 +391,9 @@ if (Test-Path -LiteralPath $requestPath -PathType Leaf) {
 $audiencePath = Join-Path $repoRoot "assets/audience.js"
 if (Test-Path -LiteralPath $audiencePath -PathType Leaf) {
   $audienceText = [System.IO.File]::ReadAllText($audiencePath, $utf8)
+  if ($audienceText -notmatch 'data-champion-review') {
+    $failures.Add("assets/audience.js: no respeta la sesión privada de revisión") | Out-Null
+  }
   foreach ($requiredPattern in @('champion-audience-profile-v1', 'champion-b2c-profile-v1', 'champion-b2b-profile-v1', 'data-audience-select="b2c"', 'data-audience-select="b2b"', 'data-country-search', 'data-country-toggle', 'data-phone-search', 'data-phone-toggle', 'role="combobox"', 'aria-autocomplete="list"', 'aria-expanded', 'countryOrigin', 'phoneCountryCode', 'validPhoneWithPrefix', 'formattedPhone', 'productInterest', 'contactPreference', 'initialPurchase', 'usualPrice', 'frameStyle', 'postalAddress', 'consentContact', 'consentMarketing', 'pedido m.nimo vigente es de 24 piezas', 'sessionStorage', 'data-request-open', 'data-request-add', 'product\.html\?id=')) {
     if ($audienceText -notmatch $requiredPattern) { $failures.Add("assets/audience.js: falta requisito $requiredPattern") | Out-Null }
   }

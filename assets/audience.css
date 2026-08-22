@@ -7,6 +7,23 @@
   --audience-line: #e2e5ec;
 }
 
+html[data-champion-review] #audiencePortal,
+html[data-champion-review] #requestPortal,
+html[data-champion-review] #interestPortal,
+html[data-champion-review] [data-audience-change],
+html[data-champion-review] [data-request-open],
+html[data-champion-review] [data-request-add],
+html[data-champion-review] [data-interest-open],
+html[data-champion-review] [data-interest-add],
+html[data-champion-review] .product-request-box,
+html[data-champion-review] .mobile-product-order-bar {
+  display: none !important;
+}
+
+html[data-champion-review] .product-card {
+  content-visibility: visible !important;
+}
+
 html[data-champion-audience="pending"] body[data-page="product"] > :not(#audiencePortal) {
   visibility: hidden;
 }

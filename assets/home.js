@@ -6,6 +6,12 @@
   if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
 
   const products = catalog.products;
+  const newModelIds = new Set([
+    'ch03-c5', 'ch04-c5', 'ch05-c5', 'ch07-c5',
+    'ch20-c1', 'ch20-c2', 'ch20-c3', 'ch20-c4',
+    'ch21-c1', 'ch21-c2', 'ch21-c3', 'ch21-c4',
+    'ch22-c1', 'ch22-c2', 'ch22-c3', 'ch22-c4',
+  ]);
   const facetConfig = {
     optical: [
       { key: 'collection', label: 'filterCollection' },
@@ -37,6 +43,14 @@
 
   function normalize(value) {
     return String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  }
+
+  function isNewModel(product) {
+    return newModelIds.has(product.id);
+  }
+
+  function cardCover(product) {
+    return isNewModel(product) && product.images?.[0] ? product.images[0] : product.cover;
   }
 
   function searchable(product) {
@@ -121,10 +135,11 @@
       ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">Me interesa este modelo</button>`
       : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
     return `
-      <article class="product-card" data-product-id="${escapeHtml(product.id)}">
+      <article class="product-card${isNewModel(source) ? ' is-new-model' : ''}" data-product-id="${escapeHtml(product.id)}">
         <a class="product-card-image" href="${detailUrl}" aria-label="${escapeHtml(i18n.t('viewDetails'))}: ${escapeHtml(product.displayModel)}">
-          <img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)} — ${escapeHtml(product.color)}" loading="lazy" decoding="async">
+          <img src="./${escapeHtml(cardCover(source))}" alt="${escapeHtml(product.displayModel)} — ${escapeHtml(product.color)}" loading="lazy" decoding="async">
           <span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span>
+          ${isNewModel(source) ? '<span class="product-new-badge">Modelo nuevo</span>' : ''}
         </a>
         <div class="product-card-body">
           <div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div>
@@ -136,6 +151,23 @@
       </article>`;
   }
 
+  function groupedCards(matches) {
+    const groups = new Map();
+    matches.forEach((product) => {
+      if (!groups.has(product.series)) groups.set(product.series, []);
+      groups.get(product.series).push(product);
+    });
+    return [...groups.entries()].map(([series, variants]) => {
+      variants.sort((a, b) => a.variant.localeCompare(b.variant, 'es', { numeric: true, sensitivity: 'base' }));
+      const label = variants[0].displayModel.replace(/\s+C\d+$/i, '');
+      const headingId = `model-${series.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+      return `<section class="model-variant-group" aria-labelledby="${escapeHtml(headingId)}">
+        <div class="model-variant-heading"><h3 id="${escapeHtml(headingId)}">${escapeHtml(label)}</h3><span>${variants.length} ${variants.length === 1 ? 'variante' : 'variantes'}</span></div>
+        <div class="model-variant-grid variant-columns-${Math.min(5, variants.length)}">${variants.map(card).join('')}</div>
+      </section>`;
+    }).join('');
+  }
+
   function renderFamily(family) {
     const config = family === 'sun'
       ? { grid: 'sunGrid', status: 'sunStatus', singular: 'sunOne', plural: 'sunMany' }
@@ -145,7 +177,10 @@
     const matches = products.filter((product) => product.family === family && matchesFacets(product, familyState.facets) && (!query || searchable(product).includes(query)));
     const grid = document.getElementById(config.grid);
     const status = document.getElementById(config.status);
-    if (grid) grid.innerHTML = matches.length ? matches.map(card).join('') : `<div class="catalog-empty"><strong>${escapeHtml(i18n.t('noMatchesTitle'))}</strong><span>${escapeHtml(i18n.t('noMatchesText'))}</span></div>`;
+    if (grid) {
+      grid.classList.toggle('is-series-grouped', matches.length > 0);
+      grid.innerHTML = matches.length ? groupedCards(matches) : `<div class="catalog-empty"><strong>${escapeHtml(i18n.t('noMatchesTitle'))}</strong><span>${escapeHtml(i18n.t('noMatchesText'))}</span></div>`;
+    }
     const collection = selectedCollection(family);
     if (status) status.textContent = `${matches.length} ${i18n.t(matches.length === 1 ? config.singular : config.plural)}${collection === 'all' ? '' : ` ${i18n.t('inCollection')} ${collection}`}`;
     renderCollectionInfo(family);

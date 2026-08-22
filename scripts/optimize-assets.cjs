@@ -10,6 +10,7 @@ const targets = [
   ['assets/i18n.js', 'assets/i18n.min.js', 'js'],
   ['assets/audience.js', 'assets/audience.min.js', 'js'],
   ['assets/audience.css', 'assets/audience.min.css', 'css'],
+  ['assets/review.js', 'assets/review.min.js', 'js'],
   ['assets/interest.js', 'assets/interest.min.js', 'js'],
   ['assets/bootstrap.js', 'assets/bootstrap.min.js', 'js'],
   ['assets/request-loader.js', 'assets/request-loader.min.js', 'js'],

@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  if (document.documentElement.hasAttribute('data-champion-review')) return;
+
   const VERSION = 'audience-20260818-12';
   const PROFILE_KEY = 'champion-audience-profile-v1';
   const B2C_PROFILE_KEY = 'champion-b2c-profile-v1';

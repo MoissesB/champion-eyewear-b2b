@@ -896,6 +896,60 @@ h3 {
   gap: 22px;
 }
 
+.product-grid.is-series-grouped {
+  display: block;
+}
+
+.model-variant-group + .model-variant-group {
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.model-variant-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 4px 14px;
+}
+
+.model-variant-heading h3 {
+  margin: 0;
+  color: var(--champion-blue);
+  font-size: 1.35rem;
+}
+
+.model-variant-heading span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.model-variant-grid {
+  --variant-columns: 5;
+  display: grid;
+  grid-template-columns: repeat(var(--variant-columns), minmax(0, 1fr));
+  gap: 16px;
+}
+
+.model-variant-grid.variant-columns-4 {
+  --variant-columns: 4;
+}
+
+.model-variant-grid.variant-columns-3 {
+  --variant-columns: 3;
+}
+
+.model-variant-grid.variant-columns-2 {
+  --variant-columns: 2;
+}
+
+.model-variant-grid.variant-columns-1 {
+  --variant-columns: 1;
+}
+
 .product-card {
   position: relative;
   min-width: 0;
@@ -946,6 +1000,19 @@ h3 {
   transition: transform 0.35s ease;
 }
 
+/* Las nuevas tomas diagonales ocupan todo el lienzo 4:3. Esta reserva las
+   mismas bandas visuales que las portadas históricas cuadradas y mantiene
+   el armazón alineado bajo las etiquetas, sin modificar la imagen fuente. */
+.product-card.is-new-model .product-card-image img {
+  padding: 21% 12% 1%;
+  transform: translateY(14px);
+}
+
+/* Conserva el desplazamiento óptico al ampliar la portada con hover. */
+.product-card.is-new-model:hover .product-card-image img {
+  transform: translateY(14px) scale(1.035);
+}
+
 .product-card:hover .product-card-image img {
   transform: scale(1.035);
 }
@@ -963,6 +1030,38 @@ h3 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   backdrop-filter: blur(8px);
+}
+
+.product-new-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  background: var(--champion-red);
+  box-shadow: 0 8px 22px rgba(209, 18, 43, 0.28);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.product-new-detail-badge {
+  width: fit-content;
+  display: inline-flex;
+  margin: 10px 0 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--champion-red);
+  box-shadow: 0 8px 24px rgba(209, 18, 43, 0.22);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .product-card-body {
@@ -3175,6 +3274,10 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .model-variant-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .product-faq-list {
     grid-template-columns: 1fr;
   }
@@ -3372,6 +3475,16 @@ h3 {
   .related-grid,
   .process-grid {
     grid-template-columns: 1fr;
+  }
+
+  .model-variant-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .model-variant-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .related-section-inline {

@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  if (document.documentElement.hasAttribute('data-champion-review')) return;
+
   let ready = false;
   let loading;
 

@@ -7,6 +7,12 @@
   if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
   const SITE_ORIGIN = 'https://champion-innova.com';
   const products = catalog.products;
+  const newModelIds = new Set([
+    'ch03-c5', 'ch04-c5', 'ch05-c5', 'ch07-c5',
+    'ch20-c1', 'ch20-c2', 'ch20-c3', 'ch20-c4',
+    'ch21-c1', 'ch21-c2', 'ch21-c3', 'ch21-c4',
+    'ch22-c1', 'ch22-c2', 'ch22-c3', 'ch22-c4',
+  ]);
   let currentProduct;
 
   function escapeHtml(value) {
@@ -14,6 +20,8 @@
   }
   function detailUrl(product) { return `./product.html?id=${encodeURIComponent(product.id)}`; }
   function isB2C() { return audience?.getProfile?.() === 'b2c'; }
+  function isNewModel(product) { return newModelIds.has(product.id); }
+  function cardCover(product) { return isNewModel(product) && product.images?.[0] ? product.images[0] : product.cover; }
 
   function upsertMeta(name, content) {
     let meta = document.querySelector(`meta[name="${name}"]`);
@@ -114,7 +122,7 @@
     const action = isB2C()
       ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">Me interesa este modelo</button>`
       : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
-    return `<article class="product-card related-card"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span></a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a>${action}</div></div></article>`;
+    return `<article class="product-card related-card${isNewModel(source) ? ' is-new-model' : ''}"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(cardCover(source))}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span>${isNewModel(source) ? '<span class="product-new-badge">Modelo nuevo</span>' : ''}</a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a>${action}</div></div></article>`;
   }
 
   function relatedSection() {
@@ -209,7 +217,7 @@
     if (!root) return;
     root.innerHTML = `<div class="product-media-column">${gallery(product)}${relatedSection()}</div><div class="product-details">
       <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="./index.html">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="./index.html#${backAnchor}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
-      <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span><h1>${escapeHtml(product.displayModel)}</h1>${variantPickerMarkup(variants, product, 'mobile-product-variants')}<p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
+      <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span>${isNewModel(source) ? '<span class="product-new-detail-badge">Modelo nuevo</span>' : ''}<h1>${escapeHtml(product.displayModel)}</h1>${variantPickerMarkup(variants, product, 'mobile-product-variants')}<p class="product-subline">${escapeHtml(product.subline)}</p><div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>
       ${variantPickerMarkup(variants, product, 'desktop-product-variants')}
       ${productActionBox(product)}
       <div class="product-tabs"><div class="tab-list" role="tablist" aria-label="${escapeHtml(i18n.t('tabsAria'))}"><button class="is-active" type="button" role="tab" aria-selected="true" data-tab="description">${escapeHtml(i18n.t('tabDescription'))}</button><button type="button" role="tab" aria-selected="false" data-tab="specs">${escapeHtml(i18n.t('tabSpecs'))}</button>${isB2C() ? '' : `<button type="button" role="tab" aria-selected="false" data-tab="terms">${escapeHtml(i18n.t('tabTerms'))}</button>`}</div>
