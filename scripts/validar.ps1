@@ -73,8 +73,8 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
     $optical = @($products | Where-Object family -eq "optical")
     $sun = @($products | Where-Object family -eq "sun")
 
-    if ($products.Count -ne 100) { $failures.Add("Se esperaban 100 productos y se encontraron $($products.Count)") | Out-Null }
-    if ($optical.Count -ne 64) { $failures.Add("Se esperaban 64 monturas y se encontraron $($optical.Count)") | Out-Null }
+    if ($products.Count -ne 116) { $failures.Add("Se esperaban 116 productos y se encontraron $($products.Count)") | Out-Null }
+    if ($optical.Count -ne 80) { $failures.Add("Se esperaban 80 monturas y se encontraron $($optical.Count)") | Out-Null }
     if ($sun.Count -ne 36) { $failures.Add("Se esperaban 36 solares y se encontraron $($sun.Count)") | Out-Null }
 
     $duplicateIds = $products | Group-Object id | Where-Object Count -gt 1
@@ -260,8 +260,8 @@ $catalogIndexPath = Join-Path $repoRoot "catalogo.html"
 if (Test-Path -LiteralPath $catalogIndexPath -PathType Leaf) {
   $catalogIndex = [System.IO.File]::ReadAllText($catalogIndexPath, $utf8)
   $staticProductLinks = ([regex]::Matches($catalogIndex, 'href="\./product\.html\?id=[^"]+"')).Count
-  if ($staticProductLinks -ne 100) {
-    $failures.Add("catalogo.html: se esperaban 100 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
+  if ($staticProductLinks -ne 116) {
+    $failures.Add("catalogo.html: se esperaban 116 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
   }
   if ($catalogIndex -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/catalogo\.html">') {
     $failures.Add("catalogo.html: falta el canonical absoluto") | Out-Null
@@ -272,7 +272,7 @@ $sitemapPath = Join-Path $repoRoot "sitemap.xml"
 if (Test-Path -LiteralPath $sitemapPath -PathType Leaf) {
   $sitemapText = [System.IO.File]::ReadAllText($sitemapPath, $utf8)
   $sitemapUrls = @([regex]::Matches($sitemapText, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value })
-  $expectedSitemapUrls = 103 + $blogPosts.Count
+  $expectedSitemapUrls = $products.Count + 3 + $blogPosts.Count
   if ($sitemapUrls.Count -ne $expectedSitemapUrls) { $failures.Add("sitemap.xml: se esperaban $expectedSitemapUrls URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
   if (($sitemapUrls | Sort-Object -Unique).Count -ne $sitemapUrls.Count) { $failures.Add("sitemap.xml: contiene URLs duplicadas") | Out-Null }
   if ($sitemapText -match '<lastmod>') { $failures.Add("sitemap.xml: no debe incluir lastmod artificial") | Out-Null }
@@ -515,4 +515,4 @@ if ($failures.Count -gt 0) {
 }
 
 $imageCount = (Get-ChildItem -LiteralPath (Join-Path $repoRoot "assets") -Recurse -File -Filter "*.webp").Count
-Write-Host "validación-ok (100 productos; 2 HTML de catálogo; blog con $($blogPosts.Count) publicaciones individuales; $imageCount imágenes WebP; 1 plantilla de producto)"
+Write-Host "validación-ok (116 productos; 2 HTML de catálogo; blog con $($blogPosts.Count) publicaciones individuales; $imageCount imágenes WebP; 1 plantilla de producto)"

@@ -1,14 +1,14 @@
 window.CHAMPION_CATALOG = {
-  "generatedAt": "2026-07-25T03:09:05.840Z",
+  "generatedAt": "2026-08-22T00:00:00.000Z",
   "contact": {
     "company": "Innova Eyewear",
     "whatsapp": "17542360600",
     "email": "sales@innova-eyewear.com"
   },
   "counts": {
-    "optical": 64,
+    "optical": 80,
     "sun": 36,
-    "total": 100
+    "total": 116
   },
   "products": [
     {
@@ -2698,6 +2698,678 @@ window.CHAMPION_CATALOG = {
         "assets/images/optical/ch16-c4/04.webp"
       ],
       "sourceFolder": "Catalogo Champion/CH16/CH16 C4/Listo"
+    },
+    {
+      "id": "ch03-c5",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH03",
+      "variant": "C5",
+      "model": "CH03 C5",
+      "displayModel": "CH-03 C5",
+      "color": "Black & Gold",
+      "measurements": "56-16-145",
+      "material": "Stainless Steel",
+      "shape": "Oftálmica",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-03-C5-5616145",
+      "shortDescription": "Variante dorada y negra de la serie CH03.",
+      "subline": "Marco oftálmico Champion serie CH03. Nueva variante C5 en negro y dorado.",
+      "tags": [
+        "Oftálmica",
+        "Uso Diario",
+        "Champion",
+        "Nueva variante"
+      ],
+      "about": {
+        "p1": "La variante C5 amplía la serie CH03 con un frente dorado y terminales negros, conservando su construcción de acero inoxidable.",
+        "p2": "Su contraste de color ofrece una opción diferenciada para surtidos profesionales sin modificar la geometría oftálmica de la referencia.",
+        "bullets": [
+          "Acabado Black & Gold verificado en las imágenes de producto",
+          "Construcción en Stainless Steel",
+          "Medidas 56-16-145",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch03-c5/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch03-c5/01.webp",
+        "assets/images/optical/ch03-c5/02.webp",
+        "assets/images/optical/ch03-c5/03.webp",
+        "assets/images/optical/ch03-c5/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-03_56x16-145_C5"
+    },
+    {
+      "id": "ch04-c5",
+      "family": "optical",
+      "collection": "Bold",
+      "series": "CH04",
+      "variant": "C5",
+      "model": "CH04 C5",
+      "displayModel": "CH-04 C5",
+      "color": "Dark Green",
+      "measurements": "55-17-145",
+      "material": "Acetate",
+      "shape": "Frente amplio",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-04-C5-5517145",
+      "shortDescription": "Variante verde oscuro en acetato de la serie CH04.",
+      "subline": "Marco oftálmico Champion serie CH04. Nueva variante C5 en verde oscuro.",
+      "tags": [
+        "Frente amplio",
+        "Uso Diario",
+        "Champion",
+        "Nueva variante"
+      ],
+      "about": {
+        "p1": "La variante C5 incorpora un acabado verde oscuro translúcido a la silueta amplia de la serie CH04.",
+        "p2": "Mantiene la construcción en acetato y añade una alternativa cromática de lectura sobria para ampliar el surtido de la referencia.",
+        "bullets": [
+          "Acabado Dark Green verificado en las imágenes de producto",
+          "Construcción en Acetate",
+          "Medidas 55-17-145",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch04-c5/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch04-c5/01.webp",
+        "assets/images/optical/ch04-c5/02.webp",
+        "assets/images/optical/ch04-c5/03.webp",
+        "assets/images/optical/ch04-c5/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-04_55x17-145_C5"
+    },
+    {
+      "id": "ch05-c5",
+      "family": "optical",
+      "collection": "Bold",
+      "series": "CH05",
+      "variant": "C5",
+      "model": "CH05 C5",
+      "displayModel": "CH-05 C5",
+      "color": "Black & Wine",
+      "measurements": "56-17-145",
+      "material": "Acetate",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-05-C5-5617145",
+      "shortDescription": "Variante negra y vino en acetato de la serie CH05.",
+      "subline": "Marco oftálmico Champion serie CH05. Nueva variante C5 en negro y vino.",
+      "tags": [
+        "Rectangular",
+        "Uso Diario",
+        "Champion",
+        "Nueva variante"
+      ],
+      "about": {
+        "p1": "La variante C5 combina un frente negro con detalles en tono vino dentro de la geometría rectangular CH05.",
+        "p2": "El contraste visible aporta diferenciación cromática manteniendo la construcción en acetato y el uso óptico de la serie.",
+        "bullets": [
+          "Acabado Black & Wine verificado en las imágenes de producto",
+          "Construcción en Acetate",
+          "Medidas 56-17-145",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch05-c5/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch05-c5/01.webp",
+        "assets/images/optical/ch05-c5/02.webp",
+        "assets/images/optical/ch05-c5/03.webp",
+        "assets/images/optical/ch05-c5/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-05_56x17-145_C5"
+    },
+    {
+      "id": "ch07-c5",
+      "family": "optical",
+      "collection": "Bold",
+      "series": "CH07",
+      "variant": "C5",
+      "model": "CH07 C5",
+      "displayModel": "CH-07 C5",
+      "color": "Dark Green",
+      "measurements": "57-19-150",
+      "material": "Acetate",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-07-C5-5719150",
+      "shortDescription": "Variante negra y verde oscuro en acetato de la serie CH07.",
+      "subline": "Marco oftálmico Champion serie CH07. Nueva variante C5 en verde oscuro.",
+      "tags": [
+        "Rectangular",
+        "Uso Diario",
+        "Champion",
+        "Nueva variante"
+      ],
+      "about": {
+        "p1": "La variante C5 presenta un frente negro con detalles verde oscuro en la silueta rectangular amplia de la serie CH07.",
+        "p2": "Esta combinación amplía la oferta cromática de la referencia conservando su construcción en acetato y sus proporciones verificadas.",
+        "bullets": [
+          "Acabado Dark Green verificado en las imágenes de producto",
+          "Construcción en Acetate",
+          "Medidas 57-19-150",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch07-c5/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch07-c5/01.webp",
+        "assets/images/optical/ch07-c5/02.webp",
+        "assets/images/optical/ch07-c5/03.webp",
+        "assets/images/optical/ch07-c5/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-07_57x19-150_C5"
+    },
+    {
+      "id": "ch20-c1",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH20",
+      "variant": "C1",
+      "model": "CH20 C1",
+      "displayModel": "CH-20 C1",
+      "color": "Black & Wine",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular semi al aire",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-20-C1-5716148",
+      "shortDescription": "Frente metálico semi al aire con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH20 con frente metálico ligero y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular semi al aire",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH20 combina una silueta rectangular semi al aire con un frente de acero inoxidable y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su construcción ofrece una lectura técnica y contemporánea para surtidos ópticos que buscan una montura metálica diferenciada sin perder versatilidad comercial.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con diseño semi al aire",
+          "Silueta rectangular de perfil contemporáneo",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch20-c1/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch20-c1/01.webp",
+        "assets/images/optical/ch20-c1/02.webp",
+        "assets/images/optical/ch20-c1/03.webp",
+        "assets/images/optical/ch20-c1/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-20_57x16-148_C1"
+    },
+    {
+      "id": "ch20-c2",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH20",
+      "variant": "C2",
+      "model": "CH20 C2",
+      "displayModel": "CH-20 C2",
+      "color": "Gunmetal",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular semi al aire",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-20-C2-5716148",
+      "shortDescription": "Frente metálico semi al aire con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH20 con frente metálico ligero y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular semi al aire",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH20 combina una silueta rectangular semi al aire con un frente de acero inoxidable y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su construcción ofrece una lectura técnica y contemporánea para surtidos ópticos que buscan una montura metálica diferenciada sin perder versatilidad comercial.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con diseño semi al aire",
+          "Silueta rectangular de perfil contemporáneo",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch20-c2/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch20-c2/01.webp",
+        "assets/images/optical/ch20-c2/02.webp",
+        "assets/images/optical/ch20-c2/03.webp",
+        "assets/images/optical/ch20-c2/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-20_57x16-148_C2"
+    },
+    {
+      "id": "ch20-c3",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH20",
+      "variant": "C3",
+      "model": "CH20 C3",
+      "displayModel": "CH-20 C3",
+      "color": "Dark Blue",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular semi al aire",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-20-C3-5716148",
+      "shortDescription": "Frente metálico semi al aire con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH20 con frente metálico ligero y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular semi al aire",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH20 combina una silueta rectangular semi al aire con un frente de acero inoxidable y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su construcción ofrece una lectura técnica y contemporánea para surtidos ópticos que buscan una montura metálica diferenciada sin perder versatilidad comercial.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con diseño semi al aire",
+          "Silueta rectangular de perfil contemporáneo",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch20-c3/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch20-c3/01.webp",
+        "assets/images/optical/ch20-c3/02.webp",
+        "assets/images/optical/ch20-c3/03.webp",
+        "assets/images/optical/ch20-c3/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-20_57x16-148_C3"
+    },
+    {
+      "id": "ch20-c4",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH20",
+      "variant": "C4",
+      "model": "CH20 C4",
+      "displayModel": "CH-20 C4",
+      "color": "Brown",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular semi al aire",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-20-C4-5716148",
+      "shortDescription": "Frente metálico semi al aire con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH20 con frente metálico ligero y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular semi al aire",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH20 combina una silueta rectangular semi al aire con un frente de acero inoxidable y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su construcción ofrece una lectura técnica y contemporánea para surtidos ópticos que buscan una montura metálica diferenciada sin perder versatilidad comercial.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con diseño semi al aire",
+          "Silueta rectangular de perfil contemporáneo",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch20-c4/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch20-c4/01.webp",
+        "assets/images/optical/ch20-c4/02.webp",
+        "assets/images/optical/ch20-c4/03.webp",
+        "assets/images/optical/ch20-c4/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-20_57x16-148_C4"
+    },
+    {
+      "id": "ch21-c1",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH21",
+      "variant": "C1",
+      "model": "CH21 C1",
+      "displayModel": "CH-21 C1",
+      "color": "Gunmetal",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-21-C1-5716148",
+      "shortDescription": "Montura metálica rectangular con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH21 con frente completo y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH21 presenta un frente metálico rectangular de líneas limpias y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "La combinación de estructura clásica y acento técnico facilita su integración en surtidos profesionales de uso diario.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente completo de acero inoxidable",
+          "Silueta rectangular de uso versátil",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch21-c1/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch21-c1/01.webp",
+        "assets/images/optical/ch21-c1/02.webp",
+        "assets/images/optical/ch21-c1/03.webp",
+        "assets/images/optical/ch21-c1/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-21_57x16-148_C1"
+    },
+    {
+      "id": "ch21-c2",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH21",
+      "variant": "C2",
+      "model": "CH21 C2",
+      "displayModel": "CH-21 C2",
+      "color": "Black & Gold",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-21-C2-5716148",
+      "shortDescription": "Montura metálica rectangular con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH21 con frente completo y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH21 presenta un frente metálico rectangular de líneas limpias y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "La combinación de estructura clásica y acento técnico facilita su integración en surtidos profesionales de uso diario.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente completo de acero inoxidable",
+          "Silueta rectangular de uso versátil",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch21-c2/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch21-c2/01.webp",
+        "assets/images/optical/ch21-c2/02.webp",
+        "assets/images/optical/ch21-c2/03.webp",
+        "assets/images/optical/ch21-c2/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-21_57x16-148_C2"
+    },
+    {
+      "id": "ch21-c3",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH21",
+      "variant": "C3",
+      "model": "CH21 C3",
+      "displayModel": "CH-21 C3",
+      "color": "Gunmetal & Wine",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-21-C3-5716148",
+      "shortDescription": "Montura metálica rectangular con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH21 con frente completo y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH21 presenta un frente metálico rectangular de líneas limpias y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "La combinación de estructura clásica y acento técnico facilita su integración en surtidos profesionales de uso diario.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente completo de acero inoxidable",
+          "Silueta rectangular de uso versátil",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch21-c3/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch21-c3/01.webp",
+        "assets/images/optical/ch21-c3/02.webp",
+        "assets/images/optical/ch21-c3/03.webp",
+        "assets/images/optical/ch21-c3/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-21_57x16-148_C3"
+    },
+    {
+      "id": "ch21-c4",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH21",
+      "variant": "C4",
+      "model": "CH21 C4",
+      "displayModel": "CH-21 C4",
+      "color": "Brown & Gold",
+      "measurements": "57-16-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-21-C4-5716148",
+      "shortDescription": "Montura metálica rectangular con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH21 con frente completo y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Rectangular",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH21 presenta un frente metálico rectangular de líneas limpias y patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "La combinación de estructura clásica y acento técnico facilita su integración en surtidos profesionales de uso diario.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente completo de acero inoxidable",
+          "Silueta rectangular de uso versátil",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch21-c4/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch21-c4/01.webp",
+        "assets/images/optical/ch21-c4/02.webp",
+        "assets/images/optical/ch21-c4/03.webp",
+        "assets/images/optical/ch21-c4/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-21_57x16-148_C4"
+    },
+    {
+      "id": "ch22-c1",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH22",
+      "variant": "C1",
+      "model": "CH22 C1",
+      "displayModel": "CH-22 C1",
+      "color": "Brown",
+      "measurements": "56-18-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Geométrica",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-22-C1-5618148",
+      "shortDescription": "Frente metálico geométrico con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH22 con geometría angular y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Geométrica",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH22 combina un frente metálico de geometría angular con patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su diseño aporta una alternativa más marcada dentro de la colección Steel, adecuada para exhibiciones que requieren variedad de forma y acabado.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con geometría angular",
+          "Perfil contemporáneo y diferenciable en vitrina",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch22-c1/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch22-c1/01.webp",
+        "assets/images/optical/ch22-c1/02.webp",
+        "assets/images/optical/ch22-c1/03.webp",
+        "assets/images/optical/ch22-c1/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-22_56x18-148_C1"
+    },
+    {
+      "id": "ch22-c2",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH22",
+      "variant": "C2",
+      "model": "CH22 C2",
+      "displayModel": "CH-22 C2",
+      "color": "Blue",
+      "measurements": "56-18-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Geométrica",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-22-C2-5618148",
+      "shortDescription": "Frente metálico geométrico con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH22 con geometría angular y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Geométrica",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH22 combina un frente metálico de geometría angular con patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su diseño aporta una alternativa más marcada dentro de la colección Steel, adecuada para exhibiciones que requieren variedad de forma y acabado.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con geometría angular",
+          "Perfil contemporáneo y diferenciable en vitrina",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch22-c2/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch22-c2/01.webp",
+        "assets/images/optical/ch22-c2/02.webp",
+        "assets/images/optical/ch22-c2/03.webp",
+        "assets/images/optical/ch22-c2/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-22_56x18-148_C2"
+    },
+    {
+      "id": "ch22-c3",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH22",
+      "variant": "C3",
+      "model": "CH22 C3",
+      "displayModel": "CH-22 C3",
+      "color": "Gunmetal",
+      "measurements": "56-18-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Geométrica",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-22-C3-5618148",
+      "shortDescription": "Frente metálico geométrico con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH22 con geometría angular y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Geométrica",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH22 combina un frente metálico de geometría angular con patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su diseño aporta una alternativa más marcada dentro de la colección Steel, adecuada para exhibiciones que requieren variedad de forma y acabado.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con geometría angular",
+          "Perfil contemporáneo y diferenciable en vitrina",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch22-c3/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch22-c3/01.webp",
+        "assets/images/optical/ch22-c3/02.webp",
+        "assets/images/optical/ch22-c3/03.webp",
+        "assets/images/optical/ch22-c3/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-22_56x18-148_C3"
+    },
+    {
+      "id": "ch22-c4",
+      "family": "optical",
+      "collection": "Steel",
+      "series": "CH22",
+      "variant": "C4",
+      "model": "CH22 C4",
+      "displayModel": "CH-22 C4",
+      "color": "Black",
+      "measurements": "56-18-148",
+      "material": "Stainless Steel with Carbon Fiber Details",
+      "shape": "Geométrica",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-22-C4-5618148",
+      "shortDescription": "Frente metálico geométrico con detalles de fibra de carbono en las patillas.",
+      "subline": "Marco oftálmico Champion serie CH22 con geometría angular y detalles visibles de fibra de carbono.",
+      "tags": [
+        "Geométrica",
+        "Fibra de carbono",
+        "Champion",
+        "Uso Diario"
+      ],
+      "about": {
+        "p1": "La serie CH22 combina un frente metálico de geometría angular con patillas que incorporan detalles visibles de fibra de carbono.",
+        "p2": "Su diseño aporta una alternativa más marcada dentro de la colección Steel, adecuada para exhibiciones que requieren variedad de forma y acabado.",
+        "bullets": [
+          "Detalles visibles de fibra de carbono en las patillas",
+          "Frente de acero inoxidable con geometría angular",
+          "Perfil contemporáneo y diferenciable en vitrina",
+          "Compatible con lentes graduadas"
+        ]
+      },
+      "cover": "assets/images/optical/ch22-c4/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch22-c4/01.webp",
+        "assets/images/optical/ch22-c4/02.webp",
+        "assets/images/optical/ch22-c4/03.webp",
+        "assets/images/optical/ch22-c4/04.webp"
+      ],
+      "sourceFolder": "Google Drive tarea 196/CH-22_56x18-148_C4"
     },
     {
       "id": "chs-01-c1",

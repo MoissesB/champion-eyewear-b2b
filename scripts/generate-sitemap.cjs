@@ -53,7 +53,7 @@ const productIndex = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Índice estático de las 100 referencias del catálogo profesional Champion Eyewear para ópticas.">
+  <meta name="description" content="Índice estático de las ${products.length} referencias del catálogo profesional Champion Eyewear para ópticas.">
   <link rel="canonical" href="${origin}/catalogo.html">
   <link rel="icon" href="./favicon.ico">
   <link rel="stylesheet" href="./assets/audience.min.css?v=audience-20260818-12">
@@ -67,7 +67,7 @@ const productIndex = `<!doctype html>
   <header><a href="./">Champion Eyewear</a><a href="./#monturas">Volver al catálogo</a></header>
   <main id="contenido">
     <h1>Índice completo de productos</h1>
-    <p>Enlaces directos a las 100 referencias del catálogo profesional Champion Eyewear. Esta página facilita la navegación y el rastreo sin depender de JavaScript.</p>
+    <p>Enlaces directos a las ${products.length} referencias del catálogo profesional Champion Eyewear. Esta página facilita la navegación y el rastreo sin depender de JavaScript.</p>
     <section class="group" aria-labelledby="opticalTitle">
       <h2 id="opticalTitle">Monturas ópticas</h2>
       <ol class="product-index">
