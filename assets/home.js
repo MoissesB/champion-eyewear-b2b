@@ -164,8 +164,10 @@
       variants.sort((a, b) => a.variant.localeCompare(b.variant, 'es', { numeric: true, sensitivity: 'base' }));
       const label = variants[0].displayModel.replace(/\s+C\d+$/i, '');
       const headingId = `model-${series.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+      const personalEnglish = window.ChampionAudience?.getProfile?.() === 'b2c' && i18n.language === 'en';
+      const variantLabel = personalEnglish ? (variants.length === 1 ? 'variant' : 'variants') : (variants.length === 1 ? 'variante' : 'variantes');
       return `<section class="model-variant-group" aria-labelledby="${escapeHtml(headingId)}">
-        <div class="model-variant-heading"><h3 id="${escapeHtml(headingId)}">${escapeHtml(label)}</h3><span>${variants.length} ${variants.length === 1 ? 'variante' : 'variantes'}</span></div>
+        <div class="model-variant-heading"><h3 id="${escapeHtml(headingId)}">${escapeHtml(label)}</h3><span>${variants.length} ${variantLabel}</span></div>
         <div class="model-variant-grid variant-columns-${Math.min(5, variants.length)}">${variants.map(card).join('')}</div>
       </section>`;
     }).join('');
@@ -194,6 +196,13 @@
     const collection = selectedCollection(family);
     const info = i18n.collectionInfo(family, collection);
     if (!root || !info) return;
+    if (window.ChampionAudience?.getProfile?.() === 'b2c') {
+      const personalIntro = i18n.language === 'en'
+        ? 'Explore model photos, colors and technical details. Ask where to find Champion at an optical store, then confirm availability with that store.'
+        : 'Explora fotos, colores y fichas técnicas. Consulta dónde encontrar Champion en una óptica y confirma allí la disponibilidad.';
+      root.innerHTML = `<div><span class="collection-explainer-label">${escapeHtml(collection === 'all' ? i18n.t('allMasculine') : collection)}</span><h3>${escapeHtml(info.title)}</h3><p>${escapeHtml(personalIntro)}</p></div>`;
+      return;
+    }
     root.innerHTML = `<div><span class="collection-explainer-label">${escapeHtml(collection === 'all' ? i18n.t('allMasculine') : collection)}</span><h3>${escapeHtml(info.title)}</h3><p>${escapeHtml(info.description)}</p></div><div class="collection-explainer-details"><p><strong>${i18n.language === 'es' ? 'Diferencia:' : 'Difference:'}</strong> ${escapeHtml(info.difference)}</p><p><strong>${i18n.language === 'es' ? 'Ejemplo:' : 'Example:'}</strong> ${escapeHtml(info.example.replace(/^(Ejemplo:|Example:)\s*/i, ''))}</p></div>`;
   }
 

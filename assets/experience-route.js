@@ -18,9 +18,11 @@
     es: {
       unavailable: 'El formulario de Champion aún no está conectado. No se ha enviado información.',
       titleB2B: 'Contacto profesional Champion',
-      titleB2C: 'Orientación personal Champion',
+      titleB2C: 'Dónde encontrar Champion',
       description: 'Complete el formulario de GoHighLevel para que el equipo de Champion pueda atenderle.',
+      descriptionB2C: 'Consulta dónde encontrar Champion en una óptica. La disponibilidad de cada modelo y color debe confirmarse con el punto de venta.',
       selectorDescription: 'Puedes completar el formulario o continuar al catálogo sin enviarlo.',
+      selectorDescriptionB2C: 'Consulta dónde encontrar Champion en una óptica o continúa al catálogo sin enviar el formulario.',
       close: 'Cerrar formulario',
       continue: 'Continuar al catálogo',
       frameB2B: 'Formulario Champion para ópticas y distribuidores',
@@ -29,9 +31,11 @@
     en: {
       unavailable: 'The Champion contact form is not connected yet. No information has been sent.',
       titleB2B: 'Champion professional contact',
-      titleB2C: 'Champion personal guidance',
+      titleB2C: 'Where to find Champion',
       description: 'Complete the GoHighLevel form so the Champion team can assist you.',
+      descriptionB2C: 'Ask where to find Champion at an optical store. Check model and color availability with the store directly.',
       selectorDescription: 'You can complete the form or continue to the catalog without submitting it.',
+      selectorDescriptionB2C: 'Ask where to find Champion at an optical store, or continue to the catalog without submitting the form.',
       close: 'Close form',
       continue: 'Continue to catalog',
       frameB2B: 'Champion form for optical stores and distributors',
@@ -112,7 +116,9 @@
     const form = ensureDialog();
     lastTrigger = trigger;
     form.querySelector('#championLeadTitle').textContent = audience === 'b2b' ? text.titleB2B : text.titleB2C;
-    form.querySelector('#championLeadDescription').textContent = destination ? text.selectorDescription : text.description;
+    form.querySelector('#championLeadDescription').textContent = destination
+      ? (audience === 'b2c' ? text.selectorDescriptionB2C : text.selectorDescription)
+      : (audience === 'b2c' ? text.descriptionB2C : text.description);
     const close = form.querySelector('[data-lead-form-close]');
     close.setAttribute('aria-label', text.close);
     const continueWrap = form.querySelector('[data-lead-continue-wrap]');
