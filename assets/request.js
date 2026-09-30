@@ -4,6 +4,7 @@
   const catalog = window.CHAMPION_CATALOG;
   const i18n = window.ChampionI18n;
   if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
+  const siteBase = new URL('/', window.location.href);
 
   const STORAGE_KEY = 'champion-professional-request-v3';
   const LEGACY_KEY = 'champion-b2b-request-v2';
@@ -120,8 +121,8 @@
     const items = document.getElementById('requestItems');
     if (items) items.innerHTML = status.entries.length ? status.entries.map(({ product: source, quantity }) => {
       const product = i18n.localizeProduct(source);
-      return `<article class="request-item"><img src="./${escapeHtml(product.cover)}" alt="${escapeHtml(product.displayModel)}"><div><h3>${escapeHtml(product.displayModel)}</h3><p>${escapeHtml(product.color)}</p><p>${escapeHtml(product.sku)}</p></div><div class="request-item-controls"><label>${escapeHtml(tr('quantity'))} <input type="number" min="1" max="9999" value="${quantity}" data-request-quantity="${escapeHtml(product.id)}" aria-label="${escapeHtml(tr('quantity'))}: ${escapeHtml(product.displayModel)}"></label><button class="request-remove" type="button" data-request-remove="${escapeHtml(product.id)}">${escapeHtml(tr('remove'))}</button></div></article>`;
-    }).join('') : `<div class="request-empty"><strong>${escapeHtml(tr('emptyTitle'))}</strong><p>${escapeHtml(tr('emptyText'))}</p><a class="button button-dark" href="./index.html#monturas" data-request-go-catalog>${escapeHtml(tr('goCatalog'))}</a></div>`;
+      return `<article class="request-item"><img src="${escapeHtml(new URL(product.cover, siteBase).href)}" alt="${escapeHtml(product.displayModel)}"><div><h3>${escapeHtml(product.displayModel)}</h3><p>${escapeHtml(product.color)}</p><p>${escapeHtml(product.sku)}</p></div><div class="request-item-controls"><label>${escapeHtml(tr('quantity'))} <input type="number" min="1" max="9999" value="${quantity}" data-request-quantity="${escapeHtml(product.id)}" aria-label="${escapeHtml(tr('quantity'))}: ${escapeHtml(product.displayModel)}"></label><button class="request-remove" type="button" data-request-remove="${escapeHtml(product.id)}">${escapeHtml(tr('remove'))}</button></div></article>`;
+    }).join('') : `<div class="request-empty"><strong>${escapeHtml(tr('emptyTitle'))}</strong><p>${escapeHtml(tr('emptyText'))}</p><a class="button button-dark" href="/${i18n.language}/b2b/#monturas" data-request-go-catalog>${escapeHtml(tr('goCatalog'))}</a></div>`;
     updateReadiness(status);
   }
 
@@ -195,7 +196,7 @@
     if (pdfLibraryPromise) return pdfLibraryPromise;
     pdfLibraryPromise = new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = './assets/vendor/jspdf.umd.min.js';
+      script.src = new URL('assets/vendor/jspdf.umd.min.js', siteBase).href;
       script.async = true;
       script.dataset.jspdfLoader = 'true';
       script.onload = () => (window.jspdf?.jsPDF ? resolve() : reject(new Error('jsPDF no está disponible')));
@@ -234,7 +235,7 @@
     return new Promise((resolve, reject) => {
       const image = new Image(); image.decoding = 'async'; image.onload = () => {
         const max = 1000; const scale = Math.min(1, max / Math.max(image.naturalWidth, image.naturalHeight)); const canvas = document.createElement('canvas'); canvas.width = Math.max(1, Math.round(image.naturalWidth * scale)); canvas.height = Math.max(1, Math.round(image.naturalHeight * scale)); const context = canvas.getContext('2d'); context.fillStyle = background; context.fillRect(0, 0, canvas.width, canvas.height); context.drawImage(image, 0, 0, canvas.width, canvas.height); const output = trim ? trimmedCanvas(canvas) : canvas; resolve(output.toDataURL('image/jpeg', 0.88));
-      }; image.onerror = reject; image.src = new URL(relativePath, window.location.href).href;
+      }; image.onerror = reject; image.src = new URL(relativePath, siteBase).href;
     });
   }
 

@@ -11,6 +11,9 @@
     'ch20-c1', 'ch20-c2', 'ch20-c3', 'ch20-c4',
     'ch21-c1', 'ch21-c2', 'ch21-c3', 'ch21-c4',
     'ch22-c1', 'ch22-c2', 'ch22-c3', 'ch22-c4',
+    'ch23-c1', 'ch23-c2', 'ch23-c3', 'ch23-c4',
+    'ch24-c1', 'ch24-c2', 'ch24-c3', 'ch24-c4',
+    'ch25-c1', 'ch25-c2', 'ch25-c3', 'ch25-c4',
   ]);
   const facetConfig = {
     optical: [
@@ -129,17 +132,17 @@
 
   function card(source) {
     const product = i18n.localizeProduct(source);
-    const detailUrl = `./product.html?id=${encodeURIComponent(product.id)}`;
     const b2c = window.ChampionAudience?.getProfile?.() === 'b2c';
+    const detailUrl = `../../product.html?id=${encodeURIComponent(product.id)}${b2c ? '&audience=b2c' : ''}&lang=${i18n.language}`;
     const action = b2c
-      ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">Me interesa este modelo</button>`
+      ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">${i18n.language === 'en' ? 'I like this model' : 'Me interesa este modelo'}</button>`
       : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
     return `
       <article class="product-card${isNewModel(source) ? ' is-new-model' : ''}" data-product-id="${escapeHtml(product.id)}">
         <a class="product-card-image" href="${detailUrl}" aria-label="${escapeHtml(i18n.t('viewDetails'))}: ${escapeHtml(product.displayModel)}">
-          <img src="./${escapeHtml(cardCover(source))}" alt="${escapeHtml(product.displayModel)} — ${escapeHtml(product.color)}" loading="lazy" decoding="async">
+          <img src="../../${escapeHtml(cardCover(source))}" alt="${escapeHtml(product.displayModel)} — ${escapeHtml(product.color)}" loading="lazy" decoding="async">
           <span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span>
-          ${isNewModel(source) ? '<span class="product-new-badge">Modelo nuevo</span>' : ''}
+          ${isNewModel(source) ? `<span class="product-new-badge">${i18n.language === 'en' ? 'New model' : 'Modelo nuevo'}</span>` : ''}
         </a>
         <div class="product-card-body">
           <div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div>
@@ -402,6 +405,20 @@
   }
 
   function init() {
+    if (window.ChampionAudience?.getProfile?.() === 'b2c') {
+      document.querySelectorAll('[data-request-open]').forEach((button) => {
+        button.removeAttribute('data-request-open');
+        button.setAttribute('data-interest-open', '');
+        button.removeAttribute('data-i18n');
+        button.querySelectorAll('[data-request-count]').forEach((count) => {
+          count.removeAttribute('data-request-count');
+          count.setAttribute('data-interest-count', '');
+        });
+        const labels = button.querySelectorAll('[data-i18n]');
+        labels.forEach((node) => { node.removeAttribute('data-i18n'); node.textContent = i18n.language === 'en' ? 'My models' : 'Mis modelos'; });
+        if (!labels.length && !button.querySelector('[data-request-count]')) button.textContent = i18n.language === 'en' ? 'View my models' : 'Ver mis modelos';
+      });
+    }
     const opticalCount = products.filter((product) => product.family === 'optical').length;
     const sunCount = products.filter((product) => product.family === 'sun').length;
     document.querySelectorAll('[data-optical-count]').forEach((node) => { node.textContent = String(opticalCount); });

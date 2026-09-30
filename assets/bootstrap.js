@@ -3,13 +3,14 @@
 
   const version = 'catalog-20260823-1';
   const reviewMode = document.documentElement.hasAttribute('data-champion-review');
+  const assetBase = new URL('.', document.currentScript?.src || new URL('./assets/', location.href));
   let ready = false;
   let loading;
 
   function loadScript(path) {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = `${path}?v=${version}`;
+      script.src = `${new URL(path.replace(/^\.\/assets\//, ''), assetBase).href}?v=${version}`;
       script.async = true;
       script.onload = resolve;
       script.onerror = reject;
@@ -22,7 +23,7 @@
 
     const audience = window.ChampionAudience;
     const base = audience?.loadBase?.() || Promise.all([
-      loadScript('./data/products.min.js'),
+      loadScript('../data/products.min.js'),
       loadScript('./assets/i18n.min.js'),
     ]);
     loading = base

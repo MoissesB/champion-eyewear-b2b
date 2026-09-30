@@ -75,8 +75,8 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
     $optical = @($products | Where-Object family -eq "optical")
     $sun = @($products | Where-Object family -eq "sun")
 
-    if ($products.Count -ne 116) { $failures.Add("Se esperaban 116 productos y se encontraron $($products.Count)") | Out-Null }
-    if ($optical.Count -ne 80) { $failures.Add("Se esperaban 80 monturas y se encontraron $($optical.Count)") | Out-Null }
+    if ($products.Count -ne 128) { $failures.Add("Se esperaban 128 productos y se encontraron $($products.Count)") | Out-Null }
+    if ($optical.Count -ne 92) { $failures.Add("Se esperaban 92 monturas y se encontraron $($optical.Count)") | Out-Null }
     if ($sun.Count -ne 36) { $failures.Add("Se esperaban 36 solares y se encontraron $($sun.Count)") | Out-Null }
 
     $duplicateIds = $products | Group-Object id | Where-Object Count -gt 1
@@ -92,9 +92,12 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
       $gallery = @($product.images)
       $media = @($product.cover) + $gallery
       if ($gallery.Count -lt 1) { $failures.Add("Producto $($product.id): faltan vistas internas") | Out-Null }
-      if (($media | Sort-Object -Unique).Count -ne $media.Count) { $failures.Add("Producto $($product.id): tiene vistas duplicadas") | Out-Null }
-      if ($product.family -eq "optical" -and $gallery.Count -ne 4) { $failures.Add("Producto $($product.id): la carpeta Listo no aporta exactamente cuatro vistas internas") | Out-Null }
-      if ($product.family -eq "optical" -and $product.cover -in $gallery) { $failures.Add("Producto $($product.id): la portada no puede formar parte de la galería interna") | Out-Null }
+      $isDropboxNew = [string]$product.id -match '^ch(?:23|24|25)-c[1-4]$'
+      if (($gallery | Sort-Object -Unique).Count -ne $gallery.Count -or (-not $isDropboxNew -and ($media | Sort-Object -Unique).Count -ne $media.Count)) { $failures.Add("Producto $($product.id): tiene vistas duplicadas") | Out-Null }
+      if ($isDropboxNew -and $gallery.Count -ne 3) { $failures.Add("Producto $($product.id): se esperaban tres vistas canónicas Dropbox") | Out-Null }
+      if ($isDropboxNew -and $product.cover -ne $gallery[0]) { $failures.Add("Producto $($product.id): la portada debe ser la primera vista diagonal") | Out-Null }
+      if ($product.family -eq "optical" -and -not $isDropboxNew -and $gallery.Count -ne 4) { $failures.Add("Producto $($product.id): la carpeta Listo no aporta exactamente cuatro vistas internas") | Out-Null }
+      if ($product.family -eq "optical" -and -not $isDropboxNew -and $product.cover -in $gallery) { $failures.Add("Producto $($product.id): la portada no puede formar parte de la galería interna") | Out-Null }
       if ($product.family -eq "sun" -and $media.Count -ne 4) { $failures.Add("Producto $($product.id): el solar no tiene exactamente cuatro vistas, incluida la portada front") | Out-Null }
       if ($product.family -eq "sun" -and [string]$product.cover -notmatch '^assets/producto-de-lentes-de-sol/[^/]+/front\.webp$') {
         $failures.Add("Producto $($product.id): la portada solar no corresponde a su imagen front") | Out-Null
@@ -116,7 +119,7 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
   }
 }
 
-foreach ($htmlName in @("index.html", "product.html")) {
+foreach ($htmlName in @("catalog-experience.html", "product.html")) {
   $htmlPath = Join-Path $repoRoot $htmlName
   if (-not (Test-Path -LiteralPath $htmlPath -PathType Leaf)) { continue }
   $html = [System.IO.File]::ReadAllText($htmlPath, $utf8)
@@ -127,7 +130,7 @@ foreach ($htmlName in @("index.html", "product.html")) {
   if (($html -notmatch 'assets/i18n(?:\.min)?\.js' -and -not $usesBootstrap) -or $html -notmatch 'data-language-toggle') { $failures.Add("${htmlName}: falta la traducción ES/EN") | Out-Null }
   if ($html -match 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: el generador PDF no debe bloquear la carga inicial") | Out-Null }
   if ($html -notmatch 'champion-header-display\.webp') { $failures.Add("${htmlName}: no usa el logotipo optimizado de cabecera") | Out-Null }
-  if ($html -notmatch 'assets/audience(?:\.min)?\.js' -or $html -notmatch 'assets/audience(?:\.min)?\.css') { $failures.Add("${htmlName}: falta la compuerta B2C/B2B") | Out-Null }
+  if ($html -notmatch 'assets/audience(?:\.min)?\.js' -or $html -notmatch 'assets/audience(?:\.min)?\.css') { $failures.Add("${htmlName}: falta el soporte de perfil B2C/B2B") | Out-Null }
   if ($html -notmatch 'assets/review(?:\.min)?\.js') { $failures.Add("${htmlName}: falta el modo privado de revisión") | Out-Null }
   if ($html -notmatch 'favicon\.ico' -or $html -notmatch 'apple-touch-icon\.png') { $failures.Add("${htmlName}: falta el icono del navegador") | Out-Null }
 }
@@ -138,12 +141,8 @@ if (Test-Path -LiteralPath $indexPath -PathType Leaf) {
   if ($indexHtml -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/">') {
     $failures.Add("index.html: falta el canonical absoluto de la portada") | Out-Null
   }
-  if ($indexHtml -notmatch 'href="\./catalogo\.html"') {
-    $failures.Add("index.html: falta el enlace estático al índice completo") | Out-Null
-  }
-  if (([regex]::Matches($indexHtml, 'href="\./blog\.html"')).Count -lt 3) {
-    $failures.Add("index.html: el blog debe estar visible en la navegación de escritorio, la navegación móvil y el pie") | Out-Null
-  }
+  if ($indexHtml -notmatch 'href="\./es/b2b/"' -or $indexHtml -notmatch 'href="\./es/b2c/"') { $failures.Add("index.html: faltan las dos experiencias españolas") | Out-Null }
+  if ($indexHtml -notmatch 'href="\./en/"') { $failures.Add("index.html: falta la experiencia inglesa") | Out-Null }
 }
 
 $blogPosts = @()
@@ -263,8 +262,8 @@ $catalogIndexPath = Join-Path $repoRoot "catalogo.html"
 if (Test-Path -LiteralPath $catalogIndexPath -PathType Leaf) {
   $catalogIndex = [System.IO.File]::ReadAllText($catalogIndexPath, $utf8)
   $staticProductLinks = ([regex]::Matches($catalogIndex, 'href="\./product\.html\?id=[^"]+"')).Count
-  if ($staticProductLinks -ne 116) {
-    $failures.Add("catalogo.html: se esperaban 116 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
+  if ($staticProductLinks -ne 128) {
+    $failures.Add("catalogo.html: se esperaban 128 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
   }
   if ($catalogIndex -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/catalogo\.html">') {
     $failures.Add("catalogo.html: falta el canonical absoluto") | Out-Null
@@ -275,7 +274,8 @@ $sitemapPath = Join-Path $repoRoot "sitemap.xml"
 if (Test-Path -LiteralPath $sitemapPath -PathType Leaf) {
   $sitemapText = [System.IO.File]::ReadAllText($sitemapPath, $utf8)
   $sitemapUrls = @([regex]::Matches($sitemapText, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value })
-  $expectedSitemapUrls = $products.Count + 3 + $blogPosts.Count
+  # Selector, four B2B/B2C routes, English selector, catalog index and blog.
+  $expectedSitemapUrls = $products.Count + 8 + $blogPosts.Count
   if ($sitemapUrls.Count -ne $expectedSitemapUrls) { $failures.Add("sitemap.xml: se esperaban $expectedSitemapUrls URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
   if (($sitemapUrls | Sort-Object -Unique).Count -ne $sitemapUrls.Count) { $failures.Add("sitemap.xml: contiene URLs duplicadas") | Out-Null }
   if ($sitemapText -match '<lastmod>') { $failures.Add("sitemap.xml: no debe incluir lastmod artificial") | Out-Null }
@@ -352,20 +352,20 @@ if (Test-Path -LiteralPath $productHtmlPath -PathType Leaf) {
   }
 }
 
-if (Test-Path -LiteralPath (Join-Path $repoRoot "index.html")) {
-  $homeText = [System.IO.File]::ReadAllText((Join-Path $repoRoot "index.html"), $utf8)
+if (Test-Path -LiteralPath (Join-Path $repoRoot "catalog-experience.html")) {
+  $homeText = [System.IO.File]::ReadAllText((Join-Path $repoRoot "catalog-experience.html"), $utf8)
   if ($homeText -notmatch 'id="opticalGrid"' -or $homeText -notmatch 'id="sunGrid"') {
-    $failures.Add("index.html: faltan uno o ambos catálogos dinámicos") | Out-Null
+    $failures.Add("catalog-experience.html: faltan uno o ambos catálogos dinámicos") | Out-Null
   }
   if ($homeText -notmatch '<video[^>]+class="hero-video"' -or $homeText -notmatch '<video\s+id="explainVideo"') {
-    $failures.Add("index.html: faltan uno o ambos vídeos") | Out-Null
+    $failures.Add("catalog-experience.html: faltan uno o ambos vídeos") | Out-Null
   }
   if ($homeText -notmatch 'data-video-es="https://assets\.cdn\.filesafe\.space/itkQlAHHVlUS0uDAETp3/media/69e45ad38696a78b8d076627\.mp4"' -or $homeText -notmatch 'data-video-en="https://assets\.cdn\.filesafe\.space/itkQlAHHVlUS0uDAETp3/media/69f65b406b07ab33031dd1ae\.mp4"') {
-    $failures.Add("index.html: faltan las versiones española o inglesa del vídeo comercial") | Out-Null
+    $failures.Add("catalog-experience.html: faltan las versiones española o inglesa del vídeo comercial") | Out-Null
   }
-  if ($homeText -notmatch 'id="faqRoot"') { $failures.Add("index.html: falta la sección de preguntas frecuentes") | Out-Null }
-  if ($homeText -notmatch 'id="opticalCollectionInfo"' -or $homeText -notmatch 'id="sunCollectionInfo"') { $failures.Add("index.html: faltan las explicaciones de colecciones") | Out-Null }
-  if ($homeText -notmatch 'data-filter-toggle="optical"' -or $homeText -notmatch 'data-filter-toggle="sun"' -or $homeText -notmatch 'id="opticalFacetGrid"' -or $homeText -notmatch 'id="sunFacetGrid"') { $failures.Add("index.html: faltan los filtros desplegables completos") | Out-Null }
+  if ($homeText -notmatch 'id="faqRoot"') { $failures.Add("catalog-experience.html: falta la sección de preguntas frecuentes") | Out-Null }
+  if ($homeText -notmatch 'id="opticalCollectionInfo"' -or $homeText -notmatch 'id="sunCollectionInfo"') { $failures.Add("catalog-experience.html: faltan las explicaciones de colecciones") | Out-Null }
+  if ($homeText -notmatch 'data-filter-toggle="optical"' -or $homeText -notmatch 'data-filter-toggle="sun"' -or $homeText -notmatch 'id="opticalFacetGrid"' -or $homeText -notmatch 'id="sunFacetGrid"') { $failures.Add("catalog-experience.html: faltan los filtros desplegables completos") | Out-Null }
 }
 
 $homeScriptPath = Join-Path $repoRoot "assets/home.js"
@@ -538,4 +538,4 @@ if ($failures.Count -gt 0) {
 }
 
 $imageCount = (Get-ChildItem -LiteralPath (Join-Path $repoRoot "assets") -Recurse -File -Filter "*.webp").Count
-Write-Host "validación-ok (116 productos; 2 HTML de catálogo; blog con $($blogPosts.Count) publicaciones individuales; $imageCount imágenes WebP; 1 plantilla de producto)"
+Write-Host "validación-ok (128 productos; 4 rutas de experiencia; blog con $($blogPosts.Count) publicaciones individuales; $imageCount imágenes WebP; 1 plantilla de producto)"

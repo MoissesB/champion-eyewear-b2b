@@ -155,11 +155,20 @@
       && frameStyleValues.has(profile.frameStyle);
   }
 
-  function storedProfile() {
-    const value = runtimeProfile || readSession(PROFILE_KEY);
-    if (value === 'b2b' && validB2BProfile()) return value;
-    if (value === 'b2c' && validB2CProfile()) return value;
+  function explicitProfile() {
+    const route = window.location.pathname.match(/^\/(?:es|en)\/(b2b|b2c)\//i);
+    if (route) return route[1].toLowerCase();
+    if (isProductPage()) {
+      return new URLSearchParams(window.location.search).get('audience') === 'b2c' ? 'b2c' : 'b2b';
+    }
     return null;
+  }
+
+  function storedProfile() {
+    const explicit = explicitProfile();
+    if (explicit) return explicit;
+    // Legacy catalog links remain professional. The selected B2C route is explicit.
+    return 'b2b';
   }
 
   function isProductPage() {
@@ -184,7 +193,7 @@
     if (modulePromises.has(key)) return modulePromises.get(key);
     const source = new URL(relativePath, siteBase).href;
     const promise = new Promise((resolve, reject) => {
-      const existing = Array.from(document.scripts).find((script) => script.src === source || script.dataset.championModule === key);
+      const existing = Array.from(document.scripts).find((script) => script.src === source || script.src.startsWith(`${source}?`) || script.dataset.championModule === key);
       if (existing) {
         if (ready()) { resolve(); return; }
         existing.addEventListener('load', resolve, { once: true });
@@ -930,15 +939,15 @@
     event.preventDefault();
     event.stopImmediatePropagation();
     const profile = storedProfile();
-    if (intent.type === 'change-profile') { openGate({ type: 'switch-profile', trigger: intent.trigger }); return; }
-    if (!profile) { openGate(intent); return; }
+    if (intent.type === 'change-profile') { window.location.href = new URL('', siteBase).href; return; }
+    if (!profile) { window.location.href = new URL('', siteBase).href; return; }
     dispatchIntent(intent, profile);
   }
 
   function guard(intent = {}) {
     const profile = storedProfile();
     if (profile) return Promise.resolve(profile);
-    return openGate({ ...intent, deferDispatch: true });
+    return Promise.resolve('b2b');
   }
 
   function editB2CProfile(trigger) {

@@ -39,14 +39,14 @@ async function optimize() {
     charset: 'utf8',
     legalComments: 'none',
   });
-  const indexPath = path.join(root, 'index.html');
+  const indexPath = path.join(root, 'catalog-experience.html');
   const indexHtml = await readFile(indexPath, 'utf8');
   const start = '/* critical-home:start */';
   const end = '/* critical-home:end */';
   const startIndex = indexHtml.indexOf(start);
   const endIndex = indexHtml.indexOf(end);
   if (startIndex < 0 || endIndex < startIndex) {
-    throw new Error('No se encontraron los marcadores de CSS crítico en index.html');
+    throw new Error('No se encontraron los marcadores de CSS crítico en catalog-experience.html');
   }
   const nextIndexHtml = `${indexHtml.slice(0, startIndex + start.length)}${criticalResult.code.trim()}${indexHtml.slice(endIndex)}`;
   await writeFile(indexPath, nextIndexHtml, 'utf8');

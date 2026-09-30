@@ -53,6 +53,8 @@ const worker = {
 
     if (url.pathname === '/' || url.pathname === '') {
       url.pathname = '/index.html';
+    } else if (/^\/(?:es|en)(?:\/(?:b2b|b2c))?\/$/.test(url.pathname)) {
+      url.pathname += 'index.html';
     }
 
     const response = await env.ASSETS.fetch(new Request(url, request));

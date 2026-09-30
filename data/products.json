@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-08-22T00:00:00.000Z",
+  "generatedAt": "2026-09-30T21:01:35.974Z",
   "contact": {
     "company": "Innova Eyewear",
     "whatsapp": "17542360600",
     "email": "sales@innova-eyewear.com"
   },
   "counts": {
-    "optical": 80,
+    "optical": 92,
     "sun": 36,
-    "total": 116
+    "total": 128
   },
   "products": [
     {
@@ -3370,6 +3370,690 @@
         "assets/images/optical/ch22-c4/04.webp"
       ],
       "sourceFolder": "Google Drive tarea 196/CH-22_56x18-148_C4"
+    },
+    {
+      "id": "ch23-c1",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH23",
+      "variant": "C1",
+      "model": "CH23 C1",
+      "displayModel": "CH-23 C1",
+      "color": "Negro",
+      "measurements": "59-16-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-23 59□16-145 C1",
+      "sourceInscription": "CH-23 59□16-145 C1",
+      "shortDescription": "CH-23 C1: montura óptica rectangular en tonos negro.",
+      "subline": "Montura Champion CH-23 C1 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Negro"
+      ],
+      "about": {
+        "p1": "La CH-23 C1 presenta un frente rectangular en tonos negro, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-23, medida 59-16-145 y variante C1. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado negro",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 59-16-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-23 C1: rectangular optical frame in black tones.",
+          "subline": "Champion CH-23 C1 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-23 C1 has a rectangular front in black tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-23, size 59-16-145 and variant C1. The source images do not specify the material.",
+            "bullets": [
+              "Black finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 59-16-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch23-c1/01.webp",
+      "images": [
+        "assets/images/optical/ch23-c1/01.webp",
+        "assets/images/optical/ch23-c1/02.webp",
+        "assets/images/optical/ch23-c1/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH23"
+    },
+    {
+      "id": "ch23-c2",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH23",
+      "variant": "C2",
+      "model": "CH23 C2",
+      "displayModel": "CH-23 C2",
+      "color": "Champán y plateado",
+      "measurements": "59-16-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-23 59□16-145 C2",
+      "sourceInscription": "CH-23 59□16-145 C2",
+      "shortDescription": "CH-23 C2: montura óptica rectangular en tonos champán y plateado.",
+      "subline": "Montura Champion CH-23 C2 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Champán y plateado"
+      ],
+      "about": {
+        "p1": "La CH-23 C2 presenta un frente rectangular en tonos champán y plateado, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-23, medida 59-16-145 y variante C2. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado champán y plateado",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 59-16-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-23 C2: rectangular optical frame in champagne and silver tones.",
+          "subline": "Champion CH-23 C2 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-23 C2 has a rectangular front in champagne and silver tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-23, size 59-16-145 and variant C2. The source images do not specify the material.",
+            "bullets": [
+              "Champagne and silver finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 59-16-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch23-c2/01.webp",
+      "images": [
+        "assets/images/optical/ch23-c2/01.webp",
+        "assets/images/optical/ch23-c2/02.webp",
+        "assets/images/optical/ch23-c2/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH23"
+    },
+    {
+      "id": "ch23-c3",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH23",
+      "variant": "C3",
+      "model": "CH23 C3",
+      "displayModel": "CH-23 C3",
+      "color": "Gris metalizado",
+      "measurements": "59-16-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-23 59□16-145 C3",
+      "sourceInscription": "CH-23 59□16-145 C3",
+      "shortDescription": "CH-23 C3: montura óptica rectangular en tonos gris metalizado.",
+      "subline": "Montura Champion CH-23 C3 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Gris metalizado"
+      ],
+      "about": {
+        "p1": "La CH-23 C3 presenta un frente rectangular en tonos gris metalizado, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-23, medida 59-16-145 y variante C3. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado gris metalizado",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 59-16-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-23 C3: rectangular optical frame in gunmetal tones.",
+          "subline": "Champion CH-23 C3 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-23 C3 has a rectangular front in gunmetal tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-23, size 59-16-145 and variant C3. The source images do not specify the material.",
+            "bullets": [
+              "Gunmetal finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 59-16-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch23-c3/01.webp",
+      "images": [
+        "assets/images/optical/ch23-c3/01.webp",
+        "assets/images/optical/ch23-c3/02.webp",
+        "assets/images/optical/ch23-c3/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH23"
+    },
+    {
+      "id": "ch23-c4",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH23",
+      "variant": "C4",
+      "model": "CH23 C4",
+      "displayModel": "CH-23 C4",
+      "color": "Cobrizo y marrón",
+      "measurements": "59-16-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-23 59□16-145 C4",
+      "sourceInscription": "CH-23 59□16-145 C4",
+      "shortDescription": "CH-23 C4: montura óptica rectangular en tonos cobrizo y marrón.",
+      "subline": "Montura Champion CH-23 C4 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Cobrizo y marrón"
+      ],
+      "about": {
+        "p1": "La CH-23 C4 presenta un frente rectangular en tonos cobrizo y marrón, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-23, medida 59-16-145 y variante C4. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado cobrizo y marrón",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 59-16-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-23 C4: rectangular optical frame in copper and brown tones.",
+          "subline": "Champion CH-23 C4 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-23 C4 has a rectangular front in copper and brown tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-23, size 59-16-145 and variant C4. The source images do not specify the material.",
+            "bullets": [
+              "Copper and brown finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 59-16-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch23-c4/01.webp",
+      "images": [
+        "assets/images/optical/ch23-c4/01.webp",
+        "assets/images/optical/ch23-c4/02.webp",
+        "assets/images/optical/ch23-c4/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH23"
+    },
+    {
+      "id": "ch24-c1",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH24",
+      "variant": "C1",
+      "model": "CH24 C1",
+      "displayModel": "CH-24 C1",
+      "color": "Negro",
+      "measurements": "57-17-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-24 57□17-145 C1",
+      "sourceInscription": "CH-24 57□17-145 C1",
+      "shortDescription": "CH-24 C1: montura óptica rectangular en tonos negro.",
+      "subline": "Montura Champion CH-24 C1 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Negro"
+      ],
+      "about": {
+        "p1": "La CH-24 C1 presenta un frente rectangular en tonos negro, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-24, medida 57-17-145 y variante C1. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado negro",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 57-17-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-24 C1: rectangular optical frame in black tones.",
+          "subline": "Champion CH-24 C1 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-24 C1 has a rectangular front in black tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-24, size 57-17-145 and variant C1. The source images do not specify the material.",
+            "bullets": [
+              "Black finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 57-17-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch24-c1/01.webp",
+      "images": [
+        "assets/images/optical/ch24-c1/01.webp",
+        "assets/images/optical/ch24-c1/02.webp",
+        "assets/images/optical/ch24-c1/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH24"
+    },
+    {
+      "id": "ch24-c2",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH24",
+      "variant": "C2",
+      "model": "CH24 C2",
+      "displayModel": "CH-24 C2",
+      "color": "Champán y plateado",
+      "measurements": "57-17-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-24 57□17-145 C2",
+      "sourceInscription": "CH-24 57□17-145 C2",
+      "shortDescription": "CH-24 C2: montura óptica rectangular en tonos champán y plateado.",
+      "subline": "Montura Champion CH-24 C2 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Champán y plateado"
+      ],
+      "about": {
+        "p1": "La CH-24 C2 presenta un frente rectangular en tonos champán y plateado, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-24, medida 57-17-145 y variante C2. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado champán y plateado",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 57-17-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-24 C2: rectangular optical frame in champagne and silver tones.",
+          "subline": "Champion CH-24 C2 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-24 C2 has a rectangular front in champagne and silver tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-24, size 57-17-145 and variant C2. The source images do not specify the material.",
+            "bullets": [
+              "Champagne and silver finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 57-17-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch24-c2/01.webp",
+      "images": [
+        "assets/images/optical/ch24-c2/01.webp",
+        "assets/images/optical/ch24-c2/02.webp",
+        "assets/images/optical/ch24-c2/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH24"
+    },
+    {
+      "id": "ch24-c3",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH24",
+      "variant": "C3",
+      "model": "CH24 C3",
+      "displayModel": "CH-24 C3",
+      "color": "Gris metalizado",
+      "measurements": "57-17-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-24 57□17-145 C3",
+      "sourceInscription": "CH-24 57□17-145 C3",
+      "shortDescription": "CH-24 C3: montura óptica rectangular en tonos gris metalizado.",
+      "subline": "Montura Champion CH-24 C3 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Gris metalizado"
+      ],
+      "about": {
+        "p1": "La CH-24 C3 presenta un frente rectangular en tonos gris metalizado, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-24, medida 57-17-145 y variante C3. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado gris metalizado",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 57-17-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-24 C3: rectangular optical frame in gunmetal tones.",
+          "subline": "Champion CH-24 C3 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-24 C3 has a rectangular front in gunmetal tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-24, size 57-17-145 and variant C3. The source images do not specify the material.",
+            "bullets": [
+              "Gunmetal finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 57-17-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch24-c3/01.webp",
+      "images": [
+        "assets/images/optical/ch24-c3/01.webp",
+        "assets/images/optical/ch24-c3/02.webp",
+        "assets/images/optical/ch24-c3/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH24"
+    },
+    {
+      "id": "ch24-c4",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH24",
+      "variant": "C4",
+      "model": "CH24 C4",
+      "displayModel": "CH-24 C4",
+      "color": "Marrón y verde",
+      "measurements": "57-17-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-24 57□17-145 C4",
+      "sourceInscription": "CH-24 57□17-145 C4",
+      "shortDescription": "CH-24 C4: montura óptica rectangular en tonos marrón y verde.",
+      "subline": "Montura Champion CH-24 C4 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Marrón y verde"
+      ],
+      "about": {
+        "p1": "La CH-24 C4 presenta un frente rectangular en tonos marrón y verde, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-24, medida 57-17-145 y variante C4. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado marrón y verde",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 57-17-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-24 C4: rectangular optical frame in brown and green tones.",
+          "subline": "Champion CH-24 C4 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-24 C4 has a rectangular front in brown and green tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-24, size 57-17-145 and variant C4. The source images do not specify the material.",
+            "bullets": [
+              "Brown and green finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 57-17-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch24-c4/01.webp",
+      "images": [
+        "assets/images/optical/ch24-c4/01.webp",
+        "assets/images/optical/ch24-c4/02.webp",
+        "assets/images/optical/ch24-c4/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH24"
+    },
+    {
+      "id": "ch25-c1",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH25",
+      "variant": "C1",
+      "model": "CH25 C1",
+      "displayModel": "CH-25 C1",
+      "color": "Negro",
+      "measurements": "60-15-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-25 60□15-145 C1",
+      "sourceInscription": "CH-25 60□15-145 C1",
+      "shortDescription": "CH-25 C1: montura óptica rectangular en tonos negro.",
+      "subline": "Montura Champion CH-25 C1 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Negro"
+      ],
+      "about": {
+        "p1": "La CH-25 C1 presenta un frente rectangular en tonos negro, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-25, medida 60-15-145 y variante C1. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado negro",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 60-15-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-25 C1: rectangular optical frame in black tones.",
+          "subline": "Champion CH-25 C1 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-25 C1 has a rectangular front in black tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-25, size 60-15-145 and variant C1. The source images do not specify the material.",
+            "bullets": [
+              "Black finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 60-15-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch25-c1/01.webp",
+      "images": [
+        "assets/images/optical/ch25-c1/01.webp",
+        "assets/images/optical/ch25-c1/02.webp",
+        "assets/images/optical/ch25-c1/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH25"
+    },
+    {
+      "id": "ch25-c2",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH25",
+      "variant": "C2",
+      "model": "CH25 C2",
+      "displayModel": "CH-25 C2",
+      "color": "Champán y plateado",
+      "measurements": "60-15-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-25 60□15-145 C2",
+      "sourceInscription": "CH-25 60□15-145 C2",
+      "shortDescription": "CH-25 C2: montura óptica rectangular en tonos champán y plateado.",
+      "subline": "Montura Champion CH-25 C2 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Champán y plateado"
+      ],
+      "about": {
+        "p1": "La CH-25 C2 presenta un frente rectangular en tonos champán y plateado, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-25, medida 60-15-145 y variante C2. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado champán y plateado",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 60-15-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-25 C2: rectangular optical frame in champagne and silver tones.",
+          "subline": "Champion CH-25 C2 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-25 C2 has a rectangular front in champagne and silver tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-25, size 60-15-145 and variant C2. The source images do not specify the material.",
+            "bullets": [
+              "Champagne and silver finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 60-15-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch25-c2/01.webp",
+      "images": [
+        "assets/images/optical/ch25-c2/01.webp",
+        "assets/images/optical/ch25-c2/02.webp",
+        "assets/images/optical/ch25-c2/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH25"
+    },
+    {
+      "id": "ch25-c3",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH25",
+      "variant": "C3",
+      "model": "CH25 C3",
+      "displayModel": "CH-25 C3",
+      "color": "Marrón y verde",
+      "measurements": "60-15-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-25 60□15-145 C3",
+      "sourceInscription": "CH-25 60□15-145 C3",
+      "shortDescription": "CH-25 C3: montura óptica rectangular en tonos marrón y verde.",
+      "subline": "Montura Champion CH-25 C3 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Marrón y verde"
+      ],
+      "about": {
+        "p1": "La CH-25 C3 presenta un frente rectangular en tonos marrón y verde, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-25, medida 60-15-145 y variante C3. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado marrón y verde",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 60-15-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-25 C3: rectangular optical frame in brown and green tones.",
+          "subline": "Champion CH-25 C3 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-25 C3 has a rectangular front in brown and green tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-25, size 60-15-145 and variant C3. The source images do not specify the material.",
+            "bullets": [
+              "Brown and green finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 60-15-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch25-c3/01.webp",
+      "images": [
+        "assets/images/optical/ch25-c3/01.webp",
+        "assets/images/optical/ch25-c3/02.webp",
+        "assets/images/optical/ch25-c3/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH25"
+    },
+    {
+      "id": "ch25-c4",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH25",
+      "variant": "C4",
+      "model": "CH25 C4",
+      "displayModel": "CH-25 C4",
+      "color": "Azul",
+      "measurements": "60-15-145",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "No especificado",
+      "sku": "CH-25 60□15-145 C4",
+      "sourceInscription": "CH-25 60□15-145 C4",
+      "shortDescription": "CH-25 C4: montura óptica rectangular en tonos azul.",
+      "subline": "Montura Champion CH-25 C4 con plaquetas ajustables y emblema C en la patilla.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Azul"
+      ],
+      "about": {
+        "p1": "La CH-25 C4 presenta un frente rectangular en tonos azul, plaquetas ajustables y el emblema C visible en la patilla.",
+        "p2": "La inscripción interior indica CH-25, medida 60-15-145 y variante C4. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Acabado azul",
+          "Frente rectangular",
+          "Plaquetas ajustables",
+          "Medida 60-15-145 inscrita en la patilla"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-25 C4: rectangular optical frame in blue tones.",
+          "subline": "Champion CH-25 C4 frame with adjustable nose pads and a C emblem on the temple.",
+          "about": {
+            "p1": "CH-25 C4 has a rectangular front in blue tones, adjustable nose pads and a visible C emblem on the temple.",
+            "p2": "The inner-temple marking reads CH-25, size 60-15-145 and variant C4. The source images do not specify the material.",
+            "bullets": [
+              "Blue finish",
+              "Rectangular front",
+              "Adjustable nose pads",
+              "Size 60-15-145 printed on the temple"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch25-c4/01.webp",
+      "images": [
+        "assets/images/optical/ch25-c4/01.webp",
+        "assets/images/optical/ch25-c4/02.webp",
+        "assets/images/optical/ch25-c4/03.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH23-CH25 Dropbox Originales/CH25"
     },
     {
       "id": "chs-01-c1",

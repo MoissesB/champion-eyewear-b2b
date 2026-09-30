@@ -10,6 +10,9 @@ const newModelIds = new Set([
   'ch20-c1', 'ch20-c2', 'ch20-c3', 'ch20-c4',
   'ch21-c1', 'ch21-c2', 'ch21-c3', 'ch21-c4',
   'ch22-c1', 'ch22-c2', 'ch22-c3', 'ch22-c4',
+  'ch23-c1', 'ch23-c2', 'ch23-c3', 'ch23-c4',
+  'ch24-c1', 'ch24-c2', 'ch24-c3', 'ch24-c4',
+  'ch25-c1', 'ch25-c2', 'ch25-c3', 'ch25-c4',
 ]);
 const blogCatalog = JSON.parse(fs.readFileSync(path.join(root, 'data', 'blog-posts.json'), 'utf8'));
 const blogPosts = Array.isArray(blogCatalog.posts) ? blogCatalog.posts : [];
@@ -33,6 +36,8 @@ function escapeHtml(value) {
 
 const urls = [
   `${origin}/`,
+  `${origin}/en/`,
+  ...['es', 'en'].flatMap((language) => ['b2b', 'b2c'].map((profile) => `${origin}/${language}/${profile}/`)),
   `${origin}/catalogo.html`,
   `${origin}/blog.html`,
   ...blogPosts.map((post) => `${origin}/blog/${encodeURIComponent(post.slug)}.html`),
@@ -77,7 +82,7 @@ const productIndex = `<!doctype html>
   </style>
 </head>
 <body>
-  <header><a href="./">Champion Eyewear</a><a href="./#monturas">Volver al catálogo</a></header>
+  <header><a href="./">Champion Eyewear</a><a href="./es/b2b/#monturas">Volver al catálogo</a></header>
   <main id="contenido">
     <h1>Índice completo de productos</h1>
     <p>Enlaces directos a las ${products.length} referencias del catálogo profesional Champion Eyewear. Esta página facilita la navegación y el rastreo sin depender de JavaScript.</p>

@@ -358,13 +358,25 @@ function buildOpticalProducts(manifest) {
   return products.sort((a, b) => naturalCompare(a.model, b.model));
 }
 
+const catalogPath = path.join(repoRoot, 'data', 'products.json');
+const manifestPath = path.join(repoRoot, 'data', 'asset-manifest.json');
+const previousCatalog = fs.existsSync(catalogPath) ? JSON.parse(fs.readFileSync(catalogPath, 'utf8')) : null;
+const previousManifest = fs.existsSync(manifestPath) ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')) : [];
+// The legacy source covers CH01–CH16 only. Preserve newer, independently
+// verified optical references instead of silently deleting them on rebuild.
+const supplementalOptical = (previousCatalog?.products || []).filter((product) =>
+  product.family === 'optical' && /^CH(?:1[7-9]|2\d|[3-9]\d)$/.test(product.series)
+);
 const manifest = [];
-const optical = buildOpticalProducts(manifest);
+const optical = [...buildOpticalProducts(manifest), ...supplementalOptical]
+  .sort((a, b) => naturalCompare(a.model, b.model));
 const sun = buildSunProducts(manifest);
 
 const logoSource = path.join(championRoot, 'Logo', 'logo champion.png');
 const logoTarget = 'assets/images/brand/champion-logo.webp';
 manifest.push({ family: 'brand', code: 'Champion', role: 'logo', source: logoSource, target: logoTarget, maxWidth: 700, maxHeight: 260 });
+const generatedTargets = new Set(manifest.map((asset) => asset.target));
+manifest.push(...previousManifest.filter((asset) => !generatedTargets.has(asset.target)));
 
 const catalog = {
   generatedAt: new Date().toISOString(),
@@ -378,9 +390,9 @@ const catalog = {
 };
 
 fs.mkdirSync(path.join(repoRoot, 'data'), { recursive: true });
-fs.writeFileSync(path.join(repoRoot, 'data', 'products.json'), `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
+fs.writeFileSync(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
 fs.writeFileSync(path.join(repoRoot, 'data', 'products.js'), `window.CHAMPION_CATALOG = ${JSON.stringify(catalog, null, 2)};\n`, 'utf8');
-fs.writeFileSync(path.join(repoRoot, 'data', 'asset-manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
+fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 
 console.log(`Catálogo generado: ${optical.length} monturas + ${sun.length} lentes de sol = ${catalog.counts.total} productos.`);
 console.log(`Recursos locales preparados para procesar: ${manifest.length}.`);

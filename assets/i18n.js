@@ -11,7 +11,7 @@
       requestShort: 'Mi pedido', requestOpen: 'Preparar pedido', requestMobile: 'Ver mi pedido', menuOpen: 'Abrir menú',
       announcement: 'INNOVA EYEWEAR · Catálogo profesional para ópticas, cadenas y distribuidores',
       heroKicker: 'Innova Eyewear · Distribución profesional', heroTitle: 'Champion Eyewear:<br>rotación con estilo deportivo', heroText: 'Monturas ópticas y lentes de sol para vitrinas comerciales. Seleccione referencias, defina cantidades y prepare un pedido completo para revisión de Innova.', heroOptical: 'Ver monturas', heroSun: 'Ver lentes de sol', heroRequest: 'Preparar mi pedido', heroOpticalFact: 'monturas', heroSunFact: 'solares', heroPdfFact: 'PDF profesional', heroSummaryAria: 'Resumen del catálogo',
-      benefitsKicker: 'Rentabilidad y demanda', benefitsTitle: 'Por qué las ópticas eligen Champion', benefitsText: 'Una propuesta deportiva y urbana con reconocimiento de marca, lectura visual inmediata y referencias pensadas para una rotación comercial clara.', benefit1Title: '116 referencias listas.', benefit1Text: 'Monturas y solares en un único catálogo.', benefit2Title: 'Selección profesional.', benefit2Text: 'Cantidades y datos de la óptica sin un carrito minorista.', benefit3Title: 'Documentos claros.', benefit3Text: 'PDF para el cliente y CSV operativo para Innova.', benefitsCta: 'Explorar colección solar', soundOn: 'Activar sonido', soundOff: 'Silenciar',
+      benefitsKicker: 'Rentabilidad y demanda', benefitsTitle: 'Por qué las ópticas eligen Champion', benefitsText: 'Una propuesta deportiva y urbana con reconocimiento de marca, lectura visual inmediata y referencias pensadas para una rotación comercial clara.', benefit1Title: '128 referencias listas.', benefit1Text: 'Monturas y solares en un único catálogo.', benefit2Title: 'Selección profesional.', benefit2Text: 'Cantidades y datos de la óptica sin un carrito minorista.', benefit3Title: 'Documentos claros.', benefit3Text: 'PDF para el cliente y CSV operativo para Innova.', benefitsCta: 'Explorar colección solar', soundOn: 'Activar sonido', soundOff: 'Silenciar',
       opticalKicker: 'Colección óptica 2026', opticalTitle: 'Monturas Champion', opticalIntro: 'Busque por modelo, color, material o medida. Cada ficha usa una sola plantilla y carga únicamente los datos del producto elegido.', opticalFiltersAria: 'Filtros de monturas', opticalSearch: 'Buscar monturas', opticalPlaceholder: 'Buscar CH01, azul, TR90, 57-17-145…', allFeminine: 'Todas', filtersToggle: 'Filtros', filtersAvailable: 'Categorías disponibles', filtersClear: 'Limpiar filtros', filtersActive: 'Filtros activos', filterCollection: 'Colección', filterModel: 'Modelo', filterMaterial: 'Material', filterColor: 'Color', filterMeasurements: 'Medidas', filterShape: 'Forma', filterLens: 'Tipo de lente', removeFilter: 'Quitar filtro {value}',
       sunKicker: 'Champion Sun · Nueva categoría', sunTitle: 'Lentes de sol para una vitrina más deportiva', sunIntro: 'Una sección completa con 36 referencias solares, desde siluetas urbanas hasta pantallas envolventes de alto impacto.', sunAvailable: 'referencias disponibles para el pedido', sunFiltersAria: 'Filtros de lentes de sol', sunSearch: 'Buscar lentes de sol', sunPlaceholder: 'Buscar CHS-07, azul, espejado…', allMasculine: 'Todos',
       processKicker: 'Pedido para ópticas', processTitle: 'De la selección al pedido para revisión', processIntro: 'Un proceso claro para ópticas, cadenas y distribuidores. Innova revisa la óptica, confirma el pedido, realiza el cobro y coordina el envío.', step1Title: 'Seleccione', step1Text: 'Añada monturas o solares y ajuste la cantidad de cada referencia.', step2Title: 'Complete', step2Text: 'Indique nombre, óptica, correo, teléfono, ciudad y país.', step3Title: 'Revise', step3Text: 'Cumpla el mínimo de 24 piezas. Puede combinar modelos, colores y cantidades para completar el pedido.', step4Title: 'Envíe el pedido', step4Text: 'Envíe el pedido completo por WhatsApp o correo. Innova confirmará disponibilidad, cobro y envío; no se ofrece envío gratuito.',
@@ -29,7 +29,7 @@
       requestShort: 'My order', requestOpen: 'Prepare order', requestMobile: 'View my order', menuOpen: 'Open menu',
       announcement: 'INNOVA EYEWEAR · Professional catalog for optical stores, chains and distributors',
       heroKicker: 'Innova Eyewear · Professional distribution', heroTitle: 'Champion Eyewear:<br>sports style that drives rotation', heroText: 'Optical frames and sunglasses for commercial displays. Select references, set quantities and prepare a complete order for Innova review.', heroOptical: 'View optical frames', heroSun: 'View sunglasses', heroRequest: 'Prepare my order', heroOpticalFact: 'optical frames', heroSunFact: 'sunglasses', heroPdfFact: 'Professional PDF', heroSummaryAria: 'Catalog summary',
-      benefitsKicker: 'Profitability and demand', benefitsTitle: 'Why optical stores choose Champion', benefitsText: 'A recognized sports and urban brand with immediate visual appeal and references designed for clear commercial rotation.', benefit1Title: '116 references ready.', benefit1Text: 'Optical frames and sunglasses in one catalog.', benefit2Title: 'Professional selection.', benefit2Text: 'Quantities and optical-store details without a retail cart.', benefit3Title: 'Clear documents.', benefit3Text: 'A client PDF and an operating CSV for Innova.', benefitsCta: 'Explore the sunglasses collection', soundOn: 'Turn sound on', soundOff: 'Mute',
+      benefitsKicker: 'Profitability and demand', benefitsTitle: 'Why optical stores choose Champion', benefitsText: 'A recognized sports and urban brand with immediate visual appeal and references designed for clear commercial rotation.', benefit1Title: '128 references ready.', benefit1Text: 'Optical frames and sunglasses in one catalog.', benefit2Title: 'Professional selection.', benefit2Text: 'Quantities and optical-store details without a retail cart.', benefit3Title: 'Clear documents.', benefit3Text: 'A client PDF and an operating CSV for Innova.', benefitsCta: 'Explore the sunglasses collection', soundOn: 'Turn sound on', soundOff: 'Mute',
       opticalKicker: '2026 optical collection', opticalTitle: 'Champion optical frames', opticalIntro: 'Search by model, color, material or size. Every product page uses one template and loads only the selected product data.', opticalFiltersAria: 'Optical frame filters', opticalSearch: 'Search optical frames', opticalPlaceholder: 'Search CH01, blue, TR90, 57-17-145…', allFeminine: 'All', filtersToggle: 'Filters', filtersAvailable: 'Available categories', filtersClear: 'Clear filters', filtersActive: 'Active filters', filterCollection: 'Collection', filterModel: 'Model', filterMaterial: 'Material', filterColor: 'Colour', filterMeasurements: 'Size', filterShape: 'Shape', filterLens: 'Lens type', removeFilter: 'Remove filter {value}',
       sunKicker: 'Champion Sun · New category', sunTitle: 'Sunglasses for a more athletic display', sunIntro: 'A complete section with 36 sunglasses references, from urban silhouettes to high-impact wraparound shields.', sunAvailable: 'references available to order', sunFiltersAria: 'Sunglasses filters', sunSearch: 'Search sunglasses', sunPlaceholder: 'Search CHS-07, blue, mirrored…', allMasculine: 'All',
       processKicker: 'Optical-store order', processTitle: 'From selection to order review', processIntro: 'A clear process for optical stores, chains and distributors. Innova reviews the optical store, confirms the order, processes payment and coordinates shipping.', step1Title: 'Select', step1Text: 'Add optical frames or sunglasses and set the quantity for each reference.', step2Title: 'Complete', step2Text: 'Enter your name, optical store, email, phone, city and country.', step3Title: 'Review', step3Text: 'Meet the 24-piece minimum. You may combine models, colors and quantities to complete the order.', step4Title: 'Send the order', step4Text: 'Send the complete order by WhatsApp or email. Innova will confirm availability, payment and shipping; free shipping is not offered.',
@@ -47,7 +47,7 @@
     es: [
       { id: 'profit', title: 'Rentabilidad y pedidos', intro: 'Pedido inicial de 24 piezas y estructura del catálogo para preparar una selección profesional.', items: [
         ['¿Cuál es la compra mínima inicial?', 'La compra mínima inicial aprobada es de 24 piezas. Este mínimo permite armar una selección equilibrada para exhibición, rotación y prueba comercial en la óptica.'],
-        ['¿Cuántos productos incluye el catálogo Champion?', 'El catálogo reúne 116 referencias: 80 monturas ópticas y 36 lentes de sol, todas disponibles para consulta comercial desde una plantilla única de producto.'],
+        ['¿Cuántos productos incluye el catálogo Champion?', 'El catálogo reúne 128 referencias: 92 monturas ópticas y 36 lentes de sol, todas disponibles para consulta comercial desde una plantilla única de producto.'],
         ['¿Puedo elegir los modelos del pedido inicial?', 'Sí. Puede combinar referencias y cantidades. El equipo comercial también puede orientar una selección según el perfil de la óptica, el cliente y el país; la selección final se confirma según disponibilidad.'],
         ['¿Champion es una marca adecuada para ópticas?', 'Sí. Champion tiene reconocimiento deportivo y urbano y funciona para vitrinas que buscan una propuesta reconocible, moderna y de rotación.']
       ]},
@@ -78,7 +78,7 @@
     en: [
       { id: 'profit', title: 'Profitability and orders', intro: 'Initial 24-piece order and catalog structure for a professional selection.', items: [
         ['What is the initial minimum order?', 'The approved initial minimum is 24 pieces. This minimum helps build a balanced starting selection for display, rotation and commercial testing in the optical store.'],
-        ['How many products does the Champion catalog include?', 'The catalog brings together 116 references: 80 optical frames and 36 sunglasses, all available for commercial inquiry through one product template.'],
+        ['How many products does the Champion catalog include?', 'The catalog brings together 128 references: 92 optical frames and 36 sunglasses, all available for commercial inquiry through one product template.'],
         ['Can I choose the models in my initial order?', 'Yes. You may combine references and quantities. The commercial team can also recommend a selection based on the optical-store profile, customer and country; final selection is confirmed according to availability.'],
         ['Is Champion a good brand for optical stores?', 'Yes. Champion has strong sports and urban recognition and suits displays looking for a recognizable, modern brand with commercial rotation.']
       ]},
@@ -147,7 +147,7 @@
   };
 
   const enValueMap = {
-    'Acetato': 'Acetate', 'Acero inoxidable': 'Stainless steel', 'Acero inoxidable con detalles de fibra de carbono': 'Stainless steel with carbon-fiber details', 'Material técnico de alta resistencia': 'High-resistance technical material', 'Oftálmica': 'Optical', 'Montura óptica': 'Optical frame', 'Compatible con lentes graduadas': 'Compatible with prescription lenses', 'Rectangular semi al aire': 'Semi-rimless rectangular', 'Geométrica': 'Geometric',
+    'Acetato': 'Acetate', 'Acero inoxidable': 'Stainless steel', 'Acero inoxidable con detalles de fibra de carbono': 'Stainless steel with carbon-fiber details', 'Material técnico de alta resistencia': 'High-resistance technical material', 'No especificado': 'Not specified', 'Oftálmica': 'Optical', 'Montura óptica': 'Optical frame', 'Compatible con lentes graduadas': 'Compatible with prescription lenses', 'Rectangular semi al aire': 'Semi-rimless rectangular', 'Geométrica': 'Geometric',
     'Lente solar espejado': 'Mirrored sun lens', 'Lente solar humo': 'Smoke sun lens', 'Categoría UV por confirmar con Innova': 'UV category to be confirmed by Innova', 'Pantalla deportiva envolvente': 'Wraparound sports shield', 'Rectangular deportiva': 'Sport rectangular', 'Rectangular metálica': 'Metal rectangular', 'Frente amplio': 'Wide front', 'Sport Casual': 'Sport Casual',
     'Azul marino / lente azul espejado': 'Navy / blue mirrored lens', 'Azul marino / lente multicolor espejado': 'Navy / multicolor mirrored lens', 'Blanco / lente azul espejado': 'White / blue mirrored lens', 'Cristal / lente azul espejado': 'Crystal / blue mirrored lens', 'Gunmetal / lente azul espejado': 'Gunmetal / blue mirrored lens', 'Gunmetal / lente dorado espejado': 'Gunmetal / gold mirrored lens', 'Gunmetal / lente verde espejado': 'Gunmetal / green mirrored lens', 'Habana / lente dorado espejado': 'Havana / gold mirrored lens', 'Negro / lente azul espejado': 'Black / blue mirrored lens', 'Negro / lente azul-violeta espejado': 'Black / blue-violet mirrored lens', 'Negro / lente dorado espejado': 'Black / gold mirrored lens', 'Negro / lente dorado-verde espejado': 'Black / gold-green mirrored lens', 'Negro / lente humo': 'Black / smoke lens', 'Negro / lente multicolor espejado': 'Black / multicolor mirrored lens', 'Negro / lente naranja-dorado espejado': 'Black / orange-gold mirrored lens', 'Negro / lente rojo-violeta espejado': 'Black / red-violet mirrored lens', 'Negro / lente verde espejado': 'Black / green mirrored lens', 'Negro / lente verde-azul espejado': 'Black / green-blue mirrored lens', 'Negro / lente verde-violeta espejado': 'Black / green-violet mirrored lens',
     'Acento Azul': 'Blue accent', 'Acento Rojo': 'Red accent', 'Alta Gama': 'High-end', 'Azul Oscuro': 'Dark blue', 'Azul Profundo': 'Deep blue', 'Azul Translúcido': 'Translucent blue', 'Colección': 'Collection', 'Contemporáneo': 'Contemporary', 'Cristal': 'Crystal', 'Distintivo': 'Distinctive', 'Estilo Ejecutivo': 'Executive style', 'Gris Humo': 'Smoke grey', 'Ligero': 'Lightweight', 'Resistente': 'Durable', 'Rotación Alta': 'High rotation', 'Sobrio': 'Understated', 'Translúcido': 'Translucent', 'Transparente': 'Transparent', 'Turquesa': 'Turquoise', 'Urbano': 'Urban', 'Venta rápida': 'Fast seller', 'Verde Profundo': 'Deep green',
@@ -159,6 +159,10 @@
   }
 
   function currentLanguage() {
+    const route = window.location.pathname.match(/^\/(es|en)\//i);
+    if (route) return route[1].toLowerCase();
+    const explicit = new URLSearchParams(window.location.search).get('lang');
+    if (explicit === 'es' || explicit === 'en') return explicit;
     const stored = localStorage.getItem(STORAGE_KEY);
     return stored === 'en' ? 'en' : 'es';
   }
@@ -187,6 +191,11 @@
   function setLanguage(next) {
     language = next === 'en' ? 'en' : 'es';
     localStorage.setItem(STORAGE_KEY, language);
+    if (/\/product\.html$/i.test(window.location.pathname)) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', language);
+      window.history.replaceState(window.history.state, '', url);
+    }
     translateStatic();
     listeners.forEach((listener) => listener(language));
     document.dispatchEvent(new CustomEvent('champion:languagechange', { detail: { language } }));
@@ -214,7 +223,7 @@
     localized.lens = localizeValue(product.lens);
     localized.protection = localizeValue(product.protection);
     localized.tags = (product.tags || []).map(localizeValue);
-    if (language === 'en') {
+    if (language === 'en' && !product.locale?.en) {
       localized.shortDescription = `${product.displayModel} from Champion's ${product.collection} collection, selected for professional optical-store displays.`;
       localized.subline = `${product.displayModel} in ${localized.color}, designed for a modern Champion assortment with strong commercial presentation.`;
       localized.about = {
@@ -222,6 +231,12 @@
         p2: `Its ${localized.color.toLowerCase()} finish and ${localized.material.toLowerCase()} construction support a clear, contemporary display.`,
         bullets: [`${localized.color} finish`, localized.material, localized.shape, localized.protection]
       };
+    }
+    if (language === 'en' && product.locale?.en) {
+      const translation = product.locale.en;
+      if (typeof translation.shortDescription === 'string') localized.shortDescription = translation.shortDescription;
+      if (typeof translation.subline === 'string') localized.subline = translation.subline;
+      if (translation.about && typeof translation.about === 'object') localized.about = translation.about;
     }
     return localized;
   }

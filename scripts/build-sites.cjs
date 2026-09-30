@@ -11,6 +11,7 @@ if (!dist.startsWith(`${root}${path.sep}`)) {
 }
 
 async function build() {
+  require('./generate-experiences.cjs');
   require('./generate-sitemap.cjs');
   await rm(dist, { recursive: true, force: true });
   await mkdir(client, { recursive: true });
@@ -20,7 +21,7 @@ async function build() {
     await cp(path.join(root, file), path.join(client, file));
   }
 
-  for (const directory of ['assets', 'data', 'blog']) {
+  for (const directory of ['assets', 'data', 'blog', 'es', 'en']) {
     await cp(path.join(root, directory), path.join(client, directory), { recursive: true });
   }
 
