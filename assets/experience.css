@@ -13,4 +13,9 @@ body.champion-lead-modal-open{overflow:hidden}
 .champion-lead-close{flex:0 0 40px;width:40px;height:40px;display:grid;place-items:center;border:1px solid #cbd2df;border-radius:50%;background:#fff;color:#1c2659;cursor:pointer;font-size:1.5rem;line-height:1}
 .champion-lead-close:hover,.champion-lead-close:focus-visible{border-color:#d1122b;color:#d1122b;outline:2px solid transparent}
 .champion-lead-frame{display:block;width:100%;height:min(72dvh,720px);min-height:420px;border:0;background:#fff}
+.champion-lead-footer[hidden]{display:none!important}
+.champion-lead-footer{display:flex;justify-content:flex-end;padding:12px 24px;border-top:1px solid #e5e8f0;background:#fff}
+.champion-lead-continue{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:999px;background:#d1122b;color:#fff!important;font-size:.86rem;font-weight:800;text-decoration:none}
+.champion-lead-continue:hover,.champion-lead-continue:focus-visible{background:#a40e22;outline:3px solid #1c2659;outline-offset:2px}
 @media(max-width:680px){.champion-lead-dialog{width:calc(100vw - 12px);max-height:calc(100dvh - 12px);border-radius:14px}.champion-lead-panel{max-height:calc(100dvh - 12px)}.champion-lead-header{padding:15px;gap:10px}.champion-lead-frame{height:calc(100dvh - 128px);min-height:300px}}
+@media(max-width:680px){.champion-lead-footer{padding:10px 15px}.champion-lead-continue{width:100%}}
