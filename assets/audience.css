@@ -24,6 +24,26 @@ html[data-champion-review] .product-card {
   content-visibility: visible !important;
 }
 
+/* El perfil B2C se fija en HEAD: no mostrar el texto/controles B2B de la plantilla mientras se transforma la ficha. */
+html[data-champion-audience="b2c"] body[data-page="product"] .product-header [data-request-open],
+html[data-champion-audience="b2c"] body[data-page="product"] [data-request-add],
+html[data-champion-audience="b2c"] body[data-page="product"] .mobile-product-order-bar,
+html[data-champion-audience="b2c"] body[data-page="product"] .product-request-box:not(.product-interest-box) {
+  display: none !important;
+}
+
+html[data-champion-audience="b2c"] body[data-page="product"] .product-announcement[data-i18n],
+html[data-champion-audience="b2c"] body[data-page="product"] .product-brand [data-i18n],
+html[data-champion-audience="b2c"] body[data-page="product"] .product-faq-section .section-heading [data-i18n],
+html[data-champion-audience="b2c"] body[data-page="product"] .product-footer [data-i18n] {
+  visibility: hidden;
+}
+
+html[data-champion-audience="b2c"] body[data-page="product"] .product-footer a[href^="https://wa.me/"],
+html[data-champion-audience="b2c"] body[data-page="product"] .product-footer a[href^="mailto:"] {
+  display: none !important;
+}
+
 html[data-champion-audience="pending"] body[data-page="product"] > :not(#audiencePortal) {
   visibility: hidden;
 }
