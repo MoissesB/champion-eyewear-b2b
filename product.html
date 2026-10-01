@@ -36,6 +36,21 @@
     </nav>
   </header>
 
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const language = params.get('lang') === 'en' ? 'en' : 'es';
+      const audience = params.get('audience') === 'b2c' ? 'b2c' : 'b2b';
+      const home = `./${language}/${audience}/`;
+      const section = /^chs-/i.test(params.get('id') || '') ? 'lentes-sol' : 'monturas';
+      document.querySelector('.back-control').href = `${home}#${section}`;
+      document.querySelector('.product-brand').href = home;
+      document.querySelectorAll('.product-header nav a[href^="./index.html"]').forEach((link) => {
+        link.href = `${home}${link.hash || ''}`;
+      });
+    })();
+  </script>
+
   <main id="contenido" class="product-main">
     <section class="product-layout" id="productRoot" aria-live="polite"><div class="product-loading" data-i18n="loading">Preparando ficha de producto…</div></section>
     <section class="product-faq-section" id="preguntas">

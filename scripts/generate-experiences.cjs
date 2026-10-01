@@ -33,7 +33,6 @@ for (const language of ['es', 'en']) {
         .replace(/\n    <section class="section (?:benefits-section|reference-section|process-section|faq-section)"[\s\S]*?\n    <\/section>/g, '')
         .replace(/<a href="#beneficios"[^>]*>[\s\S]*?<\/a>/g, '')
         .replace(/<a href="#faq"[^>]*>[\s\S]*?<\/a>/g, '')
-        .replace(/<a href="\.\.\/\.\.\/blog\.html">Blog<\/a>/g, '')
         .replace(/<a href="\.\.\/\.\.\/catalogo\.html"[^>]*>[\s\S]*?<\/a>/g, '')
         .replace(/\s*<span><strong>PDF<\/strong> <span data-i18n="heroPdfFact">[^<]*<\/span><\/span>/, '')
         .replace(/<button\b(?=[^>]*data-request-open)[^>]*>[\s\S]*?<\/button>/g, '')
@@ -50,6 +49,7 @@ for (const language of ['es', 'en']) {
         .replace(/<section class="commercial-cta" id="contacto-comercial">[\s\S]*?<\/section>/, `<section class="commercial-cta" id="contacto-comercial"><div class="container commercial-inner"><div><span class="eyebrow eyebrow-light">${english ? 'Find Champion' : 'Encuentra Champion'}</span><h2>${english ? 'Found a style you like?' : '¿Encontraste un modelo que te gusta?'}</h2><p>${english ? 'Ask at a nearby optical store in your country about Champion and check the availability of the model and color with that store. No direct online purchase.' : 'Consulta en una óptica cercana en tu país por Champion y confirma allí la disponibilidad del modelo y color. No hay compra directa en línea.'}</p></div></div></section>`);
     }
 
+    html = html.replace(/href="\.\.\/\.\.\/blog\.html"/g, `href="../../blog.html?audience=${profile}&amp;lang=${language}"`);
     if (personal) html = html.replace(/\r\n?/g, '\n').replace(/\n{3,}/g, '\n\n');
     html = html.replace(/^[ \t]+$/gm, '');
     fs.mkdirSync(folder, { recursive: true });
