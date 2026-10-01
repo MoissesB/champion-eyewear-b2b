@@ -134,9 +134,7 @@
     const product = i18n.localizeProduct(source);
     const b2c = window.ChampionAudience?.getProfile?.() === 'b2c';
     const detailUrl = `../../product.html?id=${encodeURIComponent(product.id)}${b2c ? '&audience=b2c' : ''}&lang=${i18n.language}`;
-    const action = b2c
-      ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">${i18n.language === 'en' ? 'I like this model' : 'Me interesa este modelo'}</button>`
-      : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
+    const action = b2c ? '' : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
     return `
       <article class="product-card${isNewModel(source) ? ' is-new-model' : ''}" data-product-id="${escapeHtml(product.id)}">
         <a class="product-card-image" href="${detailUrl}" aria-label="${escapeHtml(i18n.t('viewDetails'))}: ${escapeHtml(product.displayModel)}">
@@ -198,8 +196,8 @@
     if (!root || !info) return;
     if (window.ChampionAudience?.getProfile?.() === 'b2c') {
       const personalIntro = i18n.language === 'en'
-        ? 'Explore model photos, colors and technical details. Ask where to find Champion at an optical store, then confirm availability with that store.'
-        : 'Explora fotos, colores y fichas técnicas. Consulta dónde encontrar Champion en una óptica y confirma allí la disponibilidad.';
+        ? 'Explore model photos, colors and technical details. Ask at a nearby optical store in your country about Champion, then confirm availability there.'
+        : 'Explora fotos, colores y fichas técnicas. Consulta en una óptica cercana en tu país por Champion y confirma allí la disponibilidad.';
       root.innerHTML = `<div><span class="collection-explainer-label">${escapeHtml(collection === 'all' ? i18n.t('allMasculine') : collection)}</span><h3>${escapeHtml(info.title)}</h3><p>${escapeHtml(personalIntro)}</p></div>`;
       return;
     }
@@ -415,18 +413,7 @@
 
   function init() {
     if (window.ChampionAudience?.getProfile?.() === 'b2c') {
-      document.querySelectorAll('[data-request-open]').forEach((button) => {
-        button.removeAttribute('data-request-open');
-        button.setAttribute('data-interest-open', '');
-        button.removeAttribute('data-i18n');
-        button.querySelectorAll('[data-request-count]').forEach((count) => {
-          count.removeAttribute('data-request-count');
-          count.setAttribute('data-interest-count', '');
-        });
-        const labels = button.querySelectorAll('[data-i18n]');
-        labels.forEach((node) => { node.removeAttribute('data-i18n'); node.textContent = i18n.language === 'en' ? 'My models' : 'Mis modelos'; });
-        if (!labels.length && !button.querySelector('[data-request-count]')) button.textContent = i18n.language === 'en' ? 'View my models' : 'Ver mis modelos';
-      });
+      document.querySelectorAll('[data-request-open], [data-interest-open]').forEach((button) => button.remove());
     }
     const opticalCount = products.filter((product) => product.family === 'optical').length;
     const sunCount = products.filter((product) => product.family === 'sun').length;

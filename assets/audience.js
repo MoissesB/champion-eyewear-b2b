@@ -226,7 +226,7 @@
       return loadBase().then(() => loadScript('request', 'assets/request.min.js', () => Boolean(window.ChampionRequest))).then(() => window.ChampionRequest);
     }
     if (profile === 'b2c') {
-      return loadBase().then(() => loadScript('interest', 'assets/interest.min.js', () => Boolean(window.ChampionInterest))).then(() => window.ChampionInterest);
+      return loadBase().then(() => null);
     }
     return Promise.resolve(null);
   }
@@ -981,7 +981,9 @@
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountModal, { once: true }); else mountModal();
+  if (storedProfile() !== 'b2c') {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountModal, { once: true }); else mountModal();
+  }
 
   window.ChampionAudience = {
     countries: COUNTRIES.map(([value, label]) => ({ value, label })),

@@ -32,7 +32,7 @@
       shortDescription: english ? `Explore ${product.displayModel} by Champion in ${product.color}.` : `Explora ${product.displayModel} de Champion en color ${product.color}.`,
       about: {
         p1: english ? `View the images, color variants and technical details for ${product.displayModel}.` : `Consulta las imágenes, variantes de color y ficha técnica de ${product.displayModel}.`,
-        p2: english ? 'Save this style if you like it and ask where to find Champion at an optical store. Check this model and color with the store directly.' : 'Guarda este modelo si te gusta y consulta dónde encontrar Champion en una óptica. Confirma este modelo y color directamente con el punto de venta.',
+        p2: english ? 'Visit a nearby optical store in your country to ask about Champion. Confirm availability of this model and color directly with the store.' : 'Consulta en una óptica cercana en tu país por Champion. Confirma directamente con la óptica la disponibilidad de este modelo y color.',
         bullets: [],
       },
     };
@@ -148,9 +148,7 @@
 
   function productCard(source) {
     const product = i18n.localizeProduct(source);
-    const action = isB2C()
-      ? `<button type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">${i18n.language === 'en' ? 'I like this model' : 'Me interesa este modelo'}</button>`
-      : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
+    const action = isB2C() ? '' : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
     return `<article class="product-card related-card${isNewModel(source) ? ' is-new-model' : ''}"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(cardCover(source))}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span>${isNewModel(source) ? `<span class="product-new-badge">${i18n.language === 'en' ? 'New model' : 'Modelo nuevo'}</span>` : ''}</a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a>${action}</div></div></article>`;
   }
 
@@ -171,14 +169,14 @@
 
   function mobileOrderBar(product) {
     if (isB2C()) {
-      return `<div class="mobile-product-order-bar mobile-product-interest-bar"><div class="mobile-order-product"><strong>${escapeHtml(product.displayModel)}</strong><span>${escapeHtml(product.color)}</span></div><button class="button button-primary" type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">${i18n.language === 'en' ? 'I like this model' : 'Me interesa este modelo'}</button></div>`;
+      return '';
     }
     return `<div class="mobile-product-order-bar"><div class="mobile-order-product"><strong>${escapeHtml(product.displayModel)}</strong><span>${escapeHtml(product.color)}</span></div><label><span class="sr-only">${escapeHtml(i18n.t('requestedQuantity'))}</span><input id="mobileProductQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric" aria-label="${escapeHtml(i18n.t('requestedQuantity'))}"></label><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="mobileProductQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div>`;
   }
 
   function productActionBox(product) {
     if (isB2C()) {
-      return `<div class="product-request-box product-interest-box"><span class="eyebrow">${i18n.language === 'en' ? 'Personal selection' : 'Selección personal'}</span><h2>${i18n.language === 'en' ? 'Interested in this model?' : '¿Te interesa este modelo?'}</h2><p>${i18n.language === 'en' ? 'Save it with other Champion styles and ask where to find it at an optical store. Availability is confirmed by the store.' : 'Guárdalo junto con otros modelos Champion y consulta dónde encontrarlo en una óptica. La disponibilidad la confirma el punto de venta.'}</p><div class="product-interest-actions"><button class="button button-primary" type="button" data-interest-add data-product-id="${escapeHtml(product.id)}">${i18n.language === 'en' ? 'I like this model' : 'Me interesa este modelo'}</button><button class="request-link" type="button" data-interest-open>${i18n.language === 'en' ? 'View my models' : 'Ver mis modelos'}</button></div></div>`;
+      return `<div class="product-request-box product-interest-box"><span class="eyebrow">${i18n.language === 'en' ? 'Where to find Champion' : 'Dónde encontrar Champion'}</span><h2>${i18n.language === 'en' ? 'Ask at a nearby optical store in your country' : 'Consulta en una óptica cercana en tu país'}</h2><p>${i18n.language === 'en' ? 'Ask whether this model and color are available there. The optical store can confirm availability; this catalog does not offer direct online purchases.' : 'Pregunta si allí tienen disponible este modelo y color. La óptica puede confirmar la disponibilidad; este catálogo no ofrece compra directa en línea.'}</p><div class="product-interest-actions"><button class="button button-primary" type="button" data-lead-form-open>${i18n.language === 'en' ? 'Ask where to find Champion' : 'Consulta dónde encontrar Champion'}</button></div></div>`;
     }
     return `<div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div class="product-order-entry"><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>`;
   }
@@ -196,12 +194,7 @@
     const requestButton = document.querySelector('.product-header [data-request-open], .product-header [data-interest-open]');
     if (profile === 'b2c') {
       if (announcement) { announcement.removeAttribute('data-i18n'); announcement.textContent = i18n.language === 'en' ? 'CHAMPION EYEWEAR · Explore styles and ask where to find them' : 'CHAMPION EYEWEAR · Explora modelos y consulta dónde encontrarlos'; }
-      if (requestButton) {
-        requestButton.removeAttribute('data-request-open');
-        requestButton.setAttribute('data-interest-open', '');
-        requestButton.setAttribute('aria-label', i18n.language === 'en' ? 'Open my Champion models' : 'Abrir mis modelos Champion');
-        requestButton.innerHTML = `<span>${i18n.language === 'en' ? 'My models' : 'Mis modelos'}</span> <span data-interest-count>${window.ChampionInterest?.count?.() || 0}</span>`;
-      }
+      requestButton?.remove();
       const contact = document.querySelector('.product-footer .footer-grid > div:last-child');
       if (contact) {
         contact.querySelectorAll('a[href^="https://wa.me/"], a[href^="mailto:"]').forEach((link) => link.remove());
@@ -218,15 +211,19 @@
       const minimum = document.querySelector('[data-i18n="footerMinimum"]');
       const mix = document.querySelector('[data-i18n="footerMix"]');
       [conditions, minimum, mix].forEach((node) => node?.removeAttribute('data-i18n'));
-      if (conditions) conditions.textContent = i18n.language === 'en' ? 'Your Champion selection' : 'Tu selección Champion';
-      if (minimum) minimum.textContent = i18n.language === 'en' ? 'Save the models you like' : 'Guarda los modelos que te interesan';
-      if (mix) mix.textContent = i18n.language === 'en' ? 'Check availability with the optical store' : 'Confirma disponibilidad con la óptica';
+      if (conditions) conditions.textContent = i18n.language === 'en' ? 'Where to find Champion' : 'Dónde encontrar Champion';
+      if (minimum) minimum.textContent = i18n.language === 'en' ? 'Ask at a nearby optical store in your country' : 'Consulta en una óptica cercana en tu país';
+      if (mix) mix.textContent = i18n.language === 'en' ? 'Check model and color availability with the store' : 'Confirma allí la disponibilidad del modelo y color';
       const brandText = document.querySelector('.product-brand span');
       if (brandText) { brandText.removeAttribute('data-i18n'); brandText.textContent = i18n.language === 'en' ? 'Champion models for your style.' : 'Modelos Champion para tu estilo.'; }
+      const footerText = document.querySelector('.product-footer [data-i18n="footerText"]');
+      if (footerText) { footerText.removeAttribute('data-i18n'); footerText.textContent = i18n.language === 'en' ? 'Explore Champion Eyewear with Innova.' : 'Descubre Champion Eyewear con Innova.'; }
+      const footerIndex = document.querySelector('.product-footer [data-i18n="footerIndex"]');
+      if (footerIndex) { footerIndex.removeAttribute('data-i18n'); footerIndex.href = `${home}#monturas`; footerIndex.textContent = i18n.language === 'en' ? 'Explore the collection' : 'Explorar la colección'; }
       const faqSection = document.getElementById('preguntas');
-      if (faqSection) faqSection.hidden = true;
+      faqSection?.remove();
       const faqLink = document.querySelector('.product-header nav a[href="#preguntas"]');
-      if (faqLink) faqLink.hidden = true;
+      faqLink?.remove();
     }
     const nav = document.querySelector('.product-header nav');
     if (nav && !nav.querySelector('[data-audience-change]')) {
@@ -235,7 +232,7 @@
       change.className = 'audience-switch';
       change.dataset.audienceChange = '';
       change.textContent = i18n.language === 'en' ? 'Change audience' : 'Cambiar perfil';
-      nav.insertBefore(change, requestButton || null);
+      nav.insertBefore(change, requestButton?.isConnected ? requestButton : null);
     }
   }
 
