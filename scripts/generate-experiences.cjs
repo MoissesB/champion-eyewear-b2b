@@ -16,12 +16,10 @@ for (const language of ['es', 'en']) {
       .replace('<body data-page="home">', `<body data-page="home" data-audience="${profile}">`)
       .replace('<link rel="canonical" href="https://champion-innova.com/">', `<link rel="canonical" href="${origin}${route}">`)
       .replace(/="\.\//g, '="../../')
-      .replace('</head>', `  <link rel="stylesheet" href="../../assets/experience.css">\n  <script>try{localStorage.setItem('champion-language-v1','${language}')}catch(_error){}</script>\n  <script defer src="../../assets/experience-route.js"></script>\n</head>`);
+      .replace('</head>', `  <link rel="stylesheet" href="../../assets/experience.css?v=home-gate-20261001-1">\n  <script>try{localStorage.setItem('champion-language-v1','${language}')}catch(_error){}</script>\n  <script defer src="../../assets/experience-route.js?v=home-gate-20261001-1"></script>\n</head>`);
     html = html
       .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${personal ? (english ? 'Explore Champion frames and sunglasses. Ask at a nearby optical store in your country and check model and color availability there.' : 'Explora monturas y gafas de sol Champion. Consulta en una óptica cercana en tu país y confirma allí la disponibilidad de cada modelo y color.') : (english ? 'Champion professional eyewear catalog for optical stores and distributors. Prepare an order for review.' : 'Catálogo profesional Champion para ópticas y distribuidores. Prepare una selección para revisión.')}">`)
       .replace(/<title>[^<]*<\/title>/, `<title>Champion Eyewear | ${personal ? (english ? 'Personal experience' : 'Experiencia personal') : (english ? 'Professional catalog' : 'Catálogo profesional')}</title>`);
-
-    html = html.replace(/(<div class="hero-actions">[\s\S]*?)(\n        <\/div>)/, `$1\n          <button class="button button-outline-light" type="button" data-lead-form-open>${english ? (personal ? 'Ask where to find Champion' : 'Professional contact') : (personal ? 'Consulta dónde encontrar Champion' : 'Contacto profesional')}</button>$2`);
 
     if (personal) {
       const heroKicker = english ? 'Champion Eyewear · For you' : 'Champion Eyewear · Para ti';
@@ -45,11 +43,11 @@ for (const language of ['es', 'en']) {
         .replace(/<h2 data-i18n="sunTitle">[\s\S]*?<\/h2>/, `<h2>${english ? 'Champion sunglasses for your style' : 'Gafas de sol Champion para tu estilo'}</h2>`)
         .replace(/<p data-i18n="sunIntro">[\s\S]*?<\/p>/, `<p>${english ? 'Explore Champion sunglasses, from urban silhouettes to wraparound sports styles.' : 'Explora las gafas de sol Champion, desde siluetas urbanas hasta modelos deportivos envolventes.'}</p>`)
         .replace(/<p data-i18n="footerText">[\s\S]*?<\/p>/, `<p>${english ? 'Explore Champion Eyewear with Innova.' : 'Descubre Champion Eyewear con Innova.'}</p>`)
-        .replace(/<a href="mailto:sales@innova-eyewear.com">sales@innova-eyewear.com<\/a>/, `<button type="button" data-lead-form-open>${english ? 'Ask where to find Champion' : 'Consulta dónde encontrar Champion'}</button>`)
+        .replace(/<a href="mailto:sales@innova-eyewear.com">sales@innova-eyewear.com<\/a>/, `<span>${english ? 'Ask a nearby optical store about Champion.' : 'Consulta en una óptica cercana por Champion.'}</span>`)
         .replace(/<span class="eyebrow eyebrow-light" data-i18n="heroKicker">[\s\S]*?<\/span>/, `<span class="eyebrow eyebrow-light">${heroKicker}</span>`)
         .replace(/<h1 id="heroTitle" data-i18n="heroTitle" data-i18n-html="true">[\s\S]*?<\/h1>/, `<h1 id="heroTitle">${heroTitle}</h1>`)
         .replace(/<p data-i18n="heroText">[\s\S]*?<\/p>/, `<p>${heroText}</p>`)
-        .replace(/<section class="commercial-cta" id="contacto-comercial">[\s\S]*?<\/section>/, `<section class="commercial-cta" id="contacto-comercial"><div class="container commercial-inner"><div><span class="eyebrow eyebrow-light">${english ? 'Find Champion' : 'Encuentra Champion'}</span><h2>${english ? 'Found a style you like?' : '¿Encontraste un modelo que te gusta?'}</h2><p>${english ? 'Ask at a nearby optical store in your country about Champion and check the availability of the model and color with that store. No direct online purchase.' : 'Consulta en una óptica cercana en tu país por Champion y confirma allí la disponibilidad del modelo y color. No hay compra directa en línea.'}</p></div><div class="commercial-actions"><button class="button button-outline-light" type="button" data-lead-form-open>${english ? 'Ask where to find Champion' : 'Consulta dónde encontrar Champion'}</button></div></div></section>`);
+        .replace(/<section class="commercial-cta" id="contacto-comercial">[\s\S]*?<\/section>/, `<section class="commercial-cta" id="contacto-comercial"><div class="container commercial-inner"><div><span class="eyebrow eyebrow-light">${english ? 'Find Champion' : 'Encuentra Champion'}</span><h2>${english ? 'Found a style you like?' : '¿Encontraste un modelo que te gusta?'}</h2><p>${english ? 'Ask at a nearby optical store in your country about Champion and check the availability of the model and color with that store. No direct online purchase.' : 'Consulta en una óptica cercana en tu país por Champion y confirma allí la disponibilidad del modelo y color. No hay compra directa en línea.'}</p></div></div></section>`);
     }
 
     if (personal) html = html.replace(/\r\n?/g, '\n').replace(/\n{3,}/g, '\n\n');

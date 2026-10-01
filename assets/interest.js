@@ -75,7 +75,7 @@
         <div class="interest-drawer-body">
           <div class="interest-summary" aria-live="polite"><strong data-interest-summary-count>0</strong><span>${tr('models')}</span></div>
           <div class="interest-items" id="interestItems"></div>
-          <div class="interest-actions"><p>${tr('guidance')}</p><button type="button" data-lead-form-open>${tr('guidanceAction')}</button></div>
+          <div class="interest-actions"><p>${tr('guidance')}</p></div>
         </div>
       </aside>`;
   }

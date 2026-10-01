@@ -105,6 +105,7 @@
   }
 
   function openForm(trigger, audience, destination) {
+    if (!selectorPage || !destination) return;
     const language = currentLanguage();
     const id = configuredFormId(language, audience);
     if (!id || typeof HTMLDialogElement === 'undefined' || typeof HTMLDialogElement.prototype.showModal !== 'function') {
@@ -156,9 +157,5 @@
       openForm(choice, audience, `/${currentLanguage()}/${audience}/`);
       return;
     }
-    const leadButton = event.target.closest('[data-lead-form-open]');
-    if (!leadButton) return;
-    event.preventDefault();
-    openForm(leadButton, profile, null);
   }, true);
 })();

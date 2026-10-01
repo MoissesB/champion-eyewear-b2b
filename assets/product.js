@@ -176,7 +176,7 @@
 
   function productActionBox(product) {
     if (isB2C()) {
-      return `<div class="product-request-box product-interest-box"><span class="eyebrow">${i18n.language === 'en' ? 'Where to find Champion' : 'Dónde encontrar Champion'}</span><h2>${i18n.language === 'en' ? 'Ask at a nearby optical store in your country' : 'Consulta en una óptica cercana en tu país'}</h2><p>${i18n.language === 'en' ? 'Ask whether this model and color are available there. The optical store can confirm availability; this catalog does not offer direct online purchases.' : 'Pregunta si allí tienen disponible este modelo y color. La óptica puede confirmar la disponibilidad; este catálogo no ofrece compra directa en línea.'}</p><div class="product-interest-actions"><button class="button button-primary" type="button" data-lead-form-open>${i18n.language === 'en' ? 'Ask where to find Champion' : 'Consulta dónde encontrar Champion'}</button></div></div>`;
+      return `<div class="product-request-box product-interest-box"><span class="eyebrow">${i18n.language === 'en' ? 'Where to find Champion' : 'Dónde encontrar Champion'}</span><h2>${i18n.language === 'en' ? 'Ask at a nearby optical store in your country' : 'Consulta en una óptica cercana en tu país'}</h2><p>${i18n.language === 'en' ? 'Ask whether this model and color are available there. The optical store can confirm availability; this catalog does not offer direct online purchases.' : 'Pregunta si allí tienen disponible este modelo y color. La óptica puede confirmar la disponibilidad; este catálogo no ofrece compra directa en línea.'}</p></div>`;
     }
     return `<div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div class="product-order-entry"><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>`;
   }
@@ -198,14 +198,11 @@
       const contact = document.querySelector('.product-footer .footer-grid > div:last-child');
       if (contact) {
         contact.querySelectorAll('a[href^="https://wa.me/"], a[href^="mailto:"]').forEach((link) => link.remove());
-        let inquiry = contact.querySelector('[data-lead-form-open]');
-        if (!inquiry) {
-          inquiry = document.createElement('button');
-          inquiry.type = 'button';
-          inquiry.dataset.leadFormOpen = '';
-          contact.appendChild(inquiry);
-        }
-        inquiry.textContent = i18n.language === 'en' ? 'Ask where to find Champion' : 'Consulta dónde encontrar Champion';
+        const heading = contact.querySelector('strong');
+        if (heading) { heading.removeAttribute('data-i18n'); heading.textContent = i18n.language === 'en' ? 'Guidance' : 'Orientación'; }
+        let note = contact.querySelector('[data-consumer-guidance]');
+        if (!note) { note = document.createElement('span'); note.dataset.consumerGuidance = ''; contact.appendChild(note); }
+        note.textContent = i18n.language === 'en' ? 'Ask a nearby optical store in your country about Champion.' : 'Consulta en una óptica cercana en tu país por Champion.';
       }
       const conditions = document.querySelector('[data-i18n="footerConditions"]');
       const minimum = document.querySelector('[data-i18n="footerMinimum"]');
@@ -220,10 +217,14 @@
       if (footerText) { footerText.removeAttribute('data-i18n'); footerText.textContent = i18n.language === 'en' ? 'Explore Champion Eyewear with Innova.' : 'Descubre Champion Eyewear con Innova.'; }
       const footerIndex = document.querySelector('.product-footer [data-i18n="footerIndex"]');
       if (footerIndex) { footerIndex.removeAttribute('data-i18n'); footerIndex.href = `${home}#monturas`; footerIndex.textContent = i18n.language === 'en' ? 'Explore the collection' : 'Explorar la colección'; }
-      const faqSection = document.getElementById('preguntas');
-      faqSection?.remove();
-      const faqLink = document.querySelector('.product-header nav a[href="#preguntas"]');
-      faqLink?.remove();
+      const faqHeading = document.querySelector('.product-faq-section .section-heading');
+      if (faqHeading) {
+        faqHeading.querySelectorAll('[data-i18n]').forEach((node) => node.removeAttribute('data-i18n'));
+        const [kicker, title, intro] = faqHeading.children;
+        if (kicker) kicker.textContent = i18n.language === 'en' ? 'Helpful information' : 'Información útil';
+        if (title) title.textContent = i18n.language === 'en' ? 'Questions about your Champion frames' : 'Preguntas sobre tus lentes Champion';
+        if (intro) intro.textContent = i18n.language === 'en' ? 'Explore the catalog and confirm details and availability with a nearby optical store.' : 'Explora el catálogo y confirma los detalles y la disponibilidad en una óptica cercana.';
+      }
     }
     const nav = document.querySelector('.product-header nav');
     if (nav && !nav.querySelector('[data-audience-change]')) {
@@ -444,7 +445,17 @@
 
   function renderProductFaq() {
     const root = document.getElementById('productFaqRoot'); if (!root) return;
-    if (isB2C()) { root.innerHTML = ''; return; }
+    if (isB2C()) {
+      const questions = i18n.language === 'en' ? [
+        ['Can I buy these frames on this website?', 'No. This is an informational catalog, with no direct online purchase. Ask at a nearby optical store in your country about Champion.'],
+        ['How do I check a model and color?', 'Use the model and color shown on this page when asking an optical store. The store must confirm whether it has that specific item available.'],
+      ] : [
+        ['¿Puedo comprar estas monturas en esta web?', 'No. Este catálogo es informativo y no ofrece compra directa en línea. Consulta en una óptica cercana en tu país por Champion.'],
+        ['¿Cómo confirmo un modelo y color?', 'Indica a la óptica el modelo y color que ves en esta ficha. La óptica debe confirmar si tiene disponible esa referencia.'],
+      ];
+      root.innerHTML = `<section class="product-faq-group"><h3>${i18n.language === 'en' ? 'For consumers' : 'Para consumidores'}</h3>${questions.map(([question, answer], index) => `<details ${index === 0 ? 'open' : ''}><summary><span>${escapeHtml(question)}</span><span aria-hidden="true">⌄</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</section>`;
+      return;
+    }
     root.innerHTML = i18n.faq().map((group, groupIndex) => `<section class="product-faq-group"><h3>${escapeHtml(group.title)}</h3>${group.items.map(([question, answer], itemIndex) => `<details ${groupIndex === 0 && itemIndex === 0 ? 'open' : ''}><summary><span>${escapeHtml(question)}</span><span aria-hidden="true">⌄</span></summary><p>${escapeHtml(answer)}</p></details>`).join('')}</section>`).join('');
   }
 
