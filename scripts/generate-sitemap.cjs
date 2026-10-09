@@ -76,6 +76,7 @@ const productIndex = `<!doctype html>
   <link rel="icon" href="./favicon.ico">
   <link rel="stylesheet" href="./assets/audience.min.css?v=audience-20260818-12">
   <script defer src="./assets/analytics.min.js?v=analytics-20260805"></script>
+  <script defer src="./assets/meta-pixel.min.js?v=meta-pixel-20261009"></script>
   <script src="./assets/audience.min.js?v=audience-20260818-12"></script>
   <title>Índice de productos | Champion Eyewear</title>
   <style>
