@@ -1,0 +1,564 @@
+{
+  "items": [
+    {
+      "id": "drive-video-01",
+      "name": "Video sin título.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0f89ad2537e4a4d851.mp4",
+      "width": 1080,
+      "height": 1080,
+      "title": {
+        "es": "Motociclismo Champion",
+        "en": "Champion motorcycling"
+      },
+      "description": {
+        "es": "Motocicleta de competición con identidad Champion.",
+        "en": "Racing motorcycle with Champion branding."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-02",
+      "name": "video 9.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0ffdcb71bb825c2671.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Atletismo Champion",
+        "en": "Champion athletics"
+      },
+      "description": {
+        "es": "Corredores en pista junto a una montura Champion.",
+        "en": "Track runners alongside a Champion frame."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-03",
+      "name": "Video 6 (2).mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0cac05a0d91fabafe2.mp4",
+      "width": 1920,
+      "height": 1080,
+      "title": {
+        "es": "Estilo al aire libre",
+        "en": "Outdoor style"
+      },
+      "description": {
+        "es": "Deportista con montura Champion en una escena de aventura.",
+        "en": "Athlete wearing Champion eyewear in an adventure scene."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-04",
+      "name": "video 8.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0da0c3fa1f7d5d8572.mp4",
+      "width": 720,
+      "height": 1280,
+      "title": {
+        "es": "Deportes acuáticos",
+        "en": "Water sports"
+      },
+      "description": {
+        "es": "Deportista sobre una tabla en el agua.",
+        "en": "Athlete riding a board on the water."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-05",
+      "name": "video 6.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0c840bad1c11508e22.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Aventura Champion",
+        "en": "Champion adventure"
+      },
+      "description": {
+        "es": "Primer plano de un deportista con gafas Champion.",
+        "en": "Close-up of an athlete wearing Champion eyewear."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-06",
+      "name": "Copia de Copia de Copia de INNOVA Video 1 (3).mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afd6e47ee7c823ef86d.mp4",
+      "width": 2160,
+      "height": 3840,
+      "title": {
+        "es": "Lentes solares deportivas",
+        "en": "Sport sunglasses"
+      },
+      "description": {
+        "es": "Presentación de gafas de sol Champion con lentes de color.",
+        "en": "Champion sunglasses with colorful lenses."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-07",
+      "name": "video 2.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0ba0c3fa1f7d5d8533.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Gafas bajo la lluvia",
+        "en": "Eyewear in the rain"
+      },
+      "description": {
+        "es": "Una montura aparece sobre una superficie de agua con lluvia.",
+        "en": "A frame appears on a rain-covered water surface."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-08",
+      "name": "video 3.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0ba0bb969dd9351534.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Una mirada que destaca",
+        "en": "A standout look"
+      },
+      "description": {
+        "es": "Una montura emerge entre gotas y reflejos de agua.",
+        "en": "A frame emerges among water droplets and reflections."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-09",
+      "name": "SOL VOLLEY.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0aac05a0d91fabaf92.mp4",
+      "width": 400,
+      "height": 736,
+      "title": {
+        "es": "Voleibol de playa",
+        "en": "Beach volleyball"
+      },
+      "description": {
+        "es": "Jugador en una escena de voleibol de playa.",
+        "en": "Player in a beach volleyball scene."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-10",
+      "name": "video 1.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0aa0bb969dd93514f9.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Lentes en el agua",
+        "en": "Eyewear in water"
+      },
+      "description": {
+        "es": "Gafas Champion presentadas entre salpicaduras de agua.",
+        "en": "Champion eyewear shown amid water splashes."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-11",
+      "name": "video 10.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0a840bad1c11508de6.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Montura y estuche Champion",
+        "en": "Champion frame and case"
+      },
+      "description": {
+        "es": "Montura óptica junto a su estuche Champion.",
+        "en": "Optical frame shown with a Champion case."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-12",
+      "name": "MUNDIAL.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b05a0c3fa1f7d5d84a8.mp4",
+      "width": 1920,
+      "height": 1080,
+      "title": {
+        "es": "Pasión por el fútbol",
+        "en": "Football passion"
+      },
+      "description": {
+        "es": "Trofeo de fútbol ante una multitud en el estadio.",
+        "en": "Football trophy in front of a stadium crowd."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-13",
+      "name": "SOL FUTBOL CARIOCA.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0889ad2537e4a4d759.mp4",
+      "width": 400,
+      "height": 736,
+      "title": {
+        "es": "Fútbol de playa",
+        "en": "Beach football"
+      },
+      "description": {
+        "es": "Deportista con gafas de sol jugando con un balón en la playa.",
+        "en": "Athlete wearing sunglasses and playing football on the beach."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-14",
+      "name": "MOTOGROK 2.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b03a0c3fa1f7d5d8460.mp4",
+      "width": 1168,
+      "height": 784,
+      "title": {
+        "es": "Motociclismo en pista",
+        "en": "Racing on track"
+      },
+      "description": {
+        "es": "Motocicleta Champion en una escena de circuito.",
+        "en": "Champion motorcycle on a racing circuit."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-15",
+      "name": "MUNDIAL2.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b0755feecaeea92ac44.mp4",
+      "width": 688,
+      "height": 464,
+      "title": {
+        "es": "Celebración deportiva",
+        "en": "Sports celebration"
+      },
+      "description": {
+        "es": "Aficionados celebran en un estadio de fútbol.",
+        "en": "Fans celebrating in a football stadium."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-16",
+      "name": "SOL CARIOCA 2.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b07840bad1c11508d92.mp4",
+      "width": 480,
+      "height": 854,
+      "title": {
+        "es": "Fútbol junto al mar",
+        "en": "Football by the sea"
+      },
+      "description": {
+        "es": "Deportista con gafas Champion domina el balón en la playa.",
+        "en": "Athlete wearing Champion eyewear controls a ball on the beach."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-17",
+      "name": "MOTOGROK 3.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b04ac05a0d91fabaecc.mp4",
+      "width": 752,
+      "height": 416,
+      "title": {
+        "es": "Velocidad Champion",
+        "en": "Champion speed"
+      },
+      "description": {
+        "es": "Motocicleta de competición con detalles de la marca.",
+        "en": "Racing motorcycle with Champion details."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-18",
+      "name": "grok-video-97a4f16a-8ae8-46fc-a273-9647bb87b442.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b016e47ee7c823ef94d.mp4",
+      "width": 960,
+      "height": 960,
+      "title": {
+        "es": "Champion en el aire",
+        "en": "Champion in flight"
+      },
+      "description": {
+        "es": "Parapente Champion sobre un paisaje de montaña y lago.",
+        "en": "Champion paraglider above mountains and a lake."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-19",
+      "name": "MOTO GP.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b02ac05a0d91fabae87.mp4",
+      "width": 1080,
+      "height": 1080,
+      "title": {
+        "es": "Campeonato de motociclismo",
+        "en": "Motorcycling championship"
+      },
+      "description": {
+        "es": "Motocicleta Champion en pista con público al fondo.",
+        "en": "Champion motorcycle on track with spectators in the background."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-20",
+      "name": "CHAMPION DERRETIDO.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afc6e47ee7c823ef839.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Detalles de la montura",
+        "en": "Frame details"
+      },
+      "description": {
+        "es": "Montura óptica Champion vista desde un costado.",
+        "en": "Side view of a Champion optical frame."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-21",
+      "name": "CHAMPION VUELA.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afd840bad1c11508bec.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Montura entre reflejos",
+        "en": "Frame and reflections"
+      },
+      "description": {
+        "es": "Montura Champion presentada junto a reflejos de agua.",
+        "en": "Champion frame shown beside water reflections."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-22",
+      "name": "grok-video-72b6c1c5-7746-43e2-be8f-29d328189253.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91b01ac05a0d91fabae1f.mp4",
+      "width": 752,
+      "height": 416,
+      "title": {
+        "es": "Victoria deportiva",
+        "en": "Sporting victory"
+      },
+      "description": {
+        "es": "Deportista celebra ante el público en un estadio.",
+        "en": "Athlete celebrating before a stadium crowd."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-23",
+      "name": "CHAMPION SURFEA.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afc840bad1c11508bc4.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Diseño de montura",
+        "en": "Frame design"
+      },
+      "description": {
+        "es": "Montura Champion presentada desde varios ángulos.",
+        "en": "Champion frame presented from different angles."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-24",
+      "name": "CHAMPION NAUFRAGA.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afc55feecaeea92aab2.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Perfil de la montura",
+        "en": "Frame profile"
+      },
+      "description": {
+        "es": "Primer plano de una montura Champion plateada.",
+        "en": "Close-up of a silver Champion frame."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-25",
+      "name": "grok-video-69ab9377-3814-49a9-9920-e07fbcbc37ae.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afd840bad1c11508c0f.mp4",
+      "width": 640,
+      "height": 480,
+      "title": {
+        "es": "Atletismo y estilo",
+        "en": "Athletics and style"
+      },
+      "description": {
+        "es": "Montura Champion superpuesta a una carrera en pista.",
+        "en": "Champion frame overlaid on a track race."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-26",
+      "name": "6.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afba0bb969dd9351296.mp4",
+      "width": 416,
+      "height": 752,
+      "title": {
+        "es": "Estilo Champion",
+        "en": "Champion style"
+      },
+      "description": {
+        "es": "Retrato de un hombre con montura Champion.",
+        "en": "Portrait of a man wearing Champion eyewear."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-27",
+      "name": "8.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afbac05a0d91fabad61.mp4",
+      "width": 560,
+      "height": 560,
+      "title": {
+        "es": "Detalle de la varilla",
+        "en": "Temple detail"
+      },
+      "description": {
+        "es": "Acercamiento al logo Champion en la varilla de una montura.",
+        "en": "Close-up of the Champion logo on a frame temple."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-28",
+      "name": "9.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afbfdcb71bb825c249f.mp4",
+      "width": 688,
+      "height": 464,
+      "title": {
+        "es": "Montura negra y roja",
+        "en": "Black and red frame"
+      },
+      "description": {
+        "es": "Detalle frontal de una montura Champion negra y roja.",
+        "en": "Front detail of a black and red Champion frame."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-29",
+      "name": "13.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91af9a0c3fa1f7d5d8331.mp4",
+      "width": 1280,
+      "height": 720,
+      "title": {
+        "es": "Diseño óptico Champion",
+        "en": "Champion optical design"
+      },
+      "description": {
+        "es": "Presentación de una montura óptica negra y roja.",
+        "en": "Presentation of a black and red optical frame."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-30",
+      "name": "12.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afa6e47ee7c823ef7ed.mp4",
+      "width": 560,
+      "height": 560,
+      "title": {
+        "es": "Reconocimiento deportivo",
+        "en": "Sporting recognition"
+      },
+      "description": {
+        "es": "Retrato de un deportista junto a un trofeo.",
+        "en": "Portrait of an athlete beside a trophy."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-31",
+      "name": "2.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91af9a0c3fa1f7d5d833b.mp4",
+      "width": 416,
+      "height": 752,
+      "title": {
+        "es": "Deporte cotidiano",
+        "en": "Everyday sport"
+      },
+      "description": {
+        "es": "Hombre con gafas Champion en una escena deportiva.",
+        "en": "Man wearing Champion eyewear in a sports setting."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-32",
+      "name": "10.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afa6e47ee7c823ef7dd.mp4",
+      "width": 752,
+      "height": 416,
+      "title": {
+        "es": "Detalle de montura dorada",
+        "en": "Gold frame detail"
+      },
+      "description": {
+        "es": "Acercamiento a una montura Champion de tono dorado.",
+        "en": "Close-up of a gold-tone Champion frame."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-33",
+      "name": "18.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91afa6e47ee7c823ef7de.mp4",
+      "width": 752,
+      "height": 416,
+      "title": {
+        "es": "Montura óptica Champion",
+        "en": "Champion optical frame"
+      },
+      "description": {
+        "es": "Montura Champion presentada sobre fondo claro.",
+        "en": "Champion frame presented on a light background."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-34",
+      "name": "11.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91af9a0bb969dd9351252.mp4",
+      "width": 688,
+      "height": 464,
+      "title": {
+        "es": "Colección óptica",
+        "en": "Optical collection"
+      },
+      "description": {
+        "es": "Montura Champion junto a un estuche de la marca.",
+        "en": "Champion frame shown with a branded case."
+      },
+      "language": "unknown"
+    },
+    {
+      "id": "drive-video-35",
+      "name": "SUNSNOWORANGE.mp4",
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad91c0155feecaeea92caef.mp4",
+      "width": 688,
+      "height": 464,
+      "title": {
+        "es": "Sol y nieve",
+        "en": "Sun and snow"
+      },
+      "description": {
+        "es": "Deportista descendiendo sobre nieve bajo el sol de montaña.",
+        "en": "Athlete descending a snowy slope under the mountain sun."
+      },
+      "language": "unknown"
+    }
+  ]
+}
