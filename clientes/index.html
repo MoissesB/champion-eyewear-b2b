@@ -6,15 +6,18 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="description" content="Recursos Champion Eyewear para ópticas autorizadas.">
   <link rel="icon" href="../favicon.ico">
-  <link rel="stylesheet" href="./portal.css?v=20261022-1">
+  <link rel="stylesheet" href="./portal.css?v=20261022-2">
   <title>Recursos para ópticas | Champion Eyewear</title>
   <script defer src="./config.js"></script>
-<script defer src="./portal.js?v=20261022-1"></script>
+<script defer src="./portal.js?v=20261022-2"></script>
 </head>
 <body>
   <a class="skip" id="skipLink" href="#main">Ir al contenido</a>
   <header class="topbar">
-    <a class="brand" id="brandLink" href="../es/b2b/" aria-label="Champion Eyewear, volver al sitio"><img src="../assets/images/brand/champion-header-display.webp" alt="Champion Eyewear" width="190" height="36"></a>
+    <div class="topbar-brands">
+      <a class="brand" id="brandLink" href="../es/b2b/" aria-label="Champion Eyewear, volver al sitio"><img src="../assets/images/brand/champion-header-display.webp" alt="Champion Eyewear" width="190" height="36"></a>
+      <div class="topbar-innova"><span data-t="headerDistributor">DISTRIBUIDO POR</span><img src="../assets/images/brand/innova-logo.png" alt="Innova Eyewear" width="624" height="198"></div>
+    </div>
     <nav class="topnav" aria-label="Navegación del portal">
       <a href="../es/b2b/" id="siteLink">Volver al catálogo</a>
       <button class="language" id="languageButton" type="button" aria-label="Switch to English">EN</button>
@@ -63,9 +66,9 @@
         <div class="model-grid" id="modelGrid"></div>
         <div class="empty" id="emptyResults" hidden data-t="noResults">No encontramos modelos con esos filtros.</div>
       </div>
-      <div id="videoPanel" role="tabpanel" hidden><div class="media-filters"><label class="social-filter"><span data-t="contentLanguage">Idioma del contenido</span><select id="videoLanguage"><option value="" data-t="campaignAll">Todos</option><option value="es">Español</option><option value="en">English</option><option value="unknown" data-t="languageUnknown">Sin idioma</option></select></label><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="videoSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label><button class="clear" id="clearVideoFilters" type="button" data-t="clearFilters">Limpiar filtros</button></div><div class="media-grid" id="videoGrid"></div></div>
+      <div id="videoPanel" role="tabpanel" hidden><div class="media-filters"><label class="social-filter"><span data-t="videoCountryLabel">País de distribución</span><select id="videoCountry"><option value="" data-t="allCountries">Todos los países</option></select></label><label class="social-filter"><span data-t="contentLanguage">Idioma del contenido</span><select id="videoLanguage"><option value="" data-t="campaignAll">Todos</option><option value="es">Español</option><option value="en">English</option><option value="unknown" data-t="languageUnknown">Sin idioma</option></select></label><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="videoSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label><button class="clear" id="clearVideoFilters" type="button" data-t="clearFilters">Limpiar filtros</button></div><div class="media-grid" id="videoGrid"></div></div>
       <div id="instagramPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="instagramNote">Imágenes y artes Champion para compartir con tus clientes.</p><div class="media-filters"><label class="social-filter"><span data-t="mediaType">Tipo de imagen</span><select id="instagramType"><option value="" data-t="campaignAll">Todas</option><option value="carousel" data-t="socialCarousel">Carruseles</option><option value="image" data-t="socialImages">Imágenes individuales</option><option value="marketing" data-t="socialArt">Artes publicitarios</option></select></label><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="instagramSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label></div><div class="media-grid" id="instagramGrid"></div></div>
-      <div id="logosPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="logosNote">Logos oficiales de Champion disponibles para materiales de tu óptica.</p><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="logoSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label><div class="media-grid" id="logosGrid"></div></div>
+      <div id="logosPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="logosNote">Logos oficiales de Champion disponibles para materiales de tu óptica.</p><div class="media-filters"><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="logoSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label></div><div class="media-grid" id="logosGrid"></div></div>
     </section>
   </main>
 
