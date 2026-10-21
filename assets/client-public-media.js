@@ -93,8 +93,5 @@ export async function createPublicBundle(files, onProgress = () => {}) {
     const blob = file.type === 'imagen' ? await catalogImagePng(source) : source;
     folder.file(file.path, blob, {binary: true});
   }
-  const escape = (value) => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const rows = files.map(file => `<tr><td>${escape(file.path)}</td><td>${escape(file.type)}</td><td>${escape(file.description)}</td></tr>`).join('');
-  folder.file('Inventario.html', `<!doctype html><html lang="es"><meta charset="utf-8"><title>Inventario Champion</title><style>body{font:16px Arial,sans-serif;max-width:1100px;margin:40px auto;color:#0b1237}h1{color:#0b1237}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #d8dce5;padding:12px;text-align:left;vertical-align:top}th{background:#eef1f7}</style><h1>Recursos Champion</h1><p>${files.length} archivos organizados por tipo. Cada fila indica el archivo, tipo y descripción.</p><table><thead><tr><th>Archivo</th><th>Tipo</th><th>Descripción</th></tr></thead><tbody>${rows}</tbody></table></html>`);
   return zip.generateAsync({type: 'blob', compression: 'STORE', streamFiles: true});
 }
