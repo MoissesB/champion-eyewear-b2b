@@ -9,12 +9,27 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import av
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "output" / "client-portal"
 
 
 def read_map(name: str) -> dict:
     return json.loads((OUTPUT / name).read_text(encoding="utf-8"))
+
+
+def dimensions(path: Path) -> dict:
+    if path.suffix.lower() in {".jpg", ".jpeg", ".webp", ".png"}:
+        from PIL import Image
+        with Image.open(path) as image:
+            width, height = image.size
+    else:
+        with av.open(str(path)) as media:
+            stream = media.streams.video[0]
+            width, height = stream.width, stream.height
+    return {"width": width, "height": height,
+            "orientation": "vertical" if height > width else "horizontal" if width > height else "square"}
 
 
 def main() -> None:
@@ -33,12 +48,14 @@ def main() -> None:
         "notice": "Direct CDN URLs are public; only previously published digital media is included.",
         "catalogImages": {image["id"]: images[image["web"]["name"]] for product in catalog["products"] for image in product["images"]},
         "videos": {video["id"]: videos[f'{video["id"]}.mp4'] for video in catalog["videos"]},
+        "videoDimensions": {video["id"]: dimensions(OUTPUT / "videos" / f'{video["id"]}.mp4') for video in catalog["videos"]},
         "instagram": [
             {
                 "id": Path(item["name"]).stem,
                 "name": item["name"],
                 "type": "video" if item["name"].lower().endswith(".mp4") else "image",
                 "url": item["url"],
+                **dimensions(OUTPUT / "instagram-export-part1" / item["name"]),
             }
             for item in sorted(instagram, key=lambda item: item["name"])
         ],

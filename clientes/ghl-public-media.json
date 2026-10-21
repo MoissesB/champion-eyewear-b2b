@@ -615,432 +615,792 @@
     "champion-video-28": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9025d3be7ffaf0d50edf9.mp4",
     "champion-video-29": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9025e89ad2537e4a1c5cb.mp4"
   },
+  "videoDimensions": {
+    "champion-video-01": {
+      "width": 1280,
+      "height": 720,
+      "orientation": "horizontal"
+    },
+    "champion-video-02": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-03": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-04": {
+      "width": 592,
+      "height": 512,
+      "orientation": "horizontal"
+    },
+    "champion-video-05": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-06": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-07": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-08": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-09": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-10": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-11": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-12": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-13": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-14": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-15": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-16": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-17": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-18": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-19": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-20": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-21": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-22": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-23": {
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
+    },
+    "champion-video-24": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-25": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-26": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-27": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-28": {
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
+    },
+    "champion-video-29": {
+      "width": 1920,
+      "height": 1080,
+      "orientation": "horizontal"
+    }
+  },
   "instagram": [
     {
       "id": "post-17852084106676798",
       "name": "post-17852084106676798.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90408840bad1c114dc4a8.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90408840bad1c114dc4a8.mp4",
+      "width": 636,
+      "height": 358,
+      "orientation": "horizontal"
     },
     {
       "id": "post-17859575379675488",
       "name": "post-17859575379675488.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040889ad2537e4a20214.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040889ad2537e4a20214.mp4",
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
     },
     {
       "id": "post-17867256075621678",
       "name": "post-17867256075621678.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90409a0c3fa1f7d5aad45.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90409a0c3fa1f7d5aad45.mp4",
+      "width": 356,
+      "height": 634,
+      "orientation": "vertical"
     },
     {
       "id": "post-17870805042613389",
       "name": "post-17870805042613389.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040855feecaeea8fd7c2.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040855feecaeea8fd7c2.mp4",
+      "width": 636,
+      "height": 358,
+      "orientation": "horizontal"
     },
     {
       "id": "post-17880058548496463",
       "name": "post-17880058548496463.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040855feecaeea8fd7c8.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040855feecaeea8fd7c8.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-17895514743576310",
       "name": "post-17895514743576310.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904093be7ffaf0d51298d.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904093be7ffaf0d51298d.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-17895518871577781",
       "name": "post-17895518871577781.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040ba0bb969dd93236bd.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040ba0bb969dd93236bd.mp4",
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
     },
     {
       "id": "post-17897855922542751",
       "name": "post-17897855922542751.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040b89ad2537e4a202a4.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040b89ad2537e4a202a4.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-17901658173494547",
       "name": "post-17901658173494547.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040bac05a0d91fa8d556.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040bac05a0d91fa8d556.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-17920388484410624",
       "name": "post-17920388484410624.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040b89ad2537e4a202bc.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040b89ad2537e4a202bc.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-17937615081343608",
       "name": "post-17937615081343608.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040ba0c3fa1f7d5aad95.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040ba0c3fa1f7d5aad95.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-17954562582207684",
       "name": "post-17954562582207684.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040bac05a0d91fa8d56a.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040bac05a0d91fa8d56a.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-17960965821077802",
       "name": "post-17960965821077802.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040d89ad2537e4a202e4.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040d89ad2537e4a202e4.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-17981015544107310",
       "name": "post-17981015544107310.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040d89ad2537e4a202f3.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040d89ad2537e4a202f3.jpg",
+      "width": 720,
+      "height": 1275,
+      "orientation": "vertical"
     },
     {
       "id": "post-17982979257058079",
       "name": "post-17982979257058079.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040d55feecaeea8fd85b.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040d55feecaeea8fd85b.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-17988983027979174",
       "name": "post-17988983027979174.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040eb87a281ad1a18193.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040eb87a281ad1a18193.mp4",
+      "width": 636,
+      "height": 358,
+      "orientation": "horizontal"
     },
     {
       "id": "post-17996664119771629",
       "name": "post-17996664119771629.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040efdcb71bb82595b4a.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040efdcb71bb82595b4a.mp4",
+      "width": 360,
+      "height": 640,
+      "orientation": "vertical"
     },
     {
       "id": "post-18001717415783952",
       "name": "post-18001717415783952.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040e840bad1c114dc582.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040e840bad1c114dc582.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18010661402940194",
       "name": "post-18010661402940194.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040f840bad1c114dc5ac.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040f840bad1c114dc5ac.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18012198815946361",
       "name": "post-18012198815946361.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040fac05a0d91fa8d5d6.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9040fac05a0d91fa8d5d6.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18022106066898343",
       "name": "post-18022106066898343.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904106e47ee7c823ba1f5.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904106e47ee7c823ba1f5.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18046238561773638",
       "name": "post-18046238561773638.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90410fdcb71bb82595b91.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90410fdcb71bb82595b91.mp4",
+      "width": 640,
+      "height": 360,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18050720009756738",
       "name": "post-18050720009756738.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90410a0c3fa1f7d5aae19.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90410a0c3fa1f7d5aae19.mp4",
+      "width": 636,
+      "height": 358,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18055677191530441",
       "name": "post-18055677191530441.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90410ac05a0d91fa8d5f8.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90410ac05a0d91fa8d5f8.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18055841018525459",
       "name": "post-18055841018525459.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90411fdcb71bb82595bc5.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90411fdcb71bb82595bc5.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18061161968746834",
       "name": "post-18061161968746834.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90412840bad1c114dc5fc.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90412840bad1c114dc5fc.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18067341470343196",
       "name": "post-18067341470343196.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041289ad2537e4a203d1.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041289ad2537e4a203d1.mp4",
+      "width": 636,
+      "height": 358,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18081167267138529",
       "name": "post-18081167267138529.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90412fdcb71bb82595bd5.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90412fdcb71bb82595bd5.mp4",
+      "width": 360,
+      "height": 360,
+      "orientation": "square"
     },
     {
       "id": "post-18082524830305641",
       "name": "post-18082524830305641.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90412a0c3fa1f7d5aae6d.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90412a0c3fa1f7d5aae6d.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18083418266446797",
       "name": "post-18083418266446797.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904133be7ffaf0d512a61.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904133be7ffaf0d512a61.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18086701883392673",
       "name": "post-18086701883392673.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90414ac05a0d91fa8d694.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90414ac05a0d91fa8d694.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18088997666200199",
       "name": "post-18088997666200199.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90414840bad1c114dc676.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90414840bad1c114dc676.mp4",
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
     },
     {
       "id": "post-18089303042399276",
       "name": "post-18089303042399276.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90414b87a281ad1a1824d.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90414b87a281ad1a1824d.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18090928793207687",
       "name": "post-18090928793207687.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904146e47ee7c823ba2b2.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904146e47ee7c823ba2b2.mp4",
+      "width": 348,
+      "height": 640,
+      "orientation": "vertical"
     },
     {
       "id": "post-18092696579414739",
       "name": "post-18092696579414739.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90415840bad1c114dc692.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90415840bad1c114dc692.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18093075269433408",
       "name": "post-18093075269433408.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041589ad2537e4a2045c.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041589ad2537e4a2045c.jpg",
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
     },
     {
       "id": "post-18096700283577157",
       "name": "post-18096700283577157.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90416840bad1c114dc6b6.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90416840bad1c114dc6b6.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18097015130017017",
       "name": "post-18097015130017017.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90416840bad1c114dc6da.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90416840bad1c114dc6da.jpg",
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
     },
     {
       "id": "post-18097514126573171",
       "name": "post-18097514126573171.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041789ad2537e4a20498.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041789ad2537e4a20498.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18097803692344940",
       "name": "post-18097803692344940.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90417fdcb71bb82595c55.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90417fdcb71bb82595c55.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18098608889260746",
       "name": "post-18098608889260746.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904176e47ee7c823ba2f6.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904176e47ee7c823ba2f6.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18102217640332636",
       "name": "post-18102217640332636.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904173be7ffaf0d512aed.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904173be7ffaf0d512aed.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18104443418126927",
       "name": "post-18104443418126927.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904173be7ffaf0d512af9.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904173be7ffaf0d512af9.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18105148709147966",
       "name": "post-18105148709147966.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904186e47ee7c823ba31a.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904186e47ee7c823ba31a.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18108490075832026",
       "name": "post-18108490075832026.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419b87a281ad1a18305.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419b87a281ad1a18305.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18108593093108883",
       "name": "post-18108593093108883.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419ac05a0d91fa8d718.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419ac05a0d91fa8d718.jpg",
+      "width": 1080,
+      "height": 1920,
+      "orientation": "vertical"
     },
     {
       "id": "post-18108613556019174",
       "name": "post-18108613556019174.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904193be7ffaf0d512b2a.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904193be7ffaf0d512b2a.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18109285184281659",
       "name": "post-18109285184281659.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419ac05a0d91fa8d730.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419ac05a0d91fa8d730.mp4",
+      "width": 360,
+      "height": 360,
+      "orientation": "square"
     },
     {
       "id": "post-18115514884752628",
       "name": "post-18115514884752628.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419b87a281ad1a18311.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90419b87a281ad1a18311.mp4",
+      "width": 636,
+      "height": 358,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18116288317895975",
       "name": "post-18116288317895975.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041afdcb71bb82595c79.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041afdcb71bb82595c79.jpg",
+      "width": 720,
+      "height": 1275,
+      "orientation": "vertical"
     },
     {
       "id": "post-18117459085821349",
       "name": "post-18117459085821349.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041aa0bb969dd93238ab.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041aa0bb969dd93238ab.jpg",
+      "width": 1080,
+      "height": 1920,
+      "orientation": "vertical"
     },
     {
       "id": "post-18119730610880748",
       "name": "post-18119730610880748.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041b3be7ffaf0d512b61.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041b3be7ffaf0d512b61.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18119833453801059",
       "name": "post-18119833453801059.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ba0bb969dd93238c7.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ba0bb969dd93238c7.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18122394088765117",
       "name": "post-18122394088765117.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041bac05a0d91fa8d77d.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041bac05a0d91fa8d77d.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18124054846681829",
       "name": "post-18124054846681829.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041b55feecaeea8fda27.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041b55feecaeea8fda27.jpg",
+      "width": 720,
+      "height": 1275,
+      "orientation": "vertical"
     },
     {
       "id": "post-18128891818661381",
       "name": "post-18128891818661381.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ba0bb969dd93238d3.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ba0bb969dd93238d3.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18130395031648151",
       "name": "post-18130395031648151.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041b840bad1c114dc78e.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041b840bad1c114dc78e.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18135871654719148",
       "name": "post-18135871654719148.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ca0c3fa1f7d5aaf65.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ca0c3fa1f7d5aaf65.jpg",
+      "width": 1080,
+      "height": 1920,
+      "orientation": "vertical"
     },
     {
       "id": "post-18144045952536257",
       "name": "post-18144045952536257.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041c89ad2537e4a20524.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041c89ad2537e4a20524.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18145884694548023",
       "name": "post-18145884694548023.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041da0c3fa1f7d5aaf71.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041da0c3fa1f7d5aaf71.mp4",
+      "width": 1080,
+      "height": 608,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18160286722483880",
       "name": "post-18160286722483880.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041d89ad2537e4a20544.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041d89ad2537e4a20544.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18170385748447188",
       "name": "post-18170385748447188.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041db87a281ad1a18359.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041db87a281ad1a18359.mp4",
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
     },
     {
       "id": "post-18171065368446345",
       "name": "post-18171065368446345.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041dfdcb71bb82595ced.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041dfdcb71bb82595ced.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18183670882393720",
       "name": "post-18183670882393720.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041eac05a0d91fa8d7d4.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041eac05a0d91fa8d7d4.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18190367383388045",
       "name": "post-18190367383388045.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ea0bb969dd932390f.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041ea0bb969dd932390f.mp4",
+      "width": 720,
+      "height": 720,
+      "orientation": "square"
     },
     {
       "id": "post-18198321118375510",
       "name": "post-18198321118375510.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041e6e47ee7c823ba3e2.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041e6e47ee7c823ba3e2.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     },
     {
       "id": "post-18369045670233021",
       "name": "post-18369045670233021.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041e55feecaeea8fda8b.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041e55feecaeea8fda8b.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18424834030179165",
       "name": "post-18424834030179165.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041f840bad1c114dc7ee.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041f840bad1c114dc7ee.mp4",
+      "width": 360,
+      "height": 360,
+      "orientation": "square"
     },
     {
       "id": "post-18425862478195786",
       "name": "post-18425862478195786.jpg",
       "type": "image",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041f3be7ffaf0d512c1d.jpg"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad9041f3be7ffaf0d512c1d.jpg",
+      "width": 1080,
+      "height": 609,
+      "orientation": "horizontal"
     },
     {
       "id": "post-18428193460182571",
       "name": "post-18428193460182571.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90420a0c3fa1f7d5aaff3.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad90420a0c3fa1f7d5aaff3.mp4",
+      "width": 360,
+      "height": 360,
+      "orientation": "square"
     },
     {
       "id": "post-18617529268031124",
       "name": "post-18617529268031124.mp4",
       "type": "video",
-      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904206e47ee7c823ba402.mp4"
+      "url": "https://assets.cdn.filesafe.space/itkQlAHHVlUS0uDAETp3/media/6ad904206e47ee7c823ba402.mp4",
+      "width": 720,
+      "height": 1280,
+      "orientation": "vertical"
     }
   ]
 }
