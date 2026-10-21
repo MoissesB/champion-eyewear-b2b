@@ -67,6 +67,12 @@ GROUPS = {
 SPOKEN_ES = set("""champion-video-14 champion-video-16 champion-video-20 champion-video-24 champion-video-27 champion-video-28 post-17880058548496463 post-17901658173494547 post-17982979257058079 post-18010661402940194 post-18022106066898343 post-18055841018525459 post-18083418266446797 post-18102217640332636 post-18104443418126927 post-18108490075832026""".split())
 SPOKEN_EN = set("""champion-video-21 post-17954562582207684 post-17960965821077802 post-18012198815946361 post-18055677191530441 post-18061161968746834 post-18082524830305641 post-18086701883392673 post-18097514126573171 post-18097803692344940 post-18098608889260746 post-18108613556019174 post-18119833453801059 post-18128891818661381 post-18130395031648151 post-18160286722483880 post-18171065368446345 post-18183670882393720 post-18617529268031124""".split())
 
+# Clasificación corregida por el propietario en la galería, vistas 1 a 24.
+USER_ES = {5, 10, 11, 12, 13, 14, 15, 16, 18, 20, 21, 22, 24}
+USER_NO_LANGUAGE = {1, 2, 3, 4, 6, 7, 8, 9, 17, 19, 23}
+assert USER_ES.isdisjoint(USER_NO_LANGUAGE)
+assert USER_ES | USER_NO_LANGUAGE == set(range(1, 25))
+
 
 def bilingual(title: str, description: str) -> dict:
     # Scene names are deliberately concise. English readers can still identify
@@ -95,6 +101,10 @@ def main() -> None:
         result[video_id]["language"] = "es"
     for video_id in SPOKEN_EN:
         result[video_id]["language"] = "en"
+    for index in USER_ES:
+        result[f"champion-video-{index:02d}"]["language"] = "es"
+    for index in USER_NO_LANGUAGE:
+        result[f"champion-video-{index:02d}"]["language"] = "unknown"
     (ROOT / "clientes/video-details.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
