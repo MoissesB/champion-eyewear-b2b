@@ -8,5 +8,7 @@ window.CHAMPION_PORTAL_CONFIG = {
     messagingSenderId: '1075635520687',
     appId: '1:1075635520687:web:35590ffd15d4180b28805a',
   },
-  driveMapUrl: './drive-map.json',
+  // The public email bridge runs as championinnova@gmail.com; media stays private.
+  authBridgeUrl: 'https://script.google.com/macros/s/AKfycbxhbdPn9jijehZfBVlzW2b4jC2OIleqFXpwREhoXnbK2TzfWD0RVN6ZmJItiJfFGpoL/exec',
+  privateMediaUrl: '',
 };

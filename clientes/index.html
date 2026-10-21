@@ -34,20 +34,13 @@
     </section>
 
     <section class="access-shell" id="accessShell" aria-live="polite">
-      <div class="access-card" id="loginPanel">
+      <form class="access-card" id="loginPanel">
         <span class="section-kicker" data-t="accessKicker">ACCESO PARA CLIENTES</span>
         <h2 data-t="accessTitle">Entra con el correo de tu óptica.</h2>
-        <p data-t="accessText">Usa una cuenta Google vinculada a ese correo. Revisaremos tu solicitud antes de habilitar las descargas.</p>
-        <button class="primary" id="loginButton" type="button"><span class="google-mark">G</span><span data-t="googleLogin">Continuar con Google</span></button>
-        <p class="small" data-t="noPassword">No hay contraseña adicional ni autorización por cada descarga.</p>
-      </div>
-      <form class="access-card" id="registerPanel" hidden>
-        <span class="section-kicker" data-t="registerKicker">UN PASO MÁS</span>
-        <h2 data-t="registerTitle">Cuéntanos sobre tu óptica.</h2>
-        <p data-t="registerText">Enviaremos tu solicitud para revisión. El acceso a todos los recursos se activará tras la aprobación.</p>
-        <label><span data-t="businessLabel">Nombre de la óptica o empresa</span><input id="businessName" name="business" autocomplete="organization" maxlength="120" required></label>
-        <label><span data-t="countryLabel">País</span><input id="country" name="country" autocomplete="country-name" maxlength="80" required></label>
-        <button class="primary" type="submit" data-t="registerSubmit">Solicitar acceso</button>
+        <p id="accessText" data-t="accessText">Si tu correo está aprobado, te enviaremos un enlace privado para entrar.</p>
+        <label><span data-t="emailLabel">Correo electrónico</span><input id="loginEmail" type="email" name="email" autocomplete="email" maxlength="254" required></label>
+        <button class="primary" id="loginButton" type="submit" data-t="emailLogin">Enviarme el enlace de acceso</button>
+        <p class="small" data-t="noPassword">No necesitas una cuenta de Google ni una contraseña.</p>
       </form>
       <div class="access-card status-card" id="statusPanel" hidden>
         <span class="status-icon">✓</span>
