@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "firebase": "^13.0.0",
-    "jspdf": "4.2.1"
+    "jspdf": "4.2.1",
+    "jszip": "3.10.1"
   },
   "devDependencies": {
     "esbuild": "0.25.12"
