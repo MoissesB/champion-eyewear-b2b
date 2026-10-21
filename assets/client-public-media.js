@@ -51,8 +51,13 @@ export function collectPublicFiles(selected, catalog, marketing, publicMedia, la
     } else if (type === 'instagram') {
       const media = publicMedia.instagram.find((item) => item.id === id);
       if (!media) throw new Error(`Archivo desconocido: ${id}`);
-      files.push({url: media.url, path: `Instagram/${media.name}`, type: media.type,
+      files.push({url: media.url, path: `${media.type === 'video' ? 'Videos' : 'Imagenes_para_redes'}/${media.name}`, type: media.type,
         id, description: `Archivo publicado por Champion en Instagram · ${id}`, source: 'GoHighLevel'});
+    } else if (type === 'logo') {
+      const logo = publicMedia.logos.find((item) => item.id === id);
+      if (!logo) throw new Error(`Logo desconocido: ${id}`);
+      files.push({url: logo.url, path: `Logos/${logo.name}`, type: 'logo',
+        id, description: logo.title[language], source: 'Champion'});
     } else if (type === 'marketing') {
       const media = marketing.items.find((item) => item.id === id);
       if (!media) throw new Error(`Campaña desconocida: ${id}`);

@@ -6,10 +6,10 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="description" content="Recursos Champion Eyewear para ópticas autorizadas.">
   <link rel="icon" href="../favicon.ico">
-  <link rel="stylesheet" href="./portal.css?v=20261021-13">
+  <link rel="stylesheet" href="./portal.css?v=20261021-18">
   <title>Recursos para ópticas | Champion Eyewear</title>
   <script defer src="./config.js"></script>
-<script defer src="./portal.js?v=20261021-17"></script>
+<script defer src="./portal.js?v=20261021-18"></script>
 </head>
 <body>
   <a class="skip" id="skipLink" href="#main">Ir al contenido</a>
@@ -51,24 +51,26 @@
 
     <section class="library" id="library" hidden>
       <div class="section-heading"><div><span class="section-kicker" data-t="libraryKicker">BIBLIOTECA PARA TU ÓPTICA</span><h2 data-t="libraryTitle">Encuentra el recurso correcto.</h2><p data-t="libraryIntro">Explora por referencia, filtra y prepara una selección de descargas.</p></div><span class="approved-pill" id="approvedBadge" data-t="approved">Acceso aprobado</span></div>
-      <div class="tabs" role="tablist" id="resourceTabs" aria-label="Tipo de recurso"><button type="button" class="is-active" data-tab="models" role="tab" aria-selected="true" data-t="tabModels">Imágenes de modelos</button><button type="button" data-tab="videos" role="tab" aria-selected="false" data-t="tabVideos">Videos</button><button type="button" data-tab="instagram" role="tab" aria-selected="false" data-t="tabInstagram">Instagram</button><button type="button" data-tab="campaigns" role="tab" aria-selected="false" data-t="tabCampaigns">Publicidad y redes</button></div>
+      <div class="tabs" role="tablist" id="resourceTabs" aria-label="Tipo de recurso"><button type="button" class="is-active" data-tab="models" role="tab" aria-selected="true" data-t="tabModels">Imágenes de modelos</button><button type="button" data-tab="videos" role="tab" aria-selected="false" data-t="tabVideos">Videos</button><button type="button" data-tab="instagram" role="tab" aria-selected="false" data-t="tabInstagram">Imágenes para redes</button><button type="button" data-tab="campaigns" role="tab" aria-selected="false" data-t="tabCampaigns" hidden>Publicidad y redes</button><button type="button" data-tab="logos" role="tab" aria-selected="false" data-t="tabLogos">Logos</button></div>
       <div id="modelPanel" role="tabpanel">
         <div class="filters"><label class="search"><span class="sr-only" data-t="searchLabel">Buscar modelo, SKU o color</span><input id="searchInput" type="search" placeholder="Buscar CH01, color, SKU…"></label><label><span data-t="typeLabel">Tipo</span><select id="familyFilter"><option value="" data-t="allTypes">Todos</option><option value="optical" data-t="optical">Monturas ópticas</option><option value="sun" data-t="sun">Lentes de sol</option></select></label><label><span data-t="collectionLabel">Colección</span><select id="collectionFilter"><option value="" data-t="allCollections">Todas</option></select></label><label><span data-t="colorLabel">Color</span><select id="colorFilter"><option value="" data-t="allColors">Todos</option></select></label><button class="clear" id="clearFilters" type="button" data-t="clearFilters">Limpiar filtros</button></div>
         <div class="results-bar"><span id="resultCount"></span><span data-t="selectionHint">Añade modelos, fotos, videos y campañas al carrito.</span></div>
         <div class="model-grid" id="modelGrid"></div>
         <div class="empty" id="emptyResults" hidden data-t="noResults">No encontramos modelos con esos filtros.</div>
       </div>
-      <div id="videoPanel" role="tabpanel" hidden><div class="media-grid" id="videoGrid"></div></div>
-      <div id="instagramPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="instagramNote">Archivos publicados por Champion en Instagram. Esta colección corresponde a la primera parte de la exportación; se ampliará cuando Meta entregue las demás.</p><label class="social-filter"><span data-t="mediaType">Tipo de archivo</span><select id="instagramType"><option value="" data-t="campaignAll">Todos</option><option value="video" data-t="tabVideos">Videos</option><option value="image" data-t="socialImages">Imágenes</option></select></label><div class="media-grid" id="instagramGrid"></div></div>
+      <div id="videoPanel" role="tabpanel" hidden><label class="social-filter"><span data-t="contentLanguage">Idioma del contenido</span><select id="videoLanguage"><option value="" data-t="campaignAll">Todos</option><option value="es">Español</option><option value="en">English</option><option value="unknown" data-t="languageUnknown">Sin clasificar</option></select></label><div class="media-grid" id="videoGrid"></div></div>
+      <div id="instagramPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="instagramNote">Imágenes publicadas por Champion para compartir con tus clientes.</p><label class="social-filter"><span data-t="mediaType">Tipo de imagen</span><select id="instagramType"><option value="" data-t="campaignAll">Todas</option><option value="carousel" data-t="socialCarousel">Carruseles</option><option value="image" data-t="socialImages">Imágenes individuales</option></select></label><div class="media-grid" id="instagramGrid"></div></div>
       <div id="campaignPanel" role="tabpanel" hidden>
         <div class="campaign-filters"><label><span data-t="campaignStyle">Estilo</span><select id="campaignStyle"><option value="" data-t="campaignAll">Todos</option><option value="deportivo" data-t="campaignSport">Deportivo</option><option value="casual" data-t="campaignCasual">Casual</option></select></label><label><span data-t="campaignFormat">Formato</span><select id="campaignFormat"><option value="" data-t="campaignAll">Todos</option><option value="post" data-t="campaignPost">Publicación</option><option value="story" data-t="campaignStory">Historia</option><option value="pendon" data-t="campaignBanner">Banner para punto de venta</option></select></label></div>
         <p class="campaign-disclaimer" data-t="campaignNote">Artes conceptuales. Confirma medidas y resolución con la imprenta antes de producir materiales para punto de venta.</p>
         <div class="media-grid" id="campaignGrid"></div>
       </div>
+      <div id="logosPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="logosNote">Logos oficiales de Champion disponibles para materiales de tu óptica.</p><div class="media-grid" id="logosGrid"></div></div>
     </section>
   </main>
 
-  <aside class="selection" id="selectionBar" hidden aria-live="polite"><div><strong id="selectedCount">0</strong><span data-t="selectedModels"> recursos en el carrito</span></div><div><button class="selection-clear" id="clearSelection" type="button" data-t="clearSelection">Vaciar</button><button class="primary" id="downloadSelection" type="button" data-t="downloadZips">Revisar carrito</button></div></aside>
+  <button class="cart-fab" id="downloadSelection" type="button" aria-controls="cartDrawer" aria-expanded="false" hidden><span aria-hidden="true">▣</span><span data-t="cartLabel">Carrito</span><strong id="selectedCount">0</strong></button>
+  <div class="cart-scrim" id="cartScrim" hidden></div><aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" aria-modal="true" role="dialog" hidden><div class="cart-drawer-head"><div><span class="section-kicker">Champion Eyewear</span><h2 id="cartTitle" data-t="zipList">Tu carrito de recursos</h2></div><button class="cart-drawer-close" id="closeCart" type="button" aria-label="Cerrar">×</button></div><p data-t="publicZipIntro">Descarga un solo ZIP con los recursos elegidos.</p><ul class="cart-items" id="cartItems"></ul><div class="cart-drawer-actions"><button class="selection-clear" id="clearSelection" type="button" data-t="clearSelection">Vaciar</button><button class="primary" id="prepareBundle" type="button" data-t="downloadAll">Preparar ZIP único</button></div></aside>
   <dialog class="detail" id="detailDialog" aria-labelledby="detailTitle"><button class="dialog-close" id="closeDetail" type="button" aria-label="Cerrar">×</button><div id="detailContent"></div></dialog>
   <div class="toast" id="toast" role="status" hidden></div>
   <footer><span>Champion Eyewear · Innova Eyewear</span><a href="../es/b2b/" id="footerLink" data-t="backSite">Volver al catálogo</a></footer>
