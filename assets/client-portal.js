@@ -65,8 +65,31 @@ async function loadCatalog() { const response=await fetch('./media-catalog.json'
 async function finishEmailLink(email) { const normalized=email.trim().toLowerCase();if(!normalized||!state.emailLinkUrl)return;await signInWithEmailLink(state.auth,normalized,state.emailLinkUrl);localStorage.removeItem('champion-login-email');state.emailLinkUrl=null;history.replaceState({},'',location.pathname); }
 function syncCartButtons() { document.querySelectorAll('[data-cart]').forEach(button=>{const selected=state.selected.has(button.dataset.cart);button.classList.toggle('is-selected',selected);button.setAttribute('aria-pressed',String(selected));button.textContent=selected?t('removeCart'):t('addCart');});updateSelection(); }
 function postGateway(action,payload) {
-  const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
-  if(!navigator.sendBeacon(cfg.authBridgeUrl,body))throw new Error('No se pudo enviar la solicitud');
+  if(action==='confirmPortalSession'){
+    const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
+    if(!navigator.sendBeacon(cfg.authBridgeUrl,body))return Promise.reject(new Error('No se pudo confirmar la sesión'));
+    return Promise.resolve();
+  }
+  return new Promise((resolve,reject)=>{
+    const nonce=crypto.randomUUID(),id=crypto.randomUUID(),frame=document.createElement('iframe');
+    let port,finished=false;
+    const finish=(error,result)=>{if(finished)return;finished=true;clearTimeout(timer);window.removeEventListener('message',onReady);port?.close();frame.remove();if(error)reject(error);else resolve(result);};
+    const onReady=(event)=>{
+      let origin;
+      try{origin=new URL(event.origin);}catch(_){return;}
+      if(origin.protocol!=='https:'||!(origin.hostname==='script.google.com'||origin.hostname.endsWith('.googleusercontent.com')))return;
+      if(event.data?.championBridge!==1||event.data.ready!==true||event.data.nonce!==nonce||!event.ports?.[0])return;
+      port=event.ports[0];
+      port.onmessage=({data})=>{if(data?.championBridge!==1||data.id!==id)return;finish(data.error?new Error(data.error):null,data.result);};
+      port.start();
+      port.postMessage({championBridge:1,id,action,payload});
+    };
+    const timer=setTimeout(()=>finish(new Error('El servicio de acceso no respondió')),20000);
+    window.addEventListener('message',onReady);
+    frame.hidden=true;frame.tabIndex=-1;frame.setAttribute('aria-hidden','true');
+    frame.src=`${cfg.authBridgeUrl}?nonce=${encodeURIComponent(nonce)}`;
+    document.body.append(frame);
+  });
 }
 async function waitForChampionProfile(user) {
   const profile=doc(state.db,'clients',user.uid);
@@ -86,7 +109,7 @@ async function startAuthNew() {
     if(!user){state.loggedVisit=false;setPanel('loginPanel');return;}
     try {
       const token=await user.getIdToken(true);
-      postGateway('confirmPortalSession',{idToken:token});
+      await postGateway('confirmPortalSession',{idToken:token});
       const {profile,snapshot}=await waitForChampionProfile(user);
       if(snapshot.data().status!=='approved'){setStatus(t('suspendedTitle'),t('suspendedText'));return;}
       state.unsubscribe=onSnapshot(profile,(live)=>{
@@ -109,7 +132,7 @@ function toggleCart(key) { if(state.selected.has(key))state.selected.delete(key)
 function logout() { sessionStorage.removeItem('champion-login-recorded'); if(state.auth?.currentUser)signOut(state.auth);else setPanel('loginPanel'); }
 function bind() {
   $('languageButton').addEventListener('click',()=>setLanguage(state.lang==='es'?'en':'es'));
-  $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;try{if(state.emailLinkUrl){await finishEmailLink(email);}else{postGateway('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'));}}catch(error){console.warn('Champion email access request failed:',error.message);showToast(t('loginError'));}finally{button.disabled=false;}});
+  $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;try{if(state.emailLinkUrl){await finishEmailLink(email);}else{await postGateway('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'));}}catch(error){console.warn('Champion email access request failed:',error.message);showToast(t('loginError'));}finally{button.disabled=false;}});
   $('accountButton').addEventListener('click',logout);
   $('statusLogout').addEventListener('click',logout);
   for(const id of ['searchInput','familyFilter','collectionFilter','colorFilter'])$(id).addEventListener(id==='searchInput'?'input':'change',renderModels);
