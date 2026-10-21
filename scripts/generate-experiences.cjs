@@ -50,6 +50,8 @@ for (const language of ['es', 'en']) {
     }
 
     html = html.replace(/href="\.\.\/\.\.\/blog\.html"/g, `href="../../blog.html?audience=${profile}&amp;lang=${language}"`);
+    if (personal) html = html.replace(/\s*<a href="\.\.\/\.\.\/clientes\/" data-portal-nav>[^<]*<\/a>/g, '');
+    else if (english) html = html.replace(/(<a href="\.\.\/\.\.\/clientes\/" data-portal-nav>)[^<]*/g, '$1Resources for optical stores');
     if (personal) html = html.replace(/\r\n?/g, '\n').replace(/\n{3,}/g, '\n\n');
     html = html.replace(/^[ \t]+$/gm, '');
     fs.mkdirSync(folder, { recursive: true });

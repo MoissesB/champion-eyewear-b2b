@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es-419">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Recursos Champion Eyewear para ópticas autorizadas.">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="./portal.css">
+  <title>Recursos para ópticas | Champion Eyewear</title>
+  <script defer src="./config.js"></script>
+  <script defer src="./portal.js"></script>
+</head>
+<body>
+  <a class="skip" id="skipLink" href="#main">Ir al contenido</a>
+  <header class="topbar">
+    <a class="brand" id="brandLink" href="../es/b2b/" aria-label="Champion Eyewear, volver al sitio"><img src="../assets/images/brand/champion-header-display.webp" alt="Champion Eyewear" width="190" height="36"></a>
+    <nav class="topnav" aria-label="Navegación del portal">
+      <a href="../es/b2b/" id="siteLink">Volver al catálogo</a>
+      <button class="language" id="languageButton" type="button" aria-label="Switch to English">EN</button>
+      <button class="account" id="accountButton" type="button" hidden>Salir</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow" data-t="eyebrow">CHAMPION EYEWEAR · PARA ÓPTICAS</span>
+        <h1 data-t="headline">Todo lo que tu óptica necesita para mostrar Champion.</h1>
+        <p data-t="intro">Imágenes de cada montura y lente de sol, materiales de campaña y videos en un espacio preparado para tu equipo.</p>
+        <div class="hero-points"><span><strong id="productCount">128</strong><small data-t="models">modelos y colores</small></span><span><strong id="imageCount">580</strong><small data-t="images">imágenes de catálogo</small></span><span><strong>ES / EN</strong><small data-t="languages">recursos organizados</small></span></div>
+      </div>
+      <div class="hero-visual"><img src="../assets/images/optical/ch01-c1/01.webp" alt="Montura Champion CH-01 C1"><div class="visual-caption"><span data-t="visualLabel">BIBLIOTECA PROFESIONAL</span><strong>Champion Eyewear</strong></div></div>
+    </section>
+
+    <section class="access-shell" id="accessShell" aria-live="polite">
+      <div class="access-card" id="loginPanel">
+        <span class="section-kicker" data-t="accessKicker">ACCESO PARA CLIENTES</span>
+        <h2 data-t="accessTitle">Entra con el correo de tu óptica.</h2>
+        <p data-t="accessText">Usa una cuenta Google vinculada a ese correo. Revisaremos tu solicitud antes de habilitar las descargas.</p>
+        <button class="primary" id="loginButton" type="button"><span class="google-mark">G</span><span data-t="googleLogin">Continuar con Google</span></button>
+        <p class="small" data-t="noPassword">No hay contraseña adicional ni autorización por cada descarga.</p>
+      </div>
+      <form class="access-card" id="registerPanel" hidden>
+        <span class="section-kicker" data-t="registerKicker">UN PASO MÁS</span>
+        <h2 data-t="registerTitle">Cuéntanos sobre tu óptica.</h2>
+        <p data-t="registerText">Enviaremos tu solicitud para revisión. El acceso a todos los recursos se activará tras la aprobación.</p>
+        <label><span data-t="businessLabel">Nombre de la óptica o empresa</span><input id="businessName" name="business" autocomplete="organization" maxlength="120" required></label>
+        <label><span data-t="countryLabel">País</span><input id="country" name="country" autocomplete="country-name" maxlength="80" required></label>
+        <button class="primary" type="submit" data-t="registerSubmit">Solicitar acceso</button>
+      </form>
+      <div class="access-card status-card" id="statusPanel" hidden>
+        <span class="status-icon">✓</span>
+        <h2 id="statusTitle"></h2><p id="statusText"></p>
+        <button class="secondary" id="statusLogout" type="button" data-t="changeAccount">Usar otra cuenta</button>
+      </div>
+    </section>
+
+    <section class="library" id="library" hidden>
+      <div class="section-heading"><div><span class="section-kicker" data-t="libraryKicker">BIBLIOTECA PARA TU ÓPTICA</span><h2 data-t="libraryTitle">Encuentra el recurso correcto.</h2><p data-t="libraryIntro">Explora por referencia, filtra y prepara una selección de descargas.</p></div><span class="approved-pill" id="approvedBadge" data-t="approved">Acceso aprobado</span></div>
+      <div class="tabs" role="tablist" id="resourceTabs" aria-label="Tipo de recurso"><button type="button" class="is-active" data-tab="models" role="tab" aria-selected="true" data-t="tabModels">Imágenes de modelos</button><button type="button" data-tab="videos" role="tab" aria-selected="false" data-t="tabVideos">Videos</button><button type="button" data-tab="campaigns" role="tab" aria-selected="false" data-t="tabCampaigns">Publicidad y redes</button></div>
+      <div id="modelPanel" role="tabpanel">
+        <div class="filters"><label class="search"><span class="sr-only" data-t="searchLabel">Buscar modelo, SKU o color</span><input id="searchInput" type="search" placeholder="Buscar CH01, color, SKU…"></label><label><span data-t="typeLabel">Tipo</span><select id="familyFilter"><option value="" data-t="allTypes">Todos</option><option value="optical" data-t="optical">Monturas ópticas</option><option value="sun" data-t="sun">Lentes de sol</option></select></label><label><span data-t="collectionLabel">Colección</span><select id="collectionFilter"><option value="" data-t="allCollections">Todas</option></select></label><label><span data-t="colorLabel">Color</span><select id="colorFilter"><option value="" data-t="allColors">Todos</option></select></label><button class="clear" id="clearFilters" type="button" data-t="clearFilters">Limpiar filtros</button></div>
+        <div class="results-bar"><span id="resultCount"></span><span data-t="selectionHint">Añade modelos, fotos, videos y campañas al carrito.</span></div>
+        <div class="model-grid" id="modelGrid"></div>
+        <div class="empty" id="emptyResults" hidden data-t="noResults">No encontramos modelos con esos filtros.</div>
+      </div>
+      <div id="videoPanel" role="tabpanel" hidden><div class="media-grid" id="videoGrid"></div></div>
+      <div id="campaignPanel" role="tabpanel" hidden>
+        <div class="campaign-filters"><label><span data-t="campaignStyle">Estilo</span><select id="campaignStyle"><option value="" data-t="campaignAll">Todos</option><option value="deportivo" data-t="campaignSport">Deportivo</option><option value="casual" data-t="campaignCasual">Casual</option></select></label><label><span data-t="campaignFormat">Formato</span><select id="campaignFormat"><option value="" data-t="campaignAll">Todos</option><option value="post" data-t="campaignPost">Publicación</option><option value="story" data-t="campaignStory">Historia</option><option value="pendon" data-t="campaignBanner">Banner para punto de venta</option></select></label></div>
+        <p class="campaign-disclaimer" data-t="campaignNote">Artes conceptuales. Confirma medidas y resolución con la imprenta antes de producir materiales para punto de venta.</p>
+        <div class="media-grid" id="campaignGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="selection" id="selectionBar" hidden aria-live="polite"><div><strong id="selectedCount">0</strong><span data-t="selectedModels"> recursos en el carrito</span></div><div><button class="selection-clear" id="clearSelection" type="button" data-t="clearSelection">Vaciar</button><button class="primary" id="downloadSelection" type="button" data-t="downloadZips">Revisar carrito</button></div></aside>
+  <dialog class="detail" id="detailDialog" aria-labelledby="detailTitle"><button class="dialog-close" id="closeDetail" type="button" aria-label="Cerrar">×</button><div id="detailContent"></div></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+  <footer><span>Champion Eyewear · Innova Eyewear</span><a href="../es/b2b/" id="footerLink" data-t="backSite">Volver al catálogo</a></footer>
+</body>
+</html>

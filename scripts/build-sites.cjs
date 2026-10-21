@@ -11,6 +11,7 @@ if (!dist.startsWith(`${root}${path.sep}`)) {
 }
 
 async function build() {
+  await require('./build-client-portal-js.cjs');
   require('./generate-experiences.cjs');
   require('./generate-sitemap.cjs');
   await rm(dist, { recursive: true, force: true });
@@ -21,7 +22,7 @@ async function build() {
     await cp(path.join(root, file), path.join(client, file));
   }
 
-  for (const directory of ['assets', 'data', 'blog', 'es', 'en']) {
+  for (const directory of ['assets', 'data', 'blog', 'es', 'en', 'clientes']) {
     await cp(path.join(root, directory), path.join(client, directory), { recursive: true });
   }
 

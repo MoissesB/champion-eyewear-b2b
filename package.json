@@ -5,10 +5,13 @@
   "description": "Catálogo estático B2B de Champion Eyewear para Innova Eyewear.",
   "scripts": {
     "optimize": "node scripts/optimize-assets.cjs",
+    "portal:inventory": "python scripts/build-client-portal.py",
+    "portal:bundles": "python scripts/build-client-portal.py --bundles",
     "build": "node scripts/optimize-assets.cjs && node scripts/build-sites.cjs",
     "validate": "powershell -ExecutionPolicy Bypass -File ./scripts/validar.ps1"
   },
   "dependencies": {
+    "firebase": "^13.0.0",
     "jspdf": "4.2.1"
   },
   "devDependencies": {
