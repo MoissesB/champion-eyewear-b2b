@@ -120,3 +120,11 @@ function doGet(e) {
     .setTitle('Champion secure gateway')
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
+
+function doPost(e) {
+  const body = JSON.parse(String(e && e.postData && e.postData.contents || '{}'));
+  if (body.action === 'requestPortalLink') requestPortalLink(body.payload);
+  else if (body.action === 'confirmPortalSession') confirmPortalSession(body.payload);
+  else throw new Error('Acción inválida');
+  return ContentService.createTextOutput('ok');
+}

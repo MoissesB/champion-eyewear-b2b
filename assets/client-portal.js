@@ -59,11 +59,52 @@ async function bridgeCall(action,payload) { const port=await ensureBridge();cons
 async function finishEmailLink(email) { const normalized=email.trim().toLowerCase();if(!normalized||!state.emailLinkUrl)return;await signInWithEmailLink(state.auth,normalized,state.emailLinkUrl);localStorage.removeItem('champion-login-email');state.emailLinkUrl=null;history.replaceState({},'',location.pathname); }
 async function startAuth() { if(localPreview){state.user=null;$('approvedBadge').textContent=t('previewBadge');if(new URLSearchParams(location.search).has('auth_preview'))setPanel('loginPanel');else{setPanel('library');showToast(t('previewToast'));}return;} if(!cfg.firebase?.apiKey||!cfg.authBridgeUrl){setStatus(t('setupTitle'),t('setupText'));return;} const app=initializeApp(cfg.firebase);state.auth=getAuth(app);state.db=getFirestore(app);try{await ensureBridge();}catch(_){setStatus(t('setupTitle'),t('setupText'));return;}onAuthStateChanged(state.auth,async(user)=>{state.user=user;if(state.unsubscribe){state.unsubscribe();state.unsubscribe=null;}if(!user){state.loggedVisit=false;setPanel('loginPanel');return;}try{const token=await user.getIdToken(true);const result=await bridgeCall('confirmPortalSession',{idToken:token});if(!result?.approved){setStatus(t('suspendedTitle'),t('suspendedText'));await signOut(state.auth);return;}const profile=doc(state.db,'clients',user.uid);const snapshot=await getDoc(profile);if(!snapshot.exists()||snapshot.data().status!=='approved')throw new Error('Approved profile missing');state.unsubscribe=onSnapshot(profile,(live)=>{const status=live.data()?.status;if(status==='approved')setPanel('library');else if(status==='suspended')setStatus(t('suspendedTitle'),t('suspendedText'));else setStatus(t('pendingTitle'),t('pendingText'));},()=>setStatus(t('setupTitle'),t('setupText')));if(!sessionStorage.getItem('champion-login-recorded')){sessionStorage.setItem('champion-login-recorded','1');recordEvent('login');}}catch(_){setStatus(t('setupTitle'),t('setupText'));}});if(isSignInWithEmailLink(state.auth,location.href)){state.emailLinkUrl=location.href;const email=localStorage.getItem('champion-login-email');if(email){try{await finishEmailLink(email);}catch(_){showToast(t('loginError'));}}else{$('accessText').textContent=t('confirmEmailText');$('loginButton').textContent=t('confirmEmail');$('loginEmail').focus();}} }
 function syncCartButtons() { document.querySelectorAll('[data-cart]').forEach(button=>{const selected=state.selected.has(button.dataset.cart);button.classList.toggle('is-selected',selected);button.setAttribute('aria-pressed',String(selected));button.textContent=selected?t('removeCart'):t('addCart');});updateSelection(); }
+function postGateway(action,payload) {
+  const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
+  if(!navigator.sendBeacon(cfg.authBridgeUrl,body))throw new Error('No se pudo enviar la solicitud');
+}
+async function waitForChampionProfile(user) {
+  const profile=doc(state.db,'clients',user.uid);
+  for(let attempt=0;attempt<25;attempt++) {
+    try { const snapshot=await getDoc(profile);if(snapshot.exists())return {profile,snapshot}; } catch(error) { if(error.code!=='permission-denied')throw error; }
+    await new Promise(resolve=>setTimeout(resolve,1000));
+  }
+  throw new Error('La aprobación no respondió');
+}
+async function startAuthNew() {
+  if(localPreview)return startAuth();
+  if(!cfg.firebase?.apiKey||!cfg.authBridgeUrl){setStatus(t('setupTitle'),t('setupText'));return;}
+  const app=initializeApp(cfg.firebase);state.auth=getAuth(app);state.db=getFirestore(app);
+  onAuthStateChanged(state.auth,async(user)=>{
+    state.user=user;
+    if(state.unsubscribe){state.unsubscribe();state.unsubscribe=null;}
+    if(!user){state.loggedVisit=false;setPanel('loginPanel');return;}
+    try {
+      const token=await user.getIdToken(true);
+      postGateway('confirmPortalSession',{idToken:token});
+      const {profile,snapshot}=await waitForChampionProfile(user);
+      if(snapshot.data().status!=='approved'){setStatus(t('suspendedTitle'),t('suspendedText'));return;}
+      state.unsubscribe=onSnapshot(profile,(live)=>{
+        const status=live.data()?.status;
+        if(status==='approved')setPanel('library');
+        else if(status==='suspended')setStatus(t('suspendedTitle'),t('suspendedText'));
+        else setStatus(t('pendingTitle'),t('pendingText'));
+      },()=>setStatus(t('setupTitle'),t('setupText')));
+      if(!sessionStorage.getItem('champion-login-recorded')){sessionStorage.setItem('champion-login-recorded','1');recordEvent('login');}
+    } catch(error){console.warn('Champion session verification failed:',error.message);setStatus(t('setupTitle'),t('setupText'));}
+  });
+  if(isSignInWithEmailLink(state.auth,location.href)){
+    state.emailLinkUrl=location.href;
+    const email=localStorage.getItem('champion-login-email');
+    if(email){try{await finishEmailLink(email);}catch(_){showToast(t('loginError'));}}
+    else{$('accessText').textContent=t('confirmEmailText');$('loginButton').textContent=t('confirmEmail');$('loginEmail').focus();}
+  }
+}
 function toggleCart(key) { if(state.selected.has(key))state.selected.delete(key);else state.selected.add(key);syncCartButtons(); }
 function logout() { sessionStorage.removeItem('champion-login-recorded'); if(state.auth?.currentUser)signOut(state.auth);else setPanel('loginPanel'); }
 function bind() {
   $('languageButton').addEventListener('click',()=>setLanguage(state.lang==='es'?'en':'es'));
-  $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;try{if(state.emailLinkUrl){await finishEmailLink(email);}else{await bridgeCall('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'));}}catch(error){console.warn('Champion email access request failed:',error.message);showToast(t('loginError'));}finally{button.disabled=false;}});
+  $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;try{if(state.emailLinkUrl){await finishEmailLink(email);}else{postGateway('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'));}}catch(error){console.warn('Champion email access request failed:',error.message);showToast(t('loginError'));}finally{button.disabled=false;}});
   $('accountButton').addEventListener('click',logout);
   $('statusLogout').addEventListener('click',logout);
   for(const id of ['searchInput','familyFilter','collectionFilter','colorFilter'])$(id).addEventListener(id==='searchInput'?'input':'change',renderModels);
@@ -79,5 +120,5 @@ function bind() {
   $('closeDetail').addEventListener('click',()=>$('detailDialog').close());
   $('detailDialog').addEventListener('click',(event)=>{if(event.target===$('detailDialog'))$('detailDialog').close();const thumb=event.target.closest('[data-thumb]');if(thumb){$('detailDialog').dataset.image=thumb.dataset.thumb;updateDetailImage();}const remove=event.target.closest('[data-remove]');if(remove){state.selected.delete(remove.dataset.remove);syncCartButtons();if(state.selected.size)openBundleList();else $('detailDialog').close();}if(event.target.closest('#prepareBundle'))prepareBundle();});
 }
-async function main() { bind();setLanguage(state.lang);await Promise.all([loadCatalog(),loadMarketing()]);await startAuth(); }
+async function main() { bind();setLanguage(state.lang);await Promise.all([loadCatalog(),loadMarketing()]);await startAuthNew(); }
 main().catch(()=>setStatus(t('setupTitle'),t('setupText')));
