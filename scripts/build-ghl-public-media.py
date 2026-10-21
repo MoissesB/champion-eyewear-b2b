@@ -14,6 +14,21 @@ import av
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = ROOT / "output" / "client-portal"
 
+# Videos retirados de la galería por indicación del propietario (filtro Español,
+# posiciones 17 a 26 el 2026-10-21). Se conservan en el inventario de origen.
+HIDDEN_INSTAGRAM_VIDEO_IDS = {
+    "post-17880058548496463",
+    "post-17901658173494547",
+    "post-17982979257058079",
+    "post-18010661402940194",
+    "post-18022106066898343",
+    "post-18055841018525459",
+    "post-18083418266446797",
+    "post-18102217640332636",
+    "post-18104443418126927",
+    "post-18108490075832026",
+}
+
 
 def read_map(name: str) -> dict:
     return json.loads((OUTPUT / name).read_text(encoding="utf-8"))
@@ -37,6 +52,9 @@ def main() -> None:
     images = {item["name"]: item["url"] for item in read_map("ghl-catalog-map.json")["items"]}
     videos = {item["name"]: item["url"] for item in read_map("ghl-video-map.json")["items"]}
     instagram = read_map("ghl-instagram-map.json")["items"]
+    assert HIDDEN_INSTAGRAM_VIDEO_IDS <= {
+        Path(item["name"]).stem for item in instagram if item["name"].lower().endswith(".mp4")
+    }
     expected_images = {image["web"]["name"] for product in catalog["products"] for image in product["images"]}
     expected_videos = {f'{video["id"]}.mp4' for video in catalog["videos"]}
     assert len(images) == len(expected_images) == 580 and images.keys() == expected_images
@@ -55,6 +73,7 @@ def main() -> None:
                 "name": item["name"],
                 "type": "video" if item["name"].lower().endswith(".mp4") else "image",
                 "url": item["url"],
+                **({"hidden": True} if Path(item["name"]).stem in HIDDEN_INSTAGRAM_VIDEO_IDS else {}),
                 **dimensions(OUTPUT / "instagram-export-part1" / item["name"]),
             }
             for item in sorted(instagram, key=lambda item: item["name"])
