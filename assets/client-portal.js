@@ -86,13 +86,18 @@ function postGateway(action,payload) {
       port.start();
       port.postMessage({championBridge:1,id,action,payload});
     };
-    const timer=setTimeout(()=>finish(new Error('El servicio de acceso no respondió')),120000);
+    const timer=setTimeout(()=>finish(new Error('El servicio de acceso no respondió')),15000);
     window.addEventListener('message',onReady);
     frame.tabIndex=-1;frame.setAttribute('aria-hidden','true');
     frame.style.cssText='position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none';
     frame.addEventListener('load',()=>console.info('Champion email bridge frame loaded'));
     frame.src=`${cfg.authBridgeUrl}?nonce=${encodeURIComponent(nonce)}`;
     document.body.append(frame);
+  }).catch(async(error)=>{
+    if(error.message!=='El servicio de acceso no respondió')throw error;
+    const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
+    await fetch(cfg.authBridgeUrl,{method:'POST',mode:'no-cors',credentials:'omit',body});
+    return {sent:true};
   });
 }
 async function waitForChampionProfile(user) {
