@@ -1,12 +1,30 @@
 import JSZip from 'jszip';
 
-const csv = (value) => `"${String(value ?? '').replace(/"/g, '""')}"`;
+const safeSegment = (value) => String(value || '').normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '').replace(/[^a-zA-Z0-9-]+/g, '_').replace(/^_+|_+$/g, '');
+
+export async function catalogImagePng(blob) {
+  if (blob.type === 'image/png') return blob;
+  if (!blob.type.startsWith('image/')) throw new Error('El archivo del modelo no es una imagen.');
+  const bitmap = await createImageBitmap(blob);
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = bitmap.width;
+    canvas.height = bitmap.height;
+    canvas.getContext('2d').drawImage(bitmap, 0, 0);
+    const png = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+    if (!png || png.type !== 'image/png') throw new Error('No se pudo convertir la imagen a PNG.');
+    return png;
+  } finally {
+    bitmap.close();
+  }
+}
 
 export function collectPublicFiles(selected, catalog, marketing, publicMedia, language) {
   const files = [];
   const addImage = (product, image, folder) => files.push({
     url: publicMedia.catalogImages[image.id],
-    path: `${folder}/${product.sku}/${image.web.name}`,
+    path: `${folder}/${safeSegment(product.sku)}__${safeSegment(product.color)}/${image.web.name.replace(/\.[^.]+$/, `__${safeSegment(image.label[language])}.png`)}`,
     type: 'imagen', id: image.id, model: product.model, sku: product.sku,
     description: image.description[language], color: product.color,
     material: product.material, measurements: product.measurements,
@@ -50,25 +68,14 @@ export function collectPublicFiles(selected, catalog, marketing, publicMedia, la
 export async function createPublicBundle(files, onProgress = () => {}) {
   const zip = new JSZip();
   const folder = zip.folder(`Champion_Recursos_${new Date().toISOString().slice(0, 10)}`);
-  const headers = ['carpeta', 'tipo', 'id', 'modelo', 'SKU', 'descripcion', 'color',
-    'material', 'medidas', 'ancho_px', 'alto_px', 'fuente', 'url_fuente', 'bytes'];
-  const rows = [headers];
-  const inventory = [];
   for (let index = 0; index < files.length; index += 1) {
     const file = files[index];
     onProgress(index + 1, files.length);
     const response = await fetch(file.url);
     if (!response.ok) throw new Error(`No se pudo obtener ${file.id} de GoHighLevel.`);
-    const blob = await response.blob();
+    const source = await response.blob();
+    const blob = file.type === 'imagen' ? await catalogImagePng(source) : source;
     folder.file(file.path, blob, {binary: true});
-    inventory.push({...file, bytes: blob.size});
-    rows.push([file.path, file.type, file.id, file.model, file.sku,
-      file.description, file.color, file.material, file.measurements,
-      file.width, file.height, file.source, file.url, blob.size]);
   }
-  folder.file('inventario.csv', `\uFEFF${rows.map((row) => row.map(csv).join(';')).join('\r\n')}`);
-  folder.file('inventario.json', JSON.stringify(inventory, null, 2));
-  folder.file('LEEME.txt', 'Champion Eyewear | Recursos digitales para ópticas\r\n'
-    + 'Los inventarios CSV y JSON detallan cada archivo. Este ZIP no incluye originales de alta resolución.\r\n');
   return zip.generateAsync({type: 'blob', compression: 'STORE', streamFiles: true});
 }
