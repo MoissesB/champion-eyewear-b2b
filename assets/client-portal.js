@@ -33,6 +33,8 @@ Object.assign(copy.es,{cartLabel:'Mis descargas',openCart:'Abrir descargas selec
 Object.assign(copy.en,{cartLabel:'My downloads',openCart:'Open selected downloads',expandMedia:'Expand',closeMedia:'Close expanded view',frameSize:'Frame measurements',pixelSize:'Size',allSizes:'All'});
 Object.assign(copy.es,{tabInstagram:'Publicidad y redes',instagramNote:'Imágenes y artes Champion para compartir con tus clientes.',socialArt:'Artes publicitarios',vertical:'Vertical',horizontal:'Horizontal',square:'Cuadrado',languageUnknown:'Sin idioma',previousImage:'Imagen anterior',nextImage:'Imagen siguiente'});
 Object.assign(copy.en,{tabInstagram:'Advertising and social',instagramNote:'Champion images and artwork to share with your customers.',socialArt:'Advertising artwork',vertical:'Vertical',horizontal:'Horizontal',square:'Square',languageUnknown:'No language',previousImage:'Previous image',nextImage:'Next image'});
+Object.assign(copy.es,{ownerLabel:'UNA PLATAFORMA DE',ownerNote:'Distribuidor principal de Champion Eyewear'});
+Object.assign(copy.en,{ownerLabel:'A PLATFORM BY',ownerNote:'Main distributor of Champion Eyewear'});
 const t = (key) => copy[state.lang][key] || key;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 
