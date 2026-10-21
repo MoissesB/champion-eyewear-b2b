@@ -68,6 +68,14 @@ SCENES=[
 ]
 assert len(SCENES)==len(IDS)
 
+# Clasificación confirmada por el propietario en la galería, vistas 71 a 74.
+USER_NO_LANGUAGE = {
+    32: 'Detalle de montura dorada',
+    33: 'Montura óptica Champion',
+    34: 'Colección óptica',
+    35: 'Sol y nieve',
+}
+
 def frame_and_size(path):
     with av.open(str(path)) as container:
         stream=container.streams.video[0]
@@ -107,5 +115,8 @@ for item,(es,es_description,en,en_description) in zip(items,SCENES):
     item['title']={'es':es,'en':en}
     item['description']={'es':es_description,'en':en_description}
     item['language']='unknown'
+for index, title in USER_NO_LANGUAGE.items():
+    assert items[index-1]['title']['es']==title
+    items[index-1]['language']='unknown'
 (ROOT/'clientes/drive-videos.json').write_text(json.dumps({'items':items},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(len(items))
