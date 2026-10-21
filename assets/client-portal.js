@@ -86,7 +86,9 @@ function postGateway(action,payload) {
     };
     const timer=setTimeout(()=>finish(new Error('El servicio de acceso no respondió')),20000);
     window.addEventListener('message',onReady);
-    frame.hidden=true;frame.tabIndex=-1;frame.setAttribute('aria-hidden','true');
+    frame.tabIndex=-1;frame.setAttribute('aria-hidden','true');
+    frame.style.cssText='position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none';
+    frame.addEventListener('load',()=>console.info('Champion email bridge frame loaded'));
     frame.src=`${cfg.authBridgeUrl}?nonce=${encodeURIComponent(nonce)}`;
     document.body.append(frame);
   });
