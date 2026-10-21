@@ -63,7 +63,7 @@ function toggleCart(key) { if(state.selected.has(key))state.selected.delete(key)
 function logout() { sessionStorage.removeItem('champion-login-recorded'); if(state.auth?.currentUser)signOut(state.auth);else setPanel('loginPanel'); }
 function bind() {
   $('languageButton').addEventListener('click',()=>setLanguage(state.lang==='es'?'en':'es'));
-  $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;try{if(state.emailLinkUrl){await finishEmailLink(email);}else{await bridgeCall('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'));}}catch(_){showToast(t('loginError'));}finally{button.disabled=false;}});
+  $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;try{if(state.emailLinkUrl){await finishEmailLink(email);}else{await bridgeCall('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'));}}catch(error){console.warn('Champion email access request failed:',error.message);showToast(t('loginError'));}finally{button.disabled=false;}});
   $('accountButton').addEventListener('click',logout);
   $('statusLogout').addEventListener('click',logout);
   for(const id of ['searchInput','familyFilter','collectionFilter','colorFilter'])$(id).addEventListener(id==='searchInput'?'input':'change',renderModels);

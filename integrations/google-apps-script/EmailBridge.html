@@ -10,7 +10,7 @@
     if (!id || !['requestPortalLink','confirmPortalSession'].includes(action)) return;
     google.script.run
       .withSuccessHandler((result) => channel.port1.postMessage({championBridge:1,id,result}))
-      .withFailureHandler(() => channel.port1.postMessage({championBridge:1,id,error:'No se pudo completar la solicitud.'}))[action](payload);
+      .withFailureHandler((failure) => channel.port1.postMessage({championBridge:1,id,error:String(failure?.message || failure || 'No se pudo completar la solicitud.').slice(0,300)}))[action](payload);
   };
   channel.port1.start();
   top.postMessage({championBridge:1,ready:true,nonce}, portalOrigin, [channel.port2]);
