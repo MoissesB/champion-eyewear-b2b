@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./portal.css?v=20261022-4">
   <title>Recursos para ópticas | Champion Eyewear</title>
   <script defer src="./config.js"></script>
-<script defer src="./portal.js?v=20261022-3"></script>
+<script defer src="./portal.js?v=20261022-5"></script>
 </head>
 <body>
   <a class="skip" id="skipLink" href="#main">Ir al contenido</a>
@@ -20,7 +20,6 @@
     </div>
     <nav class="topnav" aria-label="Navegación del portal">
       <a href="../es/b2b/" id="siteLink">Volver al catálogo</a>
-      <button class="language" id="languageButton" type="button" aria-label="Switch to English">EN</button>
       <button class="account" id="accountButton" type="button" hidden>Salir</button>
     </nav>
   </header>
@@ -36,7 +35,7 @@
           <img src="../assets/images/brand/innova-logo.png" alt="Innova Fashion Accessories" width="624" height="198">
           <small data-t="ownerNote">Distribuidor principal de Champion Eyewear</small>
         </div>
-        <div class="hero-points"><span><strong id="productCount">128</strong><small data-t="models">modelos y colores</small></span><span><strong id="imageCount">580</strong><small data-t="images">imágenes de catálogo</small></span><span><strong>ES / EN</strong><small data-t="languages">recursos organizados</small></span></div>
+        <div class="hero-points"><span><strong id="productCount">128</strong><small data-t="models">modelos y colores</small></span><span><strong id="imageCount">580</strong><small data-t="images">imágenes de catálogo</small></span><span><strong>ES</strong><small data-t="languages">recursos organizados</small></span></div>
       </div>
       <div class="hero-visual"><img src="../assets/images/optical/ch01-c1/01.webp" alt="Montura Champion CH-01 C1"><div class="visual-caption"><span data-t="visualLabel">BIBLIOTECA PROFESIONAL</span><strong>Champion Eyewear</strong></div></div>
     </section>
@@ -66,7 +65,7 @@
         <div class="model-grid" id="modelGrid"></div>
         <div class="empty" id="emptyResults" hidden data-t="noResults">No encontramos modelos con esos filtros.</div>
       </div>
-      <div id="videoPanel" role="tabpanel" hidden><div class="media-filters"><label class="social-filter"><span data-t="videoCountryLabel">País de distribución</span><select id="videoCountry"><option value="" data-t="allCountries">Todos los países</option></select></label><label class="social-filter"><span data-t="contentLanguage">Idioma del contenido</span><select id="videoLanguage"><option value="" data-t="campaignAll">Todos</option><option value="es">Español</option><option value="en">English</option><option value="unknown" data-t="languageUnknown">Sin idioma</option></select></label><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="videoSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label><button class="clear" id="clearVideoFilters" type="button" data-t="clearFilters">Limpiar filtros</button></div><div class="media-grid" id="videoGrid"></div></div>
+      <div id="videoPanel" role="tabpanel" hidden><div class="media-filters"><label class="social-filter"><span data-t="videoCountryLabel">País de distribución</span><select id="videoCountry"><option value="" data-t="allCountries">Todos los países</option></select></label><label class="social-filter"><span data-t="contentLanguage">Idioma del contenido</span><select id="videoLanguage"><option value="" data-t="campaignAll">Todos</option><option value="es">Español</option><option value="unknown" data-t="languageUnknown">Sin idioma</option></select></label><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="videoSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label><button class="clear" id="clearVideoFilters" type="button" data-t="clearFilters">Limpiar filtros</button></div><div class="media-grid" id="videoGrid"></div></div>
       <div id="instagramPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="instagramNote">Imágenes y artes Champion para compartir con tus clientes.</p><div class="media-filters"><label class="social-filter"><span data-t="mediaType">Tipo de imagen</span><select id="instagramType"><option value="" data-t="campaignAll">Todas</option><option value="carousel" data-t="socialCarousel">Carruseles</option><option value="image" data-t="socialImages">Imágenes individuales</option><option value="marketing" data-t="socialArt">Artes publicitarios</option></select></label><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="instagramSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label></div><div class="media-grid" id="instagramGrid"></div></div>
       <div id="logosPanel" role="tabpanel" hidden><p class="campaign-disclaimer" data-t="logosNote">Logos oficiales de Champion disponibles para materiales de tu óptica.</p><div class="media-filters"><label class="social-filter"><span data-t="pixelSize">Tamaño</span><select id="logoSize"><option value="" data-t="allSizes">Todos</option><option value="vertical" data-t="vertical">Vertical</option><option value="horizontal" data-t="horizontal">Horizontal</option><option value="square" data-t="square">Cuadrado</option></select></label></div><div class="media-grid" id="logosGrid"></div></div>
     </section>
