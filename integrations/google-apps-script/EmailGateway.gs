@@ -74,7 +74,10 @@ function requestPortalLink(input) {
     })
   });
   if (response.getResponseCode() !== 200) throw new Error('No se pudo generar el enlace de acceso. Código ' + response.getResponseCode() + ': ' + response.getContentText().slice(0, 500));
-  const link = JSON.parse(response.getContentText()).oobLink;
+  const generatedLink = JSON.parse(response.getContentText()).oobLink;
+  const link = generatedLink && generatedLink.replace(/([?&])continueUrl=[^&]*/, function(_, prefix) {
+    return prefix + 'continueUrl=' + encodeURIComponent(CHAMPION_PORTAL_URL + '?ticket=' + ticket);
+  });
   if (!link) throw new Error('No se recibió el enlace de acceso');
   const codeMatch = /[?&]oobCode=([^&#]+)/.exec(link);
   if (!codeMatch) throw new Error('El enlace de acceso no contiene un código');

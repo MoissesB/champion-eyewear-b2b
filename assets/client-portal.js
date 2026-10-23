@@ -111,11 +111,6 @@ async function resetEmailConfirmation() { state.emailLinkUrl=null;localStorage.r
 async function finishEmailLink(email) { const normalized=email.trim().toLowerCase();if(!normalized||!state.emailLinkUrl)return;const result=await signInWithEmailLink(state.auth,normalized,state.emailLinkUrl);localStorage.removeItem('champion-login-email');state.emailLinkUrl=null;history.replaceState({},'',location.pathname);await verifyPortalUser(result.user); }
 function syncCartButtons() { document.querySelectorAll('[data-cart]').forEach(button=>{const selected=state.selected.has(button.dataset.cart);button.classList.toggle('is-selected',selected);button.setAttribute('aria-pressed',String(selected));button.textContent=selected?t('removeCart'):t('addCart');});updateSelection(); }
 function postGateway(action,payload) {
-  if(action==='confirmPortalSession'){
-    const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
-    if(!navigator.sendBeacon(cfg.authBridgeUrl,body))return Promise.reject(new Error('No se pudo confirmar la sesión'));
-    return Promise.resolve();
-  }
   return new Promise((resolve,reject)=>{
     const nonce=crypto.randomUUID(),id=crypto.randomUUID(),frame=document.createElement('iframe');
     let port,finished=false;
@@ -138,11 +133,17 @@ function postGateway(action,payload) {
     frame.src=`${cfg.authBridgeUrl}?nonce=${encodeURIComponent(nonce)}`;
     document.body.append(frame);
   }).catch(async(error)=>{
-    if(action!=='requestPortalLink'||error.message!=='El servicio de acceso no respondió')throw error;
+    if(!['requestPortalLink','confirmPortalSession'].includes(action)||error.message!=='El servicio de acceso no respondió')throw error;
     const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
     await fetch(cfg.authBridgeUrl,{method:'POST',mode:'no-cors',credentials:'omit',body});
-    return {sent:true};
+    return action==='requestPortalLink'?{sent:true}:null;
   });
+}
+function ticketFromEmailLink(parameters) {
+  const ticket=parameters.get('ticket');
+  if(ticket)return ticket;
+  for(const key of parameters.keys())if(key.startsWith('ticket='))return key.slice(7);
+  return '';
 }
 async function waitForChampionProfile(user) {
   const profile=doc(state.db,'clients',user.uid);
@@ -170,7 +171,7 @@ async function verifyPortalUser(user) {
       else setStatus(t('pendingTitle'),t('pendingText'));
     },()=>setStatus(t('setupTitle'),t('setupText')));
     if(!sessionStorage.getItem('champion-login-recorded')){sessionStorage.setItem('champion-login-recorded','1');recordEvent('login');}
-  } catch(error){console.warn('Champion session verification failed:',error.message);setStatus(t('setupTitle'),t('setupText'));}
+  } catch(error){state.verifyingUid=null;console.warn('Champion session verification failed:',error.message);setStatus(t('setupTitle'),t('setupText'));}
 }
 async function startAuthNew() {
   if(localPreview){state.user=null;$('approvedBadge').textContent=t('previewBadge');if(new URLSearchParams(location.search).has('auth_preview'))setPanel('loginPanel');else{setPanel('library');showToast(t('previewToast'));}return;}
@@ -180,7 +181,7 @@ async function startAuthNew() {
     state.emailLinkUrl=location.href;
     setStatus(t('openingTitle'),t('openingText'),true);
     const parameters=new URL(location.href).searchParams;
-    const ticket=parameters.get('ticket'),oobCode=parameters.get('oobCode');
+    const ticket=ticketFromEmailLink(parameters),oobCode=parameters.get('oobCode');
     let email='';
     if(ticket&&oobCode){try{email=(await postGateway('resolvePortalTicket',{ticket,oobCode}))?.email||'';}catch(error){console.warn('Champion ticket lookup failed:',error.message);}}
     if(!email)email=localStorage.getItem('champion-login-email')||'';

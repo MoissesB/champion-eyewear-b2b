@@ -129,8 +129,8 @@ function syncSimple_() {
 }
 
 function onSimpleEdit_(event) {
-  if (!event || !event.range || event.range.getSheet().getName() !== TAB || event.range.getColumn() !== 2 || event.range.getRow() < 2) return;
-  const action = String(event.value || '').trim().toUpperCase();
+  if (!event || !event.range || event.range.getSheet().getName() !== TAB || ![1, 2].includes(event.range.getColumn()) || event.range.getRow() < 2) return;
+  const action = String(event.range.getSheet().getRange(event.range.getRow(), 2).getValue() || '').trim().toUpperCase();
   if (!['PENDIENTE', 'APROBADO', 'DENEGADO'].includes(action)) return;
   const lock = LockService.getScriptLock();
   lock.waitLock(25000);
@@ -147,6 +147,7 @@ function onSimpleEdit_(event) {
     }
     sheet.getRange(row, 7).setValue(new Date());
     sheet.getRange(row, 9).clearContent();
+    if (action === 'APROBADO' && (event.range.getColumn() === 1 || String(event.oldValue || '').trim().toUpperCase() !== 'APROBADO')) requestPortalLink({email: email, language: 'es'});
   } catch (error) {
     sheet.getRange(row, 9).setValue(String(error).slice(0, 500));
     throw error;
