@@ -49,8 +49,8 @@ const t = (key) => copy[state.lang][key] || key;
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 
 function showToast(message) { const box = $('toast'); box.textContent = message; box.hidden = false; clearTimeout(showToast.timer); showToast.timer = setTimeout(() => box.hidden = true, 4300); }
-function setPanel(name) { $('accessShell').hidden = name === 'library'; $('library').hidden = name !== 'library'; $('downloadSelection').hidden = name !== 'library'; if(name !== 'library')closeCart(); for (const id of ['loginPanel','statusPanel']) $(id).hidden = id !== name; $('accountButton').hidden = !state.user; if (name === 'library') { render(); if (!localPreview && state.user && !state.loggedVisit) { state.loggedVisit=true; recordEvent('visit'); } } }
-function setStatus(title, text) { $('statusTitle').textContent = title; $('statusText').textContent = text; setPanel('statusPanel'); }
+function setPanel(name) { if(name !== 'statusPanel')document.documentElement.classList.remove('portal-verifying'); $('accessShell').hidden = name === 'library'; $('library').hidden = name !== 'library'; $('downloadSelection').hidden = name !== 'library'; if(name !== 'library')closeCart(); for (const id of ['loginPanel','statusPanel']) $(id).hidden = id !== name; $('accountButton').hidden = !state.user; if (name === 'library') { render(); if (!localPreview && state.user && !state.loggedVisit) { state.loggedVisit=true; recordEvent('visit'); } } }
+function setStatus(title, text, verifying=false) { document.documentElement.classList.toggle('portal-verifying',verifying); $('statusTitle').textContent = title; $('statusText').textContent = text; setPanel('statusPanel'); }
 function setLanguage() { state.lang = 'es'; localStorage.setItem('champion-portal-lang','es'); document.documentElement.lang = 'es-419'; document.title = 'Recursos para ópticas | Champion Eyewear'; document.querySelectorAll('[data-t]').forEach((el)=>{el.textContent=t(el.dataset.t)}); $('downloadSelection').setAttribute('aria-label',t('openCart')); $('closeMediaDialog').setAttribute('aria-label',t('closeMedia')); $('siteLink').href='../es/b2b/'; $('siteLink').textContent=t('siteLink'); $('brandLink').href=$('siteLink').href; $('brandLink').setAttribute('aria-label','Champion Eyewear, volver al sitio'); $('footerLink').href=$('siteLink').href; $('skipLink').textContent='Ir al contenido'; $('resourceTabs').setAttribute('aria-label','Tipo de recurso'); $('searchInput').placeholder=t('searchPlaceholder'); render(); }
 
 function filterProducts() { if (!state.catalog) return []; const query=$('searchInput').value.trim().toLowerCase(); const family=$('familyFilter').value,collection=$('collectionFilter').value,color=$('colorFilter').value,measurement=$('measurementFilter').value; return state.catalog.products.filter((p)=>(!family||p.family===family)&&(!collection||p.collection===collection)&&(!color||p.color===color)&&(!measurement||p.measurements===measurement)&&(!query||[p.model,p.sku,p.series,p.color,p.collection,p.material].join(' ').toLowerCase().includes(query))); }
@@ -178,7 +178,7 @@ async function startAuthNew() {
   const app=initializeApp(cfg.firebase);state.auth=getAuth(app);state.db=getFirestore(app);
   if(isSignInWithEmailLink(state.auth,location.href)){
     state.emailLinkUrl=location.href;
-    setStatus(t('openingTitle'),t('openingText'));
+    setStatus(t('openingTitle'),t('openingText'),true);
     const parameters=new URL(location.href).searchParams;
     const ticket=parameters.get('ticket'),oobCode=parameters.get('oobCode');
     let email='';

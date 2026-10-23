@@ -6,12 +6,18 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="description" content="Recursos Champion Eyewear para ópticas autorizadas.">
   <link rel="icon" href="../favicon.ico">
-  <link rel="stylesheet" href="./portal.css?v=20261022-4">
+  <link rel="stylesheet" href="./portal.css?v=20261023-5">
+  <link rel="preload" as="image" href="../assets/images/brand/champion-header-display.webp">
   <title>Recursos para ópticas | Champion Eyewear</title>
+  <script>if(new URLSearchParams(location.search).get('mode')==='signIn'&&new URLSearchParams(location.search).has('oobCode'))document.documentElement.classList.add('portal-verifying');</script>
   <script defer src="./config.js"></script>
-  <script defer src="./portal.js?v=20261023-2"></script>
+  <script defer src="./portal.js?v=20261023-3"></script>
 </head>
 <body>
+  <div class="verification-overlay" id="verificationOverlay" role="status" aria-live="polite" aria-label="Verificando acceso al portal">
+    <div class="verification-mark" aria-hidden="true"><span class="verification-ring"></span><img src="../assets/images/brand/champion-header-display.webp" alt="" width="190" height="36"></div>
+    <p>Verificando tu acceso<span class="verification-ellipsis" aria-hidden="true">…</span></p>
+  </div>
   <a class="skip" id="skipLink" href="#main">Ir al contenido</a>
   <header class="topbar">
     <div class="topbar-brands">
