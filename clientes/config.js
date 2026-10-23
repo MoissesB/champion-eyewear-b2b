@@ -9,6 +9,6 @@ window.CHAMPION_PORTAL_CONFIG = {
     appId: '1:1075635520687:web:35590ffd15d4180b28805a',
   },
   // The public email bridge runs as championinnova@gmail.com; media stays private.
-  authBridgeUrl: 'https://script.google.com/macros/s/AKfycbxhbdPn9jijehZfBVlzW2b4jC2OIleqFXpwREhoXnbK2TzfWD0RVN6ZmJItiJfFGpoL/exec',
+  authBridgeUrl: 'https://script.google.com/macros/s/AKfycbwJiaFjpoVoREF4IVdTkGsrVokmPLxnHy7UH3d5xuSaytIwe-EMneJniBQDuLz2eO0Y3A/exec',
   privateMediaUrl: '',
 };
