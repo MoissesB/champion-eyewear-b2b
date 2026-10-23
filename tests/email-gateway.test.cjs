@@ -14,6 +14,8 @@ const rows = [
 const sent = [];
 const patches = [];
 const cache = new Map();
+const fetchRequests = [];
+const ticket = '6b24f3a0-b216-4d10-8bd1-b3e2697ae530';
 const sheet = {
   getLastRow: () => rows.length,
   getRange: (row, col, height, width) => ({
@@ -27,9 +29,10 @@ const context = {
     DigestAlgorithm: {SHA_256: 'SHA_256'},
     computeDigest: (_algorithm, value) => [...crypto.createHash('sha256').update(value).digest()],
     base64EncodeWebSafe: bytes => Buffer.from(bytes).toString('base64url'),
+    getUuid: () => ticket,
   },
   CacheService: {getScriptCache: () => ({get: key => cache.get(key), put: (key, value) => cache.set(key, value)})},
-  UrlFetchApp: {fetch: () => ({getResponseCode: () => 200, getContentText: () => JSON.stringify({oobLink: 'https://example.com/email-link?code=abc'})})},
+  UrlFetchApp: {fetch: (_url, options) => {fetchRequests.push(options);return {getResponseCode: () => 200, getContentText: () => JSON.stringify({oobLink: 'https://example.com/email-link?oobCode=abc&mode=signIn'})};}},
   ScriptApp: {getOAuthToken: () => 'test-token'},
   MailApp: {sendEmail: message => sent.push(message)},
   PropertiesService: {getScriptProperties: () => ({getProperty: () => 'test-public-key'})},
@@ -51,7 +54,13 @@ context.requestPortalLink({email: 'duplicate@example.com', language: 'es'});
 assert.equal(sent.length, 1);
 assert.equal(sent[0].to, 'owner@example.com');
 assert.match(sent[0].htmlBody, /Tu biblioteca Champion te espera/);
+assert.equal(JSON.parse(fetchRequests[0].payload).continueUrl, 'https://champion-innova.com/clientes/?ticket=' + ticket);
+assert.doesNotMatch(JSON.parse(fetchRequests[0].payload).continueUrl, /owner@example.com/);
+assert.equal(context.resolvePortalTicket({ticket, oobCode: 'abc'}).email, 'owner@example.com');
+assert.equal(context.resolvePortalTicket({ticket, oobCode: 'other'}).email, '');
+assert.equal(context.resolvePortalTicket({ticket: 'invalid', oobCode: 'abc'}).email, '');
 rows[1][1] = 'DENEGADO';
+assert.equal(context.resolvePortalTicket({ticket, oobCode: 'abc'}).email, '');
 assert.equal(context.championApprovedRow_('owner@example.com'), 0);
 context.championLookupUser_ = () => ({uid: 'owner-uid', email: 'owner@example.com'});
 assert.equal(context.confirmPortalSession({idToken: 'x'.repeat(120)}).approved, false);

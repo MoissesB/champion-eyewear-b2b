@@ -7,7 +7,7 @@
   channel.port1.onmessage = (event) => {
     if (event.data?.championBridge !== 1) return;
     const {id,action,payload} = event.data;
-    if (!id || !['requestPortalLink','confirmPortalSession'].includes(action)) return;
+    if (!id || !['requestPortalLink','resolvePortalTicket','confirmPortalSession'].includes(action)) return;
     google.script.run
       .withSuccessHandler((result) => channel.port1.postMessage({championBridge:1,id,result}))
       .withFailureHandler((failure) => channel.port1.postMessage({championBridge:1,id,error:String(failure?.message || failure || 'No se pudo completar la solicitud.').slice(0,300)}))[action](payload);

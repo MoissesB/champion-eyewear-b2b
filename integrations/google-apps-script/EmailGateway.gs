@@ -26,6 +26,11 @@ function championRequestKey_(email) {
   return Utilities.base64EncodeWebSafe(bytes).replace(/=+$/, '');
 }
 
+function championCodeKey_(code) {
+  const bytes = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, code);
+  return Utilities.base64EncodeWebSafe(bytes).replace(/=+$/, '');
+}
+
 function championEmailHtml_(link, language) {
   const en = language === 'en';
   const headline = en ? 'Your Champion library is ready' : 'Tu biblioteca Champion te espera';
@@ -53,6 +58,7 @@ function requestPortalLink(input) {
   const key = 'link_' + championRequestKey_(email);
   const cache = CacheService.getScriptCache();
   if (cache.get(key)) return generic;
+  const ticket = Utilities.getUuid();
   const response = UrlFetchApp.fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode', {
     method: 'post',
     muteHttpExceptions: true,
@@ -61,7 +67,7 @@ function requestPortalLink(input) {
     payload: JSON.stringify({
       requestType: 'EMAIL_SIGNIN',
       email: email,
-      continueUrl: CHAMPION_PORTAL_URL,
+      continueUrl: CHAMPION_PORTAL_URL + '?ticket=' + encodeURIComponent(ticket),
       canHandleCodeInApp: true,
       returnOobLink: true,
       targetProjectId: CHAMPION_AUTH_PROJECT
@@ -70,6 +76,9 @@ function requestPortalLink(input) {
   if (response.getResponseCode() !== 200) throw new Error('No se pudo generar el enlace de acceso. Código ' + response.getResponseCode() + ': ' + response.getContentText().slice(0, 500));
   const link = JSON.parse(response.getContentText()).oobLink;
   if (!link) throw new Error('No se recibió el enlace de acceso');
+  const codeMatch = /[?&]oobCode=([^&#]+)/.exec(link);
+  if (!codeMatch) throw new Error('El enlace de acceso no contiene un código');
+  cache.put('ticket_' + ticket, JSON.stringify({email: email, codeKey: championCodeKey_(decodeURIComponent(codeMatch[1]))}), 21600);
   const en = input.language === 'en';
   MailApp.sendEmail({
     to: email,
@@ -80,6 +89,17 @@ function requestPortalLink(input) {
   });
   cache.put(key, '1', 90);
   return generic;
+}
+
+function resolvePortalTicket(input) {
+  const ticket = String(input && input.ticket || '');
+  const code = String(input && input.oobCode || '');
+  if (!/^[0-9a-f-]{36}$/i.test(ticket) || !code || code.length > 2048) return {email: ''};
+  const saved = CacheService.getScriptCache().get('ticket_' + ticket);
+  if (!saved) return {email: ''};
+  const entry = JSON.parse(saved);
+  if (entry.codeKey !== championCodeKey_(code)) return {email: ''};
+  return {email: championApprovedRow_(entry.email) ? entry.email : ''};
 }
 
 function championLookupUser_(idToken) {
@@ -124,6 +144,7 @@ function doGet(e) {
 function doPost(e) {
   const body = JSON.parse(String(e && e.postData && e.postData.contents || '{}'));
   if (body.action === 'requestPortalLink') requestPortalLink(body.payload);
+  else if (body.action === 'resolvePortalTicket') resolvePortalTicket(body.payload);
   else if (body.action === 'confirmPortalSession') confirmPortalSession(body.payload);
   else throw new Error('Acción inválida');
   return ContentService.createTextOutput('ok');

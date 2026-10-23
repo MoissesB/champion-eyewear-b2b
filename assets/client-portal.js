@@ -19,7 +19,7 @@ Object.assign(copy.es,{tabCampaigns:'Publicidad y redes',campaignBanner:'Banner 
 Object.assign(copy.en,{tabCampaigns:'Marketing and social',campaignBanner:'In-store banner',campaignNote:'Concept artwork. Confirm size and resolution with your printer before producing in-store materials.',videoOpen:'Open video in Drive',videoPreview:'Play video'});
 Object.assign(copy.es,{zipIntroPending:'Selecciona los archivos de tu carrito para abrir sus descargas privadas. El ZIP único se habilitará cuando conectemos el servicio de empaquetado al dominio.',openResource:'Abrir recurso',originalBundle:'ZIP del modelo con el original'});
 Object.assign(copy.en,{zipIntroPending:'Open each private download in your cart. The single ZIP will be enabled once the bundle service is connected to this domain.',openResource:'Open resource',originalBundle:'Style ZIP with the original'});
-Object.assign(copy.es,{accessText:'Si tu correo está aprobado en la lista de Champion, te enviaremos un enlace privado para entrar.',emailLabel:'Correo electrónico',emailLogin:'Enviarme el enlace de acceso',noPassword:'No necesitas una cuenta de Google ni una contraseña.',linkSentTitle:'Revisa tu correo',linkSentText:'Si ese correo tiene acceso aprobado, recibirás un enlace de Champion. Revisa también la carpeta de spam.',confirmEmail:'Confirmar y entrar',confirmEmailTitle:'Confirma tu correo para entrar',confirmEmailText:'Escribe el mismo correo donde recibiste el enlace. Al confirmar, se abrirá la biblioteca.',confirmEmailError:'No pudimos confirmar ese correo. Comprueba que sea el mismo que recibió el enlace.',newEmailLink:'Solicitar otro enlace',setupText:'Estamos conectando el acceso privado por correo. Vuelve a intentarlo más tarde.',loginError:'No pudimos verificar el enlace. Solicita uno nuevo.',noDrive:'La descarga privada estará disponible cuando el servidor de archivos esté conectado.',downloadHint:'Tus recursos se entregan desde el servidor privado de Champion.',videoOpen:'Reproducir video'});
+Object.assign(copy.es,{accessText:'Si tu correo está aprobado en la lista de Champion, te enviaremos un enlace privado para entrar.',emailLabel:'Correo electrónico',emailLogin:'Enviarme el enlace de acceso',noPassword:'No necesitas una cuenta de Google ni una contraseña.',linkSentTitle:'Revisa tu correo',linkSentText:'Si ese correo tiene acceso aprobado, recibirás un enlace de Champion. Revisa también la carpeta de spam.',openingTitle:'Abriendo tu biblioteca',openingText:'Estamos verificando el enlace de acceso.',confirmEmail:'Confirmar y entrar',confirmEmailTitle:'Confirma tu correo para entrar',confirmEmailText:'Escribe el mismo correo donde recibiste el enlace. Al confirmar, se abrirá la biblioteca.',confirmEmailError:'No pudimos confirmar ese correo. Comprueba que sea el mismo que recibió el enlace.',newEmailLink:'Solicitar otro enlace',setupText:'Estamos conectando el acceso privado por correo. Vuelve a intentarlo más tarde.',loginError:'No pudimos verificar el enlace. Solicita uno nuevo.',noDrive:'La descarga privada estará disponible cuando el servidor de archivos esté conectado.',downloadHint:'Tus recursos se entregan desde el servidor privado de Champion.',videoOpen:'Reproducir video'});
 Object.assign(copy.en,{accessText:'If your email is approved on Champion’s list, we will send a private sign-in link.',emailLabel:'Email address',emailLogin:'Email me a sign-in link',noPassword:'You do not need a Google Account or a password.',linkSentTitle:'Check your email',linkSentText:'If this email has approved access, a Champion sign-in link will arrive. Check spam too.',confirmEmail:'Confirm email',confirmEmailText:'Enter the same email that received the link to finish signing in.',setupText:'We are connecting private email access. Please try again later.',loginError:'We could not verify the link. Request a new one.',noDrive:'Private downloads will be available when the file server is connected.',downloadHint:'Your assets are delivered from Champion’s private server.',videoOpen:'Play video'});
 Object.assign(copy.es,{tabInstagram:'Instagram',instagramNote:'Archivos publicados por Champion en Instagram. Esta colección corresponde a la primera parte de la exportación; se ampliará cuando Meta entregue las demás.',mediaType:'Tipo de archivo',socialImages:'Imágenes',downloadPublic:'Descargar archivo',publicZipIntro:'Descarga un ZIP con los archivos digitales seleccionados y un inventario detallado. Los originales de alta resolución siguen pendientes.',zipProgress:'Descargando archivos',instagramFile:'Archivo publicado en Instagram',noOriginal:'Original privado: todavía no disponible para descargar.',publicMediaError:'No se pudo obtener un archivo de GoHighLevel. Inténtalo de nuevo.'});
 Object.assign(copy.en,{tabInstagram:'Instagram',instagramNote:'Media published by Champion on Instagram. This collection is from the first export part; more will be added when Meta delivers the rest.',mediaType:'File type',socialImages:'Images',downloadPublic:'Download file',publicZipIntro:'Download one ZIP with the selected digital files and a detailed inventory. High-resolution originals remain pending.',zipProgress:'Downloading files',instagramFile:'File published on Instagram',noOriginal:'Private original: not yet available for download.',publicMediaError:'A file could not be retrieved from GoHighLevel. Please retry.'});
@@ -138,7 +138,7 @@ function postGateway(action,payload) {
     frame.src=`${cfg.authBridgeUrl}?nonce=${encodeURIComponent(nonce)}`;
     document.body.append(frame);
   }).catch(async(error)=>{
-    if(error.message!=='El servicio de acceso no respondió')throw error;
+    if(action!=='requestPortalLink'||error.message!=='El servicio de acceso no respondió')throw error;
     const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
     await fetch(cfg.authBridgeUrl,{method:'POST',mode:'no-cors',credentials:'omit',body});
     return {sent:true};
@@ -178,10 +178,14 @@ async function startAuthNew() {
   const app=initializeApp(cfg.firebase);state.auth=getAuth(app);state.db=getFirestore(app);
   if(isSignInWithEmailLink(state.auth,location.href)){
     state.emailLinkUrl=location.href;
-    showEmailConfirmation();
-    const email=localStorage.getItem('champion-login-email');
+    setStatus(t('openingTitle'),t('openingText'));
+    const parameters=new URL(location.href).searchParams;
+    const ticket=parameters.get('ticket'),oobCode=parameters.get('oobCode');
+    let email='';
+    if(ticket&&oobCode){try{email=(await postGateway('resolvePortalTicket',{ticket,oobCode}))?.email||'';}catch(error){console.warn('Champion ticket lookup failed:',error.message);}}
+    if(!email)email=localStorage.getItem('champion-login-email')||'';
     if(email){try{await finishEmailLink(email);}catch(_){localStorage.removeItem('champion-login-email');showEmailConfirmation(t('confirmEmailError'));$('loginEmail').focus();}}
-    else $('loginEmail').focus();
+    else{showEmailConfirmation();$('loginEmail').focus();}
   }
   onAuthStateChanged(state.auth,(user)=>{
     if(state.emailLinkUrl){showEmailConfirmation();return;}
