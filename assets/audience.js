@@ -3,7 +3,7 @@
 
   if (document.documentElement.hasAttribute('data-champion-review')) return;
 
-  const VERSION = 'audience-20260818-12';
+  const VERSION = 'pdf-progress-20261025-1';
   const PROFILE_KEY = 'champion-audience-profile-v1';
   const B2C_PROFILE_KEY = 'champion-b2c-profile-v1';
   const B2B_PROFILE_KEY = 'champion-b2b-profile-v1';

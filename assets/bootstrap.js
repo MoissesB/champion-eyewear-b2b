@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const version = 'catalog-20260823-1';
+  const version = 'pdf-progress-20261025-1';
   const reviewMode = document.documentElement.hasAttribute('data-champion-review');
   const assetBase = new URL('.', document.currentScript?.src || new URL('./assets/', location.href));
   let ready = false;
