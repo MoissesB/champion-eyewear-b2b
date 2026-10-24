@@ -20,6 +20,27 @@ export async function catalogImagePng(blob) {
   }
 }
 
+export async function responseBlobWithProgress(response, onProgress = () => {}) {
+  const expectedBytes = Number(response.headers.get('content-length')) || 0;
+  if (!response.body) {
+    const blob = await response.blob();
+    onProgress(blob.size, expectedBytes || blob.size);
+    return blob;
+  }
+  const reader = response.body.getReader();
+  const chunks = [];
+  let receivedBytes = 0;
+  onProgress(0, expectedBytes);
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    receivedBytes += value.byteLength;
+    onProgress(receivedBytes, expectedBytes);
+  }
+  return new Blob(chunks, { type: response.headers.get('content-type') || 'application/octet-stream' });
+}
+
 export function collectPublicFiles(selected, catalog, marketing, publicMedia, language) {
   const files = [];
   const addImage = (product, image, folder) => files.push({
@@ -86,12 +107,17 @@ export async function createPublicBundle(files, onProgress = () => {}) {
   const folder = zip.folder(`Champion_Recursos_${new Date().toISOString().slice(0, 10)}`);
   for (let index = 0; index < files.length; index += 1) {
     const file = files[index];
-    onProgress(index + 1, files.length);
+    onProgress({ stage: 'file', index, total: files.length, receivedBytes: 0, expectedBytes: 0 });
     const response = await fetch(file.url);
     if (!response.ok) throw new Error(`No se pudo obtener ${file.id} de GoHighLevel.`);
-    const source = await response.blob();
+    const source = await responseBlobWithProgress(response, (receivedBytes, expectedBytes) => {
+      onProgress({ stage: 'file', index, total: files.length, receivedBytes, expectedBytes });
+    });
     const blob = file.type === 'imagen' ? await catalogImagePng(source) : source;
     folder.file(file.path, blob, {binary: true});
+    onProgress({ stage: 'file', index: index + 1, total: files.length, receivedBytes: 0, expectedBytes: 0 });
   }
-  return zip.generateAsync({type: 'blob', compression: 'STORE', streamFiles: true});
+  return zip.generateAsync({type: 'blob', compression: 'STORE', streamFiles: true}, (metadata) => {
+    onProgress({ stage: 'zip', percent: metadata.percent });
+  });
 }

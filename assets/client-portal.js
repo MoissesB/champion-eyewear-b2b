@@ -1,12 +1,12 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, isSignInWithEmailLink, onAuthStateChanged, signInWithEmailLink, signOut } from 'firebase/auth';
 import { addDoc, collection, doc, getDoc, getFirestore, onSnapshot, serverTimestamp } from 'firebase/firestore';
-import { catalogImagePng, collectPublicFiles, createPublicBundle } from './client-public-media.js';
+import { catalogImagePng, collectPublicFiles, createPublicBundle, responseBlobWithProgress } from './client-public-media.js';
 
 const $ = (id) => document.getElementById(id);
 const localPreview = ['localhost', '127.0.0.1'].includes(location.hostname);
 const cfg = window.CHAMPION_PORTAL_CONFIG || {};
-const state = { lang: 'es', catalog: null, marketing: null, publicMedia: null, videoDetails: {}, logos: [], logoDimensions: {}, drive: {videos:[],carousels:[]}, selected: new Set(), tab: 'models', filtersOpen: false, user: null, db: null, auth: null, unsubscribe: null, loggedVisit: false, emailLinkUrl: null, verifyingUid: null };
+const state = { lang: 'es', catalog: null, marketing: null, publicMedia: null, videoDetails: {}, logos: [], logoDimensions: {}, drive: {videos:[],carousels:[]}, selected: new Set(), tab: 'models', filtersOpen: false, user: null, db: null, auth: null, unsubscribe: null, loggedVisit: false, emailLinkUrl: null, verifyingUid: null, downloading: false };
 const copy = {
   es: { visualLabel:'BIBLIOTECA PROFESIONAL', eyebrow:'CHAMPION EYEWEAR · PARA ÓPTICAS',headline:'Todo lo que tu óptica necesita para mostrar Champion.',intro:'Imágenes de cada montura y lente de sol, materiales de campaña y videos en un espacio preparado para tu equipo.',models:'modelos y colores',images:'imágenes de catálogo',languages:'recursos organizados',accessKicker:'ACCESO PARA CLIENTES',accessTitle:'Entra con el correo de tu óptica.',accessText:'Usa una cuenta Google vinculada a ese correo. Revisaremos tu solicitud antes de habilitar las descargas.',googleLogin:'Continuar con Google',noPassword:'No hay contraseña adicional ni autorización por cada descarga.',registerKicker:'UN PASO MÁS',registerTitle:'Cuéntanos sobre tu óptica.',registerText:'Enviaremos tu solicitud para revisión. El acceso a todos los recursos se activará tras la aprobación.',businessLabel:'Nombre de la óptica o empresa',countryLabel:'País',registerSubmit:'Solicitar acceso',changeAccount:'Escribir otro correo',libraryKicker:'BIBLIOTECA PARA TU ÓPTICA',libraryTitle:'Encuentra el recurso correcto.',libraryIntro:'Explora por referencia, filtra y prepara una selección de descargas.',approved:'Acceso aprobado',previewBadge:'Vista local',tabModels:'Imágenes de modelos',tabVideos:'Videos',tabCampaigns:'Pendones y redes',searchLabel:'Buscar modelo, SKU o color',typeLabel:'Tipo',allTypes:'Todos',optical:'Monturas ópticas',sun:'Lentes de sol',collectionLabel:'Colección',allCollections:'Todas',colorLabel:'Color',allColors:'Todos',clearFilters:'Limpiar filtros',selectionHint:'Marca modelos para preparar sus ZIP.',noResults:'No encontramos modelos con esos filtros.',comingKicker:'PRÓXIMA COLECCIÓN',comingTitle:'Piezas listas para adaptar.',comingText:'Aquí aparecerán los diseños para pendones, vitrinas y redes cuando estén aprobados y dimensionados.',selectedModels:' modelos seleccionados',clearSelection:'Vaciar',downloadZips:'Descargar ZIP',backSite:'Volver al catálogo',select:'Seleccionar',selected:'Seleccionado',view:'Ver imágenes',color:'Color',material:'Material',measurements:'Medidas',collection:'Colección',web:'Versión web',original:'Original',notAvailable:'Original pendiente de localizar',downloadModel:'ZIP del modelo',zipList:'ZIP de tu selección',zipIntro:'Descarga un archivo por referencia. Cada ZIP incluye las vistas y su ficha descriptiva.',noDrive:'La descarga privada estará disponible cuando se complete la carga a Drive.',pendingTitle:'Solicitud recibida',pendingText:'Tu correo está confirmado. Revisaremos la óptica y te avisaremos cuando las descargas estén habilitadas.',suspendedTitle:'Acceso suspendido',suspendedText:'Consulta con el equipo comercial de Innova para revisar tu acceso.',setupTitle:'Configuración pendiente',setupText:'La biblioteca está preparada. Falta conectar la cuenta Google y los permisos privados antes de abrir el portal.',previewTitle:'Vista local de revisión',previewText:'Esta vista muestra el catálogo completo. Los ZIP locales sirven solo para comprobar la entrega; el acceso público seguirá cerrado.',loginError:'No se pudo iniciar sesión. Inténtalo de nuevo.',saveError:'No se pudo guardar la solicitud.',results:'referencias',files:'imágenes',videoPending:'Video pendiente de carga privada',videoDownload:'Descargar video',noVideos:'Aún no hay videos verificados en este lote.',siteLink:'Volver al catálogo',searchPlaceholder:'Buscar CH01, color, SKU…',previewToast:'Vista local: solo revisión',noBundle:'El ZIP de esta referencia aún no está listo.',downloadHint:'La sesión Google también da acceso a los archivos compartidos contigo en Drive.'},
   en: {visualLabel:'PROFESSIONAL LIBRARY', eyebrow:'CHAMPION EYEWEAR · FOR OPTICAL STORES',headline:'Everything your optical store needs to present Champion.',intro:'Images for every optical frame and sunglass style, campaign assets, and videos in one organized place for your team.',models:'models and colors',images:'catalog images',languages:'organized resources',accessKicker:'CLIENT ACCESS',accessTitle:'Sign in with your store email.',accessText:'Use a Google Account linked to this email. We review each request before enabling downloads.',googleLogin:'Continue with Google',noPassword:'No extra password or approval for each download.',registerKicker:'ONE MORE STEP',registerTitle:'Tell us about your optical store.',registerText:'Your request will be reviewed. Full library access is enabled after approval.',businessLabel:'Optical store or company name',countryLabel:'Country',registerSubmit:'Request access',changeAccount:'Enter another email',libraryKicker:'YOUR CHAMPION LIBRARY',libraryTitle:'Find the right asset.',libraryIntro:'Browse by style, filter, and prepare your download selection.',approved:'Approved access',previewBadge:'Local preview',tabModels:'Product images',tabVideos:'Videos',tabCampaigns:'Banners and social',searchLabel:'Search style, SKU, or color',typeLabel:'Type',allTypes:'All',optical:'Optical frames',sun:'Sunglasses',collectionLabel:'Collection',allCollections:'All',colorLabel:'Color',allColors:'All',clearFilters:'Clear filters',selectionHint:'Select styles to prepare their ZIP files.',noResults:'No styles match these filters.',comingKicker:'COMING NEXT',comingTitle:'Ready-to-adapt materials.',comingText:'Banners, store displays, and social designs will appear here once approved and sized.',selectedModels:' selected styles',clearSelection:'Clear',downloadZips:'Download ZIPs',backSite:'Back to catalog',select:'Select',selected:'Selected',view:'View images',color:'Color',material:'Material',measurements:'Measurements',collection:'Collection',web:'Web version',original:'Original',notAvailable:'Original source not yet located',downloadModel:'Style ZIP',zipList:'Your ZIP selection',zipIntro:'Download one file per style. Each ZIP contains the views and an image details sheet.',noDrive:'Private download will be available after the Drive upload is completed.',pendingTitle:'Request received',pendingText:'Your email is confirmed. We will review your store and notify you when downloads are enabled.',suspendedTitle:'Access suspended',suspendedText:'Please contact Innova sales to review your access.',setupTitle:'Setup pending',setupText:'The library is prepared. Google login and private permissions must be connected before opening the portal.',previewTitle:'Local review preview',previewText:'This view shows the complete catalog. Local ZIPs are for review only; public access remains closed.',loginError:'Sign-in failed. Please try again.',saveError:'Could not save your request.',results:'styles',files:'images',videoPending:'Video awaiting private upload',videoDownload:'Download video',noVideos:'No verified videos in this batch yet.',siteLink:'Back to catalog',searchPlaceholder:'Search CH01, color, SKU…',previewToast:'Local preview only',noBundle:'This style ZIP is not ready yet.',downloadHint:'Your Google session also grants access to the Drive files shared with you.'},
@@ -21,6 +21,8 @@ Object.assign(copy.es,{zipIntroPending:'Selecciona los archivos de tu carrito pa
 Object.assign(copy.en,{zipIntroPending:'Open each private download in your cart. The single ZIP will be enabled once the bundle service is connected to this domain.',openResource:'Open resource',originalBundle:'Style ZIP with the original'});
 Object.assign(copy.es,{accessText:'Si tu correo está aprobado en la lista de Champion, te enviaremos un enlace privado para entrar.',emailLabel:'Correo electrónico',emailLogin:'Enviarme el enlace de acceso',noPassword:'No necesitas una cuenta de Google ni una contraseña.',linkSentTitle:'Revisa tu correo',linkSentText:'Si el correo que escribiste está aprobado, recibirás un mensaje de Champion. Ábrelo y pulsa «Entrar a mi biblioteca». Si no lo encuentras, revisa la carpeta de spam.',openingTitle:'Abriendo tu biblioteca',openingText:'Estamos verificando el enlace de acceso.',confirmEmail:'Confirmar y entrar',confirmEmailTitle:'Confirma tu correo para entrar',confirmEmailText:'Escribe el mismo correo donde recibiste el enlace. Al confirmar, se abrirá la biblioteca.',confirmEmailError:'No pudimos confirmar ese correo. Comprueba que sea el mismo que recibió el enlace.',newEmailLink:'Solicitar otro enlace',setupText:'Estamos conectando el acceso privado por correo. Vuelve a intentarlo más tarde.',loginError:'No pudimos verificar el enlace. Solicita uno nuevo.',noDrive:'La descarga privada estará disponible cuando el servidor de archivos esté conectado.',downloadHint:'Tus recursos se entregan desde el servidor privado de Champion.',videoOpen:'Reproducir video'});
 Object.assign(copy.en,{accessText:'If your email is approved on Champion’s list, we will send a private sign-in link.',emailLabel:'Email address',emailLogin:'Email me a sign-in link',noPassword:'You do not need a Google Account or a password.',linkSentTitle:'Check your email',linkSentText:'If the email you entered is approved, Champion will send you a message. Open it and select “Enter my library”. Check your spam folder if you cannot find it.',confirmEmail:'Confirm email',confirmEmailText:'Enter the same email that received the link to finish signing in.',setupText:'We are connecting private email access. Please try again later.',loginError:'We could not verify the link. Request a new one.',noDrive:'Private downloads will be available when the file server is connected.',downloadHint:'Your assets are delivered from Champion’s private server.',videoOpen:'Play video'});
+Object.assign(copy.es,{downloadProgressTitle:'Preparando tu descarga',downloadConnecting:'Conectando con el archivo…',downloadReceiving:'Descargando archivo…',downloadProcessing:'Preparando el archivo…',downloadPackaging:'Preparando el ZIP…',downloadFileCount:'Descargando archivo',downloadReadyDetail:'Descarga preparada'});
+Object.assign(copy.en,{downloadProgressTitle:'Preparing your download',downloadConnecting:'Connecting to the file…',downloadReceiving:'Downloading file…',downloadProcessing:'Preparing the file…',downloadPackaging:'Preparing ZIP…',downloadFileCount:'Downloading file',downloadReadyDetail:'Download ready'});
 Object.assign(copy.es,{tabInstagram:'Instagram',instagramNote:'Archivos publicados por Champion en Instagram. Esta colección corresponde a la primera parte de la exportación; se ampliará cuando Meta entregue las demás.',mediaType:'Tipo de archivo',socialImages:'Imágenes',downloadPublic:'Descargar archivo',publicZipIntro:'Descarga un ZIP con los archivos digitales seleccionados y un inventario detallado. Los originales de alta resolución siguen pendientes.',zipProgress:'Descargando archivos',instagramFile:'Archivo publicado en Instagram',noOriginal:'Original privado: todavía no disponible para descargar.',publicMediaError:'No se pudo obtener un archivo de GoHighLevel. Inténtalo de nuevo.'});
 Object.assign(copy.en,{tabInstagram:'Instagram',instagramNote:'Media published by Champion on Instagram. This collection is from the first export part; more will be added when Meta delivers the rest.',mediaType:'File type',socialImages:'Images',downloadPublic:'Download file',publicZipIntro:'Download one ZIP with the selected digital files and a detailed inventory. High-resolution originals remain pending.',zipProgress:'Downloading files',instagramFile:'File published on Instagram',noOriginal:'Private original: not yet available for download.',publicMediaError:'A file could not be retrieved from GoHighLevel. Please retry.'});
 Object.assign(copy.es,{zipIntro:'Descarga un solo ZIP con carpetas por tipo de recurso y modelo. Las fotos de catálogo estarán en PNG.',publicZipIntro:'Descarga un solo ZIP con los recursos elegidos. Las imágenes de modelos estarán en PNG; los videos, en MP4.',web:'Imagen PNG'});
@@ -93,10 +95,97 @@ function renderCart() { $('cartItems').innerHTML=state.selected.size?[...state.s
 function openBundleList() { renderCart();$('cartScrim').hidden=false;$('cartDrawer').hidden=false;$('downloadSelection').setAttribute('aria-expanded','true');$('closeCart').focus(); }
 function closeCart() { $('cartScrim').hidden=true;$('cartDrawer').hidden=true;$('downloadSelection').setAttribute('aria-expanded','false'); }
 async function privateMediaFetch(path,options={}) { if(!cfg.privateMediaUrl||!state.user)throw new Error(t('bundleNotLive'));const token=await state.user.getIdToken();const response=await fetch(`${cfg.privateMediaUrl.replace(/\/$/,'')}${path}`,{...options,headers:{...options.headers,Authorization:`Bearer ${token}`}});if(!response.ok)throw new Error(t('bundleError'));return response; }
+function updateDownloadProgress(percent, detail) {
+  const bar=$('downloadProgressBar');
+  if(Number.isFinite(percent)){
+    const value=Math.max(0,Math.min(100,Math.round(percent)));
+    if(!bar.hasAttribute('value')||bar.value!==value)bar.value=value;
+    $('downloadProgressPercent').textContent=`${value}%`;
+  }else{
+    bar.removeAttribute('value');
+    $('downloadProgressPercent').textContent='';
+  }
+  if(detail&&$('downloadProgressDetail').textContent!==detail)$('downloadProgressDetail').textContent=detail;
+}
+function beginDownloadProgress() {
+  if(state.downloading)return false;
+  const dialog=$('downloadProgressDialog');
+  $('downloadProgressTitle').textContent=t('downloadProgressTitle');
+  updateDownloadProgress(null,t('downloadConnecting'));
+  dialog.showModal();
+  state.downloading=true;
+  return true;
+}
+function endDownloadProgress() {
+  const dialog=$('downloadProgressDialog');
+  if(dialog.open)dialog.close();
+  state.downloading=false;
+}
 function saveBlob(blob,name) { const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000); }
-async function downloadPublicFile(link) { link.setAttribute('aria-disabled','true');try{const response=await fetch(link.href);if(!response.ok)throw new Error(t('publicMediaError'));const type=link.dataset.resourceType,id=link.dataset.resourceId;let name=decodeURIComponent(new URL(link.href).pathname.split('/').pop())||'Champion-recurso';let blob=await response.blob();if(type==='image'){const image=state.catalog.products.flatMap(product=>product.images).find(item=>item.id===id);name=(image?.web.name||name).replace(/\.[^.]+$/,'.png');blob=await catalogImagePng(blob);}else if(type==='video')name=`${id}.mp4`;else if(type==='instagram')name=state.publicMedia.instagram.find(item=>item.id===id)?.name||name;else if(type==='logo')name=state.logos.find(item=>item.id===id)?.name||name;else if(type==='marketing')name=state.marketing.items.find(item=>item.id===id)?.name||name;else if(type==='drivevideo')name=state.drive.videos.find(item=>item.id===id)?.name||name;saveBlob(blob,name);recordEvent('download',type,id);}catch(error){showToast(error.message||t('publicMediaError'));}finally{link.removeAttribute('aria-disabled');} }
+async function downloadPublicFile(link) {
+  if(!beginDownloadProgress())return;
+  link.setAttribute('aria-disabled','true');
+  try{
+    const response=await fetch(link.href);
+    if(!response.ok)throw new Error(t('publicMediaError'));
+    const type=link.dataset.resourceType,id=link.dataset.resourceId;
+    let name=decodeURIComponent(new URL(link.href).pathname.split('/').pop())||'Champion-recurso';
+    let blob=await responseBlobWithProgress(response,(receivedBytes,expectedBytes)=>{
+      updateDownloadProgress(expectedBytes?receivedBytes/expectedBytes*95:null,t('downloadReceiving'));
+    });
+    updateDownloadProgress(96,t('downloadProcessing'));
+    if(type==='image'){
+      const image=state.catalog.products.flatMap(product=>product.images).find(item=>item.id===id);
+      name=(image?.web.name||name).replace(/\.[^.]+$/,'.png');
+      blob=await catalogImagePng(blob);
+    }else if(type==='video')name=`${id}.mp4`;
+    else if(type==='instagram')name=state.publicMedia.instagram.find(item=>item.id===id)?.name||name;
+    else if(type==='logo')name=state.logos.find(item=>item.id===id)?.name||name;
+    else if(type==='marketing')name=state.marketing.items.find(item=>item.id===id)?.name||name;
+    else if(type==='drivevideo')name=state.drive.videos.find(item=>item.id===id)?.name||name;
+    saveBlob(blob,name);
+    updateDownloadProgress(100,t('downloadReadyDetail'));
+    recordEvent('download',type,id);
+  }catch(error){showToast(error.message||t('publicMediaError'));}
+  finally{link.removeAttribute('aria-disabled');endDownloadProgress();}
+}
 async function playPrivateVideo(id,button) { button.disabled=true;try{const response=await privateMediaFetch(`/api/media/video/${encodeURIComponent(id)}`);const blob=await response.blob();const url=URL.createObjectURL(blob);const video=document.createElement('video');video.className='media-video';video.controls=true;video.playsInline=true;video.src=url;button.closest('.media-card').querySelector('.media-thumb').replaceWith(video);button.remove();video.play().catch(()=>{});}catch(_){showToast(t('bundleError'));button.disabled=false;} }
-async function prepareBundle() { if(!state.selected.size)return;const button=$('prepareBundle');button.disabled=true;button.textContent=t('preparing');try{if(state.publicMedia){const files=collectPublicFiles(state.selected,state.catalog,state.marketing,{...state.publicMedia,logos:state.logos,driveVideos:state.drive.videos,carousels:state.drive.carousels,videoDetails:state.videoDetails},state.lang);const blob=await createPublicBundle(files,(index,total)=>button.textContent=`${t('zipProgress')} ${index}/${total}`);saveBlob(blob,`Champion_Recursos_${new Date().toISOString().slice(0,10)}.zip`);await Promise.all([...state.selected].map(key=>{const [type,id]=key.split(':');return recordEvent('download',type,id);}));}else{const items=[...state.selected].map(key=>{const [type,id]=key.split(':');return {type,id};});const response=localPreview?await fetch('/api/client-bundle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})}):await privateMediaFetch('/api/bundle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});if(!response.ok)throw new Error(t('bundleError'));saveBlob(await response.blob(),'Champion_Recursos.zip');}showToast(t('bundleReady'));closeCart();}catch(error){showToast(error.message||t('bundleError'));}finally{button.disabled=false;button.textContent=t('downloadAll');} }
+async function prepareBundle() {
+  if(!state.selected.size||!beginDownloadProgress())return;
+  const button=$('prepareBundle');
+  button.disabled=true;
+  button.textContent=t('preparing');
+  try{
+    if(state.publicMedia){
+      const files=collectPublicFiles(state.selected,state.catalog,state.marketing,{...state.publicMedia,logos:state.logos,driveVideos:state.drive.videos,carousels:state.drive.carousels,videoDetails:state.videoDetails},state.lang);
+      if(!files.length)throw new Error(t('bundleError'));
+      const blob=await createPublicBundle(files,(progress)=>{
+        if(progress.stage==='zip'){
+          updateDownloadProgress(85+progress.percent*.14,t('downloadPackaging'));
+        }else{
+          const fraction=progress.expectedBytes?Math.min(1,progress.receivedBytes/progress.expectedBytes):0;
+          updateDownloadProgress((progress.index+fraction)/progress.total*85,`${t('downloadFileCount')} ${Math.min(progress.index+1,progress.total)} de ${progress.total}…`);
+        }
+      });
+      updateDownloadProgress(99,t('downloadProcessing'));
+      saveBlob(blob,`Champion_Recursos_${new Date().toISOString().slice(0,10)}.zip`);
+      void Promise.all([...state.selected].map(key=>{const [type,id]=key.split(':');return recordEvent('download',type,id);}));
+    }else{
+      const items=[...state.selected].map(key=>{const [type,id]=key.split(':');return {type,id};});
+      const response=localPreview?await fetch('/api/client-bundle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})}):await privateMediaFetch('/api/bundle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});
+      if(!response.ok)throw new Error(t('bundleError'));
+      const blob=await responseBlobWithProgress(response,(receivedBytes,expectedBytes)=>{
+        updateDownloadProgress(expectedBytes?receivedBytes/expectedBytes*95:null,t('downloadReceiving'));
+      });
+      updateDownloadProgress(99,t('downloadProcessing'));
+      saveBlob(blob,'Champion_Recursos.zip');
+    }
+    updateDownloadProgress(100,t('downloadReadyDetail'));
+    closeCart();
+    showToast(t('bundleReady'));
+  }catch(error){showToast(error.message||t('bundleError'));}
+  finally{button.disabled=false;button.textContent=t('downloadAll');endDownloadProgress();}
+}
 
 async function loadMarketing() { const response=await fetch('./drive-artes.json',{cache:'no-store'}); if(response.ok){state.marketing=await response.json();state.drive.carousels=state.marketing.carousels||[];} render(); }
 async function loadDriveVideos() { const response=await fetch('./drive-videos.json',{cache:'no-store'});if(response.ok)state.drive.videos=(await response.json()).items||[];render(); }
@@ -197,6 +286,7 @@ async function startAuthNew() {
 function toggleCart(key) { if(state.selected.has(key))state.selected.delete(key);else state.selected.add(key);syncCartButtons(); }
 async function logout() { sessionStorage.removeItem('champion-login-recorded');localStorage.removeItem('champion-login-email');if(state.emailLinkUrl)await resetEmailConfirmation();else if(state.auth?.currentUser)await signOut(state.auth);else setPanel('loginPanel');$('loginEmail').value='';$('loginEmail').focus(); }
 function bind() {
+  $('downloadProgressDialog').addEventListener('cancel',(event)=>event.preventDefault());
   $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;button.textContent=state.lang==='en'?'Preparing link…':'Preparando enlace…';try{if(state.emailLinkUrl){await finishEmailLink(email);}else{await postGateway('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'),false,false);}}catch(error){console.warn('Champion email access request failed:',error.message);if(state.emailLinkUrl)showEmailConfirmation(t('confirmEmailError'));else showToast(t('loginError'));}finally{button.disabled=false;button.textContent=state.emailLinkUrl?t('confirmEmail'):t('emailLogin');}});
   $('requestNewLink').addEventListener('click',resetEmailConfirmation);
   $('accountButton').addEventListener('click',logout);
