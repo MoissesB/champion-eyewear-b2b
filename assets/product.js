@@ -29,7 +29,7 @@
   function escapeHtml(value) {
     return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
-  function detailUrl(product) { return `./${isB2C() ? 'product-consumer.html' : 'product.html'}?id=${encodeURIComponent(product.id)}&lang=${i18n.language}`; }
+  function detailUrl(product) { return `./${i18n.language}/${isB2C() ? 'b2c' : 'b2b'}/modelos/${encodeURIComponent(product.id)}/`; }
   function isB2C() { return audience?.getProfile?.() === 'b2c'; }
   function consumerProduct(product) {
     if (!isB2C()) return product;
@@ -60,18 +60,15 @@
   }
 
   function productCanonicalUrl(id) {
-    const canonical = new URL(isB2C() ? '/product-consumer.html' : '/product.html', SITE_ORIGIN);
-    canonical.searchParams.set('id', id);
-    if (isB2C()) {
-      canonical.searchParams.set('lang', i18n.language);
-    }
-    return canonical.href;
+    return `${SITE_ORIGIN}/${i18n.language}/${isB2C() ? 'b2c' : 'b2b'}/modelos/${encodeURIComponent(id)}/`;
   }
 
   function updateSearchMetadata(product) {
-    document.title = `${product.displayModel} | Champion Eyewear`;
-    upsertMeta('description', `${product.displayModel}: ${product.subline}`);
-    document.querySelector('meta[name="robots"][data-product-seo]')?.remove();
+    if (!document.body.dataset.productId) {
+      document.title = `${product.displayModel} | Champion Eyewear`;
+      upsertMeta('description', `${product.displayModel}: ${product.subline}`);
+    }
+    if (document.body.dataset.productId) document.querySelector('meta[name="robots"][data-product-seo]')?.remove();
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) {
       canonical = document.createElement('link');
@@ -201,7 +198,7 @@
   function productAudienceChoices(product) {
     const language = i18n.language;
     const otherProfile = isB2C() ? 'b2b' : 'b2c';
-    const otherUrl = `./${otherProfile === 'b2c' ? 'product-consumer.html' : 'product.html'}?id=${encodeURIComponent(product.id)}&lang=${language}`;
+    const otherUrl = `./${language}/${otherProfile}/modelos/${encodeURIComponent(product.id)}/`;
     const personal = isB2C();
     const heading = personal
       ? (language === 'en' ? 'Where to look for this frame' : 'Dónde buscar esta montura')
@@ -602,7 +599,7 @@
 
   function rerender() { if (currentProduct) { renderProduct(currentProduct); renderRelated(currentProduct); renderProductFaq(); } else renderNotFound(); }
   async function init() {
-    const id = new URLSearchParams(window.location.search).get('id'); currentProduct = products.find((candidate) => candidate.id === id);
+    const id = document.body.dataset.productId || new URLSearchParams(window.location.search).get('id'); currentProduct = products.find((candidate) => candidate.id === id);
     if (!currentProduct) { if (markProductNotFound()) return; renderNotFound(); document.getElementById('similares')?.remove(); i18n.onChange(renderNotFound); return; }
     const profile = await (audience?.guard?.({ type: 'view-product', productId: id, required: true, deferDispatch: true }) || Promise.resolve('b2b'));
     if (!profile) return;

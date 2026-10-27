@@ -14,7 +14,9 @@ async function build() {
   await require('./build-client-portal-js.cjs');
   require('./generate-experiences.cjs');
   require('./generate-consumer-product.cjs');
+  require('./generate-product-pages.cjs');
   require('./generate-sitemap.cjs');
+  require('./enrich-blog-seo.cjs');
   await rm(dist, { recursive: true, force: true });
   await mkdir(client, { recursive: true });
   await mkdir(server, { recursive: true });

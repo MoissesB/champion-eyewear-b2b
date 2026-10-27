@@ -60,6 +60,16 @@ const worker = {
 
     if (url.pathname === '/404.html') return notFound(request, env, url);
 
+    const productRoute = url.pathname.match(/^\/(?:es|en)\/(?:b2b|b2c)\/modelos\/([a-z0-9-]+)(\/?)$/i);
+    if (productRoute) {
+      if (!PRODUCT_IDS.has(productRoute[1])) return notFound(request, env, url);
+      if (!productRoute[2]) {
+        url.pathname += '/';
+        return permanentRedirect(url);
+      }
+      url.pathname += 'index.html';
+    }
+
     if (/^\/(?:es|en)\/(?:b2b|b2c)\/$/.test(url.pathname)) {
       url.pathname += 'index.html';
     }

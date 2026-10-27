@@ -5,8 +5,9 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 ## Arquitectura
 
 - `index.html`: portada, buscadores y catálogos de monturas y lentes de sol.
-- `product.html?id=…`: única plantilla para las 116 fichas de producto.
-- `data/products.json`: fuente de datos editable (80 monturas + 36 lentes de sol).
+- `es|en/b2b|b2c/modelos/<id>/`: 560 fichas estáticas con contenido y metadatos propios para los 140 productos en dos idiomas y dos públicos.
+- `product.html?id=…` y `product-consumer.html?id=…`: enlaces antiguos compatibles; las fichas estáticas son las URL canónicas.
+- `data/products.json`: fuente de datos editable (104 monturas + 36 lentes de sol).
 - `data/products.js`: versión del catálogo que consume el navegador sin backend.
 - `assets/producto-de-lentes-de-sol/`: carpeta incorporada al proyecto con 36 referencias solares; cada modelo conserva `front.webp` como portada y tres vistas adicionales.
 - `assets/images/`: recursos de marca y monturas WebP optimizados desde los originales locales.
@@ -19,7 +20,8 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 - `assets/images/brand/innova-logo.png`: logotipo de Innova incluido en los PDF.
 - `scripts/generar-catalogo.cjs`: reconstruye los datos y el manifiesto desde las carpetas fuente.
 - `scripts/preparar-imagenes.py`: exporta los originales a formatos web optimizados.
-- `scripts/generate-sitemap.cjs`: genera `robots.txt`, `sitemap.xml` y `catalogo.html` desde los 116 IDs válidos, sin fechas `lastmod` artificiales.
+- `scripts/generate-sitemap.cjs`: genera `robots.txt`, `sitemap.xml` y `catalogo.html` desde los 140 IDs válidos, sin fechas `lastmod` artificiales.
+- `scripts/generate-product-pages.cjs`: crea las fichas estáticas con títulos, descripciones, imágenes, hreflang y datos estructurados.
 - `scripts/validar.ps1`: verifica arquitectura, datos y recursos locales.
 - `scripts/build-sites.cjs`: prepara la distribución estática y el adaptador de hosting.
 - `404.html`: respuesta visible y no indexable para rutas o referencias inexistentes.
@@ -65,7 +67,7 @@ WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un naveg
 powershell -ExecutionPolicy Bypass -File .\scripts\validar.ps1
 ```
 
-El validador comprueba que solo haya una plantilla de producto, que estén los 116 productos esperados, que todas las imágenes referenciadas existan y que las señales de rastreo, canonicalización y 404 sean coherentes.
+El validador comprueba las dos plantillas de producto, los 140 productos, las imágenes y las señales de rastreo, canonicalización y 404. `node scripts/validate-seo-pages.cjs` revisa las 569 URL canónicas, incluyendo las 560 fichas estáticas.
 
 Para preparar una versión publicable:
 

@@ -27,3 +27,12 @@ body.champion-lead-modal-open{overflow:hidden}
 body[data-audience="b2b"][data-page="home"]{padding-bottom:96px}.b2b-sticky-actions{position:fixed;z-index:950;right:24px;bottom:20px;display:flex;gap:6px;padding:6px;border:1px solid #d5d9e5;border-radius:999px;background:#fff;box-shadow:0 12px 38px #0a123033}.b2b-sticky-actions a,.b2b-sticky-actions button{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border:0;border-radius:999px;font:800 .78rem Inter,Arial,sans-serif;text-decoration:none;cursor:pointer}.b2b-sticky-actions a{color:#1c2659;background:#eef1f8}.b2b-sticky-actions button{color:#fff;background:#d1122b}.b2b-sticky-actions a:focus-visible,.b2b-sticky-actions button:focus-visible{outline:3px solid #1c2659;outline-offset:2px}#monturas{scroll-margin-top:88px}
 @media(max-width:680px){body[data-audience="b2b"][data-page="home"]{padding-bottom:calc(88px + env(safe-area-inset-bottom))}.b2b-sticky-actions{right:10px;bottom:calc(8px + env(safe-area-inset-bottom));left:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:6px}.b2b-sticky-actions a,.b2b-sticky-actions button{min-height:48px;padding:9px;font-size:.68rem;letter-spacing:.01em;text-align:center}}
 .b2b-sticky-actions{opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}.b2b-sticky-actions.is-visible{opacity:1;transform:none;pointer-events:auto}
+/* A visible, crawlable index also works when product cards have not loaded yet. */
+.catalog-index-section{background:#f7f8fb;padding-block:48px}
+.catalog-index-section h2{color:#1c2659;font-size:clamp(1.8rem,3vw,2.7rem)}
+.catalog-index-section p{margin:12px 0 20px;color:#475467}
+.catalog-index-section details{border:1px solid #d7dce8;border-radius:16px;background:#fff;padding:18px}
+.catalog-index-section summary{color:#1c2659;cursor:pointer;font-weight:800}
+.catalog-index-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:18px}
+.catalog-index-links a{padding:8px 10px;border-radius:8px;background:#f2f4f9;color:#1c2659;font-weight:700}
+.catalog-index-links a:hover,.catalog-index-links a:focus-visible{background:#e5eaf5;text-decoration:underline}

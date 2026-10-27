@@ -4,6 +4,8 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const template = fs.readFileSync(path.join(root, 'catalog-experience.html'), 'utf8');
 const origin = 'https://champion-innova.com';
+const products = JSON.parse(fs.readFileSync(path.join(root, 'data/products.json'), 'utf8')).products;
+const escapeHtml = (value) => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 for (const language of ['es', 'en']) {
   for (const profile of ['b2b', 'b2c']) {
@@ -16,10 +18,36 @@ for (const language of ['es', 'en']) {
       .replace('<body data-page="home">', `<body data-page="home" data-audience="${profile}">`)
       .replace('<link rel="canonical" href="https://champion-innova.com/">', `<link rel="canonical" href="${origin}${route}">`)
       .replace(/="\.\//g, '="../../')
-      .replace('</head>', `  <link rel="stylesheet" href="../../assets/experience.css?v=home-route-20261027-2">\n  <script>try{localStorage.setItem('champion-language-v1','${language}')}catch(_error){}</script>\n  <script defer src="../../assets/experience-route.js?v=home-route-20261027-2"></script>\n</head>`);
+      .replace('</head>', `  <link rel="stylesheet" href="../../assets/experience.css?v=seo-20261027-1">\n  <script>try{localStorage.setItem('champion-language-v1','${language}')}catch(_error){}</script>\n  <script defer src="../../assets/experience-route.js?v=home-route-20261027-2"></script>\n</head>`);
     html = html
       .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${personal ? (english ? 'Explore Champion frames and sunglasses. Ask at a nearby optical store in your country and check model and color availability there.' : 'Explora monturas y gafas de sol Champion. Consulta en una óptica cercana en tu país y confirma allí la disponibilidad de cada modelo y color.') : (english ? 'Champion professional eyewear catalog for optical stores and distributors. Prepare an order for review.' : 'Catálogo profesional Champion para ópticas y distribuidores. Prepare una selección para revisión.')}">`)
       .replace(/<title>[^<]*<\/title>/, `<title>Champion Eyewear | ${personal ? (english ? 'Personal experience' : 'Experiencia personal') : (english ? 'Professional catalog' : 'Catálogo profesional')}</title>`);
+
+    const title = personal
+      ? (english ? 'Champion Eyewear frames and sunglasses | Explore models' : 'Monturas y gafas de sol Champion | Explora modelos')
+      : (english ? 'Champion professional eyewear catalog | Optical stores' : 'Catálogo Champion para ópticas y distribuidores');
+    const description = personal
+      ? (english ? 'Explore 140 Champion eyewear models, see their images and specifications, and search for optical stores near you. Confirm availability with each store.'
+        : 'Explora 140 modelos Champion, sus imágenes y medidas. Busca ópticas cercanas y confirma con cada tienda la disponibilidad del modelo y color.')
+      : (english ? 'Browse 140 Champion optical frames and sunglasses for optical stores and distributors. Select references and prepare an order for Innova Eyewear review.'
+        : 'Explora 140 monturas y gafas de sol Champion para ópticas y distribuidoras. Selecciona referencias y prepara un pedido para revisión de Innova Eyewear.');
+    const socialImage = `${origin}/${personal ? 'assets/images/optical/ch17-c1/01.webp' : 'assets/images/brand/champion-social.png'}`;
+    const schema = {
+      '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': `${origin}${route}#page`,
+      url: `${origin}${route}`, name: title, description,
+      inLanguage: english ? 'en' : 'es-419', image: socialImage,
+      isPartOf: { '@type': 'WebSite', name: 'Champion Eyewear', url: origin },
+      about: { '@type': 'Brand', name: 'Champion Eyewear' },
+    };
+    const seoHead = `  <meta name="robots" content="index, follow, max-image-preview:large">\n  <link rel="alternate" hreflang="es" href="${origin}/es/${profile}/">\n  <link rel="alternate" hreflang="en" href="${origin}/en/${profile}/">\n  <link rel="alternate" hreflang="x-default" href="${origin}/es/${profile}/">\n  <meta property="og:site_name" content="Champion Eyewear">\n  <meta property="og:url" content="${origin}${route}">\n  <meta property="og:image:alt" content="${english ? 'Champion eyewear collection' : 'Colección de monturas Champion'}">\n  <meta name="twitter:title" content="${title}">\n  <meta name="twitter:description" content="${description}">\n  <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>\n`;
+    html = html
+      .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`)
+      .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
+      .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${title}">`)
+      .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${description}">`)
+      .replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${socialImage}">`)
+      .replace(/<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${socialImage}">`)
+      .replace('</head>', `${seoHead}</head>`);
 
     if (personal) {
       const heroKicker = english ? 'Champion Eyewear · For you' : 'Champion Eyewear · Para ti';
@@ -68,6 +96,13 @@ for (const language of ['es', 'en']) {
       html = html.replace(/(<\/div>)\s*(<div class="hero-facts")/, `$1\n        <p class="hero-audience-link">${english ? 'Browsing for yourself?' : '¿Buscas monturas para ti?'} <a href="../b2c/#monturas">${english ? 'Open the personal catalog' : 'Abrir el catálogo personal'}</a></p>\n        $2`);
       html = html.replace('</main>', `</main>\n\n  <div class="b2b-sticky-actions" role="group" aria-label="${english ? 'Professional catalog actions' : 'Acciones del catálogo profesional'}" aria-hidden="true" inert><a href="#monturas">${browse}</a><button type="button" data-request-open>${order}</button></div>`);
     }
+
+    const indexHeading = english ? 'All Champion models' : 'Todos los modelos Champion';
+    const indexIntro = english
+      ? 'Open the complete model and color index. Each reference has its own product page.'
+      : 'Abre el índice completo de modelos y colores. Cada referencia tiene su propia ficha.';
+    const modelLinks = products.map((product) => `<a href="../../${language}/${profile}/modelos/${product.id}/">${escapeHtml(product.displayModel)}</a>`).join('');
+    html = html.replace('</main>', `<section class="section catalog-index-section" aria-labelledby="catalogIndexTitle"><div class="container"><h2 id="catalogIndexTitle">${indexHeading}</h2><p>${indexIntro}</p><details><summary>${english ? 'Browse the 140 references' : 'Explorar las 140 referencias'}</summary><div class="catalog-index-links">${modelLinks}</div></details></div></section>\n</main>`);
 
     html = html.replace(/href="\.\.\/\.\.\/blog\.html"/g, `href="../../blog.html?audience=${profile}&amp;lang=${language}"`);
     if (personal) html = html.replace(/\s*<a href="\.\.\/\.\.\/clientes\/" data-portal-nav>[^<]*<\/a>/g, '');

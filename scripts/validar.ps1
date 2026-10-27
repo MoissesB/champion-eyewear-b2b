@@ -302,7 +302,7 @@ if (Test-Path -LiteralPath $consumerTemplatePath -PathType Leaf) {
 $catalogIndexPath = Join-Path $repoRoot "catalogo.html"
 if (Test-Path -LiteralPath $catalogIndexPath -PathType Leaf) {
   $catalogIndex = [System.IO.File]::ReadAllText($catalogIndexPath, $utf8)
-  $staticProductLinks = ([regex]::Matches($catalogIndex, 'href="\./product\.html\?id=[^"]+"')).Count
+  $staticProductLinks = ([regex]::Matches($catalogIndex, 'href="\./es/b2b/modelos/[a-z0-9-]+/"')).Count
   if ($staticProductLinks -ne 140) {
     $failures.Add("catalogo.html: se esperaban 140 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
   }
@@ -316,7 +316,7 @@ if (Test-Path -LiteralPath $sitemapPath -PathType Leaf) {
   $sitemapText = [System.IO.File]::ReadAllText($sitemapPath, $utf8)
   $sitemapUrls = @([regex]::Matches($sitemapText, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value })
   # Four B2B/B2C routes, catalog index, blog and its articles. Redirect entrypoints are omitted.
-  $expectedSitemapUrls = ($products.Count * 3) + 6 + $blogPosts.Count
+  $expectedSitemapUrls = ($products.Count * 4) + 6 + $blogPosts.Count
   if ($sitemapUrls.Count -ne $expectedSitemapUrls) { $failures.Add("sitemap.xml: se esperaban $expectedSitemapUrls URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
   if (($sitemapUrls | Sort-Object -Unique).Count -ne $sitemapUrls.Count) { $failures.Add("sitemap.xml: contiene URLs duplicadas") | Out-Null }
   if ($sitemapText -match '<lastmod>') { $failures.Add("sitemap.xml: no debe incluir lastmod artificial") | Out-Null }

@@ -19,9 +19,10 @@ const newModelIds = new Set([
 ]);
 const blogCatalog = JSON.parse(fs.readFileSync(path.join(root, 'data', 'blog-posts.json'), 'utf8'));
 const blogPosts = Array.isArray(blogCatalog.posts) ? blogCatalog.posts : [];
+const indexImage = `${origin}/assets/images/brand/champion-social.png`;
 
 function productPath(product) {
-  return `/product.html?id=${encodeURIComponent(product.id)}`;
+  return `/es/b2b/modelos/${encodeURIComponent(product.id)}/`;
 }
 
 function escapeXml(value) {
@@ -42,8 +43,7 @@ const urls = [
   `${origin}/catalogo.html`,
   `${origin}/blog.html`,
   ...blogPosts.map((post) => `${origin}/blog/${encodeURIComponent(post.slug)}.html`),
-  ...products.map((product) => `${origin}${productPath(product)}`),
-  ...products.flatMap((product) => ['es', 'en'].map((language) => `${origin}/product-consumer.html?id=${encodeURIComponent(product.id)}&lang=${language}`)),
+  ...products.flatMap((product) => ['es', 'en'].flatMap((language) => ['b2b', 'b2c'].map((profile) => `${origin}/${language}/${profile}/modelos/${encodeURIComponent(product.id)}/`))),
 ];
 
 const sitemap = [
@@ -74,7 +74,18 @@ const productIndex = `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Índice estático de las ${products.length} referencias del catálogo profesional Champion Eyewear para ópticas.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="${origin}/catalogo.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Champion Eyewear">
+  <meta property="og:url" content="${origin}/catalogo.html">
+  <meta property="og:title" content="Índice de ${products.length} modelos Champion | Catálogo profesional">
+  <meta property="og:description" content="Accede a las fichas de monturas y gafas de sol Champion para ópticas, con imágenes, colores, medidas y referencias.">
+  <meta property="og:image" content="${indexImage}">
+  <meta property="og:image:alt" content="Colección profesional Champion Eyewear">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${indexImage}">
+  <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'CollectionPage', url: `${origin}/catalogo.html`, name: `Índice de ${products.length} modelos Champion`, inLanguage: 'es-419', image: indexImage, isPartOf: { '@type': 'WebSite', name: 'Champion Eyewear', url: origin } })}</script>
   <link rel="icon" href="./favicon.ico">
   <link rel="stylesheet" href="./assets/audience.min.css?v=audience-20260818-12">
   <script defer src="./assets/analytics.min.js?v=analytics-20260805"></script>
@@ -89,6 +100,7 @@ const productIndex = `<!doctype html>
   <header><a href="./">Champion Eyewear</a><a href="./es/b2b/#monturas">Volver al catálogo</a></header>
   <main id="contenido">
     <h1>Índice completo de productos</h1>
+    <figure style="width:min(520px,100%);margin:24px 0;overflow:hidden;border-radius:16px"><img src="./assets/images/brand/champion-social.png" alt="Colección profesional de monturas Champion Eyewear" width="1200" height="630" style="display:block;width:100%;height:auto"></figure>
     <p>Enlaces directos a las ${products.length} referencias del catálogo profesional Champion Eyewear. Esta página facilita la navegación y el rastreo sin depender de JavaScript.</p>
     <section class="group" aria-labelledby="opticalTitle">
       <h2 id="opticalTitle">Monturas ópticas</h2>
@@ -109,6 +121,6 @@ ${productGroups('sun')}
 `;
 
 fs.writeFileSync(path.join(root, 'sitemap.xml'), sitemap, 'utf8');
-fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`, 'utf8');
+fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`, 'utf8');
 fs.writeFileSync(path.join(root, 'catalogo.html'), productIndex, 'utf8');
 console.log(`seo-ok (${urls.length} URLs; ${products.length} enlaces estáticos; sin lastmod artificial)`);

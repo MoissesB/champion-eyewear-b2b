@@ -3,7 +3,7 @@
 
   if (document.documentElement.hasAttribute('data-champion-review')) return;
 
-  const VERSION = 'audience-20261027-3';
+  const VERSION = 'audience-seo-20261027-1';
   const PROFILE_KEY = 'champion-audience-profile-v1';
   const B2C_PROFILE_KEY = 'champion-b2c-profile-v1';
   const B2B_PROFILE_KEY = 'champion-b2b-profile-v1';
@@ -173,7 +173,8 @@
   }
 
   function isProductPage() {
-    return /\/product(?:-consumer)?\.html$/i.test(window.location.pathname);
+    return /\/product(?:-consumer)?\.html$/i.test(window.location.pathname)
+      || /^\/(?:es|en)\/(?:b2b|b2c)\/modelos\/[a-z0-9-]+\/$/i.test(window.location.pathname);
   }
 
   function setDocumentProfile(profile) {
@@ -906,7 +907,7 @@
   }
 
   function intentFromTarget(target) {
-    const productLink = target.closest('a[href*="product.html?id="], a[href*="product-consumer.html?id="]');
+    const productLink = target.closest('a[href*="product.html?id="], a[href*="product-consumer.html?id="], a[href*="/modelos/"]');
     if (productLink) return { type: 'view-product', targetUrl: productLink.href, trigger: productLink };
     const add = target.closest('[data-request-add], [data-interest-add]');
     if (add) {

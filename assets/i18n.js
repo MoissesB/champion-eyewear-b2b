@@ -195,6 +195,11 @@
   function setLanguage(next) {
     language = next === 'en' ? 'en' : 'es';
     localStorage.setItem(STORAGE_KEY, language);
+    const productRoute = window.location.pathname.match(/^\/(?:es|en)\/(b2b|b2c)\/modelos\/([a-z0-9-]+)\/$/i);
+    if (productRoute) {
+      window.location.assign(`/${language}/${productRoute[1].toLowerCase()}/modelos/${productRoute[2].toLowerCase()}/${window.location.hash}`);
+      return;
+    }
     if (/\/product\.html$/i.test(window.location.pathname)) {
       const url = new URL(window.location.href);
       url.searchParams.set('lang', language);

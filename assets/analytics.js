@@ -13,7 +13,8 @@
   window.gtag('js', new Date());
 
   const isLocalPreview = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
-  const isProductPage = /\/product\.html$/i.test(window.location.pathname);
+  const isProductPage = /\/product(?:-consumer)?\.html$/i.test(window.location.pathname)
+    || /^\/(?:es|en)\/(?:b2b|b2c)\/modelos\/[a-z0-9-]+\/$/i.test(window.location.pathname);
   window.gtag('config', measurementId, { send_page_view: !isLocalPreview && !isProductPage });
 
   // Local QA records dataLayer calls without contacting GA4.

@@ -136,7 +136,7 @@
   function card(source) {
     const product = i18n.localizeProduct(source);
     const b2c = window.ChampionAudience?.getProfile?.() === 'b2c';
-    const detailUrl = `../../${b2c ? 'product-consumer.html' : 'product.html'}?id=${encodeURIComponent(product.id)}&lang=${i18n.language}`;
+    const detailUrl = `../../${i18n.language}/${b2c ? 'b2c' : 'b2b'}/modelos/${encodeURIComponent(product.id)}/`;
     const action = b2c
       ? `<a href="${detailUrl}#findOptics">${i18n.language === 'en' ? 'Find nearby optical stores' : 'Buscar ópticas cercanas'}</a>`
       : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
