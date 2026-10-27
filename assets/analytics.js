@@ -13,7 +13,11 @@
   window.gtag('js', new Date());
 
   const isLocalPreview = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
-  window.gtag('config', measurementId, { send_page_view: !isLocalPreview });
+  const isProductPage = /\/product\.html$/i.test(window.location.pathname);
+  window.gtag('config', measurementId, { send_page_view: !isLocalPreview && !isProductPage });
+
+  // Local QA records dataLayer calls without contacting GA4.
+  if (isLocalPreview || window.location.protocol === 'file:') return;
 
   const existingLoader = document.querySelector(
     `script[src*="googletagmanager.com/gtag/js"][src*="${measurementId}"]`,

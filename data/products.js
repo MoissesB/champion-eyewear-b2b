@@ -1,14 +1,14 @@
 window.CHAMPION_CATALOG = {
-  "generatedAt": "2026-09-30T21:01:35.974Z",
+  "generatedAt": "2026-10-27T20:28:12.847Z",
   "contact": {
     "company": "Innova Eyewear",
     "whatsapp": "17542360600",
     "email": "sales@innova-eyewear.com"
   },
   "counts": {
-    "optical": 92,
+    "optical": 104,
     "sun": 36,
-    "total": 128
+    "total": 140
   },
   "products": [
     {
@@ -2866,6 +2866,666 @@ window.CHAMPION_CATALOG = {
         "assets/images/optical/ch07-c5/04.webp"
       ],
       "sourceFolder": "Google Drive tarea 196/CH-07_57x19-150_C5"
+    },
+    {
+      "id": "ch17-c1",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH17",
+      "variant": "C1",
+      "model": "CH17 C1",
+      "displayModel": "CH-17 C1",
+      "color": "Negro",
+      "measurements": "57-16-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-17-C1",
+      "shortDescription": "CH-17 C1: montura óptica rectangular en tonos negro.",
+      "subline": "Montura Champion CH-17 C1 · medida 57-16-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Negro"
+      ],
+      "about": {
+        "p1": "La CH-17 C1 presenta un frente rectangular en tonos negro.",
+        "p2": "Medida 57-16-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C1",
+          "Medida 57-16-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-17 C1: rectangular optical frame in black tones.",
+          "subline": "Champion CH-17 C1 frame · size 57-16-150.",
+          "about": {
+            "p1": "CH-17 C1 has a rectangular front in black tones.",
+            "p2": "Size 57-16-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C1",
+              "Size 57-16-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch17-c1/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch17-c1/01.webp",
+        "assets/images/optical/ch17-c1/02.webp",
+        "assets/images/optical/ch17-c1/03.webp",
+        "assets/images/optical/ch17-c1/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH17/C1"
+    },
+    {
+      "id": "ch17-c2",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH17",
+      "variant": "C2",
+      "model": "CH17 C2",
+      "displayModel": "CH-17 C2",
+      "color": "Marrón y naranja",
+      "measurements": "57-16-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-17-C2",
+      "shortDescription": "CH-17 C2: montura óptica rectangular en tonos marrón y naranja.",
+      "subline": "Montura Champion CH-17 C2 · medida 57-16-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Marrón y naranja"
+      ],
+      "about": {
+        "p1": "La CH-17 C2 presenta un frente rectangular en tonos marrón y naranja.",
+        "p2": "Medida 57-16-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C2",
+          "Medida 57-16-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-17 C2: rectangular optical frame in brown and orange tones.",
+          "subline": "Champion CH-17 C2 frame · size 57-16-150.",
+          "about": {
+            "p1": "CH-17 C2 has a rectangular front in brown and orange tones.",
+            "p2": "Size 57-16-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C2",
+              "Size 57-16-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch17-c2/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch17-c2/01.webp",
+        "assets/images/optical/ch17-c2/02.webp",
+        "assets/images/optical/ch17-c2/03.webp",
+        "assets/images/optical/ch17-c2/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH17/C2"
+    },
+    {
+      "id": "ch17-c3",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH17",
+      "variant": "C3",
+      "model": "CH17 C3",
+      "displayModel": "CH-17 C3",
+      "color": "Azul oscuro",
+      "measurements": "57-16-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-17-C3",
+      "shortDescription": "CH-17 C3: montura óptica rectangular en tonos azul oscuro.",
+      "subline": "Montura Champion CH-17 C3 · medida 57-16-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Azul oscuro"
+      ],
+      "about": {
+        "p1": "La CH-17 C3 presenta un frente rectangular en tonos azul oscuro.",
+        "p2": "Medida 57-16-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C3",
+          "Medida 57-16-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-17 C3: rectangular optical frame in dark blue tones.",
+          "subline": "Champion CH-17 C3 frame · size 57-16-150.",
+          "about": {
+            "p1": "CH-17 C3 has a rectangular front in dark blue tones.",
+            "p2": "Size 57-16-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C3",
+              "Size 57-16-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch17-c3/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch17-c3/01.webp",
+        "assets/images/optical/ch17-c3/02.webp",
+        "assets/images/optical/ch17-c3/03.webp",
+        "assets/images/optical/ch17-c3/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH17/C3"
+    },
+    {
+      "id": "ch17-c4",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH17",
+      "variant": "C4",
+      "model": "CH17 C4",
+      "displayModel": "CH-17 C4",
+      "color": "Transparente y gris",
+      "measurements": "57-16-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-17-C4",
+      "shortDescription": "CH-17 C4: montura óptica rectangular en tonos transparente y gris.",
+      "subline": "Montura Champion CH-17 C4 · medida 57-16-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Transparente y gris"
+      ],
+      "about": {
+        "p1": "La CH-17 C4 presenta un frente rectangular en tonos transparente y gris.",
+        "p2": "Medida 57-16-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C4",
+          "Medida 57-16-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-17 C4: rectangular optical frame in clear and grey tones.",
+          "subline": "Champion CH-17 C4 frame · size 57-16-150.",
+          "about": {
+            "p1": "CH-17 C4 has a rectangular front in clear and grey tones.",
+            "p2": "Size 57-16-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C4",
+              "Size 57-16-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch17-c4/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch17-c4/01.webp",
+        "assets/images/optical/ch17-c4/02.webp",
+        "assets/images/optical/ch17-c4/03.webp",
+        "assets/images/optical/ch17-c4/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH17/C4"
+    },
+    {
+      "id": "ch18-c1",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH18",
+      "variant": "C1",
+      "model": "CH18 C1",
+      "displayModel": "CH-18 C1",
+      "color": "Negro",
+      "measurements": "55-17-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-18-C1",
+      "shortDescription": "CH-18 C1: montura óptica rectangular en tonos negro.",
+      "subline": "Montura Champion CH-18 C1 · medida 55-17-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Negro"
+      ],
+      "about": {
+        "p1": "La CH-18 C1 presenta un frente rectangular en tonos negro.",
+        "p2": "Medida 55-17-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C1",
+          "Medida 55-17-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-18 C1: rectangular optical frame in black tones.",
+          "subline": "Champion CH-18 C1 frame · size 55-17-150.",
+          "about": {
+            "p1": "CH-18 C1 has a rectangular front in black tones.",
+            "p2": "Size 55-17-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C1",
+              "Size 55-17-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch18-c1/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch18-c1/01.webp",
+        "assets/images/optical/ch18-c1/02.webp",
+        "assets/images/optical/ch18-c1/03.webp",
+        "assets/images/optical/ch18-c1/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH18/C1"
+    },
+    {
+      "id": "ch18-c2",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH18",
+      "variant": "C2",
+      "model": "CH18 C2",
+      "displayModel": "CH-18 C2",
+      "color": "Azul oscuro",
+      "measurements": "55-17-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-18-C2",
+      "shortDescription": "CH-18 C2: montura óptica rectangular en tonos azul oscuro.",
+      "subline": "Montura Champion CH-18 C2 · medida 55-17-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Azul oscuro"
+      ],
+      "about": {
+        "p1": "La CH-18 C2 presenta un frente rectangular en tonos azul oscuro.",
+        "p2": "Medida 55-17-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C2",
+          "Medida 55-17-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-18 C2: rectangular optical frame in dark blue tones.",
+          "subline": "Champion CH-18 C2 frame · size 55-17-150.",
+          "about": {
+            "p1": "CH-18 C2 has a rectangular front in dark blue tones.",
+            "p2": "Size 55-17-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C2",
+              "Size 55-17-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch18-c2/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch18-c2/01.webp",
+        "assets/images/optical/ch18-c2/02.webp",
+        "assets/images/optical/ch18-c2/03.webp",
+        "assets/images/optical/ch18-c2/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH18/C2"
+    },
+    {
+      "id": "ch18-c3",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH18",
+      "variant": "C3",
+      "model": "CH18 C3",
+      "displayModel": "CH-18 C3",
+      "color": "Champán",
+      "measurements": "55-17-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-18-C3",
+      "shortDescription": "CH-18 C3: montura óptica rectangular en tonos champán.",
+      "subline": "Montura Champion CH-18 C3 · medida 55-17-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Champán"
+      ],
+      "about": {
+        "p1": "La CH-18 C3 presenta un frente rectangular en tonos champán.",
+        "p2": "Medida 55-17-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C3",
+          "Medida 55-17-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-18 C3: rectangular optical frame in champagne tones.",
+          "subline": "Champion CH-18 C3 frame · size 55-17-150.",
+          "about": {
+            "p1": "CH-18 C3 has a rectangular front in champagne tones.",
+            "p2": "Size 55-17-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C3",
+              "Size 55-17-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch18-c3/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch18-c3/01.webp",
+        "assets/images/optical/ch18-c3/02.webp",
+        "assets/images/optical/ch18-c3/03.webp",
+        "assets/images/optical/ch18-c3/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH18/C3"
+    },
+    {
+      "id": "ch18-c4",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH18",
+      "variant": "C4",
+      "model": "CH18 C4",
+      "displayModel": "CH-18 C4",
+      "color": "Negro y transparente",
+      "measurements": "55-17-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-18-C4",
+      "shortDescription": "CH-18 C4: montura óptica rectangular en tonos negro y transparente.",
+      "subline": "Montura Champion CH-18 C4 · medida 55-17-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Negro y transparente"
+      ],
+      "about": {
+        "p1": "La CH-18 C4 presenta un frente rectangular en tonos negro y transparente.",
+        "p2": "Medida 55-17-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C4",
+          "Medida 55-17-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-18 C4: rectangular optical frame in black and clear tones.",
+          "subline": "Champion CH-18 C4 frame · size 55-17-150.",
+          "about": {
+            "p1": "CH-18 C4 has a rectangular front in black and clear tones.",
+            "p2": "Size 55-17-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C4",
+              "Size 55-17-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch18-c4/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch18-c4/01.webp",
+        "assets/images/optical/ch18-c4/02.webp",
+        "assets/images/optical/ch18-c4/03.webp",
+        "assets/images/optical/ch18-c4/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH18/C4"
+    },
+    {
+      "id": "ch19-c1",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH19",
+      "variant": "C1",
+      "model": "CH19 C1",
+      "displayModel": "CH-19 C1",
+      "color": "Negro y rojo",
+      "measurements": "56-19-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-19-C1",
+      "shortDescription": "CH-19 C1: montura óptica rectangular en tonos negro y rojo.",
+      "subline": "Montura Champion CH-19 C1 · medida 56-19-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Negro y rojo"
+      ],
+      "about": {
+        "p1": "La CH-19 C1 presenta un frente rectangular en tonos negro y rojo.",
+        "p2": "Medida 56-19-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C1",
+          "Medida 56-19-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-19 C1: rectangular optical frame in black and red tones.",
+          "subline": "Champion CH-19 C1 frame · size 56-19-150.",
+          "about": {
+            "p1": "CH-19 C1 has a rectangular front in black and red tones.",
+            "p2": "Size 56-19-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C1",
+              "Size 56-19-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch19-c1/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch19-c1/01.webp",
+        "assets/images/optical/ch19-c1/02.webp",
+        "assets/images/optical/ch19-c1/03.webp",
+        "assets/images/optical/ch19-c1/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH19/C1"
+    },
+    {
+      "id": "ch19-c2",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH19",
+      "variant": "C2",
+      "model": "CH19 C2",
+      "displayModel": "CH-19 C2",
+      "color": "Azul oscuro",
+      "measurements": "56-19-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-19-C2",
+      "shortDescription": "CH-19 C2: montura óptica rectangular en tonos azul oscuro.",
+      "subline": "Montura Champion CH-19 C2 · medida 56-19-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Azul oscuro"
+      ],
+      "about": {
+        "p1": "La CH-19 C2 presenta un frente rectangular en tonos azul oscuro.",
+        "p2": "Medida 56-19-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C2",
+          "Medida 56-19-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-19 C2: rectangular optical frame in dark blue tones.",
+          "subline": "Champion CH-19 C2 frame · size 56-19-150.",
+          "about": {
+            "p1": "CH-19 C2 has a rectangular front in dark blue tones.",
+            "p2": "Size 56-19-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C2",
+              "Size 56-19-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch19-c2/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch19-c2/01.webp",
+        "assets/images/optical/ch19-c2/02.webp",
+        "assets/images/optical/ch19-c2/03.webp",
+        "assets/images/optical/ch19-c2/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH19/C2"
+    },
+    {
+      "id": "ch19-c3",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH19",
+      "variant": "C3",
+      "model": "CH19 C3",
+      "displayModel": "CH-19 C3",
+      "color": "Verde oliva oscuro",
+      "measurements": "56-19-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-19-C3",
+      "shortDescription": "CH-19 C3: montura óptica rectangular en tonos verde oliva oscuro.",
+      "subline": "Montura Champion CH-19 C3 · medida 56-19-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Verde oliva oscuro"
+      ],
+      "about": {
+        "p1": "La CH-19 C3 presenta un frente rectangular en tonos verde oliva oscuro.",
+        "p2": "Medida 56-19-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C3",
+          "Medida 56-19-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-19 C3: rectangular optical frame in dark olive green tones.",
+          "subline": "Champion CH-19 C3 frame · size 56-19-150.",
+          "about": {
+            "p1": "CH-19 C3 has a rectangular front in dark olive green tones.",
+            "p2": "Size 56-19-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C3",
+              "Size 56-19-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch19-c3/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch19-c3/01.webp",
+        "assets/images/optical/ch19-c3/02.webp",
+        "assets/images/optical/ch19-c3/03.webp",
+        "assets/images/optical/ch19-c3/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH19/C3"
+    },
+    {
+      "id": "ch19-c4",
+      "family": "optical",
+      "collection": "Optical",
+      "series": "CH19",
+      "variant": "C4",
+      "model": "CH19 C4",
+      "displayModel": "CH-19 C4",
+      "color": "Transparente y azul oscuro",
+      "measurements": "56-19-150",
+      "material": "No especificado",
+      "shape": "Rectangular",
+      "lens": "Montura óptica",
+      "protection": "Compatible con lentes graduadas",
+      "sku": "CH-19-C4",
+      "shortDescription": "CH-19 C4: montura óptica rectangular en tonos transparente y azul oscuro.",
+      "subline": "Montura Champion CH-19 C4 · medida 56-19-150.",
+      "tags": [
+        "Champion",
+        "Rectangular",
+        "Transparente y azul oscuro"
+      ],
+      "about": {
+        "p1": "La CH-19 C4 presenta un frente rectangular en tonos transparente y azul oscuro.",
+        "p2": "Medida 56-19-150. El material no está especificado en las imágenes de origen.",
+        "bullets": [
+          "Variante C4",
+          "Medida 56-19-150",
+          "Cuatro vistas del modelo"
+        ]
+      },
+      "locale": {
+        "en": {
+          "shortDescription": "CH-19 C4: rectangular optical frame in clear and dark blue tones.",
+          "subline": "Champion CH-19 C4 frame · size 56-19-150.",
+          "about": {
+            "p1": "CH-19 C4 has a rectangular front in clear and dark blue tones.",
+            "p2": "Size 56-19-150. The source images do not specify the material.",
+            "bullets": [
+              "Variant C4",
+              "Size 56-19-150",
+              "Four views of this frame"
+            ]
+          }
+        }
+      },
+      "cover": "assets/images/optical/ch19-c4/cover-v3.webp",
+      "images": [
+        "assets/images/optical/ch19-c4/01.webp",
+        "assets/images/optical/ch19-c4/02.webp",
+        "assets/images/optical/ch19-c4/03.webp",
+        "assets/images/optical/ch19-c4/04.webp"
+      ],
+      "sourceFolder": "Catalogo Champion/CH17-CH19 Drive Originales/CH19/C4"
     },
     {
       "id": "ch20-c1",

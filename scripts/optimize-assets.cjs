@@ -6,6 +6,7 @@ const root = path.resolve(__dirname, '..');
 const targets = [
   ['assets/styles.css', 'assets/styles.min.css', 'css'],
   ['assets/analytics.js', 'assets/analytics.min.js', 'js'],
+  ['assets/meta-pixel.js', 'assets/meta-pixel.min.js', 'js'],
   ['data/products.js', 'data/products.min.js', 'js'],
   ['assets/i18n.js', 'assets/i18n.min.js', 'js'],
   ['assets/audience.js', 'assets/audience.min.js', 'js'],
@@ -17,6 +18,7 @@ const targets = [
   ['assets/request.js', 'assets/request.min.js', 'js'],
   ['assets/home.js', 'assets/home.min.js', 'js'],
   ['assets/product.js', 'assets/product.min.js', 'js'],
+  ['assets/optics-locator.js', 'assets/optics-locator.min.js', 'js'],
 ];
 
 async function optimize() {
@@ -57,7 +59,7 @@ async function optimize() {
     product.family === 'optical' ? product.images[0] : product.cover,
   ]));
   const preloadResult = await esbuild.transform(
-    `(()=>{const id=new URLSearchParams(location.search).get('id');const image=${JSON.stringify(productImages)}[id];const upsertMeta=(name,content)=>{let meta=document.querySelector('meta[name="'+name+'"]');if(!meta){meta=document.createElement('meta');meta.name=name;document.head.appendChild(meta)}meta.content=content;return meta};if(!image){const robots=upsertMeta('robots','noindex, follow');robots.setAttribute('data-product-seo','');if(location.protocol==='http:'||location.protocol==='https:')location.replace('/referencia-no-encontrada');return}let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical)}canonical.href='https://champion-innova.com/product.html?id='+encodeURIComponent(id);const link=document.createElement('link');link.rel='preload';link.as='image';link.href='./'+image;link.fetchPriority='high';document.head.appendChild(link)})();`,
+    `(()=>{const id=new URLSearchParams(location.search).get('id');const image=${JSON.stringify(productImages)}[id];const upsertMeta=(name,content)=>{let meta=document.querySelector('meta[name="'+name+'"]');if(!meta){meta=document.createElement('meta');meta.name=name;document.head.appendChild(meta)}meta.content=content;return meta};if(!image){const robots=upsertMeta('robots','noindex, follow');robots.setAttribute('data-product-seo','');if(location.protocol==='http:'||location.protocol==='https:')location.replace('/referencia-no-encontrada');return}let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical)}canonical.href='https://champion-innova.com/product.html?id='+encodeURIComponent(id);if(location.pathname.endsWith('/product-consumer.html'))canonical.href='https://champion-innova.com/product-consumer.html?id='+encodeURIComponent(id)+'&lang='+(new URLSearchParams(location.search).get('lang')==='en'?'en':'es');const link=document.createElement('link');link.rel='preload';link.as='image';link.href='./'+image;link.fetchPriority='high';document.head.appendChild(link)})();`,
     {
       loader: 'js',
       minify: true,

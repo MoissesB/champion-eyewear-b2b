@@ -95,9 +95,9 @@ img {
   gap: 20px;
   padding: 10px 24px;
   border-top: 4px solid var(--champion-red);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(18, 22, 55, 0.42);
-  color: #fff;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--champion-blue);
   backdrop-filter: blur(13px);
 }
 

@@ -6,9 +6,17 @@
   const audience = window.ChampionAudience;
   if (!catalog || !Array.isArray(catalog.products) || !i18n) return;
   const SITE_ORIGIN = 'https://champion-innova.com';
+  const GHL_FORM_IDS = Object.freeze({
+    es: 'kZyMWdBrTHxC2y7HNzAi',
+    en: 'tRr6lFGaKP8TSoIuyHTT',
+  });
+  let measuredProductId = null;
   const products = catalog.products;
   const newModelIds = new Set([
     'ch03-c5', 'ch04-c5', 'ch05-c5', 'ch07-c5',
+    'ch17-c1', 'ch17-c2', 'ch17-c3', 'ch17-c4',
+    'ch18-c1', 'ch18-c2', 'ch18-c3', 'ch18-c4',
+    'ch19-c1', 'ch19-c2', 'ch19-c3', 'ch19-c4',
     'ch20-c1', 'ch20-c2', 'ch20-c3', 'ch20-c4',
     'ch21-c1', 'ch21-c2', 'ch21-c3', 'ch21-c4',
     'ch22-c1', 'ch22-c2', 'ch22-c3', 'ch22-c4',
@@ -21,7 +29,7 @@
   function escapeHtml(value) {
     return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
-  function detailUrl(product) { return `./product.html?id=${encodeURIComponent(product.id)}${isB2C() ? '&audience=b2c' : ''}&lang=${i18n.language}`; }
+  function detailUrl(product) { return `./${isB2C() ? 'product-consumer.html' : 'product.html'}?id=${encodeURIComponent(product.id)}&lang=${i18n.language}`; }
   function isB2C() { return audience?.getProfile?.() === 'b2c'; }
   function consumerProduct(product) {
     if (!isB2C()) return product;
@@ -52,10 +60,9 @@
   }
 
   function productCanonicalUrl(id) {
-    const canonical = new URL('/product.html', SITE_ORIGIN);
+    const canonical = new URL(isB2C() ? '/product-consumer.html' : '/product.html', SITE_ORIGIN);
     canonical.searchParams.set('id', id);
     if (isB2C()) {
-      canonical.searchParams.set('audience', 'b2c');
       canonical.searchParams.set('lang', i18n.language);
     }
     return canonical.href;
@@ -91,6 +98,14 @@
 
   const variantSwatches = Object.freeze({
     'Negro': '#15171c',
+    'Marrón y naranja': 'linear-gradient(135deg, #795039 0 50%, #df722c 50% 100%)',
+    'Azul oscuro': '#172f55',
+    'Transparente y gris': 'linear-gradient(135deg, #f3f8fb 0 50%, #858b94 50% 100%)',
+    'Champán': '#c5a982',
+    'Negro y transparente': 'linear-gradient(135deg, #15171c 0 50%, #f3f8fb 50% 100%)',
+    'Negro y rojo': 'linear-gradient(135deg, #15171c 0 50%, #bf2435 50% 100%)',
+    'Verde oliva oscuro': '#363b2c',
+    'Transparente y azul oscuro': 'linear-gradient(135deg, #f3f8fb 0 50%, #172f55 50% 100%)',
     'Champán y plateado': 'linear-gradient(135deg, #ccb89a 0 48%, #c5c9cf 52% 100%)',
     'Gris metalizado': '#777e87',
     'Cobrizo y marrón': 'linear-gradient(135deg, #ae704f 0 48%, #76503a 52% 100%)',
@@ -148,7 +163,9 @@
 
   function productCard(source) {
     const product = i18n.localizeProduct(source);
-    const action = isB2C() ? '' : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
+    const action = isB2C()
+      ? `<a href="${detailUrl(product)}#findOptics">${i18n.language === 'en' ? 'Find nearby optical stores' : 'Buscar ópticas cercanas'}</a>`
+      : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
     return `<article class="product-card related-card${isNewModel(source) ? ' is-new-model' : ''}"><a class="product-card-image" href="${detailUrl(product)}"><img src="./${escapeHtml(cardCover(source))}" alt="${escapeHtml(product.displayModel)}" loading="lazy" decoding="async"><span class="product-family-badge">${product.family === 'sun' ? 'Champion Sun' : escapeHtml(product.collection)}</span>${isNewModel(source) ? `<span class="product-new-badge">${i18n.language === 'en' ? 'New model' : 'Modelo nuevo'}</span>` : ''}</a><div class="product-card-body"><div class="product-card-topline"><span>${escapeHtml(product.collection)}</span><span>${escapeHtml(product.variant)}</span></div><h3><a href="${detailUrl(product)}">${escapeHtml(product.displayModel)}</a></h3><p class="product-card-color">${escapeHtml(product.color)}</p><div class="product-card-actions"><a href="${detailUrl(product)}">${escapeHtml(i18n.t('viewDetails'))}</a>${action}</div></div></article>`;
   }
 
@@ -169,16 +186,33 @@
 
   function mobileOrderBar(product) {
     if (isB2C()) {
-      return '';
+      return `<div class="consumer-optics-bar"><span>${escapeHtml(product.displayModel)}</span><button class="button button-primary" type="button" data-find-optics-open>${i18n.language === 'en' ? 'Find nearby optical stores' : 'Buscar ópticas cercanas'}</button></div>`;
     }
     return `<div class="mobile-product-order-bar"><div class="mobile-order-product"><strong>${escapeHtml(product.displayModel)}</strong><span>${escapeHtml(product.color)}</span></div><label><span class="sr-only">${escapeHtml(i18n.t('requestedQuantity'))}</span><input id="mobileProductQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric" aria-label="${escapeHtml(i18n.t('requestedQuantity'))}"></label><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="mobileProductQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div>`;
   }
 
   function productActionBox(product) {
     if (isB2C()) {
-      return `<div class="product-request-box product-interest-box"><span class="eyebrow">${i18n.language === 'en' ? 'Where to find Champion' : 'Dónde encontrar Champion'}</span><h2>${i18n.language === 'en' ? 'Ask at a nearby optical store in your country' : 'Consulta en una óptica cercana en tu país'}</h2><p>${i18n.language === 'en' ? 'Ask whether this model and color are available there. The optical store can confirm availability; this catalog does not offer direct online purchases.' : 'Pregunta si allí tienen disponible este modelo y color. La óptica puede confirmar la disponibilidad; este catálogo no ofrece compra directa en línea.'}</p></div>`;
+      return `<div class="product-request-box product-interest-box"><span class="eyebrow">${i18n.language === 'en' ? 'Where to find Champion' : 'Dónde encontrar Champion'}</span><h2>${i18n.language === 'en' ? 'Find an optical store near you' : 'Busca una óptica cerca de ti'}</h2><p>${i18n.language === 'en' ? 'Choose your country and city below to search for nearby optical stores. Ask the store whether this Champion model and color are available.' : 'Elige tu país y ciudad abajo para buscar ópticas cercanas. Pregunta allí si tienen disponible este modelo y color Champion.'}</p></div>`;
     }
     return `<div class="product-request-box"><label for="productQuantity">${escapeHtml(i18n.t('requestedQuantity'))}</label><div class="product-order-entry"><input id="productQuantity" type="number" min="1" max="9999" value="1" inputmode="numeric"><button class="button button-primary" type="button" data-request-add data-product-id="${escapeHtml(product.id)}" data-quantity-target="productQuantity">${escapeHtml(i18n.t('addRequest'))}</button></div><button class="request-link" type="button" data-request-open>${escapeHtml(i18n.t('reviewSelection'))}</button><p>${escapeHtml(i18n.t('directConsultationNote'))}</p><div class="product-order-actions"><button class="order-whatsapp" type="button" data-request-open data-order-channel="whatsapp"><span class="order-action-icon" aria-hidden="true">☎</span><span>${escapeHtml(i18n.t('orderWhatsapp'))}</span></button><button class="order-email" type="button" data-request-open data-order-channel="email"><span class="order-action-icon" aria-hidden="true">✉</span><span>${escapeHtml(i18n.t('orderEmail'))}</span></button></div></div>`;
+  }
+
+  function productAudienceChoices(product) {
+    const language = i18n.language;
+    const otherProfile = isB2C() ? 'b2b' : 'b2c';
+    const otherUrl = `./${otherProfile === 'b2c' ? 'product-consumer.html' : 'product.html'}?id=${encodeURIComponent(product.id)}&lang=${language}`;
+    const personal = isB2C();
+    const heading = personal
+      ? (language === 'en' ? 'Where to look for this frame' : 'Dónde buscar esta montura')
+      : (language === 'en' ? 'Professional inquiry' : 'Consulta para ópticas y distribuidores');
+    const formLabel = personal
+      ? (language === 'en' ? 'Find nearby optical stores' : 'Buscar ópticas cercanas')
+      : (language === 'en' ? 'Contact as an optical store or distributor' : 'Consultar como óptica o distribuidor');
+    const otherLabel = personal
+      ? (language === 'en' ? 'I am an optical store or distributor' : 'Soy óptica o distribuidor')
+      : (language === 'en' ? 'I want to explore frames for myself' : 'Quiero ver monturas para mí');
+    return `<div class="product-audience-choices"><h2>${heading}</h2><div class="product-audience-actions"><button class="button button-primary" type="button" ${personal ? 'data-find-optics-open aria-controls="findOptics"' : 'data-product-contact-open aria-controls="productContact" aria-expanded="false"'}>${formLabel}</button><a class="button product-audience-switch" href="${otherUrl}">${otherLabel}</a></div></div>`;
   }
 
   function updateAudienceChrome() {
@@ -266,13 +300,95 @@
       <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span>${isNewModel(source) ? `<span class="product-new-detail-badge">${i18n.language === 'en' ? 'New model' : 'Modelo nuevo'}</span>` : ''}<h1>${escapeHtml(product.displayModel)}</h1>${variantPickerMarkup(variants, product, 'mobile-product-variants')}<p class="product-subline">${escapeHtml(product.subline)}</p>${isB2C() ? '' : `<div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>`}
       ${variantPickerMarkup(variants, product, 'desktop-product-variants')}
       ${productActionBox(product)}
+      ${productAudienceChoices(product)}
       <div class="product-tabs"><div class="tab-list" role="tablist" aria-label="${escapeHtml(i18n.t('tabsAria'))}"><button class="is-active" type="button" role="tab" aria-selected="true" data-tab="description">${escapeHtml(i18n.t('tabDescription'))}</button><button type="button" role="tab" aria-selected="false" data-tab="specs">${escapeHtml(i18n.t('tabSpecs'))}</button>${isB2C() ? '' : `<button type="button" role="tab" aria-selected="false" data-tab="terms">${escapeHtml(i18n.t('tabTerms'))}</button>`}</div>
         <section class="tab-panel is-active" data-panel="description"><p>${escapeHtml(product.about?.p1 || product.shortDescription)}</p><p>${escapeHtml(product.about?.p2 || '')}</p><ul>${(product.about?.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')}</ul></section>
         <section class="tab-panel" data-panel="specs" hidden><dl class="spec-list">${specs(product)}</dl></section>
         ${isB2C() ? '' : `<section class="tab-panel" data-panel="terms" hidden><p>${escapeHtml(i18n.t('termIntro'))}</p><ul><li>${escapeHtml(i18n.t('term1'))}</li><li>${escapeHtml(i18n.t('term2'))}</li><li>${escapeHtml(i18n.t('term3'))}</li></ul></section>`}
       </div>
     </div>${mobileOrderBar(product)}`;
-    bindGallery(product); bindTabs();
+    bindGallery(product); bindTabs(); renderContactForm(product); bindContactActions(); trackProductView(product);
+  }
+
+  function renderContactForm(product) {
+    const section = document.getElementById('productContact');
+    const frame = document.getElementById('productContactFrame');
+    if (!section || !frame) return;
+    const language = i18n.language === 'en' ? 'en' : 'es';
+    const profile = 'b2b';
+    const formId = GHL_FORM_IDS[language];
+    const title = document.getElementById('productContactTitle');
+    const description = document.getElementById('productContactText');
+    title.textContent = language === 'en'
+      ? (profile === 'b2b' ? `Ask about ${product.displayModel}` : `Where to find ${product.displayModel}`)
+      : (profile === 'b2b' ? `Consulta profesional sobre ${product.displayModel}` : `Dónde encontrar ${product.displayModel}`);
+    description.textContent = language === 'en'
+      ? (profile === 'b2b' ? 'Contact Champion about this frame. Your product selection and order remain separate.' : 'Ask about Champion availability at an optical store in your country.')
+      : (profile === 'b2b' ? 'Contacta sobre esta montura. La selección de modelos y el pedido permanecen separados.' : 'Consulta la disponibilidad de Champion en una óptica de tu país.');
+    frame.title = language === 'en' ? `Champion ${profile} contact form` : `Formulario Champion ${profile === 'b2b' ? 'para ópticas' : 'para particulares'}`;
+    const url = `https://api.leadconnectorhq.com/widget/form/${encodeURIComponent(formId)}`;
+    const directLink = document.getElementById('productContactLink');
+    if (directLink) {
+      directLink.href = url;
+      directLink.textContent = language === 'en' ? 'If the form does not appear, open it in a new tab' : 'Si el formulario no aparece, ábrelo en una pestaña nueva';
+    }
+    const openedFromCatalog = window.location.hash === '#productContact';
+    if (!section.hidden || openedFromCatalog) {
+      section.hidden = false;
+      if (frame.src !== url) frame.src = url;
+      document.querySelector('[data-product-contact-open]')?.setAttribute('aria-expanded', 'true');
+      if (openedFromCatalog) {
+        const reveal = () => section.scrollIntoView({ block: 'start' });
+        requestAnimationFrame(() => requestAnimationFrame(reveal));
+        if (document.readyState !== 'complete') {
+          window.addEventListener('load', () => {
+            requestAnimationFrame(reveal);
+            window.setTimeout(reveal, 300);
+          }, { once: true });
+        }
+      }
+    }
+  }
+
+  function bindContactActions() {
+    document.querySelector('[data-product-contact-open]')?.addEventListener('click', () => {
+      const section = document.getElementById('productContact');
+      const frame = document.getElementById('productContactFrame');
+      const formUrl = document.getElementById('productContactLink')?.href;
+      if (!section || !frame || !formUrl) return;
+      section.hidden = false;
+      if (frame.src !== formUrl) frame.src = formUrl;
+      document.querySelector('[data-product-contact-open]')?.setAttribute('aria-expanded', 'true');
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function trackProductView(product) {
+    if (measuredProductId || typeof window.gtag !== 'function') return;
+    if (!document.querySelector('#productRoot h1')) return;
+    measuredProductId = product.id;
+    window.gtag('event', 'page_view', {
+      send_to: 'G-10EF1REGL8',
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+    window.gtag('event', 'view_item', {
+      send_to: 'G-10EF1REGL8',
+      items: [{
+        item_id: product.id,
+        item_name: product.displayModel,
+        item_brand: 'Champion',
+        item_category: product.family,
+        item_category2: product.series,
+        item_variant: product.variant,
+      }],
+    });
+    if (['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) {
+      document.documentElement.dataset.championAnalyticsPreview = JSON.stringify(
+        (window.dataLayer || []).filter((entry) => entry[0] === 'event')
+          .map((entry) => ({ name: entry[1], parameters: entry[2] })),
+      );
+    }
   }
 
   function bindGallery(product) {
@@ -474,18 +590,9 @@
   }
 
   function renderSecondaryContent(source) {
-    const tasks = [
-      () => renderRelated(source),
-      () => renderProductFaq(),
-    ];
-    const runNext = () => {
-      const task = tasks.shift();
-      if (!task) return;
-      task();
-      if (tasks.length) window.setTimeout(runNext, 0);
-    };
-    if ('requestIdleCallback' in window) window.requestIdleCallback(runNext, { timeout: 1200 });
-    else window.setTimeout(runNext, 120);
+    renderRelated(source);
+    if ('requestIdleCallback' in window) window.requestIdleCallback(renderProductFaq, { timeout: 1200 });
+    else window.setTimeout(renderProductFaq, 120);
   }
 
   function renderNotFound() {

@@ -7,6 +7,9 @@ const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data', 'products.jso
 const products = Array.isArray(catalog.products) ? catalog.products : [];
 const newModelIds = new Set([
   'ch03-c5', 'ch04-c5', 'ch05-c5', 'ch07-c5',
+  'ch17-c1', 'ch17-c2', 'ch17-c3', 'ch17-c4',
+  'ch18-c1', 'ch18-c2', 'ch18-c3', 'ch18-c4',
+  'ch19-c1', 'ch19-c2', 'ch19-c3', 'ch19-c4',
   'ch20-c1', 'ch20-c2', 'ch20-c3', 'ch20-c4',
   'ch21-c1', 'ch21-c2', 'ch21-c3', 'ch21-c4',
   'ch22-c1', 'ch22-c2', 'ch22-c3', 'ch22-c4',
@@ -35,13 +38,12 @@ function escapeHtml(value) {
 }
 
 const urls = [
-  `${origin}/`,
-  `${origin}/en/`,
   ...['es', 'en'].flatMap((language) => ['b2b', 'b2c'].map((profile) => `${origin}/${language}/${profile}/`)),
   `${origin}/catalogo.html`,
   `${origin}/blog.html`,
   ...blogPosts.map((post) => `${origin}/blog/${encodeURIComponent(post.slug)}.html`),
   ...products.map((product) => `${origin}${productPath(product)}`),
+  ...products.flatMap((product) => ['es', 'en'].map((language) => `${origin}/product-consumer.html?id=${encodeURIComponent(product.id)}&lang=${language}`)),
 ];
 
 const sitemap = [

@@ -8,6 +8,9 @@
   const products = catalog.products;
   const newModelIds = new Set([
     'ch03-c5', 'ch04-c5', 'ch05-c5', 'ch07-c5',
+    'ch17-c1', 'ch17-c2', 'ch17-c3', 'ch17-c4',
+    'ch18-c1', 'ch18-c2', 'ch18-c3', 'ch18-c4',
+    'ch19-c1', 'ch19-c2', 'ch19-c3', 'ch19-c4',
     'ch20-c1', 'ch20-c2', 'ch20-c3', 'ch20-c4',
     'ch21-c1', 'ch21-c2', 'ch21-c3', 'ch21-c4',
     'ch22-c1', 'ch22-c2', 'ch22-c3', 'ch22-c4',
@@ -133,8 +136,10 @@
   function card(source) {
     const product = i18n.localizeProduct(source);
     const b2c = window.ChampionAudience?.getProfile?.() === 'b2c';
-    const detailUrl = `../../product.html?id=${encodeURIComponent(product.id)}${b2c ? '&audience=b2c' : ''}&lang=${i18n.language}`;
-    const action = b2c ? '' : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
+    const detailUrl = `../../${b2c ? 'product-consumer.html' : 'product.html'}?id=${encodeURIComponent(product.id)}&lang=${i18n.language}`;
+    const action = b2c
+      ? `<a href="${detailUrl}#findOptics">${i18n.language === 'en' ? 'Find nearby optical stores' : 'Buscar ópticas cercanas'}</a>`
+      : `<button type="button" data-request-add data-product-id="${escapeHtml(product.id)}">${escapeHtml(i18n.t('addRequest'))}</button>`;
     return `
       <article class="product-card${isNewModel(source) ? ' is-new-model' : ''}" data-product-id="${escapeHtml(product.id)}">
         <a class="product-card-image" href="${detailUrl}" aria-label="${escapeHtml(i18n.t('viewDetails'))}: ${escapeHtml(product.displayModel)}">
@@ -291,7 +296,7 @@
   function bindHeroVideo() {
     const video = document.getElementById('heroVideo');
     if (!video || !video.dataset.videoSrc || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let loaded = false;
+    let loaded = Boolean(video?.getAttribute('src'));
     const interactionEvents = ['pointerdown', 'touchstart', 'keydown'];
     const load = () => {
       if (loaded) return;
@@ -307,13 +312,36 @@
     else window.addEventListener('load', schedule, { once: true });
   }
 
+  function bindProfessionalStickyActions() {
+    const actions = document.querySelector('.b2b-sticky-actions');
+    const hero = document.querySelector('.hero');
+    if (!actions || !hero) return;
+    const update = () => {
+      const visible = hero.getBoundingClientRect().bottom < window.innerHeight * 0.65;
+      actions.classList.toggle('is-visible', visible);
+      actions.inert = !visible;
+      actions.setAttribute('aria-hidden', String(!visible));
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+  }
+
   function bindVideo() {
-    const button = document.querySelector('[data-sound-toggle]');
+    const restartButton = document.querySelector('[data-video-restart-sound]');
     const video = document.getElementById('explainVideo');
     let activeLanguage = i18n.language;
-    let loaded = false;
+    let loaded = Boolean(video?.getAttribute('src'));
+    let soundStarted = video?.dataset.soundStarted === 'true';
+    const updateButton = () => {
+      if (!restartButton || !video) return;
+      restartButton.textContent = soundStarted
+        ? i18n.t(video.paused ? 'resumeVideo' : 'pauseVideo')
+        : i18n.t('playFromStartSound');
+      restartButton.setAttribute('aria-label', restartButton.textContent);
+    };
     const sourceFor = (language) => (language === 'en' ? video?.dataset.videoEn : video?.dataset.videoEs);
-    const load = () => {
+    const load = (autoplay = true) => {
       if (!video) return;
       const nextSource = sourceFor(activeLanguage);
       if (!nextSource) return;
@@ -322,11 +350,17 @@
         video.load();
       }
       loaded = true;
-      video.play().catch(() => {});
+      if (autoplay) video.play().catch(() => {});
     };
     const updateLanguageVideo = (language) => {
+      if (activeLanguage !== language && video) {
+        video.muted = true;
+        soundStarted = false;
+        delete video.dataset.soundStarted;
+      }
       activeLanguage = language;
       if (loaded) load();
+      updateButton();
     };
     if (video) {
       const loadWhenReached = () => {
@@ -339,13 +373,29 @@
         if (window.scrollY > 200) loadWhenReached();
       }, { once: true });
     }
-    button?.addEventListener('click', () => {
+    video?.addEventListener('play', updateButton);
+    video?.addEventListener('pause', updateButton);
+    restartButton?.addEventListener('click', () => {
       if (!video) return;
-      if (!loaded) load();
-      video.muted = !video.muted;
-      button.textContent = i18n.t(video.muted ? 'soundOn' : 'soundOff');
-      if (video.paused) video.play().catch(() => {});
+      if (soundStarted) {
+        if (video.paused) {
+          video.muted = false;
+          video.play().catch(() => {});
+        } else video.pause();
+        updateButton();
+        return;
+      }
+      if (!loaded) load(false);
+      video.pause();
+      try { video.currentTime = 0; } catch (_error) { /* Metadata may still be loading. */ }
+      video.muted = false;
+      video.volume = 1;
+      soundStarted = true;
+      video.dataset.soundStarted = 'true';
+      video.play().catch(() => {});
+      updateButton();
     });
+    updateButton();
     return updateLanguageVideo;
   }
 
@@ -419,7 +469,7 @@
     const sunCount = products.filter((product) => product.family === 'sun').length;
     document.querySelectorAll('[data-optical-count]').forEach((node) => { node.textContent = String(opticalCount); });
     document.querySelectorAll('[data-sun-count]').forEach((node) => { node.textContent = String(sunCount); });
-    bindHeader(); bindHeroVideo(); updateLanguageVideo = bindVideo(); initReveal(); initDeferredContent();
+    bindHeader(); bindHeroVideo(); bindProfessionalStickyActions(); updateLanguageVideo = bindVideo(); initReveal(); initDeferredContent();
     i18n.onChange(rerenderLocalized);
   }
 

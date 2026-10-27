@@ -12,12 +12,13 @@ if (!dist.startsWith(`${root}${path.sep}`)) {
 
 async function build() {
   require('./generate-experiences.cjs');
+  require('./generate-consumer-product.cjs');
   require('./generate-sitemap.cjs');
   await rm(dist, { recursive: true, force: true });
   await mkdir(client, { recursive: true });
   await mkdir(server, { recursive: true });
 
-  for (const file of ['index.html', 'product.html', 'catalogo.html', 'blog.html', '404.html', '.nojekyll', 'favicon.ico', 'sitemap.xml', 'robots.txt']) {
+  for (const file of ['index.html', 'product.html', 'product-consumer.html', 'catalogo.html', 'blog.html', '404.html', '.nojekyll', 'favicon.ico', 'sitemap.xml', 'robots.txt']) {
     await cp(path.join(root, file), path.join(client, file));
   }
 

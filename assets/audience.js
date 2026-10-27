@@ -3,7 +3,7 @@
 
   if (document.documentElement.hasAttribute('data-champion-review')) return;
 
-  const VERSION = 'audience-20260818-12';
+  const VERSION = 'audience-20261027-3';
   const PROFILE_KEY = 'champion-audience-profile-v1';
   const B2C_PROFILE_KEY = 'champion-b2c-profile-v1';
   const B2B_PROFILE_KEY = 'champion-b2b-profile-v1';
@@ -158,6 +158,7 @@
   function explicitProfile() {
     const route = window.location.pathname.match(/^\/(?:es|en)\/(b2b|b2c)\//i);
     if (route) return route[1].toLowerCase();
+    if (/\/product-consumer\.html$/i.test(window.location.pathname)) return 'b2c';
     if (isProductPage()) {
       return new URLSearchParams(window.location.search).get('audience') === 'b2c' ? 'b2c' : 'b2b';
     }
@@ -172,7 +173,7 @@
   }
 
   function isProductPage() {
-    return /\/product\.html$/i.test(window.location.pathname);
+    return /\/product(?:-consumer)?\.html$/i.test(window.location.pathname);
   }
 
   function setDocumentProfile(profile) {
@@ -905,7 +906,7 @@
   }
 
   function intentFromTarget(target) {
-    const productLink = target.closest('a[href*="product.html?id="]');
+    const productLink = target.closest('a[href*="product.html?id="], a[href*="product-consumer.html?id="]');
     if (productLink) return { type: 'view-product', targetUrl: productLink.href, trigger: productLink };
     const add = target.closest('[data-request-add], [data-interest-add]');
     if (add) {
@@ -939,7 +940,12 @@
     event.preventDefault();
     event.stopImmediatePropagation();
     const profile = storedProfile();
-    if (intent.type === 'change-profile') { window.location.href = new URL('', siteBase).href; return; }
+    if (intent.type === 'change-profile') {
+      const language = /^\/en\//i.test(window.location.pathname) || new URLSearchParams(window.location.search).get('lang') === 'en' ? 'en' : 'es';
+      const otherProfile = profile === 'b2c' ? 'b2b' : 'b2c';
+      window.location.href = new URL(`${language}/${otherProfile}/`, siteBase).href;
+      return;
+    }
     if (!profile) { window.location.href = new URL('', siteBase).href; return; }
     dispatchIntent(intent, profile);
   }

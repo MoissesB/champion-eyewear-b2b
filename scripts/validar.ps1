@@ -14,18 +14,22 @@ function Require-File([string]$relativePath) {
 $requiredFiles = @(
   "index.html",
   "product.html",
+  "product-consumer.html",
   "catalogo.html",
   "blog.html",
   "404.html",
   "robots.txt",
   "sitemap.xml",
   "scripts/generate-sitemap.cjs",
+  "scripts/generate-consumer-product.cjs",
   "data/products.json",
   "data/blog-posts.json",
   "data/products.js",
   "data/products.min.js",
   "assets/styles.css",
   "assets/styles.min.css",
+  "assets/optics-locator.js",
+  "assets/optics-locator.min.js",
   "assets/i18n.js",
   "assets/i18n.min.js",
   "assets/audience.js",
@@ -75,8 +79,8 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
     $optical = @($products | Where-Object family -eq "optical")
     $sun = @($products | Where-Object family -eq "sun")
 
-    if ($products.Count -ne 128) { $failures.Add("Se esperaban 128 productos y se encontraron $($products.Count)") | Out-Null }
-    if ($optical.Count -ne 92) { $failures.Add("Se esperaban 92 monturas y se encontraron $($optical.Count)") | Out-Null }
+    if ($products.Count -ne 140) { $failures.Add("Se esperaban 140 productos y se encontraron $($products.Count)") | Out-Null }
+    if ($optical.Count -ne 104) { $failures.Add("Se esperaban 104 monturas y se encontraron $($optical.Count)") | Out-Null }
     if ($sun.Count -ne 36) { $failures.Add("Se esperaban 36 solares y se encontraron $($sun.Count)") | Out-Null }
 
     $duplicateIds = $products | Group-Object id | Where-Object Count -gt 1
@@ -119,14 +123,14 @@ if (Test-Path -LiteralPath $catalogPath -PathType Leaf) {
   }
 }
 
-foreach ($htmlName in @("catalog-experience.html", "product.html")) {
+foreach ($htmlName in @("catalog-experience.html", "product.html", "product-consumer.html")) {
   $htmlPath = Join-Path $repoRoot $htmlName
   if (-not (Test-Path -LiteralPath $htmlPath -PathType Leaf)) { continue }
   $html = [System.IO.File]::ReadAllText($htmlPath, $utf8)
   $usesBootstrap = $html -match 'assets/bootstrap(?:\.min)?\.js'
   if ($html -notmatch '(?i)<!doctype html>') { $failures.Add("${htmlName}: falta <!doctype html>") | Out-Null }
   if ($html -notmatch 'data/products(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga el catálogo estructurado") | Out-Null }
-  if ($html -notmatch 'assets/request(?:-loader)?(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga la solicitud B2B") | Out-Null }
+  if ($htmlName -ne 'product-consumer.html' -and $html -notmatch 'assets/request(?:-loader)?(?:\.min)?\.js' -and -not $usesBootstrap) { $failures.Add("${htmlName}: no carga la solicitud B2B") | Out-Null }
   if (($html -notmatch 'assets/i18n(?:\.min)?\.js' -and -not $usesBootstrap) -or $html -notmatch 'data-language-toggle') { $failures.Add("${htmlName}: falta la traducción ES/EN") | Out-Null }
   if ($html -match 'jspdf\.umd\.min\.js') { $failures.Add("${htmlName}: el generador PDF no debe bloquear la carga inicial") | Out-Null }
   if ($html -notmatch 'champion-header-display\.webp') { $failures.Add("${htmlName}: no usa el logotipo optimizado de cabecera") | Out-Null }
@@ -138,11 +142,37 @@ foreach ($htmlName in @("catalog-experience.html", "product.html")) {
 $indexPath = Join-Path $repoRoot "index.html"
 if (Test-Path -LiteralPath $indexPath -PathType Leaf) {
   $indexHtml = [System.IO.File]::ReadAllText($indexPath, $utf8)
-  if ($indexHtml -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/">') {
-    $failures.Add("index.html: falta el canonical absoluto de la portada") | Out-Null
+  if ($indexHtml -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/es/b2c/">') {
+    $failures.Add("index.html: falta el canonical del catálogo personal") | Out-Null
   }
-  if ($indexHtml -notmatch 'href="\./es/b2b/"' -or $indexHtml -notmatch 'href="\./es/b2c/"') { $failures.Add("index.html: faltan las dos experiencias españolas") | Out-Null }
-  if ($indexHtml -notmatch 'href="\./en/"') { $failures.Add("index.html: falta la experiencia inglesa") | Out-Null }
+  if ($indexHtml -notmatch "location\.replace\('\./es/b2c/'" -or $indexHtml -match 'experience-selector|data-experience-choice') { $failures.Add("index.html: debe abrir directamente el catálogo personal") | Out-Null }
+  $englishIndexPath = Join-Path $repoRoot "en/index.html"
+  $englishIndexHtml = [System.IO.File]::ReadAllText($englishIndexPath, $utf8)
+  if ($englishIndexHtml -notmatch "location\.replace\('\./b2c/'" -or $englishIndexHtml -match 'experience-selector|data-experience-choice') { $failures.Add("en/index.html: debe abrir directamente el catálogo personal inglés") | Out-Null }
+}
+
+foreach ($language in @('es', 'en')) {
+  $personalPath = Join-Path $repoRoot "$language/b2c/index.html"
+  $professionalPath = Join-Path $repoRoot "$language/b2b/index.html"
+  $personalHtml = [System.IO.File]::ReadAllText($personalPath, $utf8)
+  $professionalHtml = [System.IO.File]::ReadAllText($professionalPath, $utf8)
+  $heroAt = $personalHtml.IndexOf('class="hero"')
+  $videoAt = $personalHtml.IndexOf('class="section consumer-video-section"')
+  $catalogAt = $personalHtml.IndexOf('class="section catalog-section"')
+  if ($heroAt -lt 0 -or $videoAt -le $heroAt -or $catalogAt -le $videoAt -or $personalHtml -notmatch 'id="explainVideo"') {
+    $failures.Add("$language/b2c/index.html: falta el video como segunda sección") | Out-Null
+  }
+  $videoId = if ($language -eq 'es') { '69e45ad38696a78b8d076627' } else { '69f65b406b07ab33031dd1ae' }
+  if ($personalHtml -notmatch $videoId -or $personalHtml -notmatch 'href="../b2b/#monturas"') {
+    $failures.Add("$language/b2c/index.html: falta el video del idioma o la entrada profesional") | Out-Null
+  }
+  if ($personalHtml -notmatch 'id="findOptics"' -or $personalHtml -match 'data-request-open>|data-request-add') {
+    $failures.Add("$language/b2c/index.html: falta el buscador de ópticas o conserva controles de pedido") | Out-Null
+  }
+  if ($professionalHtml -notmatch 'class="b2b-sticky-actions"' -or $professionalHtml -notmatch 'data-request-open>') {
+    $failures.Add("$language/b2b/index.html: faltan acciones fijas para ver modelos y preparar pedido") | Out-Null
+  }
+  if ($professionalHtml -notmatch 'class="hero-audience-link"') { $failures.Add("$language/b2b/index.html: falta la entrada al catálogo personal") | Out-Null }
 }
 
 $blogPosts = @()
@@ -258,12 +288,23 @@ if (Test-Path -LiteralPath $productTemplatePath -PathType Leaf) {
   }
 }
 
+$consumerTemplatePath = Join-Path $repoRoot "product-consumer.html"
+if (Test-Path -LiteralPath $consumerTemplatePath -PathType Leaf) {
+  $consumerTemplate = [System.IO.File]::ReadAllText($consumerTemplatePath, $utf8)
+  if ($consumerTemplate -notmatch 'id="findOptics"' -or $consumerTemplate -notmatch 'assets/optics-locator\.min\.js' -or $consumerTemplate -notmatch 'champion-innova\.com/product-consumer\.html\?id=') {
+    $failures.Add("product-consumer.html: falta buscador o canonical de ficha personal") | Out-Null
+  }
+  if ($consumerTemplate -match 'id="productContact"|data-request-open>|assets/request-loader\.min\.js|id="requestPortal"|id="interestPortal"') {
+    $failures.Add("product-consumer.html: conserva formulario o controles de pedido") | Out-Null
+  }
+}
+
 $catalogIndexPath = Join-Path $repoRoot "catalogo.html"
 if (Test-Path -LiteralPath $catalogIndexPath -PathType Leaf) {
   $catalogIndex = [System.IO.File]::ReadAllText($catalogIndexPath, $utf8)
   $staticProductLinks = ([regex]::Matches($catalogIndex, 'href="\./product\.html\?id=[^"]+"')).Count
-  if ($staticProductLinks -ne 128) {
-    $failures.Add("catalogo.html: se esperaban 128 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
+  if ($staticProductLinks -ne 140) {
+    $failures.Add("catalogo.html: se esperaban 140 enlaces estáticos y se encontraron $staticProductLinks") | Out-Null
   }
   if ($catalogIndex -notmatch '<link\s+rel="canonical"\s+href="https://champion-innova\.com/catalogo\.html">') {
     $failures.Add("catalogo.html: falta el canonical absoluto") | Out-Null
@@ -274,8 +315,8 @@ $sitemapPath = Join-Path $repoRoot "sitemap.xml"
 if (Test-Path -LiteralPath $sitemapPath -PathType Leaf) {
   $sitemapText = [System.IO.File]::ReadAllText($sitemapPath, $utf8)
   $sitemapUrls = @([regex]::Matches($sitemapText, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value })
-  # Selector, four B2B/B2C routes, English selector, catalog index and blog.
-  $expectedSitemapUrls = $products.Count + 8 + $blogPosts.Count
+  # Four B2B/B2C routes, catalog index, blog and its articles. Redirect entrypoints are omitted.
+  $expectedSitemapUrls = ($products.Count * 3) + 6 + $blogPosts.Count
   if ($sitemapUrls.Count -ne $expectedSitemapUrls) { $failures.Add("sitemap.xml: se esperaban $expectedSitemapUrls URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
   if (($sitemapUrls | Sort-Object -Unique).Count -ne $sitemapUrls.Count) { $failures.Add("sitemap.xml: contiene URLs duplicadas") | Out-Null }
   if ($sitemapText -match '<lastmod>') { $failures.Add("sitemap.xml: no debe incluir lastmod artificial") | Out-Null }
@@ -446,7 +487,7 @@ if (Test-Path -LiteralPath $interestPath -PathType Leaf) {
 }
 
 $publicCommercialFiles = @(
-  'index.html', 'product.html', 'catalogo.html', '404.html',
+  'index.html', 'product.html', 'product-consumer.html', 'catalogo.html', '404.html',
   'assets/i18n.js', 'assets/i18n.min.js', 'assets/request.js', 'assets/request.min.js',
   'assets/home.js', 'assets/home.min.js', 'assets/product.js', 'assets/product.min.js',
   'assets/styles.css', 'assets/styles.min.css',
@@ -538,4 +579,4 @@ if ($failures.Count -gt 0) {
 }
 
 $imageCount = (Get-ChildItem -LiteralPath (Join-Path $repoRoot "assets") -Recurse -File -Filter "*.webp").Count
-Write-Host "validación-ok (128 productos; 4 rutas de experiencia; blog con $($blogPosts.Count) publicaciones individuales; $imageCount imágenes WebP; 1 plantilla de producto)"
+Write-Host "validación-ok (140 productos; 4 rutas de experiencia; blog con $($blogPosts.Count) publicaciones individuales; $imageCount imágenes WebP; 2 fichas de producto)"

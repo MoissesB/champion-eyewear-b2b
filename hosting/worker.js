@@ -38,22 +38,29 @@ const worker = {
     }
 
     if (url.pathname === '/index.html') {
-      url.pathname = '/';
+      url.pathname = '/es/b2c/';
       needsRedirect = true;
     }
 
     if (needsRedirect) return permanentRedirect(url);
 
-    if (url.pathname === '/product.html') {
+    if (url.pathname === '/' || url.pathname === '') {
+      url.pathname = '/es/b2c/';
+      return permanentRedirect(url);
+    }
+    if (url.pathname === '/en/' || url.pathname === '/en/index.html') {
+      url.pathname = '/en/b2c/';
+      return permanentRedirect(url);
+    }
+
+    if (url.pathname === '/product.html' || url.pathname === '/product-consumer.html') {
       const id = url.searchParams.get('id');
       if (!id || !PRODUCT_IDS.has(id)) return notFound(request, env, url);
     }
 
     if (url.pathname === '/404.html') return notFound(request, env, url);
 
-    if (url.pathname === '/' || url.pathname === '') {
-      url.pathname = '/index.html';
-    } else if (/^\/(?:es|en)(?:\/(?:b2b|b2c))?\/$/.test(url.pathname)) {
+    if (/^\/(?:es|en)\/(?:b2b|b2c)\/$/.test(url.pathname)) {
       url.pathname += 'index.html';
     }
 
