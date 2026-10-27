@@ -1,0 +1,326 @@
+import { initializeApp } from 'firebase/app';
+import { getAuth, isSignInWithEmailLink, onAuthStateChanged, signInWithEmailLink, signOut } from 'firebase/auth';
+import { addDoc, collection, doc, getDoc, getFirestore, onSnapshot, serverTimestamp } from 'firebase/firestore';
+import { catalogImagePng, collectPublicFiles, createPublicBundle, responseBlobWithProgress } from './client-public-media.js';
+
+const $ = (id) => document.getElementById(id);
+const localPreview = ['localhost', '127.0.0.1'].includes(location.hostname);
+const cfg = window.CHAMPION_PORTAL_CONFIG || {};
+const state = { lang: 'es', catalog: null, marketing: null, publicMedia: null, videoDetails: {}, logos: [], logoDimensions: {}, drive: {videos:[],carousels:[]}, selected: new Set(), tab: 'models', filtersOpen: false, user: null, db: null, auth: null, unsubscribe: null, loggedVisit: false, emailLinkUrl: null, verifyingUid: null, downloading: false };
+const copy = {
+  es: { visualLabel:'BIBLIOTECA PROFESIONAL', eyebrow:'CHAMPION EYEWEAR · PARA ÓPTICAS',headline:'Todo lo que tu óptica necesita para mostrar Champion.',intro:'Imágenes de cada montura y lente de sol, materiales de campaña y videos en un espacio preparado para tu equipo.',models:'modelos y colores',images:'imágenes de catálogo',languages:'recursos organizados',accessKicker:'ACCESO PARA CLIENTES',accessTitle:'Entra con el correo de tu óptica.',accessText:'Usa una cuenta Google vinculada a ese correo. Revisaremos tu solicitud antes de habilitar las descargas.',googleLogin:'Continuar con Google',noPassword:'No hay contraseña adicional ni autorización por cada descarga.',registerKicker:'UN PASO MÁS',registerTitle:'Cuéntanos sobre tu óptica.',registerText:'Enviaremos tu solicitud para revisión. El acceso a todos los recursos se activará tras la aprobación.',businessLabel:'Nombre de la óptica o empresa',countryLabel:'País',registerSubmit:'Solicitar acceso',changeAccount:'Escribir otro correo',libraryKicker:'BIBLIOTECA PARA TU ÓPTICA',libraryTitle:'Encuentra el recurso correcto.',libraryIntro:'Explora por referencia, filtra y prepara una selección de descargas.',approved:'Acceso aprobado',previewBadge:'Vista local',tabModels:'Imágenes de modelos',tabVideos:'Videos',tabCampaigns:'Pendones y redes',searchLabel:'Buscar modelo, SKU o color',typeLabel:'Tipo',allTypes:'Todos',optical:'Monturas ópticas',sun:'Lentes de sol',collectionLabel:'Colección',allCollections:'Todas',colorLabel:'Color',allColors:'Todos',clearFilters:'Limpiar filtros',selectionHint:'Marca modelos para preparar sus ZIP.',noResults:'No encontramos modelos con esos filtros.',comingKicker:'PRÓXIMA COLECCIÓN',comingTitle:'Piezas listas para adaptar.',comingText:'Aquí aparecerán los diseños para pendones, vitrinas y redes cuando estén aprobados y dimensionados.',selectedModels:' modelos seleccionados',clearSelection:'Vaciar',downloadZips:'Descargar ZIP',backSite:'Volver al catálogo',select:'Seleccionar',selected:'Seleccionado',view:'Ver imágenes',color:'Color',material:'Material',measurements:'Medidas',collection:'Colección',web:'Versión web',original:'Original',notAvailable:'Original pendiente de localizar',downloadModel:'ZIP del modelo',zipList:'ZIP de tu selección',zipIntro:'Descarga un archivo por referencia. Cada ZIP incluye las vistas y su ficha descriptiva.',noDrive:'La descarga privada estará disponible cuando se complete la carga a Drive.',pendingTitle:'Solicitud recibida',pendingText:'Tu correo está confirmado. Revisaremos la óptica y te avisaremos cuando las descargas estén habilitadas.',suspendedTitle:'Acceso suspendido',suspendedText:'Consulta con el equipo comercial de Innova para revisar tu acceso.',setupTitle:'Configuración pendiente',setupText:'La biblioteca está preparada. Falta conectar la cuenta Google y los permisos privados antes de abrir el portal.',previewTitle:'Vista local de revisión',previewText:'Esta vista muestra el catálogo completo. Los ZIP locales sirven solo para comprobar la entrega; el acceso público seguirá cerrado.',loginError:'No se pudo iniciar sesión. Inténtalo de nuevo.',saveError:'No se pudo guardar la solicitud.',results:'referencias',files:'imágenes',videoPending:'Video pendiente de carga privada',videoDownload:'Descargar video',noVideos:'Aún no hay videos verificados en este lote.',siteLink:'Volver al catálogo',searchPlaceholder:'Buscar CH01, color, SKU…',previewToast:'Vista local: solo revisión',noBundle:'El ZIP de esta referencia aún no está listo.',downloadHint:'La sesión Google también da acceso a los archivos compartidos contigo en Drive.'},
+  en: {visualLabel:'PROFESSIONAL LIBRARY', eyebrow:'CHAMPION EYEWEAR · FOR OPTICAL STORES',headline:'Everything your optical store needs to present Champion.',intro:'Images for every optical frame and sunglass style, campaign assets, and videos in one organized place for your team.',models:'models and colors',images:'catalog images',languages:'organized resources',accessKicker:'CLIENT ACCESS',accessTitle:'Sign in with your store email.',accessText:'Use a Google Account linked to this email. We review each request before enabling downloads.',googleLogin:'Continue with Google',noPassword:'No extra password or approval for each download.',registerKicker:'ONE MORE STEP',registerTitle:'Tell us about your optical store.',registerText:'Your request will be reviewed. Full library access is enabled after approval.',businessLabel:'Optical store or company name',countryLabel:'Country',registerSubmit:'Request access',changeAccount:'Enter another email',libraryKicker:'YOUR CHAMPION LIBRARY',libraryTitle:'Find the right asset.',libraryIntro:'Browse by style, filter, and prepare your download selection.',approved:'Approved access',previewBadge:'Local preview',tabModels:'Product images',tabVideos:'Videos',tabCampaigns:'Banners and social',searchLabel:'Search style, SKU, or color',typeLabel:'Type',allTypes:'All',optical:'Optical frames',sun:'Sunglasses',collectionLabel:'Collection',allCollections:'All',colorLabel:'Color',allColors:'All',clearFilters:'Clear filters',selectionHint:'Select styles to prepare their ZIP files.',noResults:'No styles match these filters.',comingKicker:'COMING NEXT',comingTitle:'Ready-to-adapt materials.',comingText:'Banners, store displays, and social designs will appear here once approved and sized.',selectedModels:' selected styles',clearSelection:'Clear',downloadZips:'Download ZIPs',backSite:'Back to catalog',select:'Select',selected:'Selected',view:'View images',color:'Color',material:'Material',measurements:'Measurements',collection:'Collection',web:'Web version',original:'Original',notAvailable:'Original source not yet located',downloadModel:'Style ZIP',zipList:'Your ZIP selection',zipIntro:'Download one file per style. Each ZIP contains the views and an image details sheet.',noDrive:'Private download will be available after the Drive upload is completed.',pendingTitle:'Request received',pendingText:'Your email is confirmed. We will review your store and notify you when downloads are enabled.',suspendedTitle:'Access suspended',suspendedText:'Please contact Innova sales to review your access.',setupTitle:'Setup pending',setupText:'The library is prepared. Google login and private permissions must be connected before opening the portal.',previewTitle:'Local review preview',previewText:'This view shows the complete catalog. Local ZIPs are for review only; public access remains closed.',loginError:'Sign-in failed. Please try again.',saveError:'Could not save your request.',results:'styles',files:'images',videoPending:'Video awaiting private upload',videoDownload:'Download video',noVideos:'No verified videos in this batch yet.',siteLink:'Back to catalog',searchPlaceholder:'Search CH01, color, SKU…',previewToast:'Local preview only',noBundle:'This style ZIP is not ready yet.',downloadHint:'Your Google session also grants access to the Drive files shared with you.'},
+};
+Object.assign(copy.es,{campaignStyle:'Estilo',campaignAll:'Todos',campaignSport:'Deportivo',campaignCasual:'Casual',campaignFormat:'Formato',campaignPost:'Publicación',campaignStory:'Historia',campaignBanner:'Pendón',campaignNote:'Piezas conceptuales. Verifica tamaño y resolución con la imprenta antes de producir pendones.',campaignDownload:'Descargar pieza',campaignNoResults:'No hay piezas para estos filtros.'});
+Object.assign(copy.en,{campaignStyle:'Style',campaignAll:'All',campaignSport:'Sport',campaignCasual:'Casual',campaignFormat:'Format',campaignPost:'Post',campaignStory:'Story',campaignBanner:'Banner',campaignNote:'Concept artwork. Confirm size and resolution with your printer before producing banners.',campaignDownload:'Download artwork',campaignNoResults:'No artwork matches these filters.'});
+Object.assign(copy.es,{selectionHint:'Añade modelos, fotos, videos y campañas al carrito.',selectedModels:' recursos en el carrito',downloadZips:'Revisar carrito',zipList:'Tu carrito de recursos',zipIntro:'Descarga una sola carpeta ZIP con subcarpetas e inventario detallado de cada archivo.',addCart:'Añadir al carrito',removeCart:'Quitar del carrito',downloadAll:'Preparar ZIP único',preparing:'Preparando ZIP…',bundleReady:'ZIP preparado. La descarga comenzará ahora.',bundleError:'No se pudo preparar el ZIP. Revisa la selección e inténtalo de nuevo.',bundleNotLive:'El ZIP único está disponible en la vista local; falta conectar el servicio privado antes de publicarlo.',cartEmpty:'El carrito está vacío.',remove:'Quitar'});
+Object.assign(copy.en,{selectionHint:'Add styles, photos, videos and campaigns to your cart.',selectedModels:' resources in cart',downloadZips:'Review cart',zipList:'Your resource cart',zipIntro:'Download one ZIP folder with organized subfolders and a detailed file inventory.',addCart:'Add to cart',removeCart:'Remove from cart',downloadAll:'Prepare single ZIP',preparing:'Preparing ZIP…',bundleReady:'ZIP ready. Your download will start now.',bundleError:'Could not prepare the ZIP. Review your selection and try again.',bundleNotLive:'The single ZIP works in the local preview; a private service is still needed before publication.',cartEmpty:'Your cart is empty.',remove:'Remove'});
+Object.assign(copy.es,{tabCampaigns:'Publicidad y redes',campaignBanner:'Banner para punto de venta',campaignNote:'Artes conceptuales. Confirma medidas y resolución con la imprenta antes de producir materiales para punto de venta.',videoOpen:'Abrir video en Drive',videoPreview:'Reproducir video'});
+Object.assign(copy.en,{tabCampaigns:'Marketing and social',campaignBanner:'In-store banner',campaignNote:'Concept artwork. Confirm size and resolution with your printer before producing in-store materials.',videoOpen:'Open video in Drive',videoPreview:'Play video'});
+Object.assign(copy.es,{zipIntroPending:'Selecciona los archivos de tu carrito para abrir sus descargas privadas. El ZIP único se habilitará cuando conectemos el servicio de empaquetado al dominio.',openResource:'Abrir recurso',originalBundle:'ZIP del modelo con el original'});
+Object.assign(copy.en,{zipIntroPending:'Open each private download in your cart. The single ZIP will be enabled once the bundle service is connected to this domain.',openResource:'Open resource',originalBundle:'Style ZIP with the original'});
+Object.assign(copy.es,{accessText:'Si tu correo está aprobado en la lista de Champion, te enviaremos un enlace privado para entrar.',emailLabel:'Correo electrónico',emailLogin:'Enviarme el enlace de acceso',noPassword:'No necesitas una cuenta de Google ni una contraseña.',linkSentTitle:'Revisa tu correo',linkSentText:'Si el correo que escribiste está aprobado, recibirás un mensaje de Champion. Ábrelo y pulsa «Entrar a mi biblioteca». Si no lo encuentras, revisa la carpeta de spam.',openingTitle:'Abriendo tu biblioteca',openingText:'Estamos verificando el enlace de acceso.',confirmEmail:'Confirmar y entrar',confirmEmailTitle:'Confirma tu correo para entrar',confirmEmailText:'Escribe el mismo correo donde recibiste el enlace. Al confirmar, se abrirá la biblioteca.',confirmEmailError:'No pudimos confirmar ese correo. Comprueba que sea el mismo que recibió el enlace.',newEmailLink:'Solicitar otro enlace',setupText:'Estamos conectando el acceso privado por correo. Vuelve a intentarlo más tarde.',loginError:'No pudimos verificar el enlace. Solicita uno nuevo.',noDrive:'La descarga privada estará disponible cuando el servidor de archivos esté conectado.',downloadHint:'Tus recursos se entregan desde el servidor privado de Champion.',videoOpen:'Reproducir video'});
+Object.assign(copy.en,{accessText:'If your email is approved on Champion’s list, we will send a private sign-in link.',emailLabel:'Email address',emailLogin:'Email me a sign-in link',noPassword:'You do not need a Google Account or a password.',linkSentTitle:'Check your email',linkSentText:'If the email you entered is approved, Champion will send you a message. Open it and select “Enter my library”. Check your spam folder if you cannot find it.',confirmEmail:'Confirm email',confirmEmailText:'Enter the same email that received the link to finish signing in.',setupText:'We are connecting private email access. Please try again later.',loginError:'We could not verify the link. Request a new one.',noDrive:'Private downloads will be available when the file server is connected.',downloadHint:'Your assets are delivered from Champion’s private server.',videoOpen:'Play video'});
+Object.assign(copy.es,{downloadProgressTitle:'Preparando tu descarga',downloadConnecting:'Conectando con el archivo…',downloadReceiving:'Descargando archivo…',downloadProcessing:'Preparando el archivo…',downloadPackaging:'Preparando el ZIP…',downloadFileCount:'Descargando archivo',downloadReadyDetail:'Descarga preparada'});
+Object.assign(copy.en,{downloadProgressTitle:'Preparing your download',downloadConnecting:'Connecting to the file…',downloadReceiving:'Downloading file…',downloadProcessing:'Preparing the file…',downloadPackaging:'Preparing ZIP…',downloadFileCount:'Downloading file',downloadReadyDetail:'Download ready'});
+Object.assign(copy.es,{tabInstagram:'Instagram',instagramNote:'Archivos publicados por Champion en Instagram. Esta colección corresponde a la primera parte de la exportación; se ampliará cuando Meta entregue las demás.',mediaType:'Tipo de archivo',socialImages:'Imágenes',downloadPublic:'Descargar archivo',publicZipIntro:'Descarga un ZIP con los archivos digitales seleccionados y un inventario detallado. Los originales de alta resolución siguen pendientes.',zipProgress:'Descargando archivos',instagramFile:'Archivo publicado en Instagram',noOriginal:'Original privado: todavía no disponible para descargar.',publicMediaError:'No se pudo obtener un archivo de GoHighLevel. Inténtalo de nuevo.'});
+Object.assign(copy.en,{tabInstagram:'Instagram',instagramNote:'Media published by Champion on Instagram. This collection is from the first export part; more will be added when Meta delivers the rest.',mediaType:'File type',socialImages:'Images',downloadPublic:'Download file',publicZipIntro:'Download one ZIP with the selected digital files and a detailed inventory. High-resolution originals remain pending.',zipProgress:'Downloading files',instagramFile:'File published on Instagram',noOriginal:'Private original: not yet available for download.',publicMediaError:'A file could not be retrieved from GoHighLevel. Please retry.'});
+Object.assign(copy.es,{zipIntro:'Descarga un solo ZIP con carpetas por tipo de recurso y modelo. Las fotos de catálogo estarán en PNG.',publicZipIntro:'Descarga un solo ZIP con los recursos elegidos. Las imágenes de modelos estarán en PNG; los videos, en MP4.',web:'Imagen PNG'});
+Object.assign(copy.en,{zipIntro:'Download one ZIP organized by resource type and style. Catalog photos will be PNG files.',publicZipIntro:'Download one ZIP with the selected resources. Style images will be PNG; videos will be MP4.',web:'PNG image'});
+Object.assign(copy.es,{intro:'Imágenes de cada montura y lente de sol, contenido para redes, logos y videos para tu equipo.',selectionHint:'Añade modelos, fotos, videos y logos al carrito.',tabInstagram:'Imágenes para redes',tabLogos:'Logos',logosNote:'Logos Champion para usar en materiales de tu óptica.',instagramNote:'Imágenes publicadas por Champion para compartir con tus clientes.',mediaType:'Tipo de imagen',socialCarousel:'Carruseles',socialImages:'Imágenes individuales',contentLanguage:'Idioma del contenido',languageUnknown:'Sin clasificar',cartLabel:'Carrito',cartEmpty:'Todavía no has añadido recursos.',downloadPublic:'Descargar archivo'});
+Object.assign(copy.en,{intro:'Frame and sunglass images, social content, logos, and videos for your team.',selectionHint:'Add styles, photos, videos, and logos to your cart.',tabInstagram:'Social images',tabLogos:'Logos',logosNote:'Champion logos for your store materials.',instagramNote:'Images published by Champion to share with your customers.',mediaType:'Image type',socialCarousel:'Carousels',socialImages:'Single images',contentLanguage:'Content language',languageUnknown:'Unclassified',cartLabel:'Cart',cartEmpty:'You have not added resources yet.',downloadPublic:'Download file'});
+Object.assign(copy.es,{tabCampaigns:'Artes de campaña',campaignNote:'Imágenes Champion para publicaciones y materiales de tu óptica.',instagramNote:'Imágenes y carruseles Champion para compartir con tus clientes.',carouselSlides:'imágenes',campaignPost:'Cuadrado / publicación',campaignStory:'Vertical / historia',campaignBanner:'Horizontal / banner'});
+Object.assign(copy.en,{tabCampaigns:'Campaign artwork',campaignNote:'Champion images for posts and your store materials.',instagramNote:'Champion images and carousels to share with your customers.',carouselSlides:'images',campaignPost:'Square / post',campaignStory:'Vertical / story',campaignBanner:'Horizontal / banner'});
+Object.assign(copy.es,{cartLabel:'Mis descargas',openCart:'Abrir descargas seleccionadas',expandMedia:'Ampliar',closeMedia:'Cerrar vista ampliada',frameSize:'Medidas de montura',pixelSize:'Tamaño',allSizes:'Todos'});
+Object.assign(copy.en,{cartLabel:'My downloads',openCart:'Open selected downloads',expandMedia:'Expand',closeMedia:'Close expanded view',frameSize:'Frame measurements',pixelSize:'Size',allSizes:'All'});
+Object.assign(copy.es,{tabInstagram:'Publicidad y redes',instagramNote:'Imágenes y artes Champion para compartir con tus clientes.',socialArt:'Artes publicitarios',vertical:'Vertical',horizontal:'Horizontal',square:'Cuadrado',languageUnknown:'Sin idioma',previousImage:'Imagen anterior',nextImage:'Imagen siguiente'});
+Object.assign(copy.en,{tabInstagram:'Advertising and social',instagramNote:'Champion images and artwork to share with your customers.',socialArt:'Advertising artwork',vertical:'Vertical',horizontal:'Horizontal',square:'Square',languageUnknown:'No language',previousImage:'Previous image',nextImage:'Next image'});
+Object.assign(copy.es,{ownerLabel:'UNA PLATAFORMA DE',ownerNote:'Distribuidor principal de Champion Eyewear'});
+Object.assign(copy.en,{ownerLabel:'A PLATFORM BY',ownerNote:'Main distributor of Champion Eyewear'});
+Object.assign(copy.es,{headerDistributor:'DISTRIBUIDO POR'});
+Object.assign(copy.en,{headerDistributor:'DISTRIBUTED BY'});
+Object.assign(copy.es,{filterToggle:'Filtros'});
+Object.assign(copy.en,{filterToggle:'Filters'});
+Object.assign(copy.es,{headerResources:'Recursos Champion para ópticas'});
+Object.assign(copy.en,{headerResources:'Champion resources for optical stores'});
+Object.assign(copy.es,{zipIntro:'Descarga únicamente los archivos seleccionados, organizados por tipo de recurso.',publicZipIntro:'El ZIP incluirá únicamente las imágenes, videos o logos que hayas seleccionado.'});
+Object.assign(copy.en,{zipIntro:'Download only your selected files, organized by resource type.',publicZipIntro:'The ZIP includes only the images, videos, or logos you selected.'});
+const countryNames={VG:{es:'Islas Vírgenes Británicas',en:'British Virgin Islands',flag:'🇻🇬'},GY:{es:'Guyana',en:'Guyana',flag:'🇬🇾'},JM:{es:'Jamaica',en:'Jamaica',flag:'🇯🇲'},SR:{es:'Surinam',en:'Suriname',flag:'🇸🇷'},TT:{es:'Trinidad y Tobago',en:'Trinidad and Tobago',flag:'🇹🇹'}};
+function countryLabel(code){const country=countryNames[code];return country?`${country.flag} ${country[state.lang]}`:code;}
+const t = (key) => copy[state.lang][key] || key;
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+
+function showToast(message) { const box = $('toast'); box.textContent = message; box.hidden = false; clearTimeout(showToast.timer); showToast.timer = setTimeout(() => box.hidden = true, 4300); }
+function setPanel(name) { if(name !== 'statusPanel')document.documentElement.classList.remove('portal-verifying'); $('accessShell').hidden = name === 'library'; $('library').hidden = name !== 'library'; $('downloadSelection').hidden = name !== 'library'; if(name !== 'library')closeCart(); for (const id of ['loginPanel','statusPanel']) $(id).hidden = id !== name; $('accountButton').hidden = !state.user; if (name === 'library') { render(); if (!localPreview && state.user && !state.loggedVisit) { state.loggedVisit=true; recordEvent('visit'); } } }
+function setStatus(title, text, verifying=false, showChangeEmail=true) { document.documentElement.classList.toggle('portal-verifying',verifying); $('statusTitle').textContent = title; $('statusText').textContent = text; $('statusLogout').hidden = !showChangeEmail; setPanel('statusPanel'); }
+function setLanguage() { state.lang = 'es'; localStorage.setItem('champion-portal-lang','es'); document.documentElement.lang = 'es-419'; document.title = 'Recursos para ópticas | Champion Eyewear'; document.querySelectorAll('[data-t]').forEach((el)=>{el.textContent=t(el.dataset.t)}); $('downloadSelection').setAttribute('aria-label',t('openCart')); $('closeMediaDialog').setAttribute('aria-label',t('closeMedia')); $('siteLink').href='../es/b2b/'; $('siteLink').textContent=t('siteLink'); $('brandLink').href=$('siteLink').href; $('brandLink').setAttribute('aria-label','Champion Eyewear, volver al sitio'); $('footerLink').href=$('siteLink').href; $('skipLink').textContent='Ir al contenido'; $('resourceTabs').setAttribute('aria-label','Tipo de recurso'); $('searchInput').placeholder=t('searchPlaceholder'); render(); }
+
+function filterProducts() { if (!state.catalog) return []; const query=$('searchInput').value.trim().toLowerCase(); const family=$('familyFilter').value,collection=$('collectionFilter').value,color=$('colorFilter').value,measurement=$('measurementFilter').value; return state.catalog.products.filter((p)=>(!family||p.family===family)&&(!collection||p.collection===collection)&&(!color||p.color===color)&&(!measurement||p.measurements===measurement)&&(!query||[p.model,p.sku,p.series,p.color,p.collection,p.material].join(' ').toLowerCase().includes(query))); }
+function fillFilter(id,values) { const select=$(id), chosen=select.value, first=select.options[0].outerHTML; select.innerHTML=first+values.map(v=>`<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join(''); select.value=chosen; }
+function setupFilters() { const products=state.catalog.products; fillFilter('collectionFilter',[...new Set(products.map(p=>p.collection))].sort()); fillFilter('colorFilter',[...new Set(products.map(p=>p.color))].sort()); fillFilter('measurementFilter',[...new Set(products.map(p=>p.measurements).filter(Boolean))].sort()); }
+function cartButton(type,id,klass='select-button') { const key=`${type}:${id}`,selected=state.selected.has(key); return `<button type="button" class="${klass} ${selected?'is-selected':''}" data-cart="${escapeHtml(key)}" aria-pressed="${selected}">${selected?t('removeCart'):t('addCart')}</button>`; }
+function renderModels() { if (!state.catalog) return; const filtered=filterProducts(); $('resultCount').textContent=`${filtered.length} ${t('results')} · ${filtered.reduce((n,p)=>n+p.images.length,0)} ${t('files')}`; $('emptyResults').hidden=filtered.length>0; $('modelGrid').innerHTML=filtered.map((p)=>`<article class="model-card"><div class="card-image"><span class="type-tag">${t(p.family)}</span><img src="${escapeHtml(p.images[0].preview)}" alt="${escapeHtml(p.model)}" loading="lazy"></div><div class="card-body"><span class="card-eyebrow">${escapeHtml(p.collection)} · ${escapeHtml(p.sku)}</span><h3>${escapeHtml(p.model)}</h3><p>${escapeHtml(p.color)} · ${p.images.length} ${t('files')}</p><div class="card-actions"><button type="button" class="view-button" data-view="${escapeHtml(p.id)}">${t('view')} ↗</button>${cartButton('model',p.id)}</div></div></article>`).join(''); updateSelection(); }
+function mediaShape(dim) { const width=Number(dim?.width)||16,height=Number(dim?.height)||9; return {width,height,orientation:height>width?'vertical':width>height?'horizontal':'square'}; }
+function publicVideo(url,title,id,dim) { const shape=mediaShape(dim),poster=`../assets/client-video-posters/${encodeURIComponent(id)}.jpg`; return `<video class="media-video" controls preload="none" playsinline poster="${poster}" src="${escapeHtml(url)}" width="${shape.width}" height="${shape.height}" style="aspect-ratio:${shape.width}/${shape.height}" aria-label="${escapeHtml(title)}"></video>`; }
+function expandButton(url,title,kind='image',extraClass='') { if(!url)return ''; return `<button type="button" class="expand-button ${extraClass}" data-expand-src="${escapeHtml(url)}" data-expand-title="${escapeHtml(title)}" data-expand-kind="${kind}" aria-label="${escapeHtml(`${t('expandMedia')}: ${title}`)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg>${extraClass==='card-expand'?'':t('expandMedia')}</button>`; }
+let lastExpandButton=null;
+function fitMediaDialog() { const stage=$('mediaDialogStage'),media=stage.firstElementChild; if(!media)return; const width=media.videoWidth||media.naturalWidth,height=media.videoHeight||media.naturalHeight;if(!width||!height)return; const scale=Math.min(1,(innerWidth*.92)/width,(innerHeight*.9-58)/height); stage.style.width=`${Math.round(width*scale)}px`; stage.style.height=`${Math.round(height*scale)}px`; media.style.width='100%';media.style.height='100%'; }
+function openMediaDialog(button) { const raw=button.dataset.expandSrc; if(!raw)return; const url=new URL(raw,location.href); if(!['https:','http:'].includes(url.protocol))return; const dialog=$('mediaDialog'),stage=$('mediaDialogStage'),title=button.dataset.expandTitle||'Champion',modelGallery=button.id==='detailExpand'; stage.replaceChildren(); stage.style.width='280px';stage.style.height=''; dialog.dataset.modelGallery=String(modelGallery); $('mediaPrev').hidden=!modelGallery;$('mediaNext').hidden=!modelGallery; const media=document.createElement(button.dataset.expandKind==='video'?'video':'img'); media.setAttribute('aria-label',title); if(media.tagName==='VIDEO'){const inlineVideo=button.closest('.media-card')?.querySelector('video');inlineVideo?.pause();media.controls=true;media.playsInline=true;media.preload='metadata';media.poster=inlineVideo?.poster||'';media.addEventListener('loadedmetadata',fitMediaDialog,{once:true});}else{media.alt=title;media.addEventListener('load',fitMediaDialog);} media.src=url.href; stage.append(media); $('mediaDialogTitle').textContent=title; lastExpandButton=button; dialog.showModal(); }
+function closeMediaDialog() { const dialog=$('mediaDialog'); if(dialog.open)dialog.close(); }
+function videoDimensions(v,kind) { return kind==='video'?state.publicMedia?.videoDimensions?.[v.id]||v:v; }
+function availableVideos() { return [...(state.catalog?.videos||[]).map(item=>({item,kind:'video'})),...(state.publicMedia?.instagram||[]).filter(item=>item.type==='video').map(item=>({item,kind:'instagram'})),...state.drive.videos.map(item=>({item,kind:'drivevideo'}))].filter(({item,kind})=>!item.hidden&&(kind==='drivevideo'?item.language:state.videoDetails[item.id]?.language||item.language)!=='en'); }
+function videoCard(v,kind='video') { const info=kind==='drivevideo'?v:state.videoDetails[v.id]||{},language=info.language||'unknown',title=info.title?.[state.lang]||v.title?.[state.lang]||v.title?.es||t('tabVideos'),description=info.description?.[state.lang]||v.description?.[state.lang]||'',url=kind==='video'?state.publicMedia?.videos?.[v.id]||(localPreview?v.preview:null):v.url,dimensions=videoDimensions(v,kind),shape=mediaShape(dimensions),player=url?publicVideo(url,title,v.id,shape):`<div class="media-thumb" aria-hidden="true">▶</div>`,country=info.country?`<span class="media-country">${escapeHtml(countryLabel(info.country))}</span>`:'';return `<article class="media-card media-card--${shape.orientation}" data-language="${language}">${player}<h3>${escapeHtml(title)}</h3><p>${escapeHtml(description)}</p><p class="media-dimensions">${escapeHtml(t(shape.orientation))}</p>${country}<div class="media-actions">${cartButton(kind,v.id)}${expandButton(url,title,'video')}${downloadLink(url,t('downloadPublic'),'view-button',kind,v.id)}</div></article>`; }
+function renderVideos() { const filter=$('videoLanguage').value,size=$('videoSize').value;const videos=availableVideos().filter(({item,kind})=>(!filter||(kind==='drivevideo'?item.language:state.videoDetails[item.id]?.language||item.language||'unknown')===filter)&&(!size||mediaShape(videoDimensions(item,kind)).orientation===size)); $('videoGrid').innerHTML=videos.length?videos.map(({item,kind})=>videoCard(item,kind)).join(''):`<p>${t('noVideos')}</p>`; }
+function renderInstagram() {
+  const type=$('instagramType').value,size=$('instagramSize').value,matches=item=>!size||mediaShape(item).orientation===size;
+  const singles=type&&type!=='image'?[]:(state.publicMedia?.instagram||[]).filter(item=>item.type==='image').map((item,index)=>({item,index})).filter(({item})=>!item.hidden&&matches(item)).map(({item,index})=>{const title=item.title?.[state.lang]||`Imagen Champion para redes ${index+1}`,shape=mediaShape(item);return`<article class="media-card media-card--${shape.orientation}"><img class="social-image" src="${escapeHtml(item.url)}" alt="${escapeHtml(title)}" width="${shape.width}" height="${shape.height}" style="aspect-ratio:${shape.width}/${shape.height}" loading="lazy"><h3>${escapeHtml(title)}</h3><p class="media-dimensions">${escapeHtml(t(shape.orientation))}</p><div class="media-actions">${cartButton('instagram',item.id)}${expandButton(item.url,title)}${downloadLink(item.url,t('downloadPublic'),'view-button','instagram',item.id)}</div></article>`;});
+  const carousels=type&&type!=='carousel'?[]:state.drive.carousels.filter(item=>item.slides.some(matches)).map(item=>{const slide=item.slides.find(matches),title=item.title[state.lang],shape=mediaShape(slide);return`<article class="media-card campaign-card media-card--${shape.orientation}"><img class="campaign-thumb" src="${escapeHtml(slide.url)}" alt="${escapeHtml(title)}" loading="lazy"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(item.description[state.lang])}</p><p class="media-dimensions">${item.slides.length} ${t('carouselSlides')} · ${escapeHtml(t(shape.orientation))}</p><div class="media-actions">${cartButton('carousel',item.id)}${expandButton(slide.url,title)}</div></article>`;});
+  const artwork=type&&type!=='marketing'?[]:(state.marketing?.items||[]).filter(matches).map(item=>{const title=item.title[state.lang],shape=mediaShape(item);return`<article class="media-card campaign-card media-card--${shape.orientation}"><img class="campaign-thumb" src="${escapeHtml(item.preview)}" alt="${escapeHtml(title)}" loading="lazy"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(item.description[state.lang])}</p><p class="media-dimensions">${escapeHtml(t(shape.orientation))}</p><div class="media-actions">${cartButton('marketing',item.id)}${expandButton(item.url,title)}${downloadLink(item.url,t('downloadPublic'),'view-button','marketing',item.id)}</div></article>`;});
+  $('instagramGrid').innerHTML=[...carousels,...singles,...artwork].join('')||`<p>${t('campaignNoResults')}</p>`;
+}
+function renderLogos() { const size=$('logoSize').value;$('logosGrid').innerHTML=state.logos.filter(item=>!size||!state.logoDimensions[item.id]||mediaShape(state.logoDimensions[item.id]).orientation===size).map(item=>`<article class="media-card logo-card"><div class="logo-preview ${item.dark?'logo-preview--dark':''}"><img src="${escapeHtml(item.url)}" alt="${escapeHtml(item.title[state.lang])}" data-logo-id="${escapeHtml(item.id)}" loading="lazy"></div><h3>${escapeHtml(item.title[state.lang])}</h3><p class="media-dimensions">${state.logoDimensions[item.id]?escapeHtml(t(mediaShape(state.logoDimensions[item.id]).orientation)):''}</p><div class="media-actions">${cartButton('logo',item.id)}${expandButton(item.url,item.title[state.lang])}${downloadLink(item.url,t('downloadPublic'),'view-button','logo',item.id)}</div></article>`).join(''); }
+function render() { if (!state.catalog) return; $('mediaPrev').setAttribute('aria-label',t('previousImage'));$('mediaNext').setAttribute('aria-label',t('nextImage')); $('productCount').textContent=state.catalog.counts.products; $('imageCount').textContent=state.catalog.counts.images; document.querySelector('[data-tab="videos"]').textContent=`${t('tabVideos')} (${availableVideos().length})`; document.querySelector('[data-tab="instagram"]').textContent=`${t('tabInstagram')} (${(state.publicMedia?.instagram||[]).filter(v=>v.type==='image'&&!v.hidden).length+state.drive.carousels.length+(state.marketing?.items?.length||0)})`; document.querySelector('[data-tab="logos"]').textContent=`${t('tabLogos')} (${state.logos.length})`; if(localPreview)$('approvedBadge').textContent=t('previewBadge'); if (!$('library').hidden){renderModels();renderVideos();renderInstagram();renderLogos();} }
+function updateSelection() { $('selectedCount').textContent=state.selected.size; if(!$('cartDrawer').hidden)renderCart(); }
+function setFiltersOpen(open) { state.filtersOpen=open; const button=$('toggleResourceFilters');button.setAttribute('aria-expanded',String(open));button.classList.toggle('is-open',open);for(const [tab,panelId] of Object.entries({models:'modelPanel',videos:'videoPanel',instagram:'instagramPanel',logos:'logosPanel'})){const filters=$(panelId).querySelector('.filters,.media-filters');filters.id=`resourceFilters-${tab}`;filters.hidden=!open||tab!==state.tab;}button.setAttribute('aria-controls',`resourceFilters-${state.tab}`); }
+function setTab(tab) { state.tab=tab; for(const button of document.querySelectorAll('[data-tab]')){const active=button.dataset.tab===tab;button.classList.toggle('is-active',active);button.setAttribute('aria-selected',String(active));} $('modelPanel').hidden=tab!=='models';$('videoPanel').hidden=tab!=='videos';$('instagramPanel').hidden=tab!=='instagram';$('logosPanel').hidden=tab!=='logos';setFiltersOpen(false); }
+function bundleUrl(id) { return localPreview?`/output/client-portal/bundles/${encodeURIComponent(id)}.zip`:null; }
+function fileUrl(image,kind) { return kind==='web'?image.preview:null; }
+function downloadLink(url,label,klass='',resourceType='',resourceId='') { return url?`<a class="${klass}" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" data-public-download="true" data-resource-type="${escapeHtml(resourceType)}" data-resource-id="${escapeHtml(resourceId)}">${escapeHtml(label)} ↓</a>`:`<button type="button" disabled title="${escapeHtml(t('noDrive'))}">${escapeHtml(label)}</button>`; }
+
+function openDetail(id) { const p=state.catalog.products.find(item=>item.id===id); if(!p)return; const first=p.images[0]; const dialog=$('detailDialog'); dialog.dataset.model=id; dialog.dataset.image='0'; $('detailContent').innerHTML=`<div class="detail-grid"><div class="detail-gallery"><div class="detail-stage"><button type="button" class="gallery-arrow gallery-arrow--prev" data-detail-step="-1" aria-label="${t('previousImage')}">‹</button><img id="detailImage" src="${escapeHtml(first.preview)}" alt="${escapeHtml(first.description[state.lang])}"><button type="button" class="gallery-arrow gallery-arrow--next" data-detail-step="1" aria-label="${t('nextImage')}">›</button></div><div class="detail-tools"><button type="button" class="expand-button detail-expand" id="detailExpand">${t('expandMedia')}</button><span id="detailCounter" aria-live="polite"></span></div><div class="thumbs">${p.images.map((img,index)=>`<button type="button" data-thumb="${index}" class="${index===0?'is-active':''}" aria-label="${escapeHtml(img.label[state.lang])}"><img src="${escapeHtml(img.preview)}" alt=""></button>`).join('')}</div></div><div class="detail-copy"><span class="section-kicker">${escapeHtml(p.collection)} · ${escapeHtml(p.sku)}</span><h2 id="detailTitle">${escapeHtml(p.model)}</h2><p>${escapeHtml(p.description[state.lang])}</p><div class="detail-facts"><span><b>${t('color')}</b>${escapeHtml(p.color)}</span><span><b>${t('material')}</b>${escapeHtml(p.material)}</span><span><b>${t('measurements')}</b>${escapeHtml(p.measurements)}</span><span><b>${t('collection')}</b>${escapeHtml(p.collection)}</span></div><div class="image-info"><h3 id="imageLabel"></h3><p id="imageDescription"></p><p id="imageDimensions"></p><div class="download-actions" id="imageDownloads"></div></div><div class="download-actions">${cartButton('model',p.id,'primary')}</div></div></div>`; updateDetailImage(); dialog.showModal(); }
+function updateDetailImage() { const dialog=$('detailDialog'),p=state.catalog.products.find(item=>item.id===dialog.dataset.model); if(!p)return; const index=Number(dialog.dataset.image)||0,image=p.images[index],url=state.publicMedia?.catalogImages?.[image.id]||image.preview; $('detailImage').src=image.preview; $('detailImage').alt=image.description[state.lang]; $('detailExpand').dataset.expandSrc=url; $('detailExpand').dataset.expandKind='image'; $('detailExpand').dataset.expandTitle=`${p.model} · ${image.label[state.lang]}`; $('detailExpand').setAttribute('aria-label',`${t('expandMedia')}: ${p.model} · ${image.label[state.lang]}`); $('detailCounter').textContent=`${index+1} / ${p.images.length}`; $('imageLabel').textContent=image.label[state.lang]; $('imageDescription').textContent=image.description[state.lang]; $('imageDimensions').textContent=`PNG ${image.web.width}×${image.web.height} px${image.original?` · ${t('original')} ${image.original.width}×${image.original.height} px`:''}`; $('imageDownloads').innerHTML=cartButton('image',image.id+'-web')+downloadLink(url,t('downloadPublic'),'','image',image.id)+(image.original?(localPreview||cfg.privateMediaUrl?cartButton('image',image.id+'-original'):`<span class="small">${t('noOriginal')}</span>`):`<span class="small">${t('notAvailable')}</span>`); dialog.querySelectorAll('[data-thumb]').forEach((button)=>button.classList.toggle('is-active',Number(button.dataset.thumb)===index)); if($('mediaDialog').open&&$('mediaDialog').dataset.modelGallery==='true'){const media=$('mediaDialogStage').querySelector('img');if(media){$('mediaDialogStage').style.width='280px';$('mediaDialogStage').style.height='';media.src=url;media.alt=$('detailExpand').dataset.expandTitle;$('mediaDialogTitle').textContent=`${media.alt} · ${index+1} / ${p.images.length}`;}} }
+function changeDetailImage(step) { const dialog=$('detailDialog'),p=state.catalog?.products.find(item=>item.id===dialog.dataset.model);if(!p?.images.length)return;dialog.dataset.image=String((Number(dialog.dataset.image)+step+p.images.length)%p.images.length);updateDetailImage(); }
+function cartLabel(key) { const [type,id]=key.split(':'); if(type==='model'){const p=state.catalog.products.find(item=>item.id===id);return p?`${p.model} · ${p.sku}`:id;}if(type==='image'){const imageId=id.replace(/-(web|original)$/,'');for(const p of state.catalog.products){const image=p.images.find(item=>item.id===imageId);if(image)return `${p.model} · ${image.label[state.lang]} · ${id.endsWith('-original')?t('original'):t('web')}`;}}if(type==='video'){const video=state.catalog.videos.find(item=>item.id===id);return state.videoDetails[id]?.title?.[state.lang]||video?.title[state.lang]||id;}if(type==='drivevideo')return state.drive.videos.find(item=>item.id===id)?.title[state.lang]||id;if(type==='carousel')return state.drive.carousels.find(item=>item.id===id)?.title[state.lang]||id;if(type==='instagram'){const asset=state.publicMedia?.instagram.find(item=>item.id===id);return asset?.type==='video'?(state.videoDetails[id]?.title?.[state.lang]||t('tabVideos')):(asset?.title?.[state.lang]||t('tabInstagram'));}if(type==='logo')return state.logos.find(item=>item.id===id)?.title[state.lang]||id;const asset=state.marketing?.items.find(item=>item.id===id);return asset?.title[state.lang]||id; }
+function renderCart() { $('cartItems').innerHTML=state.selected.size?[...state.selected].map(key=>`<li><span>${escapeHtml(cartLabel(key))}</span><button type="button" class="cart-remove" data-remove="${escapeHtml(key)}">${t('remove')}</button></li>`).join(''):`<li>${t('cartEmpty')}</li>`; $('prepareBundle').disabled=!state.selected.size; }
+function openBundleList() { renderCart();$('cartScrim').hidden=false;$('cartDrawer').hidden=false;$('downloadSelection').setAttribute('aria-expanded','true');$('closeCart').focus(); }
+function closeCart() { $('cartScrim').hidden=true;$('cartDrawer').hidden=true;$('downloadSelection').setAttribute('aria-expanded','false'); }
+async function privateMediaFetch(path,options={}) { if(!cfg.privateMediaUrl||!state.user)throw new Error(t('bundleNotLive'));const token=await state.user.getIdToken();const response=await fetch(`${cfg.privateMediaUrl.replace(/\/$/,'')}${path}`,{...options,headers:{...options.headers,Authorization:`Bearer ${token}`}});if(!response.ok)throw new Error(t('bundleError'));return response; }
+function updateDownloadProgress(percent, detail) {
+  const bar=$('downloadProgressBar');
+  if(Number.isFinite(percent)){
+    const value=Math.max(0,Math.min(100,Math.round(percent)));
+    if(!bar.hasAttribute('value')||bar.value!==value)bar.value=value;
+    $('downloadProgressPercent').textContent=`${value}%`;
+  }else{
+    bar.removeAttribute('value');
+    $('downloadProgressPercent').textContent='';
+  }
+  if(detail&&$('downloadProgressDetail').textContent!==detail)$('downloadProgressDetail').textContent=detail;
+}
+function beginDownloadProgress() {
+  if(state.downloading)return false;
+  const dialog=$('downloadProgressDialog');
+  $('downloadProgressTitle').textContent=t('downloadProgressTitle');
+  updateDownloadProgress(null,t('downloadConnecting'));
+  dialog.showModal();
+  state.downloading=true;
+  return true;
+}
+function endDownloadProgress() {
+  const dialog=$('downloadProgressDialog');
+  if(dialog.open)dialog.close();
+  state.downloading=false;
+}
+function saveBlob(blob,name) { const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000); }
+async function downloadPublicFile(link) {
+  if(!beginDownloadProgress())return;
+  link.setAttribute('aria-disabled','true');
+  try{
+    const response=await fetch(link.href);
+    if(!response.ok)throw new Error(t('publicMediaError'));
+    const type=link.dataset.resourceType,id=link.dataset.resourceId;
+    let name=decodeURIComponent(new URL(link.href).pathname.split('/').pop())||'Champion-recurso';
+    let blob=await responseBlobWithProgress(response,(receivedBytes,expectedBytes)=>{
+      updateDownloadProgress(expectedBytes?receivedBytes/expectedBytes*95:null,t('downloadReceiving'));
+    });
+    updateDownloadProgress(96,t('downloadProcessing'));
+    if(type==='image'){
+      const image=state.catalog.products.flatMap(product=>product.images).find(item=>item.id===id);
+      name=(image?.web.name||name).replace(/\.[^.]+$/,'.png');
+      blob=await catalogImagePng(blob);
+    }else if(type==='video')name=`${id}.mp4`;
+    else if(type==='instagram')name=state.publicMedia.instagram.find(item=>item.id===id)?.name||name;
+    else if(type==='logo')name=state.logos.find(item=>item.id===id)?.name||name;
+    else if(type==='marketing')name=state.marketing.items.find(item=>item.id===id)?.name||name;
+    else if(type==='drivevideo')name=state.drive.videos.find(item=>item.id===id)?.name||name;
+    saveBlob(blob,name);
+    updateDownloadProgress(100,t('downloadReadyDetail'));
+    recordEvent('download',type,id);
+  }catch(error){showToast(error.message||t('publicMediaError'));}
+  finally{link.removeAttribute('aria-disabled');endDownloadProgress();}
+}
+async function playPrivateVideo(id,button) { button.disabled=true;try{const response=await privateMediaFetch(`/api/media/video/${encodeURIComponent(id)}`);const blob=await response.blob();const url=URL.createObjectURL(blob);const video=document.createElement('video');video.className='media-video';video.controls=true;video.playsInline=true;video.src=url;button.closest('.media-card').querySelector('.media-thumb').replaceWith(video);button.remove();video.play().catch(()=>{});}catch(_){showToast(t('bundleError'));button.disabled=false;} }
+async function prepareBundle() {
+  if(!state.selected.size||!beginDownloadProgress())return;
+  const button=$('prepareBundle');
+  button.disabled=true;
+  button.textContent=t('preparing');
+  try{
+    if(state.publicMedia){
+      const files=collectPublicFiles(state.selected,state.catalog,state.marketing,{...state.publicMedia,logos:state.logos,driveVideos:state.drive.videos,carousels:state.drive.carousels,videoDetails:state.videoDetails},state.lang);
+      if(!files.length)throw new Error(t('bundleError'));
+      const blob=await createPublicBundle(files,(progress)=>{
+        if(progress.stage==='zip'){
+          updateDownloadProgress(85+progress.percent*.14,t('downloadPackaging'));
+        }else{
+          const fraction=progress.expectedBytes?Math.min(1,progress.receivedBytes/progress.expectedBytes):0;
+          updateDownloadProgress((progress.index+fraction)/progress.total*85,`${t('downloadFileCount')} ${Math.min(progress.index+1,progress.total)} de ${progress.total}…`);
+        }
+      });
+      updateDownloadProgress(99,t('downloadProcessing'));
+      saveBlob(blob,`Champion_Recursos_${new Date().toISOString().slice(0,10)}.zip`);
+      void Promise.all([...state.selected].map(key=>{const [type,id]=key.split(':');return recordEvent('download',type,id);}));
+    }else{
+      const items=[...state.selected].map(key=>{const [type,id]=key.split(':');return {type,id};});
+      const response=localPreview?await fetch('/api/client-bundle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})}):await privateMediaFetch('/api/bundle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items})});
+      if(!response.ok)throw new Error(t('bundleError'));
+      const blob=await responseBlobWithProgress(response,(receivedBytes,expectedBytes)=>{
+        updateDownloadProgress(expectedBytes?receivedBytes/expectedBytes*95:null,t('downloadReceiving'));
+      });
+      updateDownloadProgress(99,t('downloadProcessing'));
+      saveBlob(blob,'Champion_Recursos.zip');
+    }
+    updateDownloadProgress(100,t('downloadReadyDetail'));
+    closeCart();
+    showToast(t('bundleReady'));
+  }catch(error){showToast(error.message||t('bundleError'));}
+  finally{button.disabled=false;button.textContent=t('downloadAll');endDownloadProgress();}
+}
+
+async function loadMarketing() { const response=await fetch('./drive-artes.json',{cache:'no-store'}); if(response.ok){state.marketing=await response.json();state.drive.carousels=state.marketing.carousels||[];} render(); }
+async function loadDriveVideos() { const response=await fetch('./drive-videos.json',{cache:'no-store'});if(response.ok)state.drive.videos=(await response.json()).items||[];render(); }
+async function loadVideoDetails() { const response=await fetch('./video-details.json',{cache:'no-store'});if(response.ok)state.videoDetails=await response.json();render(); }
+async function loadLogos() { const response=await fetch('./drive-logos.json',{cache:'no-store'});state.logos=response.ok?await response.json():[];state.logos.unshift({id:'champion-emblem',title:{es:'Champion · emblema',en:'Champion · emblem'},name:'Champion_emblema.png',url:'../assets/images/brand/favicon-512.png'});render(); }
+async function loadPublicMedia() { const response=await fetch('./ghl-public-media.json',{cache:'no-store'});if(!response.ok)throw new Error('ghl-public-media.json unavailable');state.publicMedia=await response.json();render(); }
+async function loadPortalContent() { const response=await fetch('./portal-content.json',{cache:'no-store'});if(!response.ok)throw new Error('portal-content.json unavailable');const content=await response.json();state.publicMedia.instagram.push(...content.images);state.drive.videos.push(...content.videos);state.logos.push(...content.logos);for(const logo of content.logos)state.logoDimensions[logo.id]={width:logo.width,height:logo.height};render(); }
+async function recordEvent(kind,resourceType='',resourceId='') { if(localPreview||!state.db||!state.user)return; try { await addDoc(collection(state.db,'clients',state.user.uid,'events'),{kind,resourceType,resourceId,createdAt:serverTimestamp()}); } catch (_) { /* Analytics are best effort; access remains governed by Firestore and Drive. */ } }
+async function loadCatalog() { const response=await fetch('./media-catalog.json',{cache:'no-store'}); if(!response.ok)throw new Error('media-catalog.json unavailable'); state.catalog=await response.json(); setupFilters(); render(); }
+function showEmailConfirmation(message=t('confirmEmailText')) { $('loginPanel').querySelector('h2').textContent=t('confirmEmailTitle');$('accessText').textContent=message;$('loginButton').textContent=t('confirmEmail');$('requestNewLink').hidden=false;setPanel('loginPanel');$('accountButton').hidden=true; }
+async function resetEmailConfirmation() { state.emailLinkUrl=null;localStorage.removeItem('champion-login-email');history.replaceState({},'',location.pathname);if(state.auth.currentUser)await signOut(state.auth);state.user=null;state.verifyingUid=null;$('loginPanel').querySelector('h2').textContent=t('accessTitle');$('accessText').textContent=t('accessText');$('loginButton').textContent=t('emailLogin');$('requestNewLink').hidden=true;setPanel('loginPanel'); }
+async function finishEmailLink(email) { const normalized=email.trim().toLowerCase();if(!normalized||!state.emailLinkUrl)return;const result=await signInWithEmailLink(state.auth,normalized,state.emailLinkUrl);localStorage.removeItem('champion-login-email');state.emailLinkUrl=null;history.replaceState({},'',location.pathname);await verifyPortalUser(result.user); }
+function syncCartButtons() { document.querySelectorAll('[data-cart]').forEach(button=>{const selected=state.selected.has(button.dataset.cart);button.classList.toggle('is-selected',selected);button.setAttribute('aria-pressed',String(selected));button.textContent=selected?t('removeCart'):t('addCart');});updateSelection(); }
+function postGateway(action,payload) {
+  return new Promise((resolve,reject)=>{
+    const nonce=crypto.randomUUID(),id=crypto.randomUUID(),frame=document.createElement('iframe');
+    let port,finished=false;
+    const finish=(error,result)=>{if(finished)return;finished=true;clearTimeout(timer);window.removeEventListener('message',onReady);port?.close();frame.remove();if(error)reject(error);else resolve(result);};
+    const onReady=(event)=>{
+      let origin;
+      try{origin=new URL(event.origin);}catch(_){return;}
+      if(origin.protocol!=='https:'||!(origin.hostname==='script.google.com'||origin.hostname.endsWith('.googleusercontent.com')))return;
+      if(event.data?.championBridge!==1||event.data.ready!==true||event.data.nonce!==nonce||!event.ports?.[0])return;
+      port=event.ports[0];
+      port.onmessage=({data})=>{if(data?.championBridge!==1||data.id!==id)return;finish(data.error?new Error(data.error):null,data.result);};
+      port.start();
+      port.postMessage({championBridge:1,id,action,payload});
+    };
+    const timer=setTimeout(()=>finish(new Error('El servicio de acceso no respondió')),15000);
+    window.addEventListener('message',onReady);
+    frame.tabIndex=-1;frame.setAttribute('aria-hidden','true');
+    frame.style.cssText='position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none';
+    frame.addEventListener('load',()=>console.info('Champion email bridge frame loaded'));
+    frame.src=`${cfg.authBridgeUrl}?nonce=${encodeURIComponent(nonce)}`;
+    document.body.append(frame);
+  }).catch(async(error)=>{
+    if(!['requestPortalLink','confirmPortalSession'].includes(action)||error.message!=='El servicio de acceso no respondió')throw error;
+    const body=new Blob([JSON.stringify({action,payload})],{type:'text/plain'});
+    await fetch(cfg.authBridgeUrl,{method:'POST',mode:'no-cors',credentials:'omit',body});
+    return action==='requestPortalLink'?{sent:true}:null;
+  });
+}
+function ticketFromEmailLink(parameters) {
+  const ticket=parameters.get('ticket');
+  if(ticket)return ticket;
+  for(const key of parameters.keys())if(key.startsWith('ticket='))return key.slice(7);
+  return '';
+}
+async function waitForChampionProfile(user) {
+  const profile=doc(state.db,'clients',user.uid);
+  for(let attempt=0;attempt<25;attempt++) {
+    try { const snapshot=await getDoc(profile);if(snapshot.exists())return {profile,snapshot}; } catch(error) { if(error.code!=='permission-denied')throw error; }
+    await new Promise(resolve=>setTimeout(resolve,1000));
+  }
+  throw new Error('La aprobación no respondió');
+}
+async function verifyPortalUser(user) {
+  if(state.verifyingUid===user.uid)return;
+  state.verifyingUid=user.uid;state.user=user;
+  if(state.unsubscribe){state.unsubscribe();state.unsubscribe=null;}
+  try {
+    const token=await user.getIdToken(true);
+    await postGateway('confirmPortalSession',{idToken:token});
+    const {profile,snapshot}=await waitForChampionProfile(user);
+    if(state.auth.currentUser?.uid!==user.uid)return;
+    if(snapshot.data().status!=='approved'){setStatus(t('suspendedTitle'),t('suspendedText'));return;}
+    state.unsubscribe=onSnapshot(profile,(live)=>{
+      if(state.auth.currentUser?.uid!==user.uid)return;
+      const status=live.data()?.status;
+      if(status==='approved')setPanel('library');
+      else if(status==='suspended')setStatus(t('suspendedTitle'),t('suspendedText'));
+      else setStatus(t('pendingTitle'),t('pendingText'));
+    },()=>setStatus(t('setupTitle'),t('setupText')));
+    if(!sessionStorage.getItem('champion-login-recorded')){sessionStorage.setItem('champion-login-recorded','1');recordEvent('login');}
+  } catch(error){state.verifyingUid=null;console.warn('Champion session verification failed:',error.message);setStatus(t('setupTitle'),t('setupText'));}
+}
+async function startAuthNew() {
+  if(localPreview){state.user=null;$('approvedBadge').textContent=t('previewBadge');if(new URLSearchParams(location.search).has('auth_preview'))setPanel('loginPanel');else{setPanel('library');showToast(t('previewToast'));}return;}
+  if(!cfg.firebase?.apiKey||!cfg.authBridgeUrl){setStatus(t('setupTitle'),t('setupText'));return;}
+  const app=initializeApp(cfg.firebase);state.auth=getAuth(app);state.db=getFirestore(app);
+  if(isSignInWithEmailLink(state.auth,location.href)){
+    state.emailLinkUrl=location.href;
+    setStatus(t('openingTitle'),t('openingText'),true);
+    const parameters=new URL(location.href).searchParams;
+    const ticket=ticketFromEmailLink(parameters),oobCode=parameters.get('oobCode');
+    let email='';
+    if(ticket&&oobCode){try{email=(await postGateway('resolvePortalTicket',{ticket,oobCode}))?.email||'';}catch(error){console.warn('Champion ticket lookup failed:',error.message);}}
+    if(!email)email=localStorage.getItem('champion-login-email')||'';
+    if(email){try{await finishEmailLink(email);}catch(_){localStorage.removeItem('champion-login-email');showEmailConfirmation(t('confirmEmailError'));$('loginEmail').focus();}}
+    else{showEmailConfirmation();$('loginEmail').focus();}
+  }
+  onAuthStateChanged(state.auth,(user)=>{
+    if(state.emailLinkUrl){showEmailConfirmation();return;}
+    if(!user){state.user=null;state.verifyingUid=null;state.loggedVisit=false;if(state.unsubscribe){state.unsubscribe();state.unsubscribe=null;}setPanel('loginPanel');return;}
+    verifyPortalUser(user);
+  });
+}
+function toggleCart(key) { if(state.selected.has(key))state.selected.delete(key);else state.selected.add(key);syncCartButtons(); }
+async function logout() { sessionStorage.removeItem('champion-login-recorded');localStorage.removeItem('champion-login-email');if(state.emailLinkUrl)await resetEmailConfirmation();else if(state.auth?.currentUser)await signOut(state.auth);else setPanel('loginPanel');$('loginEmail').value='';$('loginEmail').focus(); }
+function bind() {
+  $('downloadProgressDialog').addEventListener('cancel',(event)=>event.preventDefault());
+  $('loginPanel').addEventListener('submit',async(event)=>{event.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim().toLowerCase();if(!email||!state.auth)return;button.disabled=true;button.textContent=state.lang==='en'?'Preparing link…':'Preparando enlace…';try{if(state.emailLinkUrl){await finishEmailLink(email);}else{await postGateway('requestPortalLink',{email,language:state.lang});localStorage.setItem('champion-login-email',email);setStatus(t('linkSentTitle'),t('linkSentText'),false,false);}}catch(error){console.warn('Champion email access request failed:',error.message);if(state.emailLinkUrl)showEmailConfirmation(t('confirmEmailError'));else showToast(t('loginError'));}finally{button.disabled=false;button.textContent=state.emailLinkUrl?t('confirmEmail'):t('emailLogin');}});
+  $('requestNewLink').addEventListener('click',resetEmailConfirmation);
+  $('accountButton').addEventListener('click',logout);
+  $('statusLogout').addEventListener('click',logout);
+  for(const id of ['searchInput','familyFilter','collectionFilter','colorFilter','measurementFilter'])$(id).addEventListener(id==='searchInput'?'input':'change',renderModels);
+  $('clearFilters').addEventListener('click',()=>{$('searchInput').value='';for(const id of ['familyFilter','collectionFilter','colorFilter','measurementFilter'])$(id).value='';renderModels();});
+  for(const id of ['instagramType','instagramSize'])$(id).addEventListener('change',renderInstagram);
+  for(const id of ['videoLanguage','videoSize'])$(id).addEventListener('change',renderVideos);
+  $('clearVideoFilters').addEventListener('click',()=>{$('videoLanguage').value='';$('videoSize').value='';renderVideos();});
+  $('logoSize').addEventListener('change',renderLogos);
+  $('logosGrid').addEventListener('load',(event)=>{const image=event.target;if(!image.matches?.('img[data-logo-id]')||!image.naturalWidth)return;const dimensions={width:image.naturalWidth,height:image.naturalHeight};state.logoDimensions[image.dataset.logoId]=dimensions;image.closest('.logo-card').querySelector('.media-dimensions').textContent=t(mediaShape(dimensions).orientation);if($('logoSize').value&&mediaShape(dimensions).orientation!==$('logoSize').value)image.closest('.logo-card').hidden=true;},true);
+  document.addEventListener('click',(event)=>{const link=event.target.closest('a[data-public-download]');if(link){event.preventDefault();downloadPublicFile(link);}});
+  $('modelGrid').addEventListener('click',(event)=>{const view=event.target.closest('[data-view]');if(view)openDetail(view.dataset.view);});
+  $('videoGrid').addEventListener('click',(event)=>{const play=event.target.closest('[data-play-video]');if(play)playPrivateVideo(play.dataset.playVideo,play);});
+  document.addEventListener('click',(event)=>{const button=event.target.closest('[data-cart]');if(button)toggleCart(button.dataset.cart);});
+  document.addEventListener('click',(event)=>{const button=event.target.closest('[data-expand-src]');if(button)openMediaDialog(button);});
+  $('closeMediaDialog').addEventListener('click',closeMediaDialog);
+  $('mediaPrev').addEventListener('click',()=>changeDetailImage(-1));
+  $('mediaNext').addEventListener('click',()=>changeDetailImage(1));
+  $('mediaDialog').addEventListener('click',(event)=>{if(event.target===$('mediaDialog'))closeMediaDialog();});
+  $('mediaDialog').addEventListener('close',()=>{const stage=$('mediaDialogStage'),video=stage.querySelector('video');if(video){video.pause();video.removeAttribute('src');video.load();}stage.replaceChildren();lastExpandButton?.focus();lastExpandButton=null;});
+  document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>setTab(button.dataset.tab)));
+  $('toggleResourceFilters').addEventListener('click',()=>setFiltersOpen(!state.filtersOpen));
+  setFiltersOpen(false);
+  $('clearSelection').addEventListener('click',()=>{state.selected.clear();syncCartButtons();});
+  $('downloadSelection').addEventListener('click',openBundleList);
+  $('closeCart').addEventListener('click',closeCart);
+  $('cartScrim').addEventListener('click',closeCart);
+  $('cartItems').addEventListener('click',(event)=>{const remove=event.target.closest('[data-remove]');if(remove){state.selected.delete(remove.dataset.remove);syncCartButtons();}});
+  $('prepareBundle').addEventListener('click',prepareBundle);
+  document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&!$('cartDrawer').hidden)closeCart();});
+  document.addEventListener('keydown',(event)=>{if(!['ArrowLeft','ArrowRight'].includes(event.key))return;if($('mediaDialog').open&&$('mediaDialog').dataset.modelGallery==='true'||$('detailDialog').open&&!$('mediaDialog').open){event.preventDefault();changeDetailImage(event.key==='ArrowRight'?1:-1);}});
+  $('closeDetail').addEventListener('click',()=>$('detailDialog').close());
+  $('detailDialog').addEventListener('click',(event)=>{if(event.target===$('detailDialog'))$('detailDialog').close();const expand=event.target.closest('#detailExpand');if(expand){event.stopPropagation();openMediaDialog(expand);return;}const arrow=event.target.closest('[data-detail-step]');if(arrow)changeDetailImage(Number(arrow.dataset.detailStep));const thumb=event.target.closest('[data-thumb]');if(thumb){$('detailDialog').dataset.image=thumb.dataset.thumb;updateDetailImage();}const remove=event.target.closest('[data-remove]');if(remove){state.selected.delete(remove.dataset.remove);syncCartButtons();if(state.selected.size)openBundleList();else $('detailDialog').close();}if(event.target.closest('#prepareBundle'))prepareBundle();});
+}
+async function main() { bind();setLanguage(state.lang);await Promise.all([loadCatalog(),loadMarketing(),loadPublicMedia(),loadVideoDetails(),loadLogos(),loadDriveVideos()]);await loadPortalContent();await startAuthNew(); }
+main().catch(()=>setStatus(t('setupTitle'),t('setupText')));

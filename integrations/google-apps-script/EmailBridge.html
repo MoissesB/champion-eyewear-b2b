@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<script>
+  'use strict';
+  const portalOrigin = 'https://champion-innova.com';
+  const nonce = <?!= JSON.stringify(nonce) ?>;
+  const channel = new MessageChannel();
+  channel.port1.onmessage = (event) => {
+    if (event.data?.championBridge !== 1) return;
+    const {id,action,payload} = event.data;
+    if (!id || !['requestPortalLink','resolvePortalTicket','confirmPortalSession'].includes(action)) return;
+    google.script.run
+      .withSuccessHandler((result) => channel.port1.postMessage({championBridge:1,id,result}))
+      .withFailureHandler((failure) => channel.port1.postMessage({championBridge:1,id,error:String(failure?.message || failure || 'No se pudo completar la solicitud.').slice(0,300)}))[action](payload);
+  };
+  channel.port1.start();
+  top.postMessage({championBridge:1,ready:true,nonce}, portalOrigin, [channel.port2]);
+</script>
+</body></html>

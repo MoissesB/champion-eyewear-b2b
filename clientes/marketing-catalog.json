@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "deportivo-post-v1",
+      "category": "deportivo",
+      "title": {
+        "es": "Deportivo · Publicación 4:5",
+        "en": "Deportivo · Social post 4:5"
+      },
+      "description": {
+        "es": "Pieza conceptual de campaña Champion para ópticas.",
+        "en": "Champion campaign concept for optical stores."
+      },
+      "format": "JPG",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 334956,
+      "preview": "/assets/client-marketing/previews/deportivo-post-v1.jpg",
+      "printReady": null
+    },
+    {
+      "id": "deportivo-story-v1",
+      "category": "deportivo",
+      "title": {
+        "es": "Deportivo · Historia 9:16",
+        "en": "Deportivo · Story 9:16"
+      },
+      "description": {
+        "es": "Pieza conceptual de campaña Champion para ópticas.",
+        "en": "Champion campaign concept for optical stores."
+      },
+      "format": "JPG",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 383153,
+      "preview": "/assets/client-marketing/previews/deportivo-story-v1.jpg",
+      "printReady": null
+    },
+    {
+      "id": "deportivo-pendon-v1",
+      "category": "deportivo",
+      "title": {
+        "es": "Deportivo · Banner para punto de venta 1:2 · arte de revisión",
+        "en": "Deportivo · In-store banner 1:2 · review artwork"
+      },
+      "description": {
+        "es": "Pieza conceptual de campaña Champion para ópticas.",
+        "en": "Champion campaign concept for optical stores."
+      },
+      "format": "JPG",
+      "width": 1500,
+      "height": 3000,
+      "bytes": 688423,
+      "preview": "/assets/client-marketing/previews/deportivo-pendon-v1.jpg",
+      "printReady": false
+    },
+    {
+      "id": "casual-post-v1",
+      "category": "casual",
+      "title": {
+        "es": "Casual · Publicación 4:5",
+        "en": "Casual · Social post 4:5"
+      },
+      "description": {
+        "es": "Pieza conceptual de campaña Champion para ópticas.",
+        "en": "Champion campaign concept for optical stores."
+      },
+      "format": "JPG",
+      "width": 1080,
+      "height": 1350,
+      "bytes": 315615,
+      "preview": "/assets/client-marketing/previews/casual-post-v1.jpg",
+      "printReady": null
+    },
+    {
+      "id": "casual-story-v1",
+      "category": "casual",
+      "title": {
+        "es": "Casual · Historia 9:16",
+        "en": "Casual · Story 9:16"
+      },
+      "description": {
+        "es": "Pieza conceptual de campaña Champion para ópticas.",
+        "en": "Champion campaign concept for optical stores."
+      },
+      "format": "JPG",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 412230,
+      "preview": "/assets/client-marketing/previews/casual-story-v1.jpg",
+      "printReady": null
+    },
+    {
+      "id": "casual-pendon-v1",
+      "category": "casual",
+      "title": {
+        "es": "Casual · Banner para punto de venta 1:2 · arte de revisión",
+        "en": "Casual · In-store banner 1:2 · review artwork"
+      },
+      "description": {
+        "es": "Pieza conceptual de campaña Champion para ópticas.",
+        "en": "Champion campaign concept for optical stores."
+      },
+      "format": "JPG",
+      "width": 1500,
+      "height": 3000,
+      "bytes": 741191,
+      "preview": "/assets/client-marketing/previews/casual-pendon-v1.jpg",
+      "printReady": false
+    }
+  ]
+}

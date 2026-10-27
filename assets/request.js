@@ -15,6 +15,7 @@
   let toastTimer;
   let lastFocused;
   let pdfLibraryPromise;
+  let pdfBusy = false;
 
   const copy = {
     es: {
@@ -28,6 +29,9 @@
       pdfTitle: 'CHAMPION ORDER FOR REVIEW', pdfFor: 'Document for the optical store', clientData: 'CLIENT DETAILS', selection: 'ORDER PRODUCTS', summary: 'ORDER SUMMARY', referenceTitle: 'NEXT STEPS', totalReferences: 'References', totalUnits: 'Pieces', minimumLabel: 'Initial minimum', finalNote: 'Innova will review the optical store and availability, process payment and coordinate shipping with the customer. Free shipping is not offered. This document is not an invoice or a confirmed order.', model: 'Model', color: 'Color', sku: 'SKU', collection: 'Collection', material: 'Material', measurements: 'Measurements', page: 'Page', attachmentPdf: 'IMPORTANT: before sending this message, manually attach the downloaded {pdf} file.', attachmentEmail: 'IMPORTANT: before sending this email, manually attach the downloaded {pdf} and {csv} files.'
     }
   };
+
+  Object.assign(copy.es, { pdfProgressTitle: 'Preparando tu PDF', pdfProgressLibrary: 'Cargando el generador de PDF…', pdfProgressImages: 'Cargando las imágenes del pedido…', pdfProgressBuilding: 'Creando el documento…', pdfProgressBarLabel: 'PDF en preparación' });
+  Object.assign(copy.en, { pdfProgressTitle: 'Preparing your PDF', pdfProgressLibrary: 'Loading the PDF generator…', pdfProgressImages: 'Loading order images…', pdfProgressBuilding: 'Creating the document…', pdfProgressBarLabel: 'Preparing PDF' });
 
   function lang() { return i18n.language === 'en' ? 'en' : 'es'; }
   function tr(key, vars) {
@@ -70,6 +74,28 @@
   function showToast(message) {
     const toast = document.getElementById('siteToast'); if (!toast) return;
     toast.textContent = message; toast.classList.add('is-visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 3000);
+  }
+
+  function pdfProgressDialog() {
+    let dialog = document.getElementById('requestPdfProgress');
+    if (dialog) return dialog;
+    const style = document.createElement('style');
+    style.textContent = '.request-pdf-progress{position:fixed;inset:0;margin:auto;width:min(420px,calc(100% - 2rem));max-width:none;border:0;border-radius:22px;padding:2rem;background:#fff;color:#111a35;box-shadow:0 28px 90px #050b255c}.request-pdf-progress::backdrop{background:#07102c99;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}.request-pdf-progress-inner{display:grid;justify-items:center;gap:.85rem;text-align:center}.request-pdf-progress img{width:150px;height:auto;object-fit:contain}.request-pdf-progress h2{margin:.3rem 0 0;font-size:clamp(1.35rem,4vw,1.75rem);line-height:1.2}.request-pdf-progress p{min-height:2.5em;margin:0;color:#647087;font-size:.9rem}.request-pdf-progress-track{width:100%;height:14px;overflow:hidden;border-radius:999px;background:#e8ebf2}.request-pdf-progress-track span{display:block;width:35%;height:100%;border-radius:999px;background:#d1122b;animation:request-pdf-loading 1.2s ease-in-out infinite alternate}@keyframes request-pdf-loading{from{transform:translateX(-100%)}to{transform:translateX(290%)}}@media(prefers-reduced-motion:reduce){.request-pdf-progress-track span{animation-duration:2.5s}}';
+    document.head.appendChild(style);
+    dialog = document.createElement('dialog');
+    dialog.id = 'requestPdfProgress';
+    dialog.className = 'request-pdf-progress';
+    dialog.setAttribute('aria-labelledby', 'requestPdfProgressTitle');
+    dialog.setAttribute('aria-describedby', 'requestPdfProgressDetail');
+    dialog.innerHTML = `<div class="request-pdf-progress-inner"><img src="${new URL('assets/images/brand/champion-header-display.webp', siteBase).href}" alt="Champion Eyewear" width="150" height="28"><h2 id="requestPdfProgressTitle"></h2><p id="requestPdfProgressDetail" aria-live="polite"></p><div class="request-pdf-progress-track" role="progressbar" aria-label="PDF en preparación"><span></span></div></div>`;
+    dialog.addEventListener('cancel', (event) => event.preventDefault());
+    document.body.appendChild(dialog);
+    return dialog;
+  }
+
+  function setPdfProgress(detailKey) {
+    const dialog = pdfProgressDialog();
+    dialog.querySelector('#requestPdfProgressDetail').textContent = tr(detailKey);
   }
 
   function shellMarkup() {
@@ -157,7 +183,7 @@
       const field = event.target.closest('#clientForm [name]'); if (!field || !(field.name in defaultClient)) return;
       state.client[field.name] = field.value; saveState(); updateReadiness();
     });
-    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !event.target.closest?.('[data-phone-search], [data-country-search]')) closeDrawer(); });
+    document.addEventListener('keydown', (event) => { if (pdfBusy) { if (event.key === 'Escape') event.preventDefault(); return; } if (event.key === 'Escape' && !event.target.closest?.('[data-phone-search], [data-country-search]')) closeDrawer(); });
   }
 
   function openDrawer(trigger) {
@@ -244,7 +270,10 @@
     if (!window.jspdf?.jsPDF) throw new Error('jsPDF no está disponible');
     const { jsPDF } = window.jspdf; const doc = new jsPDF({ unit: 'mm', format: 'a4', compress: true }); const width = 210; const height = 297; const margin = 15;
     const entries = selectedEntries(); const units = totalUnits(entries); const localized = entries.map((entry) => ({ ...entry, product: i18n.localizeProduct(entry.product) }));
+    setPdfProgress('pdfProgressImages');
     const [championLogo, innovaLogo, ...thumbs] = await Promise.all([imageData('./assets/images/brand/champion-header.png'), imageData('./assets/images/brand/innova-logo.png'), ...localized.map(({ product }) => imageData(`./${product.cover}`, '#ffffff', true).catch(() => null))]);
+    setPdfProgress('pdfProgressBuilding');
+    await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
     const addContainedImage = (data, x, y, boxWidth, boxHeight) => {
       const properties = doc.getImageProperties(data); const sourceWidth = Number(properties.width) || boxWidth; const sourceHeight = Number(properties.height) || boxHeight;
       const scale = Math.min(boxWidth / sourceWidth, boxHeight / sourceHeight); const drawWidth = sourceWidth * scale; const drawHeight = sourceHeight * scale;
@@ -276,7 +305,29 @@
     return doc.output('blob');
   }
 
-  async function downloadPdf(announce = true) { if (!guardReady()) return null; try { const blob = await pdfBlob(); triggerDownload(blob, pdfFileName()); if (announce) showToast(tr('pdfDownloaded')); return blob; } catch (error) { console.error(error); showToast(tr('pdfUnavailable')); return null; } }
+  async function downloadPdf(announce = true) {
+    if (!guardReady() || pdfBusy) return null;
+    pdfBusy = true;
+    const dialog = pdfProgressDialog();
+    dialog.querySelector('#requestPdfProgressTitle').textContent = tr('pdfProgressTitle');
+    dialog.querySelector('[role="progressbar"]').setAttribute('aria-label', tr('pdfProgressBarLabel'));
+    setPdfProgress('pdfProgressLibrary');
+    dialog.showModal();
+    try {
+      await new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
+      const blob = await pdfBlob();
+      triggerDownload(blob, pdfFileName());
+      if (announce) showToast(tr('pdfDownloaded'));
+      return blob;
+    } catch (error) {
+      console.error(error);
+      showToast(tr('pdfUnavailable'));
+      return null;
+    } finally {
+      dialog.close();
+      pdfBusy = false;
+    }
+  }
 
   function professionalMessage(attachmentKey) {
     const entries = selectedEntries(); const units = totalUnits(entries); const isEs = lang() === 'es'; const productLines = entries.map(({ product, quantity }) => { const localizedProduct = i18n.localizeProduct(product); return `• ${localizedProduct.displayModel} | ${localizedProduct.sku} | ${localizedProduct.color} | ${quantity} ${quantity === 1 ? tr('unit') : tr('units')}`; });
