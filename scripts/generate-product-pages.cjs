@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const origin = 'https://champion-innova.com';
@@ -8,6 +9,14 @@ const templates = {
   b2b: fs.readFileSync(path.join(root, 'product.html'), 'utf8'),
   b2c: fs.readFileSync(path.join(root, 'product-consumer.html'), 'utf8'),
 };
+const translationSource = fs.readFileSync(path.join(root, 'assets/i18n.js'), 'utf8');
+function valueMap(name) {
+  const match = translationSource.match(new RegExp(`const ${name} = (\\{[\\s\\S]*?\\n  \\});`));
+  if (!match) throw new Error(`Missing ${name} in assets/i18n.js`);
+  return vm.runInNewContext(`(${match[1]})`, Object.create(null));
+}
+const valueMaps = { es: valueMap('esValueMap'), en: valueMap('enValueMap') };
+const localized = (value, language) => valueMaps[language][value] || value;
 
 const htmlEscape = (value) => String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
   .replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -17,17 +26,19 @@ const urlFor = (language, profile, id) => `${origin}/${language}/${profile}/mode
 function details(product, language, profile) {
   const en = language === 'en';
   const consumer = profile === 'b2c';
+  const color = localized(product.color, language);
+  const material = localized(product.material, language);
   const kind = en
     ? (product.family === 'sun' ? 'sunglasses' : 'optical frames')
     : (product.family === 'sun' ? 'gafas de sol' : 'montura óptica');
-  const name = `${product.displayModel} · ${product.color}`;
+  const name = `${product.displayModel} · ${color}`;
   const title = en
     ? `${name} | Champion ${consumer ? kind : 'professional catalog'}`
     : `${name} | ${consumer ? kind : 'catálogo para ópticas'} Champion`;
-  const features = [product.collection, product.material, product.measurements].filter(Boolean).join(' · ');
+  const features = [product.collection, material, product.measurements].filter(Boolean).join(' · ');
   const description = en
-    ? `${product.displayModel} Champion ${kind}, color ${product.color}. ${features}. ${consumer ? 'View the model and ask an optical store about availability.' : 'View technical details and prepare an order for Innova review.'}`
-    : `${product.displayModel}, ${kind} Champion en color ${product.color}. ${features}. ${consumer ? 'Explora el modelo y consulta su disponibilidad en una óptica.' : 'Consulta la ficha técnica y prepara un pedido para revisión de Innova.'}`;
+    ? `${product.displayModel} Champion ${kind}, color ${color}. ${features}. ${consumer ? 'View the model and ask an optical store about availability.' : 'View technical details and prepare an order for Innova review.'}`
+    : `${product.displayModel}, ${kind} Champion en color ${color}. ${features}. ${consumer ? 'Explora el modelo y consulta su disponibilidad en una óptica.' : 'Consulta la ficha técnica y prepara un pedido para revisión de Innova.'}`;
   const image = product.family === 'optical' ? (product.images?.[0] || product.cover) : product.cover;
   const url = urlFor(language, profile, product.id);
   const home = `${origin}/${language}/${profile}/`;
@@ -35,7 +46,7 @@ function details(product, language, profile) {
   const labels = en
     ? ['Model', 'Reference', 'Collection', 'Color', 'Material', 'Measurements']
     : ['Modelo', 'Referencia', 'Colección', 'Color', 'Material', 'Medidas'];
-  const values = [product.displayModel, product.sku, product.collection, product.color, product.material, product.measurements];
+  const values = [product.displayModel, product.sku, product.collection, color, material, product.measurements];
   const rows = values.map((value, index) => value
     ? `<div><dt>${labels[index]}</dt><dd>${htmlEscape(value)}</dd></div>` : '').join('');
   const note = consumer
@@ -50,7 +61,7 @@ function details(product, language, profile) {
   const switchLink = `<a href="./${language}/${otherProfile}/modelos/${product.id}/">${consumer
     ? (en ? 'For optical stores and distributors' : 'Para ópticas y distribuidoras')
     : (en ? 'View the personal catalog' : 'Ver el catálogo personal')}</a>`;
-  const staticBody = `<div class="product-media-column"><figure class="product-gallery"><img src="./${htmlEscape(image)}" alt="${htmlEscape(product.displayModel)} Champion, ${htmlEscape(product.color)}" fetchpriority="high" width="1200" height="900"></figure></div><div class="product-details"><nav class="breadcrumbs" aria-label="${en ? 'Breadcrumbs' : 'Migas de pan'}"><a href="./${language}/${profile}/">${en ? 'Catalog' : 'Catálogo'}</a><span>/</span><strong>${htmlEscape(product.displayModel)}</strong></nav><span class="eyebrow">Champion ${htmlEscape(product.collection)}</span><h1>${htmlEscape(product.displayModel)}</h1><p class="product-subline">${htmlEscape(kind)} · ${htmlEscape(product.color)}</p><p>${htmlEscape(description)}</p><h2>${heading}</h2><dl class="spec-list">${rows}</dl><p>${htmlEscape(note)}</p>${action}<p>${switchLink}</p></div>`;
+  const staticBody = `<div class="product-media-column"><figure class="product-gallery"><img src="./${htmlEscape(image)}" alt="${htmlEscape(product.displayModel)} Champion, ${htmlEscape(color)}" fetchpriority="high" width="1200" height="900"></figure></div><div class="product-details"><nav class="breadcrumbs" aria-label="${en ? 'Breadcrumbs' : 'Migas de pan'}"><a href="./${language}/${profile}/">${en ? 'Catalog' : 'Catálogo'}</a><span>/</span><strong>${htmlEscape(product.displayModel)}</strong></nav><span class="eyebrow">Champion ${htmlEscape(product.collection)}</span><h1>${htmlEscape(product.displayModel)}</h1><p class="product-subline">${htmlEscape(kind)} · ${htmlEscape(color)}</p><p>${htmlEscape(description)}</p><h2>${heading}</h2><dl class="spec-list">${rows}</dl><p>${htmlEscape(note)}</p>${action}<p>${switchLink}</p></div>`;
   const structured = [
     {
       '@context': 'https://schema.org', '@type': 'Product', '@id': `${url}#product`,
@@ -59,8 +70,8 @@ function details(product, language, profile) {
       description, image: [image, ...(product.images || [])].filter(Boolean)
         .filter((entry, index, array) => array.indexOf(entry) === index)
         .map((entry) => `${origin}/${entry}`),
-      color: product.color, category: kind,
-      ...(product.material ? { material: product.material } : {}),
+      color, category: kind,
+      ...(material ? { material } : {}),
       ...(product.measurements ? { size: product.measurements } : {}),
       url,
     },
@@ -72,7 +83,7 @@ function details(product, language, profile) {
       ],
     },
   ];
-  return { title, description, image, url, staticBody, structured };
+  return { title, description, image, color, url, staticBody, structured };
 }
 
 for (const language of ['es', 'en']) {
@@ -80,7 +91,7 @@ for (const language of ['es', 'en']) {
     for (const product of products) {
       const info = details(product, language, profile);
       const imageUrl = `${origin}/${info.image}`;
-      const head = `  <base href="../../../../">\n  <meta name="robots" content="index, follow, max-image-preview:large">\n  <link rel="canonical" href="${info.url}">\n  <link rel="alternate" hreflang="es" href="${urlFor('es', profile, product.id)}">\n  <link rel="alternate" hreflang="en" href="${urlFor('en', profile, product.id)}">\n  <meta property="og:type" content="product">\n  <meta property="og:site_name" content="Champion Eyewear">\n  <meta property="og:url" content="${info.url}">\n  <meta property="og:title" content="${htmlEscape(info.title)}">\n  <meta property="og:description" content="${htmlEscape(info.description)}">\n  <meta property="og:image" content="${imageUrl}">\n  <meta property="og:image:alt" content="${htmlEscape(product.displayModel)} Champion, ${htmlEscape(product.color)}">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="${htmlEscape(info.title)}">\n  <meta name="twitter:description" content="${htmlEscape(info.description)}">\n  <meta name="twitter:image" content="${imageUrl}">\n  <link rel="preload" as="image" href="./${htmlEscape(info.image)}">\n  <script type="application/ld+json">${jsonLd(info.structured)}</script>\n`;
+      const head = `  <base href="../../../../">\n  <meta name="robots" content="index, follow, max-image-preview:large">\n  <link rel="canonical" href="${info.url}">\n  <link rel="alternate" hreflang="es" href="${urlFor('es', profile, product.id)}">\n  <link rel="alternate" hreflang="en" href="${urlFor('en', profile, product.id)}">\n  <meta property="og:type" content="product">\n  <meta property="og:site_name" content="Champion Eyewear">\n  <meta property="og:url" content="${info.url}">\n  <meta property="og:title" content="${htmlEscape(info.title)}">\n  <meta property="og:description" content="${htmlEscape(info.description)}">\n  <meta property="og:image" content="${imageUrl}">\n  <meta property="og:image:alt" content="${htmlEscape(product.displayModel)} Champion, ${htmlEscape(info.color)}">\n  <meta name="twitter:card" content="summary_large_image">\n  <meta name="twitter:title" content="${htmlEscape(info.title)}">\n  <meta name="twitter:description" content="${htmlEscape(info.description)}">\n  <meta name="twitter:image" content="${imageUrl}">\n  <link rel="preload" as="image" href="./${htmlEscape(info.image)}">\n  <script type="application/ld+json">${jsonLd(info.structured)}</script>\n`;
       let html = templates[profile]
         .replace('<html lang="es-419"', `<html lang="${language === 'en' ? 'en' : 'es-419'}"`)
         .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${htmlEscape(info.description)}">`)
