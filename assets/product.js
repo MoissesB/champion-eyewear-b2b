@@ -290,10 +290,11 @@
     updateSearchMetadata(product);
     updateAudienceChrome();
     const experienceBase = `./${i18n.language}/${isB2C() ? 'b2c' : 'b2b'}/`;
+    const categoryBase = `${experienceBase}${product.family === 'sun' ? (i18n.language === 'en' ? 'sunglasses' : 'lentes-sol') : (i18n.language === 'en' ? 'frames' : 'monturas')}/`;
     document.querySelector('.back-control')?.setAttribute('href', `${experienceBase}#${backAnchor}`);
     if (!root) return;
     root.innerHTML = `<div class="product-media-column">${gallery(product)}${relatedSection()}</div><div class="product-details">
-      <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="${experienceBase}">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="${experienceBase}#${backAnchor}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
+      <nav class="breadcrumbs" aria-label="${escapeHtml(i18n.t('breadcrumbs'))}"><a href="${experienceBase}">${escapeHtml(i18n.t('navHome'))}</a><span>/</span><a href="${categoryBase}">${escapeHtml(i18n.t(product.family === 'sun' ? 'navSun' : 'navOptical'))}</a><span>/</span><strong>${escapeHtml(product.displayModel)}</strong></nav>
       <span class="eyebrow">${escapeHtml(product.family === 'sun' ? 'Champion Sun' : `Champion ${product.collection}`)}</span>${isNewModel(source) ? `<span class="product-new-detail-badge">${i18n.language === 'en' ? 'New model' : 'Modelo nuevo'}</span>` : ''}<h1>${escapeHtml(product.displayModel)}</h1>${variantPickerMarkup(variants, product, 'mobile-product-variants')}<p class="product-subline">${escapeHtml(product.subline)}</p>${isB2C() ? '' : `<div class="product-tags">${(product.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div>`}
       ${variantPickerMarkup(variants, product, 'desktop-product-variants')}
       ${productActionBox(product)}
@@ -361,31 +362,33 @@
   }
 
   function trackProductView(product) {
-    if (measuredProductId || typeof window.gtag !== 'function') return;
+    if (measuredProductId || !window.ChampionAnalytics) return;
     if (!document.querySelector('#productRoot h1')) return;
     measuredProductId = product.id;
-    window.gtag('event', 'page_view', {
-      send_to: 'G-10EF1REGL8',
+    const dimensions = {
+      product_id: product.id,
+      product_series: product.series,
+      product_family: product.family,
+      product_variant: product.variant,
+      product_collection: product.collection,
+    };
+    window.ChampionAnalytics.track('page_view', {
       page_title: document.title,
       page_location: window.location.href,
+      ...dimensions,
     });
-    window.gtag('event', 'view_item', {
-      send_to: 'G-10EF1REGL8',
+    window.ChampionAnalytics.track('view_item', {
+      ...dimensions,
       items: [{
         item_id: product.id,
         item_name: product.displayModel,
         item_brand: 'Champion',
         item_category: product.family,
         item_category2: product.series,
+        item_category3: product.collection,
         item_variant: product.variant,
       }],
     });
-    if (['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname)) {
-      document.documentElement.dataset.championAnalyticsPreview = JSON.stringify(
-        (window.dataLayer || []).filter((entry) => entry[0] === 'event')
-          .map((entry) => ({ name: entry[1], parameters: entry[2] })),
-      );
-    }
   }
 
   function bindGallery(product) {

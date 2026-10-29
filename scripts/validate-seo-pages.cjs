@@ -6,7 +6,7 @@ const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const titles = new Set();
 const failures = [];
-const expected = (140 * 4) + 4 + 1 + 1 + 3;
+const expected = (140 * 4) + 4 + 8 + 1 + 1 + 3;
 if (urls.length !== expected) failures.push(`sitemap: ${urls.length} URLs, expected ${expected}`);
 if (new Set(urls).size !== urls.length) failures.push('sitemap contains duplicate URLs');
 
@@ -42,6 +42,12 @@ for (const url of urls) {
     if (!html.includes('hreflang="es"') || !html.includes('hreflang="en"')) failures.push(`${url}: missing language alternates`);
     if (/href="#[a-z]/i.test(html)) failures.push(`${url}: broken fragment under base URL`);
     if (parsed.pathname.includes('/b2c/') && /request-loader\.min\.js|id="productContact"/.test(html)) failures.push(`${url}: consumer order/contact controls leaked`);
+  } else if (/^\/(?:es|en)\/(?:b2b|b2c)\/(?:monturas|lentes-sol|frames|sunglasses)\/$/.test(parsed.pathname)) {
+    const family = /\/(?:monturas|frames)\/$/.test(parsed.pathname) ? 'optical' : 'sun';
+    const count = family === 'optical' ? 104 : 36;
+    const links = [...html.matchAll(/<article class="category-card">/g)];
+    if (links.length !== count) failures.push(`${url}: expected ${count} category products, found ${links.length}`);
+    if (!html.includes('"@type":"ItemList"') || !html.includes('hreflang="es"') || !html.includes('hreflang="en"')) failures.push(`${url}: missing category structured data or alternates`);
   } else if (/^\/(?:es|en)\/(?:b2b|b2c)\/$/.test(parsed.pathname)) {
     const links = [...html.matchAll(/<a href="\.\.\/\.\.\/(?:es|en)\/(?:b2b|b2c)\/modelos\/[a-z0-9-]+\/">/g)];
     if (links.length !== 140) failures.push(`${url}: expected 140 crawlable model links, found ${links.length}`);

@@ -74,6 +74,14 @@ const worker = {
       url.pathname += 'index.html';
     }
 
+    if (/^\/(?:es|en)\/(?:b2b|b2c)\/(?:monturas|lentes-sol|frames|sunglasses)$/.test(url.pathname)) {
+      url.pathname += '/';
+      return permanentRedirect(url);
+    }
+    if (/^\/(?:es|en)\/(?:b2b|b2c)\/(?:monturas|lentes-sol|frames|sunglasses)\/$/.test(url.pathname)) {
+      url.pathname += 'index.html';
+    }
+
     const response = await env.ASSETS.fetch(new Request(url, request));
     return isReviewEntry ? protectReviewEntry(response) : response;
   },

@@ -42,6 +42,9 @@ function details(product, language, profile) {
   const image = product.family === 'optical' ? (product.images?.[0] || product.cover) : product.cover;
   const url = urlFor(language, profile, product.id);
   const home = `${origin}/${language}/${profile}/`;
+  const categorySlug = product.family === 'sun' ? (en ? 'sunglasses' : 'lentes-sol') : (en ? 'frames' : 'monturas');
+  const categoryUrl = `${home}${categorySlug}/`;
+  const categoryLabel = product.family === 'sun' ? (en ? 'Sunglasses' : 'Gafas de sol') : (en ? 'Optical frames' : 'Monturas ópticas');
   const heading = en ? 'Model details' : 'Detalles del modelo';
   const labels = en
     ? ['Model', 'Reference', 'Collection', 'Color', 'Material', 'Measurements']
@@ -61,7 +64,10 @@ function details(product, language, profile) {
   const switchLink = `<a href="./${language}/${otherProfile}/modelos/${product.id}/">${consumer
     ? (en ? 'For optical stores and distributors' : 'Para ópticas y distribuidoras')
     : (en ? 'View the personal catalog' : 'Ver el catálogo personal')}</a>`;
-  const staticBody = `<div class="product-media-column"><figure class="product-gallery"><img src="./${htmlEscape(image)}" alt="${htmlEscape(product.displayModel)} Champion, ${htmlEscape(color)}" fetchpriority="high" width="1200" height="900"></figure></div><div class="product-details"><nav class="breadcrumbs" aria-label="${en ? 'Breadcrumbs' : 'Migas de pan'}"><a href="./${language}/${profile}/">${en ? 'Catalog' : 'Catálogo'}</a><span>/</span><strong>${htmlEscape(product.displayModel)}</strong></nav><span class="eyebrow">Champion ${htmlEscape(product.collection)}</span><h1>${htmlEscape(product.displayModel)}</h1><p class="product-subline">${htmlEscape(kind)} · ${htmlEscape(color)}</p><p>${htmlEscape(description)}</p><h2>${heading}</h2><dl class="spec-list">${rows}</dl><p>${htmlEscape(note)}</p>${action}<p>${switchLink}</p></div>`;
+  const variants = products.filter((candidate) => candidate.series === product.series && candidate.id !== product.id);
+  const variantLinks = variants.map((candidate) => `<a href="./${language}/${profile}/modelos/${candidate.id}/">${htmlEscape(candidate.displayModel)}</a>`).join(' · ');
+  const variantsSection = variantLinks ? `<section><h2>${en ? 'Other color variants of this model' : 'Otras variantes de color de este modelo'}</h2><p>${variantLinks}</p></section>` : '';
+  const staticBody = `<div class="product-media-column"><figure class="product-gallery"><img src="./${htmlEscape(image)}" alt="${htmlEscape(product.displayModel)} Champion, ${htmlEscape(color)}" fetchpriority="high" width="1200" height="900"></figure></div><div class="product-details"><nav class="breadcrumbs" aria-label="${en ? 'Breadcrumbs' : 'Migas de pan'}"><a href="./${language}/${profile}/">${en ? 'Catalog' : 'Catálogo'}</a><span>/</span><a href="./${language}/${profile}/${categorySlug}/">${categoryLabel}</a><span>/</span><strong>${htmlEscape(product.displayModel)}</strong></nav><span class="eyebrow">Champion ${htmlEscape(product.collection)}</span><h1>${htmlEscape(product.displayModel)}</h1><p class="product-subline">${htmlEscape(kind)} · ${htmlEscape(color)}</p><p>${htmlEscape(description)}</p><h2>${heading}</h2><dl class="spec-list">${rows}</dl><p>${htmlEscape(note)}</p>${action}<p>${switchLink}</p>${variantsSection}</div>`;
   const structured = [
     {
       '@context': 'https://schema.org', '@type': 'Product', '@id': `${url}#product`,
@@ -79,8 +85,15 @@ function details(product, language, profile) {
       '@context': 'https://schema.org', '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: en ? 'Catalog' : 'Catálogo', item: home },
-        { '@type': 'ListItem', position: 2, name: product.displayModel, item: url },
+        { '@type': 'ListItem', position: 2, name: categoryLabel, item: categoryUrl },
+        { '@type': 'ListItem', position: 3, name: product.displayModel, item: url },
       ],
+    },
+    {
+      '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${url}#page`, url,
+      name: title, description, inLanguage: en ? 'en' : 'es-419',
+      primaryImageOfPage: `${origin}/${image}`, mainEntity: { '@id': `${url}#product` },
+      isPartOf: { '@type': 'WebSite', name: 'Champion Eyewear', url: origin },
     },
   ];
   return { title, description, image, color, url, staticBody, structured };

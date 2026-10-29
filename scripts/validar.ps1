@@ -315,8 +315,8 @@ $sitemapPath = Join-Path $repoRoot "sitemap.xml"
 if (Test-Path -LiteralPath $sitemapPath -PathType Leaf) {
   $sitemapText = [System.IO.File]::ReadAllText($sitemapPath, $utf8)
   $sitemapUrls = @([regex]::Matches($sitemapText, '<loc>([^<]+)</loc>') | ForEach-Object { $_.Groups[1].Value })
-  # Four B2B/B2C routes, catalog index, blog and its articles. Redirect entrypoints are omitted.
-  $expectedSitemapUrls = ($products.Count * 4) + 6 + $blogPosts.Count
+  # Four B2B/B2C routes, eight category routes, catalog index, blog and its articles.
+  $expectedSitemapUrls = ($products.Count * 4) + 14 + $blogPosts.Count
   if ($sitemapUrls.Count -ne $expectedSitemapUrls) { $failures.Add("sitemap.xml: se esperaban $expectedSitemapUrls URLs y se encontraron $($sitemapUrls.Count)") | Out-Null }
   if (($sitemapUrls | Sort-Object -Unique).Count -ne $sitemapUrls.Count) { $failures.Add("sitemap.xml: contiene URLs duplicadas") | Out-Null }
   if ($sitemapText -match '<lastmod>') { $failures.Add("sitemap.xml: no debe incluir lastmod artificial") | Out-Null }

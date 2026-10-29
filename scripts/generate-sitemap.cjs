@@ -40,6 +40,10 @@ function escapeHtml(value) {
 
 const urls = [
   ...['es', 'en'].flatMap((language) => ['b2b', 'b2c'].map((profile) => `${origin}/${language}/${profile}/`)),
+  ...['es', 'en'].flatMap((language) => ['b2b', 'b2c'].flatMap((profile) => [
+    `${origin}/${language}/${profile}/${language === 'en' ? 'frames' : 'monturas'}/`,
+    `${origin}/${language}/${profile}/${language === 'en' ? 'sunglasses' : 'lentes-sol'}/`,
+  ])),
   `${origin}/catalogo.html`,
   `${origin}/blog.html`,
   ...blogPosts.map((post) => `${origin}/blog/${encodeURIComponent(post.slug)}.html`),
@@ -88,7 +92,7 @@ const productIndex = `<!doctype html>
   <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'CollectionPage', url: `${origin}/catalogo.html`, name: `Índice de ${products.length} modelos Champion`, inLanguage: 'es-419', image: indexImage, isPartOf: { '@type': 'WebSite', name: 'Champion Eyewear', url: origin } })}</script>
   <link rel="icon" href="./favicon.ico">
   <link rel="stylesheet" href="./assets/audience.min.css?v=audience-20260818-12">
-  <script defer src="./assets/analytics.min.js?v=analytics-20260805"></script>
+  <script defer src="./assets/analytics.min.js?v=analytics-20261029-1"></script>
   <script defer src="./assets/meta-pixel.min.js?v=meta-pixel-20261009"></script>
   <script src="./assets/audience.min.js?v=audience-20260818-12"></script>
   <title>Índice de productos | Champion Eyewear</title>

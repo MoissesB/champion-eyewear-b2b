@@ -11,7 +11,7 @@
 
     loading = new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = './assets/request.min.js?v=pdf-progress-20261025-1';
+      script.src = './assets/request.min.js?v=request-analytics-20261029-1';
       script.async = true;
       script.onload = () => {
         ready = true;

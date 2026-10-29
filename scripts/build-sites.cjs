@@ -15,6 +15,7 @@ async function build() {
   require('./generate-experiences.cjs');
   require('./generate-consumer-product.cjs');
   require('./generate-product-pages.cjs');
+  require('./generate-category-pages.cjs');
   require('./generate-sitemap.cjs');
   require('./enrich-blog-seo.cjs');
   await rm(dist, { recursive: true, force: true });

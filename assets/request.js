@@ -198,7 +198,7 @@
     }, 60);
   }
   function closeDrawer() { document.body.classList.remove('drawer-open'); document.querySelector('.request-overlay')?.classList.remove('is-open'); const drawer = document.getElementById('requestDrawer'); drawer?.classList.remove('is-open'); drawer?.setAttribute('aria-hidden', 'true'); if (lastFocused?.focus) lastFocused.focus(); }
-  function add(id, quantity = 1) { const product = productMap.get(id); if (!product) return; const requested = Math.max(1, Math.min(9999, Number(quantity) || 1)); state.items[id] = (Number(state.items[id]) || 0) + requested; saveState(); render(); showToast(i18n.t('added', { model: product.displayModel })); }
+  function add(id, quantity = 1) { const product = productMap.get(id); if (!product) return; const requested = Math.max(1, Math.min(9999, Number(quantity) || 1)); state.items[id] = (Number(state.items[id]) || 0) + requested; saveState(); render(); showToast(i18n.t('added', { model: product.displayModel })); window.ChampionAnalytics?.track('add_to_cart', { items: [{ item_id: product.id, item_name: product.displayModel, item_brand: 'Champion', item_category: product.family, item_category2: product.series, item_variant: product.variant, quantity: requested }] }); }
   function remove(id) { delete state.items[id]; saveState(); render(); }
   function updateQuantity(id, quantity) { if (!productMap.has(id)) return; state.items[id] = Math.max(1, Math.min(9999, Number(quantity) || 1)); saveState(); render(); }
   function guardReady() { const status = readiness(); if (status.ready) return status; showToast(status.entries.length ? tr('incomplete') : tr('noItems')); return null; }
@@ -340,10 +340,10 @@
 
   async function sendWhatsApp() {
     if (!guardReady()) return; const popup = window.open('about:blank', '_blank'); const blob = await downloadPdf(false); if (!blob) { popup?.close(); return; }
-    const url = `https://wa.me/${catalog.contact.whatsapp}?text=${encodeURIComponent(professionalMessage('attachmentPdf'))}`; if (popup) popup.location.href = url; else window.location.href = url; showToast(tr('filesPreparedWhatsapp'));
+    const url = `https://wa.me/${catalog.contact.whatsapp}?text=${encodeURIComponent(professionalMessage('attachmentPdf'))}`; window.ChampionAnalytics?.track('order_channel_open', { order_channel: 'whatsapp', item_count: selectedEntries().length }); if (popup) popup.location.href = url; else window.location.href = url; showToast(tr('filesPreparedWhatsapp'));
   }
   async function sendEmail() {
-    if (!guardReady()) return; const blob = await downloadPdf(false); if (!blob) return; downloadCsv(); const subject = `${state.orderNumber} - Champion Eyewear - ${state.client.optical}`; const body = professionalMessage('attachmentEmail'); window.location.href = `mailto:${catalog.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; showToast(tr('filesPreparedEmail'));
+    if (!guardReady()) return; const blob = await downloadPdf(false); if (!blob) return; downloadCsv(); const subject = `${state.orderNumber} - Champion Eyewear - ${state.client.optical}`; const body = professionalMessage('attachmentEmail'); window.ChampionAnalytics?.track('order_channel_open', { order_channel: 'email', item_count: selectedEntries().length }); window.location.href = `mailto:${catalog.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; showToast(tr('filesPreparedEmail'));
   }
   async function copyRequest() { if (!guardReady()) return; try { await navigator.clipboard.writeText(professionalMessage('attachmentPdf')); showToast(tr('copied')); } catch (_error) { showToast(tr('copyFailed')); } }
 

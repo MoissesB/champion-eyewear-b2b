@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const version = 'catalog-seo-20261027-2';
+  const version = 'catalog-seo-20261029-1';
   const reviewMode = document.documentElement.hasAttribute('data-champion-review');
   const assetBase = new URL('.', document.currentScript?.src || new URL('./assets/', location.href));
   let ready = false;

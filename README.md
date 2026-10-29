@@ -22,6 +22,7 @@ Reconstrucción del catálogo de Champion distribuido por Innova Eyewear. El sit
 - `scripts/preparar-imagenes.py`: exporta los originales a formatos web optimizados.
 - `scripts/generate-sitemap.cjs`: genera `robots.txt`, `sitemap.xml` y `catalogo.html` desde los 140 IDs válidos, sin fechas `lastmod` artificiales.
 - `scripts/generate-product-pages.cjs`: crea las fichas estáticas con títulos, descripciones, imágenes, hreflang y datos estructurados.
+- `scripts/generate-category-pages.cjs`: crea ocho páginas de monturas y gafas de sol por idioma y público, enlazadas con las fichas.
 - `scripts/validar.ps1`: verifica arquitectura, datos y recursos locales.
 - `scripts/build-sites.cjs`: prepara la distribución estática y el adaptador de hosting.
 - `404.html`: respuesta visible y no indexable para rutas o referencias inexistentes.
@@ -67,7 +68,15 @@ WhatsApp y `mailto:` no pueden adjuntar archivos automáticamente desde un naveg
 powershell -ExecutionPolicy Bypass -File .\scripts\validar.ps1
 ```
 
-El validador comprueba las dos plantillas de producto, los 140 productos, las imágenes y las señales de rastreo, canonicalización y 404. `node scripts/validate-seo-pages.cjs` revisa las 569 URL canónicas, incluyendo las 560 fichas estáticas.
+El validador comprueba las dos plantillas de producto, los 140 productos, las imágenes y las señales de rastreo, canonicalización y 404. `node scripts/validate-seo-pages.cjs` revisa las 577 URL canónicas, incluyendo las 560 fichas estáticas y ocho páginas de categoría.
+
+Para comprobar la medición sin enviar tráfico real: `node scripts/validate-analytics.cjs`.
+
+## Medición GA4
+
+La etiqueta `G-10EF1REGL8` envía un único `page_view` manual por página. Cada ficha añade `product_id`, `product_series`, `product_family`, `product_variant` y `product_collection`, seguido de `view_item` con el `item_id` de la referencia. El catálogo registra `select_item` al abrir una ficha; B2B registra `add_to_cart` cuando la referencia entra en la selección y `order_channel_open` al abrir correo o WhatsApp. B2C registra la apertura del localizador y la salida a Google Maps. Estas acciones no significan una venta ni un pedido enviado.
+
+En GA4, el informe de comercio electrónico permite comparar **Artículos vistos** por **ID de artículo** sin crear una dimensión nueva. En la propiedad Champion ya se registraron en Administrar > Definiciones personalizadas ocho dimensiones de evento: `audience`, `content_language`, `page_type`, `product_id`, `product_family`, `product_series`, `product_variant` y `product_collection`. Para ordenar por la URL concreta, usar **Ruta de página y clase de pantalla** o **Ubicación de página** en Exploraciones > Exploración de rutas. No registrar nombres, correos, teléfonos ni el texto libre de búsquedas en Analytics. Los datos solo se acumulan después de publicar y las pruebas locales no envían eventos.
 
 Para preparar una versión publicable:
 

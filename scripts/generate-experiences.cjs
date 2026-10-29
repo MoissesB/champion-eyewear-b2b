@@ -102,7 +102,9 @@ for (const language of ['es', 'en']) {
       ? 'Open the complete model and color index. Each reference has its own product page.'
       : 'Abre el índice completo de modelos y colores. Cada referencia tiene su propia ficha.';
     const modelLinks = products.map((product) => `<a href="../../${language}/${profile}/modelos/${product.id}/">${escapeHtml(product.displayModel)}</a>`).join('');
-    html = html.replace('</main>', `<section class="section catalog-index-section" aria-labelledby="catalogIndexTitle"><div class="container"><h2 id="catalogIndexTitle">${indexHeading}</h2><p>${indexIntro}</p><details><summary>${english ? 'Browse the 140 references' : 'Explorar las 140 referencias'}</summary><div class="catalog-index-links">${modelLinks}</div></details></div></section>\n</main>`);
+    const opticalUrl = `../../${language}/${profile}/${english ? 'frames' : 'monturas'}/`;
+    const sunUrl = `../../${language}/${profile}/${english ? 'sunglasses' : 'lentes-sol'}/`;
+    html = html.replace('</main>', `<section class="section catalog-index-section" aria-labelledby="catalogIndexTitle"><div class="container"><h2 id="catalogIndexTitle">${indexHeading}</h2><p>${indexIntro}</p><p><a href="${opticalUrl}">${english ? 'Explore Champion optical frames' : 'Explorar monturas ópticas Champion'}</a> · <a href="${sunUrl}">${english ? 'Explore Champion sunglasses' : 'Explorar gafas de sol Champion'}</a></p><details><summary>${english ? 'Browse the 140 references' : 'Explorar las 140 referencias'}</summary><div class="catalog-index-links">${modelLinks}</div></details></div></section>\n</main>`);
 
     html = html.replace(/href="\.\.\/\.\.\/blog\.html"/g, `href="../../blog.html?audience=${profile}&amp;lang=${language}"`);
     if (personal) html = html.replace(/\s*<a href="\.\.\/\.\.\/clientes\/" data-portal-nav>[^<]*<\/a>/g, '');
