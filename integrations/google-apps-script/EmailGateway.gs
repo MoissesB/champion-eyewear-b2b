@@ -75,13 +75,21 @@ function requestPortalLink(input) {
   });
   if (response.getResponseCode() !== 200) throw new Error('No se pudo generar el enlace de acceso. Código ' + response.getResponseCode() + ': ' + response.getContentText().slice(0, 500));
   const generatedLink = JSON.parse(response.getContentText()).oobLink;
-  const link = generatedLink && generatedLink.replace(/([?&])continueUrl=[^&]*/, function(_, prefix) {
-    return prefix + 'continueUrl=' + encodeURIComponent(CHAMPION_PORTAL_URL + '?ticket=' + ticket);
-  });
-  if (!link) throw new Error('No se recibió el enlace de acceso');
-  const codeMatch = /[?&]oobCode=([^&#]+)/.exec(link);
-  if (!codeMatch) throw new Error('El enlace de acceso no contiene un código');
-  cache.put('ticket_' + ticket, JSON.stringify({email: email, codeKey: championCodeKey_(decodeURIComponent(codeMatch[1]))}), 21600);
+  const codeMatch = generatedLink && /[?&]oobCode=([^&#]+)/.exec(generatedLink);
+  const apiKeyMatch = generatedLink && /[?&]apiKey=([^&#]+)/.exec(generatedLink);
+  const modeMatch = generatedLink && /[?&]mode=([^&#]+)/.exec(generatedLink);
+  if (!codeMatch || !apiKeyMatch || !modeMatch || decodeURIComponent(modeMatch[1]) !== 'signIn') {
+    throw new Error('El enlace de acceso generado está incompleto');
+  }
+  const code = decodeURIComponent(codeMatch[1]);
+  const apiKey = decodeURIComponent(apiKeyMatch[1]);
+  // Open the portal as the email action handler. The recipient stays in the URL
+  // fragment, which browsers do not send to the site or include in referrers.
+  // Firebase still binds the one-time code to this exact email address.
+  const link = CHAMPION_PORTAL_URL + '?apiKey=' + encodeURIComponent(apiKey) +
+    '&mode=signIn&oobCode=' + encodeURIComponent(code) +
+    '&ticket=' + encodeURIComponent(ticket) + '#email=' + encodeURIComponent(email);
+  cache.put('ticket_' + ticket, JSON.stringify({email: email, codeKey: championCodeKey_(code)}), 21600);
   const en = input.language === 'en';
   MailApp.sendEmail({
     to: email,

@@ -26,3 +26,5 @@ El proyecto Google Cloud de Champion aún muestra «Sign up for the free trial t
 4. Completar el inventario/exportación de Instagram y revisar las artes conceptuales antes de ofrecerlas como finales para imprenta.
 
 IDs: Firebase champion-portal-opticas; hoja 16-NoL1aQEbZhZX6v34128yRtSe_-Lk4hqhIlpQ2lX7I; Apps Script 1ZAMwb8rsy_Ity8FCzoZhmVxRg7-7HLAEO9qd70vFSlO_-A6i1pJq_sSq.
+
+El correo de acceso abre directamente `/clientes/` con el código de Firebase y el destinatario en el fragmento de la URL. El fragmento no se envía al servidor. El código de un solo uso sigue vinculado por Firebase al correo aprobado y `confirmPortalSession` vuelve a comprobar la hoja antes de habilitar la biblioteca. El portal ya no intenta iniciar sesión automáticamente con un correo antiguo de `localStorage` si falla la consulta del ticket. Los enlaces enviados antes de este cambio conservan el formato anterior: si no se pueden verificar, se debe solicitar uno nuevo.
